@@ -1,0 +1,1563 @@
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.8-moby
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '--releasever', '6', 'install', '@buildsys-build']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '--releasever', '6', 'install', '@buildsys-build'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  Resolving Dependencies
+DEBUG util.py:417:  --> Running transaction check
+DEBUG util.py:417:  ---> Package bash.x86_64 0:4.1.2-41.el6_8 will be installed
+DEBUG util.py:417:  --> Processing Dependency: rtld(GNU_HASH) for package: bash-4.1.2-41.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: ncurses-libs for package: bash-4.1.2-41.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdl.so.2(GLIBC_2.2.5)(64bit) for package: bash-4.1.2-41.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libc.so.6(GLIBC_2.4)(64bit) for package: bash-4.1.2-41.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libtinfo.so.5()(64bit) for package: bash-4.1.2-41.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdl.so.2()(64bit) for package: bash-4.1.2-41.el6_8.x86_64
+DEBUG util.py:417:  ---> Package bzip2.x86_64 0:1.0.5-7.el6_0 will be installed
+DEBUG util.py:417:  --> Processing Dependency: libbz2.so.1()(64bit) for package: bzip2-1.0.5-7.el6_0.x86_64
+DEBUG util.py:417:  ---> Package coreutils.x86_64 0:8.4-43.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: coreutils-libs = 8.4-43.el6 for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: pam for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: ncurses for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libselinux for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libpam_misc.so.0(LIBPAM_MISC_1.0)(64bit) for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libpam.so.0(LIBPAM_1.0)(64bit) for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libcap for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libattr.so.1(ATTR_1.1)(64bit) for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libattr for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libacl.so.1(ACL_1.2)(64bit) for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libacl.so.1(ACL_1.0)(64bit) for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: gmp for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libselinux.so.1()(64bit) for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libpam_misc.so.0()(64bit) for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libpam.so.0()(64bit) for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libgmp.so.3()(64bit) for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libcap.so.2()(64bit) for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libattr.so.1()(64bit) for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libacl.so.1()(64bit) for package: coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  ---> Package cpio.x86_64 0:2.10-12.el6_5 will be installed
+DEBUG util.py:417:  ---> Package diffutils.x86_64 0:2.8.1-28.el6 will be installed
+DEBUG util.py:417:  ---> Package epel-release.noarch 0:6-8 will be installed
+DEBUG util.py:417:  --> Processing Dependency: redhat-release >= 6 for package: epel-release-6-8.noarch
+DEBUG util.py:417:  ---> Package epel-rpm-macros.noarch 0:6-16 will be installed
+DEBUG util.py:417:  --> Processing Dependency: python2-rpm-macros for package: epel-rpm-macros-6-16.noarch
+DEBUG util.py:417:  --> Processing Dependency: python-srpm-macros for package: epel-rpm-macros-6-16.noarch
+DEBUG util.py:417:  --> Processing Dependency: python-rpm-macros for package: epel-rpm-macros-6-16.noarch
+DEBUG util.py:417:  ---> Package findutils.x86_64 1:4.4.2-9.el6 will be installed
+DEBUG util.py:417:  ---> Package gawk.x86_64 0:3.1.7-10.el6_7.3 will be installed
+DEBUG util.py:417:  ---> Package gcc.x86_64 0:4.4.7-17.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: libgomp = 4.4.7-17.el6 for package: gcc-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: cpp = 4.4.7-17.el6 for package: gcc-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libgcc >= 4.4.7-17.el6 for package: gcc-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: glibc-devel >= 2.2.90-12 for package: gcc-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: cloog-ppl >= 0.15 for package: gcc-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: binutils >= 2.19.51.0.14-33 for package: gcc-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libgomp.so.1()(64bit) for package: gcc-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libgcc_s.so.1()(64bit) for package: gcc-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  ---> Package gcc-c++.x86_64 0:4.4.7-17.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: libstdc++-devel = 4.4.7-17.el6 for package: gcc-c++-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libstdc++ = 4.4.7-17.el6 for package: gcc-c++-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libstdc++.so.6()(64bit) for package: gcc-c++-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libmpfr.so.1()(64bit) for package: gcc-c++-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  ---> Package grep.x86_64 0:2.20-5.el6_8 will be installed
+DEBUG util.py:417:  --> Processing Dependency: libpcre.so.0()(64bit) for package: grep-2.20-5.el6_8.x86_64
+DEBUG util.py:417:  ---> Package gzip.x86_64 0:1.3.12-22.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: less for package: gzip-1.3.12-22.el6.x86_64
+DEBUG util.py:417:  ---> Package info.x86_64 0:4.13a-8.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: libz.so.1()(64bit) for package: info-4.13a-8.el6.x86_64
+DEBUG util.py:417:  ---> Package make.x86_64 1:3.81-23.el6 will be installed
+DEBUG util.py:417:  ---> Package patch.x86_64 0:2.6-6.el6 will be installed
+DEBUG util.py:417:  ---> Package redhat-rpm-config.noarch 0:9.0.3-51.el6.centos will be installed
+DEBUG util.py:417:  --> Processing Dependency: perl(Getopt::Long) for package: redhat-rpm-config-9.0.3-51.el6.centos.noarch
+DEBUG util.py:417:  --> Processing Dependency: /usr/bin/perl for package: redhat-rpm-config-9.0.3-51.el6.centos.noarch
+DEBUG util.py:417:  ---> Package rpm-build.x86_64 0:4.8.0-55.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: rpm = 4.8.0-55.el6 for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: elfutils >= 0.128 for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: pkgconfig for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: lzma for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libpopt.so.0(LIBPOPT_0)(64bit) for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libelf.so.1(ELFUTILS_1.0)(64bit) for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: file for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: /usr/bin/gdb-add-index for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: librpmio.so.1()(64bit) for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: librpmbuild.so.1()(64bit) for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: librpm.so.1()(64bit) for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libpopt.so.0()(64bit) for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libnss3.so()(64bit) for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libmagic.so.1()(64bit) for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: liblzma.so.0()(64bit) for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: liblua-5.1.so()(64bit) for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libelf.so.1()(64bit) for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdb-4.7.so()(64bit) for package: rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  ---> Package sed.x86_64 0:4.2.1-10.el6 will be installed
+DEBUG util.py:417:  ---> Package shadow-utils.x86_64 2:4.1.5.1-5.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: audit-libs >= 1.6.5 for package: 2:shadow-utils-4.1.5.1-5.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: setup for package: 2:shadow-utils-4.1.5.1-5.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libsemanage.so.1(LIBSEMANAGE_1.0)(64bit) for package: 2:shadow-utils-4.1.5.1-5.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libsemanage.so.1()(64bit) for package: 2:shadow-utils-4.1.5.1-5.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libaudit.so.1()(64bit) for package: 2:shadow-utils-4.1.5.1-5.el6.x86_64
+DEBUG util.py:417:  ---> Package tar.x86_64 2:1.23-15.el6_8 will be installed
+DEBUG util.py:417:  ---> Package unzip.x86_64 0:6.0-4.el6 will be installed
+DEBUG util.py:417:  ---> Package util-linux-ng.x86_64 0:2.17.2-12.24.el6_8.1 will be installed
+DEBUG util.py:417:  --> Processing Dependency: libuuid = 2.17.2-12.24.el6_8.1 for package: util-linux-ng-2.17.2-12.24.el6_8.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libblkid = 2.17.2-12.24.el6_8.1 for package: util-linux-ng-2.17.2-12.24.el6_8.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: kernel >= 2.6.32-642 for package: util-linux-ng-2.17.2-12.24.el6_8.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: udev for package: util-linux-ng-2.17.2-12.24.el6_8.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libuuid.so.1(UUID_1.0)(64bit) for package: util-linux-ng-2.17.2-12.24.el6_8.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libutempter.so.0(UTEMPTER_1.1)(64bit) for package: util-linux-ng-2.17.2-12.24.el6_8.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libblkid.so.1(BLKID_2.17)(64bit) for package: util-linux-ng-2.17.2-12.24.el6_8.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libblkid.so.1(BLKID_2.15)(64bit) for package: util-linux-ng-2.17.2-12.24.el6_8.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libblkid.so.1(BLKID_1.0)(64bit) for package: util-linux-ng-2.17.2-12.24.el6_8.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libuuid.so.1()(64bit) for package: util-linux-ng-2.17.2-12.24.el6_8.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libutempter.so.0()(64bit) for package: util-linux-ng-2.17.2-12.24.el6_8.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libsepol.so.1()(64bit) for package: util-linux-ng-2.17.2-12.24.el6_8.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libblkid.so.1()(64bit) for package: util-linux-ng-2.17.2-12.24.el6_8.1.x86_64
+DEBUG util.py:417:  ---> Package which.x86_64 0:2.19-6.el6 will be installed
+DEBUG util.py:417:  ---> Package xz.x86_64 0:4.999.9-0.5.beta.20091007git.el6 will be installed
+DEBUG util.py:417:  --> Running transaction check
+DEBUG util.py:417:  ---> Package audit-libs.x86_64 0:2.4.5-3.el6 will be installed
+DEBUG util.py:417:  ---> Package binutils.x86_64 0:2.20.51.0.2-5.44.el6 will be installed
+DEBUG util.py:417:  ---> Package bzip2-libs.x86_64 0:1.0.5-7.el6_0 will be installed
+DEBUG util.py:417:  ---> Package centos-release.x86_64 0:6-8.el6.centos.12.3 will be installed
+DEBUG util.py:417:  ---> Package cloog-ppl.x86_64 0:0.15.7-1.2.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: libppl_c.so.2()(64bit) for package: cloog-ppl-0.15.7-1.2.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libppl.so.7()(64bit) for package: cloog-ppl-0.15.7-1.2.el6.x86_64
+DEBUG util.py:417:  ---> Package coreutils-libs.x86_64 0:8.4-43.el6 will be installed
+DEBUG util.py:417:  ---> Package cpp.x86_64 0:4.4.7-17.el6 will be installed
+DEBUG util.py:417:  ---> Package db4.x86_64 0:4.7.25-20.el6_8.1 will be installed
+DEBUG util.py:417:  ---> Package elfutils.x86_64 0:0.164-2.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: elfutils-libs(x86-64) = 0.164-2.el6 for package: elfutils-0.164-2.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdw.so.1(ELFUTILS_0.158)(64bit) for package: elfutils-0.164-2.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdw.so.1(ELFUTILS_0.149)(64bit) for package: elfutils-0.164-2.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdw.so.1(ELFUTILS_0.148)(64bit) for package: elfutils-0.164-2.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdw.so.1(ELFUTILS_0.138)(64bit) for package: elfutils-0.164-2.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdw.so.1(ELFUTILS_0.130)(64bit) for package: elfutils-0.164-2.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdw.so.1(ELFUTILS_0.127)(64bit) for package: elfutils-0.164-2.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdw.so.1(ELFUTILS_0.126)(64bit) for package: elfutils-0.164-2.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdw.so.1(ELFUTILS_0.122)(64bit) for package: elfutils-0.164-2.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libasm.so.1(ELFUTILS_1.0)(64bit) for package: elfutils-0.164-2.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdw.so.1()(64bit) for package: elfutils-0.164-2.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libasm.so.1()(64bit) for package: elfutils-0.164-2.el6.x86_64
+DEBUG util.py:417:  ---> Package elfutils-libelf.x86_64 0:0.164-2.el6 will be installed
+DEBUG util.py:417:  ---> Package file.x86_64 0:5.04-30.el6 will be installed
+DEBUG util.py:417:  ---> Package file-libs.x86_64 0:5.04-30.el6 will be installed
+DEBUG util.py:417:  ---> Package gdb.x86_64 0:7.2-90.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: readline for package: gdb-7.2-90.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: python-libs for package: gdb-7.2-90.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libreadline.so.6()(64bit) for package: gdb-7.2-90.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libpython2.6.so.1.0()(64bit) for package: gdb-7.2-90.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libexpat.so.1()(64bit) for package: gdb-7.2-90.el6.x86_64
+DEBUG util.py:417:  ---> Package glibc.x86_64 0:2.12-1.192.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: glibc-common = 2.12-1.192.el6 for package: glibc-2.12-1.192.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libfreebl3.so(NSSRAWHASH_3.12.3)(64bit) for package: glibc-2.12-1.192.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: basesystem for package: glibc-2.12-1.192.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libfreebl3.so()(64bit) for package: glibc-2.12-1.192.el6.x86_64
+DEBUG util.py:417:  ---> Package glibc-devel.x86_64 0:2.12-1.192.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: glibc-headers = 2.12-1.192.el6 for package: glibc-devel-2.12-1.192.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: glibc-headers for package: glibc-devel-2.12-1.192.el6.x86_64
+DEBUG util.py:417:  ---> Package gmp.x86_64 0:4.3.1-10.el6 will be installed
+DEBUG util.py:417:  ---> Package kernel.x86_64 0:2.6.32-642.13.1.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: kernel-firmware >= 2.6.32-642.13.1.el6 for package: kernel-2.6.32-642.13.1.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: initscripts >= 8.11.1-1 for package: kernel-2.6.32-642.13.1.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: grubby >= 7.0.4-1 for package: kernel-2.6.32-642.13.1.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: dracut-kernel >= 004-408.el6 for package: kernel-2.6.32-642.13.1.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: module-init-tools for package: kernel-2.6.32-642.13.1.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: /sbin/new-kernel-pkg for package: kernel-2.6.32-642.13.1.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: /sbin/new-kernel-pkg for package: kernel-2.6.32-642.13.1.el6.x86_64
+DEBUG util.py:417:  ---> Package less.x86_64 0:436-13.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: groff for package: less-436-13.el6.x86_64
+DEBUG util.py:417:  ---> Package libacl.x86_64 0:2.2.49-6.el6 will be installed
+DEBUG util.py:417:  ---> Package libattr.x86_64 0:2.4.44-7.el6 will be installed
+DEBUG util.py:417:  ---> Package libblkid.x86_64 0:2.17.2-12.24.el6_8.1 will be installed
+DEBUG util.py:417:  ---> Package libcap.x86_64 0:2.16-5.5.el6 will be installed
+DEBUG util.py:417:  ---> Package libgcc.x86_64 0:4.4.7-17.el6 will be installed
+DEBUG util.py:417:  ---> Package libgomp.x86_64 0:4.4.7-17.el6 will be installed
+DEBUG util.py:417:  ---> Package libselinux.x86_64 0:2.0.94-7.el6 will be installed
+DEBUG util.py:417:  ---> Package libsemanage.x86_64 0:2.0.43-5.1.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: libustr-1.0.so.1(USTR_1.0.1)(64bit) for package: libsemanage-2.0.43-5.1.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libustr-1.0.so.1(USTR_1.0)(64bit) for package: libsemanage-2.0.43-5.1.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libustr-1.0.so.1()(64bit) for package: libsemanage-2.0.43-5.1.el6.x86_64
+DEBUG util.py:417:  ---> Package libsepol.x86_64 0:2.0.41-4.el6 will be installed
+DEBUG util.py:417:  ---> Package libstdc++.x86_64 0:4.4.7-17.el6 will be installed
+DEBUG util.py:417:  ---> Package libstdc++-devel.x86_64 0:4.4.7-17.el6 will be installed
+DEBUG util.py:417:  ---> Package libutempter.x86_64 0:1.1.5-4.1.el6 will be installed
+DEBUG util.py:417:  ---> Package libuuid.x86_64 0:2.17.2-12.24.el6_8.1 will be installed
+DEBUG util.py:417:  ---> Package lua.x86_64 0:5.1.4-4.1.el6 will be installed
+DEBUG util.py:417:  ---> Package mpfr.x86_64 0:2.4.1-6.el6 will be installed
+DEBUG util.py:417:  ---> Package ncurses.x86_64 0:5.7-4.20090207.el6 will be installed
+DEBUG util.py:417:  ---> Package ncurses-libs.x86_64 0:5.7-4.20090207.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: ncurses-base = 5.7-4.20090207.el6 for package: ncurses-libs-5.7-4.20090207.el6.x86_64
+DEBUG util.py:417:  ---> Package nss.x86_64 0:3.21.3-2.el6_8 will be installed
+DEBUG util.py:417:  --> Processing Dependency: nss-util >= 3.21.0 for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: nss-softokn(x86-64) >= 3.14.3-22 for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: nspr >= 4.11.0 for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: nss-system-init for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libnssutil3.so(NSSUTIL_3.21)(64bit) for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libnssutil3.so(NSSUTIL_3.17.1)(64bit) for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libnssutil3.so(NSSUTIL_3.15)(64bit) for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libnssutil3.so(NSSUTIL_3.14)(64bit) for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libnssutil3.so(NSSUTIL_3.13)(64bit) for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libnssutil3.so(NSSUTIL_3.12.5)(64bit) for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libnssutil3.so(NSSUTIL_3.12.3)(64bit) for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libnssutil3.so(NSSUTIL_3.12)(64bit) for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: /usr/sbin/update-alternatives for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: /usr/sbin/update-alternatives for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libsoftokn3.so()(64bit) for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libplds4.so()(64bit) for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libplc4.so()(64bit) for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libnssutil3.so()(64bit) for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libnssdbm3.so()(64bit) for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libnspr4.so()(64bit) for package: nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  ---> Package pam.x86_64 0:1.1.1-22.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: cracklib-dicts >= 2.8 for package: pam-1.1.1-22.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: cracklib for package: pam-1.1.1-22.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libcrack.so.2()(64bit) for package: pam-1.1.1-22.el6.x86_64
+DEBUG util.py:417:  ---> Package pcre.x86_64 0:7.8-7.el6 will be installed
+DEBUG util.py:417:  ---> Package perl.x86_64 4:5.10.1-141.el6_7.1 will be installed
+DEBUG util.py:417:  --> Processing Dependency: perl-libs = 4:5.10.1-141.el6_7.1 for package: 4:perl-5.10.1-141.el6_7.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: perl-libs for package: 4:perl-5.10.1-141.el6_7.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: perl(version) for package: 4:perl-5.10.1-141.el6_7.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: perl(Pod::Simple) for package: 4:perl-5.10.1-141.el6_7.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: perl(Module::Pluggable) for package: 4:perl-5.10.1-141.el6_7.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libperl.so()(64bit) for package: 4:perl-5.10.1-141.el6_7.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libgdbm.so.2()(64bit) for package: 4:perl-5.10.1-141.el6_7.1.x86_64
+DEBUG util.py:417:  ---> Package pkgconfig.x86_64 1:0.23-9.1.el6 will be installed
+DEBUG util.py:417:  ---> Package popt.x86_64 0:1.13-7.el6 will be installed
+DEBUG util.py:417:  ---> Package python-rpm-macros.noarch 0:3-11.el6 will be installed
+DEBUG util.py:417:  ---> Package python-srpm-macros.noarch 0:3-11.el6 will be installed
+DEBUG util.py:417:  ---> Package python2-rpm-macros.noarch 0:3-11.el6 will be installed
+DEBUG util.py:417:  ---> Package rpm.x86_64 0:4.8.0-55.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: db4-utils for package: rpm-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: curl for package: rpm-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  ---> Package rpm-libs.x86_64 0:4.8.0-55.el6 will be installed
+DEBUG util.py:417:  ---> Package setup.noarch 0:2.8.14-20.el6_4.1 will be installed
+DEBUG util.py:417:  ---> Package udev.x86_64 0:147-2.73.el6_8.2 will be installed
+DEBUG util.py:417:  --> Processing Dependency: MAKEDEV >= 3.11 for package: udev-147-2.73.el6_8.2.x86_64
+DEBUG util.py:417:  --> Processing Dependency: hwdata for package: udev-147-2.73.el6_8.2.x86_64
+DEBUG util.py:417:  --> Processing Dependency: /sbin/pidof for package: udev-147-2.73.el6_8.2.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libusb-0.1.so.4()(64bit) for package: udev-147-2.73.el6_8.2.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libglib-2.0.so.0()(64bit) for package: udev-147-2.73.el6_8.2.x86_64
+DEBUG util.py:417:  ---> Package xz-libs.x86_64 0:4.999.9-0.5.beta.20091007git.el6 will be installed
+DEBUG util.py:417:  ---> Package xz-lzma-compat.x86_64 0:4.999.9-0.5.beta.20091007git.el6 will be installed
+DEBUG util.py:417:  ---> Package zlib.x86_64 0:1.2.3-29.el6 will be installed
+DEBUG util.py:417:  --> Running transaction check
+DEBUG util.py:417:  ---> Package MAKEDEV.x86_64 0:3.24-6.el6 will be installed
+DEBUG util.py:417:  ---> Package basesystem.noarch 0:10.0-4.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: filesystem for package: basesystem-10.0-4.el6.noarch
+DEBUG util.py:417:  ---> Package chkconfig.x86_64 0:1.3.49.5-1.el6 will be installed
+DEBUG util.py:417:  ---> Package cracklib.x86_64 0:2.8.16-4.el6 will be installed
+DEBUG util.py:417:  ---> Package cracklib-dicts.x86_64 0:2.8.16-4.el6 will be installed
+DEBUG util.py:417:  ---> Package curl.x86_64 0:7.19.7-52.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: libcurl = 7.19.7-52.el6 for package: curl-7.19.7-52.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libssh2.so.1()(64bit) for package: curl-7.19.7-52.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libldap-2.4.so.2()(64bit) for package: curl-7.19.7-52.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libkrb5.so.3()(64bit) for package: curl-7.19.7-52.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libk5crypto.so.3()(64bit) for package: curl-7.19.7-52.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libidn.so.11()(64bit) for package: curl-7.19.7-52.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libgssapi_krb5.so.2()(64bit) for package: curl-7.19.7-52.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libcurl.so.4()(64bit) for package: curl-7.19.7-52.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libcom_err.so.2()(64bit) for package: curl-7.19.7-52.el6.x86_64
+DEBUG util.py:417:  ---> Package db4-utils.x86_64 0:4.7.25-20.el6_8.1 will be installed
+DEBUG util.py:417:  ---> Package dracut-kernel.noarch 0:004-409.el6_8.2 will be installed
+DEBUG util.py:417:  --> Processing Dependency: dracut = 004-409.el6_8.2 for package: dracut-kernel-004-409.el6_8.2.noarch
+DEBUG util.py:417:  ---> Package elfutils-libs.x86_64 0:0.164-2.el6 will be installed
+DEBUG util.py:417:  ---> Package expat.x86_64 0:2.0.1-13.el6_8 will be installed
+DEBUG util.py:417:  ---> Package gdbm.x86_64 0:1.8.0-39.el6 will be installed
+DEBUG util.py:417:  ---> Package glib2.x86_64 0:2.28.8-5.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: shared-mime-info for package: glib2-2.28.8-5.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libfam.so.0()(64bit) for package: glib2-2.28.8-5.el6.x86_64
+DEBUG util.py:417:  ---> Package glibc-common.x86_64 0:2.12-1.192.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: tzdata >= 2015g-4 for package: glibc-common-2.12-1.192.el6.x86_64
+DEBUG util.py:417:  ---> Package glibc-headers.x86_64 0:2.12-1.192.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: kernel-headers >= 2.2.1 for package: glibc-headers-2.12-1.192.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: kernel-headers for package: glibc-headers-2.12-1.192.el6.x86_64
+DEBUG util.py:417:  ---> Package groff.x86_64 0:1.18.1.4-21.el6 will be installed
+DEBUG util.py:417:  ---> Package grubby.x86_64 0:7.0.15-7.el6 will be installed
+DEBUG util.py:417:  ---> Package hwdata.noarch 0:0.233-16.1.el6 will be installed
+DEBUG util.py:417:  ---> Package initscripts.x86_64 0:9.03.53-1.el6.centos.1 will be installed
+DEBUG util.py:417:  --> Processing Dependency: upstart >= 0.6.5-11 for package: initscripts-9.03.53-1.el6.centos.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: ethtool >= 1.8-2 for package: initscripts-9.03.53-1.el6.centos.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: plymouth for package: initscripts-9.03.53-1.el6.centos.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: net-tools for package: initscripts-9.03.53-1.el6.centos.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: mingetty for package: initscripts-9.03.53-1.el6.centos.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: /sbin/sysctl for package: initscripts-9.03.53-1.el6.centos.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: /sbin/ip for package: initscripts-9.03.53-1.el6.centos.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: /sbin/fuser for package: initscripts-9.03.53-1.el6.centos.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: /sbin/arping for package: initscripts-9.03.53-1.el6.centos.1.x86_64
+DEBUG util.py:417:  ---> Package kernel-firmware.noarch 0:2.6.32-642.13.1.el6 will be installed
+DEBUG util.py:417:  ---> Package libusb.x86_64 0:0.1.12-23.el6 will be installed
+DEBUG util.py:417:  ---> Package module-init-tools.x86_64 0:3.9-25.el6 will be installed
+DEBUG util.py:417:  ---> Package ncurses-base.x86_64 0:5.7-4.20090207.el6 will be installed
+DEBUG util.py:417:  ---> Package nspr.x86_64 0:4.11.0-1.el6 will be installed
+DEBUG util.py:417:  ---> Package nss-softokn.x86_64 0:3.14.3-23.3.el6_8 will be installed
+DEBUG util.py:417:  --> Processing Dependency: libsqlite3.so.0()(64bit) for package: nss-softokn-3.14.3-23.3.el6_8.x86_64
+DEBUG util.py:417:  ---> Package nss-softokn-freebl.x86_64 0:3.14.3-23.3.el6_8 will be installed
+DEBUG util.py:417:  ---> Package nss-sysinit.x86_64 0:3.21.3-2.el6_8 will be installed
+DEBUG util.py:417:  ---> Package nss-util.x86_64 0:3.21.3-1.el6_8 will be installed
+DEBUG util.py:417:  ---> Package perl-Module-Pluggable.x86_64 1:3.90-141.el6_7.1 will be installed
+DEBUG util.py:417:  ---> Package perl-Pod-Simple.x86_64 1:3.13-141.el6_7.1 will be installed
+DEBUG util.py:417:  --> Processing Dependency: perl(Pod::Escapes) >= 1.04 for package: 1:perl-Pod-Simple-3.13-141.el6_7.1.x86_64
+DEBUG util.py:417:  ---> Package perl-libs.x86_64 4:5.10.1-141.el6_7.1 will be installed
+DEBUG util.py:417:  ---> Package perl-version.x86_64 3:0.77-141.el6_7.1 will be installed
+DEBUG util.py:417:  ---> Package ppl.x86_64 0:0.10.2-11.el6 will be installed
+DEBUG util.py:417:  ---> Package python-libs.x86_64 0:2.6.6-66.el6_8 will be installed
+DEBUG util.py:417:  --> Processing Dependency: python(abi) = 2.6 for package: python-libs-2.6.6-66.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libssl.so.10(libssl.so.10)(64bit) for package: python-libs-2.6.6-66.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libcrypto.so.10(libcrypto.so.10)(64bit) for package: python-libs-2.6.6-66.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libssl.so.10()(64bit) for package: python-libs-2.6.6-66.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libffi.so.5()(64bit) for package: python-libs-2.6.6-66.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libcrypto.so.10()(64bit) for package: python-libs-2.6.6-66.el6_8.x86_64
+DEBUG util.py:417:  ---> Package readline.x86_64 0:6.0-4.el6 will be installed
+DEBUG util.py:417:  ---> Package sysvinit-tools.x86_64 0:2.87-6.dsf.el6 will be installed
+DEBUG util.py:417:  ---> Package ustr.x86_64 0:1.0.4-9.1.el6 will be installed
+DEBUG util.py:417:  --> Running transaction check
+DEBUG util.py:417:  ---> Package dracut.noarch 0:004-409.el6_8.2 will be installed
+DEBUG util.py:417:  --> Processing Dependency: plymouth-scripts for package: dracut-004-409.el6_8.2.noarch
+DEBUG util.py:417:  --> Processing Dependency: kbd for package: dracut-004-409.el6_8.2.noarch
+DEBUG util.py:417:  --> Processing Dependency: dash for package: dracut-004-409.el6_8.2.noarch
+DEBUG util.py:417:  ---> Package ethtool.x86_64 2:3.5-6.el6 will be installed
+DEBUG util.py:417:  ---> Package filesystem.x86_64 0:2.4.30-3.el6 will be installed
+DEBUG util.py:417:  ---> Package gamin.x86_64 0:0.1.10-9.el6 will be installed
+DEBUG util.py:417:  ---> Package iproute.x86_64 0:2.6.32-54.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: iptables >= 1.4.5 for package: iproute-2.6.32-54.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libxtables.so.4()(64bit) for package: iproute-2.6.32-54.el6.x86_64
+DEBUG util.py:417:  ---> Package iputils.x86_64 0:20071127-21.el6 will be installed
+DEBUG util.py:417:  ---> Package kernel-headers.x86_64 0:2.6.32-642.13.1.el6 will be installed
+DEBUG util.py:417:  ---> Package krb5-libs.x86_64 0:1.10.3-57.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: libkeyutils.so.1(KEYUTILS_0.3)(64bit) for package: krb5-libs-1.10.3-57.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libkeyutils.so.1()(64bit) for package: krb5-libs-1.10.3-57.el6.x86_64
+DEBUG util.py:417:  ---> Package libcom_err.x86_64 0:1.41.12-22.el6 will be installed
+DEBUG util.py:417:  ---> Package libcurl.x86_64 0:7.19.7-52.el6 will be installed
+DEBUG util.py:417:  ---> Package libffi.x86_64 0:3.0.5-3.2.el6 will be installed
+DEBUG util.py:417:  ---> Package libidn.x86_64 0:1.18-2.el6 will be installed
+DEBUG util.py:417:  ---> Package libssh2.x86_64 0:1.4.2-2.el6_7.1 will be installed
+DEBUG util.py:417:  ---> Package mingetty.x86_64 0:1.08-5.el6 will be installed
+DEBUG util.py:417:  ---> Package net-tools.x86_64 0:1.60-110.el6_2 will be installed
+DEBUG util.py:417:  ---> Package openldap.x86_64 0:2.4.40-12.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: nss-tools for package: openldap-2.4.40-12.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libsasl2.so.2()(64bit) for package: openldap-2.4.40-12.el6.x86_64
+DEBUG util.py:417:  ---> Package openssl.x86_64 0:1.0.1e-48.el6_8.3 will be installed
+DEBUG util.py:417:  --> Processing Dependency: ca-certificates >= 2008-5 for package: openssl-1.0.1e-48.el6_8.3.x86_64
+DEBUG util.py:417:  ---> Package perl-Pod-Escapes.x86_64 1:1.04-141.el6_7.1 will be installed
+DEBUG util.py:417:  ---> Package plymouth.x86_64 0:0.8.3-27.el6.centos.1 will be installed
+DEBUG util.py:417:  --> Processing Dependency: plymouth-core-libs = 0.8.3-27.el6.centos.1 for package: plymouth-0.8.3-27.el6.centos.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: system-logos for package: plymouth-0.8.3-27.el6.centos.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libply.so.2()(64bit) for package: plymouth-0.8.3-27.el6.centos.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libply-splash-core.so.2()(64bit) for package: plymouth-0.8.3-27.el6.centos.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdrm_radeon.so.1()(64bit) for package: plymouth-0.8.3-27.el6.centos.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdrm_nouveau.so.1()(64bit) for package: plymouth-0.8.3-27.el6.centos.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdrm_intel.so.1()(64bit) for package: plymouth-0.8.3-27.el6.centos.1.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdrm.so.2()(64bit) for package: plymouth-0.8.3-27.el6.centos.1.x86_64
+DEBUG util.py:417:  ---> Package procps.x86_64 0:3.2.8-36.el6 will be installed
+DEBUG util.py:417:  ---> Package psmisc.x86_64 0:22.6-19.el6_5 will be installed
+DEBUG util.py:417:  ---> Package python.x86_64 0:2.6.6-66.el6_8 will be installed
+DEBUG util.py:417:  ---> Package shared-mime-info.x86_64 0:0.70-6.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: libxml2.so.2(LIBXML2_2.4.30)(64bit) for package: shared-mime-info-0.70-6.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libxml2.so.2()(64bit) for package: shared-mime-info-0.70-6.el6.x86_64
+DEBUG util.py:417:  ---> Package sqlite.x86_64 0:3.6.20-1.el6_7.2 will be installed
+DEBUG util.py:417:  ---> Package tzdata.noarch 0:2016j-1.el6 will be installed
+DEBUG util.py:417:  ---> Package upstart.x86_64 0:0.6.5-16.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: libnih.so.1(LIBNIH_1_0)(64bit) for package: upstart-0.6.5-16.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libnih-dbus.so.1(LIBNIH_DBUS_1_0)(64bit) for package: upstart-0.6.5-16.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libnih.so.1()(64bit) for package: upstart-0.6.5-16.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libnih-dbus.so.1()(64bit) for package: upstart-0.6.5-16.el6.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdbus-1.so.3()(64bit) for package: upstart-0.6.5-16.el6.x86_64
+DEBUG util.py:417:  --> Running transaction check
+DEBUG util.py:417:  ---> Package ca-certificates.noarch 0:2015.2.6-65.0.1.el6_7 will be installed
+DEBUG util.py:417:  --> Processing Dependency: p11-kit-trust >= 0.18.4-2 for package: ca-certificates-2015.2.6-65.0.1.el6_7.noarch
+DEBUG util.py:417:  --> Processing Dependency: p11-kit >= 0.18.4-2 for package: ca-certificates-2015.2.6-65.0.1.el6_7.noarch
+DEBUG util.py:417:  ---> Package cyrus-sasl-lib.x86_64 0:2.1.23-15.el6_6.2 will be installed
+DEBUG util.py:417:  ---> Package dash.x86_64 0:0.5.5.1-4.el6 will be installed
+DEBUG util.py:417:  ---> Package dbus-libs.x86_64 1:1.2.24-8.el6_6 will be installed
+DEBUG util.py:417:  ---> Package iptables.x86_64 0:1.4.7-16.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: policycoreutils for package: iptables-1.4.7-16.el6.x86_64
+DEBUG util.py:417:  ---> Package kbd.x86_64 0:1.15-11.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: kbd-misc = 1.15-11.el6 for package: kbd-1.15-11.el6.x86_64
+DEBUG util.py:417:  ---> Package keyutils-libs.x86_64 0:1.4-5.el6 will be installed
+DEBUG util.py:417:  ---> Package libdrm.x86_64 0:2.4.65-2.el6 will be installed
+DEBUG util.py:417:  --> Processing Dependency: libpciaccess.so.0()(64bit) for package: libdrm-2.4.65-2.el6.x86_64
+DEBUG util.py:417:  ---> Package libnih.x86_64 0:1.0.1-7.el6 will be installed
+DEBUG util.py:417:  ---> Package libxml2.x86_64 0:2.9.3-4.el6 will be installed
+DEBUG util.py:417:  ---> Package nss-tools.x86_64 0:3.21.3-2.el6_8 will be installed
+DEBUG util.py:417:  ---> Package plymouth-core-libs.x86_64 0:0.8.3-27.el6.centos.1 will be installed
+DEBUG util.py:417:  ---> Package plymouth-scripts.x86_64 0:0.8.3-27.el6.centos.1 will be installed
+DEBUG util.py:417:  ---> Package redhat-logos.noarch 0:60.0.14-12.el6.centos will be installed
+DEBUG util.py:417:  --> Running transaction check
+DEBUG util.py:417:  ---> Package kbd-misc.noarch 0:1.15-11.el6 will be installed
+DEBUG util.py:417:  ---> Package libpciaccess.x86_64 0:0.13.4-1.el6 will be installed
+DEBUG util.py:417:  ---> Package p11-kit.x86_64 0:0.18.5-2.el6_5.2 will be installed
+DEBUG util.py:417:  --> Processing Dependency: libtasn1.so.3(LIBTASN1_0_3)(64bit) for package: p11-kit-0.18.5-2.el6_5.2.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libtasn1.so.3()(64bit) for package: p11-kit-0.18.5-2.el6_5.2.x86_64
+DEBUG util.py:417:  ---> Package p11-kit-trust.x86_64 0:0.18.5-2.el6_5.2 will be installed
+DEBUG util.py:417:  ---> Package policycoreutils.x86_64 0:2.0.83-30.1.el6_8 will be installed
+DEBUG util.py:417:  --> Processing Dependency: libselinux-utils >= 2.0.90-3 for package: policycoreutils-2.0.83-30.1.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: checkpolicy for package: policycoreutils-2.0.83-30.1.el6_8.x86_64
+DEBUG util.py:417:  --> Processing Dependency: libdbus-glib-1.so.2()(64bit) for package: policycoreutils-2.0.83-30.1.el6_8.x86_64
+DEBUG util.py:417:  --> Running transaction check
+DEBUG util.py:417:  ---> Package checkpolicy.x86_64 0:2.0.22-1.el6 will be installed
+DEBUG util.py:417:  ---> Package dbus-glib.x86_64 0:0.86-6.el6 will be installed
+DEBUG util.py:417:  ---> Package libselinux-utils.x86_64 0:2.0.94-7.el6 will be installed
+DEBUG util.py:417:  ---> Package libtasn1.x86_64 0:2.3-6.el6_5 will be installed
+DEBUG util.py:417:  --> Finished Dependency Resolution
+DEBUG util.py:417:  Dependencies Resolved
+DEBUG util.py:417:  ================================================================================
+DEBUG util.py:417:   Package               Arch   Version                          Repository  Size
+DEBUG util.py:417:  ================================================================================
+DEBUG util.py:417:  Installing for group install "Buildsystem building group":
+DEBUG util.py:417:   bash                  x86_64 4.1.2-41.el6_8                   updates    909 k
+DEBUG util.py:417:   bzip2                 x86_64 1.0.5-7.el6_0                    base        49 k
+DEBUG util.py:417:   coreutils             x86_64 8.4-43.el6                       base       3.0 M
+DEBUG util.py:417:   cpio                  x86_64 2.10-12.el6_5                    base       192 k
+DEBUG util.py:417:   diffutils             x86_64 2.8.1-28.el6                     base       198 k
+DEBUG util.py:417:   epel-release          noarch 6-8                              epel        14 k
+DEBUG util.py:417:   epel-rpm-macros       noarch 6-16                             epel        14 k
+DEBUG util.py:417:   findutils             x86_64 1:4.4.2-9.el6                    base       447 k
+DEBUG util.py:417:   gawk                  x86_64 3.1.7-10.el6_7.3                 base       780 k
+DEBUG util.py:417:   gcc                   x86_64 4.4.7-17.el6                     base        10 M
+DEBUG util.py:417:   gcc-c++               x86_64 4.4.7-17.el6                     base       4.7 M
+DEBUG util.py:417:   grep                  x86_64 2.20-5.el6_8                     updates    345 k
+DEBUG util.py:417:   gzip                  x86_64 1.3.12-22.el6                    base       116 k
+DEBUG util.py:417:   info                  x86_64 4.13a-8.el6                      base       178 k
+DEBUG util.py:417:   make                  x86_64 1:3.81-23.el6                    base       389 k
+DEBUG util.py:417:   patch                 x86_64 2.6-6.el6                        base        90 k
+DEBUG util.py:417:   redhat-rpm-config     noarch 9.0.3-51.el6.centos              base        60 k
+DEBUG util.py:417:   rpm-build             x86_64 4.8.0-55.el6                     base       131 k
+DEBUG util.py:417:   sed                   x86_64 4.2.1-10.el6                     base       216 k
+DEBUG util.py:417:   shadow-utils          x86_64 2:4.1.5.1-5.el6                  base       1.0 M
+DEBUG util.py:417:   tar                   x86_64 2:1.23-15.el6_8                  updates    810 k
+DEBUG util.py:417:   unzip                 x86_64 6.0-4.el6                        base       152 k
+DEBUG util.py:417:   util-linux-ng         x86_64 2.17.2-12.24.el6_8.1             updates    1.6 M
+DEBUG util.py:417:   which                 x86_64 2.19-6.el6                       base        38 k
+DEBUG util.py:417:   xz                    x86_64 4.999.9-0.5.beta.20091007git.el6 base       137 k
+DEBUG util.py:417:  Installing for dependencies:
+DEBUG util.py:417:   MAKEDEV               x86_64 3.24-6.el6                       base        89 k
+DEBUG util.py:417:   audit-libs            x86_64 2.4.5-3.el6                      base        74 k
+DEBUG util.py:417:   basesystem            noarch 10.0-4.el6                       base       4.7 k
+DEBUG util.py:417:   binutils              x86_64 2.20.51.0.2-5.44.el6             base       2.8 M
+DEBUG util.py:417:   bzip2-libs            x86_64 1.0.5-7.el6_0                    base        36 k
+DEBUG util.py:417:   ca-certificates       noarch 2015.2.6-65.0.1.el6_7            base       1.2 M
+DEBUG util.py:417:   centos-release        x86_64 6-8.el6.centos.12.3              base        21 k
+DEBUG util.py:417:   checkpolicy           x86_64 2.0.22-1.el6                     base       190 k
+DEBUG util.py:417:   chkconfig             x86_64 1.3.49.5-1.el6                   base       160 k
+DEBUG util.py:417:   cloog-ppl             x86_64 0.15.7-1.2.el6                   base        93 k
+DEBUG util.py:417:   coreutils-libs        x86_64 8.4-43.el6                       base        51 k
+DEBUG util.py:417:   cpp                   x86_64 4.4.7-17.el6                     base       3.7 M
+DEBUG util.py:417:   cracklib              x86_64 2.8.16-4.el6                     base        70 k
+DEBUG util.py:417:   cracklib-dicts        x86_64 2.8.16-4.el6                     base       3.6 M
+DEBUG util.py:417:   curl                  x86_64 7.19.7-52.el6                    base       197 k
+DEBUG util.py:417:   cyrus-sasl-lib        x86_64 2.1.23-15.el6_6.2                base       136 k
+DEBUG util.py:417:   dash                  x86_64 0.5.5.1-4.el6                    base        74 k
+DEBUG util.py:417:   db4                   x86_64 4.7.25-20.el6_8.1                updates    564 k
+DEBUG util.py:417:   db4-utils             x86_64 4.7.25-20.el6_8.1                updates    130 k
+DEBUG util.py:417:   dbus-glib             x86_64 0.86-6.el6                       base       170 k
+DEBUG util.py:417:   dbus-libs             x86_64 1:1.2.24-8.el6_6                 base       127 k
+DEBUG util.py:417:   dracut                noarch 004-409.el6_8.2                  updates    127 k
+DEBUG util.py:417:   dracut-kernel         noarch 004-409.el6_8.2                  updates     28 k
+DEBUG util.py:417:   elfutils              x86_64 0.164-2.el6                      base       240 k
+DEBUG util.py:417:   elfutils-libelf       x86_64 0.164-2.el6                      base       197 k
+DEBUG util.py:417:   elfutils-libs         x86_64 0.164-2.el6                      base       230 k
+DEBUG util.py:417:   ethtool               x86_64 2:3.5-6.el6                      base       103 k
+DEBUG util.py:417:   expat                 x86_64 2.0.1-13.el6_8                   updates     77 k
+DEBUG util.py:417:   file                  x86_64 5.04-30.el6                      base        49 k
+DEBUG util.py:417:   file-libs             x86_64 5.04-30.el6                      base       317 k
+DEBUG util.py:417:   filesystem            x86_64 2.4.30-3.el6                     base       1.0 M
+DEBUG util.py:417:   gamin                 x86_64 0.1.10-9.el6                     base       122 k
+DEBUG util.py:417:   gdb                   x86_64 7.2-90.el6                       base       2.3 M
+DEBUG util.py:417:   gdbm                  x86_64 1.8.0-39.el6                     base        29 k
+DEBUG util.py:417:   glib2                 x86_64 2.28.8-5.el6                     base       1.7 M
+DEBUG util.py:417:   glibc                 x86_64 2.12-1.192.el6                   base       3.8 M
+DEBUG util.py:417:   glibc-common          x86_64 2.12-1.192.el6                   base        14 M
+DEBUG util.py:417:   glibc-devel           x86_64 2.12-1.192.el6                   base       988 k
+DEBUG util.py:417:   glibc-headers         x86_64 2.12-1.192.el6                   base       617 k
+DEBUG util.py:417:   gmp                   x86_64 4.3.1-10.el6                     base       207 k
+DEBUG util.py:417:   groff                 x86_64 1.18.1.4-21.el6                  base       1.5 M
+DEBUG util.py:417:   grubby                x86_64 7.0.15-7.el6                     base        43 k
+DEBUG util.py:417:   hwdata                noarch 0.233-16.1.el6                   base       1.3 M
+DEBUG util.py:417:   initscripts           x86_64 9.03.53-1.el6.centos.1           updates    947 k
+DEBUG util.py:417:   iproute               x86_64 2.6.32-54.el6                    base       389 k
+DEBUG util.py:417:   iptables              x86_64 1.4.7-16.el6                     base       254 k
+DEBUG util.py:417:   iputils               x86_64 20071127-21.el6                  base       120 k
+DEBUG util.py:417:   kbd                   x86_64 1.15-11.el6                      base       264 k
+DEBUG util.py:417:   kbd-misc              noarch 1.15-11.el6                      base       923 k
+DEBUG util.py:417:   kernel                x86_64 2.6.32-642.13.1.el6              updates     32 M
+DEBUG util.py:417:   kernel-firmware       noarch 2.6.32-642.13.1.el6              updates     28 M
+DEBUG util.py:417:   kernel-headers        x86_64 2.6.32-642.13.1.el6              updates    4.4 M
+DEBUG util.py:417:   keyutils-libs         x86_64 1.4-5.el6                        base        20 k
+DEBUG util.py:417:   krb5-libs             x86_64 1.10.3-57.el6                    base       770 k
+DEBUG util.py:417:   less                  x86_64 436-13.el6                       base       108 k
+DEBUG util.py:417:   libacl                x86_64 2.2.49-6.el6                     base        23 k
+DEBUG util.py:417:   libattr               x86_64 2.4.44-7.el6                     base        15 k
+DEBUG util.py:417:   libblkid              x86_64 2.17.2-12.24.el6_8.1             updates    118 k
+DEBUG util.py:417:   libcap                x86_64 2.16-5.5.el6                     base        32 k
+DEBUG util.py:417:   libcom_err            x86_64 1.41.12-22.el6                   base        37 k
+DEBUG util.py:417:   libcurl               x86_64 7.19.7-52.el6                    base       169 k
+DEBUG util.py:417:   libdrm                x86_64 2.4.65-2.el6                     base       136 k
+DEBUG util.py:417:   libffi                x86_64 3.0.5-3.2.el6                    base        26 k
+DEBUG util.py:417:   libgcc                x86_64 4.4.7-17.el6                     base       103 k
+DEBUG util.py:417:   libgomp               x86_64 4.4.7-17.el6                     base       134 k
+DEBUG util.py:417:   libidn                x86_64 1.18-2.el6                       base       205 k
+DEBUG util.py:417:   libnih                x86_64 1.0.1-7.el6                      base       138 k
+DEBUG util.py:417:   libpciaccess          x86_64 0.13.4-1.el6                     base        24 k
+DEBUG util.py:417:   libselinux            x86_64 2.0.94-7.el6                     base       109 k
+DEBUG util.py:417:   libselinux-utils      x86_64 2.0.94-7.el6                     base        82 k
+DEBUG util.py:417:   libsemanage           x86_64 2.0.43-5.1.el6                   base       104 k
+DEBUG util.py:417:   libsepol              x86_64 2.0.41-4.el6                     base       128 k
+DEBUG util.py:417:   libssh2               x86_64 1.4.2-2.el6_7.1                  base       123 k
+DEBUG util.py:417:   libstdc++             x86_64 4.4.7-17.el6                     base       295 k
+DEBUG util.py:417:   libstdc++-devel       x86_64 4.4.7-17.el6                     base       1.6 M
+DEBUG util.py:417:   libtasn1              x86_64 2.3-6.el6_5                      base       238 k
+DEBUG util.py:417:   libusb                x86_64 0.1.12-23.el6                    base        28 k
+DEBUG util.py:417:   libutempter           x86_64 1.1.5-4.1.el6                    base        22 k
+DEBUG util.py:417:   libuuid               x86_64 2.17.2-12.24.el6_8.1             updates     71 k
+DEBUG util.py:417:   libxml2               x86_64 2.9.3-4.el6                      fpfis-repo 630 k
+DEBUG util.py:417:   lua                   x86_64 5.1.4-4.1.el6                    base       184 k
+DEBUG util.py:417:   mingetty              x86_64 1.08-5.el6                       base        21 k
+DEBUG util.py:417:   module-init-tools     x86_64 3.9-25.el6                       base       466 k
+DEBUG util.py:417:   mpfr                  x86_64 2.4.1-6.el6                      base       157 k
+DEBUG util.py:417:   ncurses               x86_64 5.7-4.20090207.el6               base       268 k
+DEBUG util.py:417:   ncurses-base          x86_64 5.7-4.20090207.el6               base        61 k
+DEBUG util.py:417:   ncurses-libs          x86_64 5.7-4.20090207.el6               base       245 k
+DEBUG util.py:417:   net-tools             x86_64 1.60-110.el6_2                   base       268 k
+DEBUG util.py:417:   nspr                  x86_64 4.11.0-1.el6                     base       114 k
+DEBUG util.py:417:   nss                   x86_64 3.21.3-2.el6_8                   updates    859 k
+DEBUG util.py:417:   nss-softokn           x86_64 3.14.3-23.3.el6_8                updates    262 k
+DEBUG util.py:417:   nss-softokn-freebl    x86_64 3.14.3-23.3.el6_8                updates    168 k
+DEBUG util.py:417:   nss-sysinit           x86_64 3.21.3-2.el6_8                   updates     47 k
+DEBUG util.py:417:   nss-tools             x86_64 3.21.3-2.el6_8                   updates    437 k
+DEBUG util.py:417:   nss-util              x86_64 3.21.3-1.el6_8                   updates     67 k
+DEBUG util.py:417:   openldap              x86_64 2.4.40-12.el6                    base       284 k
+DEBUG util.py:417:   openssl               x86_64 1.0.1e-48.el6_8.3                updates    1.5 M
+DEBUG util.py:417:   p11-kit               x86_64 0.18.5-2.el6_5.2                 base        94 k
+DEBUG util.py:417:   p11-kit-trust         x86_64 0.18.5-2.el6_5.2                 base        71 k
+DEBUG util.py:417:   pam                   x86_64 1.1.1-22.el6                     base       658 k
+DEBUG util.py:417:   pcre                  x86_64 7.8-7.el6                        base       196 k
+DEBUG util.py:417:   perl                  x86_64 4:5.10.1-141.el6_7.1             base        10 M
+DEBUG util.py:417:   perl-Module-Pluggable x86_64 1:3.90-141.el6_7.1               base        40 k
+DEBUG util.py:417:   perl-Pod-Escapes      x86_64 1:1.04-141.el6_7.1               base        33 k
+DEBUG util.py:417:   perl-Pod-Simple       x86_64 1:3.13-141.el6_7.1               base       213 k
+DEBUG util.py:417:   perl-libs             x86_64 4:5.10.1-141.el6_7.1             base       579 k
+DEBUG util.py:417:   perl-version          x86_64 3:0.77-141.el6_7.1               base        52 k
+DEBUG util.py:417:   pkgconfig             x86_64 1:0.23-9.1.el6                   base        70 k
+DEBUG util.py:417:   plymouth              x86_64 0.8.3-27.el6.centos.1            base        89 k
+DEBUG util.py:417:   plymouth-core-libs    x86_64 0.8.3-27.el6.centos.1            base        88 k
+DEBUG util.py:417:   plymouth-scripts      x86_64 0.8.3-27.el6.centos.1            base        31 k
+DEBUG util.py:417:   policycoreutils       x86_64 2.0.83-30.1.el6_8                updates    663 k
+DEBUG util.py:417:   popt                  x86_64 1.13-7.el6                       base        39 k
+DEBUG util.py:417:   ppl                   x86_64 0.10.2-11.el6                    base       1.3 M
+DEBUG util.py:417:   procps                x86_64 3.2.8-36.el6                     base       218 k
+DEBUG util.py:417:   psmisc                x86_64 22.6-19.el6_5                    base        81 k
+DEBUG util.py:417:   python                x86_64 2.6.6-66.el6_8                   updates     76 k
+DEBUG util.py:417:   python-libs           x86_64 2.6.6-66.el6_8                   updates    5.3 M
+DEBUG util.py:417:   python-rpm-macros     noarch 3-11.el6                         epel       5.4 k
+DEBUG util.py:417:   python-srpm-macros    noarch 3-11.el6                         epel       4.8 k
+DEBUG util.py:417:   python2-rpm-macros    noarch 3-11.el6                         epel       4.8 k
+DEBUG util.py:417:   readline              x86_64 6.0-4.el6                        base       178 k
+DEBUG util.py:417:   redhat-logos          noarch 60.0.14-12.el6.centos            base        15 M
+DEBUG util.py:417:   rpm                   x86_64 4.8.0-55.el6                     base       906 k
+DEBUG util.py:417:   rpm-libs              x86_64 4.8.0-55.el6                     base       318 k
+DEBUG util.py:417:   setup                 noarch 2.8.14-20.el6_4.1                base       151 k
+DEBUG util.py:417:   shared-mime-info      x86_64 0.70-6.el6                       base       209 k
+DEBUG util.py:417:   sqlite                x86_64 3.6.20-1.el6_7.2                 base       300 k
+DEBUG util.py:417:   sysvinit-tools        x86_64 2.87-6.dsf.el6                   base        60 k
+DEBUG util.py:417:   tzdata                noarch 2016j-1.el6                      updates    454 k
+DEBUG util.py:417:   udev                  x86_64 147-2.73.el6_8.2                 updates    358 k
+DEBUG util.py:417:   upstart               x86_64 0.6.5-16.el6                     base       177 k
+DEBUG util.py:417:   ustr                  x86_64 1.0.4-9.1.el6                    base        86 k
+DEBUG util.py:417:   xz-libs               x86_64 4.999.9-0.5.beta.20091007git.el6 base        89 k
+DEBUG util.py:417:   xz-lzma-compat        x86_64 4.999.9-0.5.beta.20091007git.el6 base        16 k
+DEBUG util.py:417:   zlib                  x86_64 1.2.3-29.el6                     base        73 k
+DEBUG util.py:417:  Transaction Summary
+DEBUG util.py:417:  ================================================================================
+DEBUG util.py:417:  Install  25 Packages (+136 Dependent packages)
+DEBUG util.py:417:  Total download size: 184 M
+DEBUG util.py:417:  Installed size: 583 M
+DEBUG util.py:417:  Downloading packages:
+DEBUG util.py:417:  Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+DEBUG util.py:417:  warning: /var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/updates/packages/bash-4.1.2-41.el6_8.x86_64.rpm: Header V3 RSA/SHA1 Signature, key ID c105b9de: NOKEY
+DEBUG util.py:417:  Public key for bash-4.1.2-41.el6_8.x86_64.rpm is not installed
+DEBUG util.py:417:  Public key for basesystem-10.0-4.el6.noarch.rpm is not installed
+DEBUG util.py:417:  warning: /var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/epel/packages/epel-rpm-macros-6-16.noarch.rpm: Header V3 RSA/SHA256 Signature, key ID 0608b895: NOKEY
+DEBUG util.py:417:  Public key for epel-rpm-macros-6-16.noarch.rpm is not installed
+DEBUG util.py:417:  http://mirror.rackspeed.de/centos.org//6.8/updates/x86_64/Packages/kernel-firmware-2.6.32-642.13.1.el6.noarch.rpm: [Errno 12] Timeout on http://mirror.rackspeed.de/centos.org//6.8/updates/x86_64/Packages/kernel-firmware-2.6.32-642.13.1.el6.noarch.rpm: (28, 'Operation too slow. Less than 1000 bytes/sec transferred the last 30 seconds')
+DEBUG util.py:417:  Trying other mirror.
+DEBUG util.py:417:  http://centos.intergenia.de/6.8/os/x86_64/Packages/perl-5.10.1-141.el6_7.1.x86_64.rpm: [Errno 12] Timeout on http://centos.intergenia.de/6.8/os/x86_64/Packages/perl-5.10.1-141.el6_7.1.x86_64.rpm: (28, 'Operation too slow. Less than 1000 bytes/sec transferred the last 30 seconds')
+DEBUG util.py:417:  Trying other mirror.
+DEBUG util.py:417:  --------------------------------------------------------------------------------
+DEBUG util.py:417:  Total                                              1.1 MB/s | 184 MB  02:47     
+DEBUG util.py:417:  Retrieving key from file:///etc/pki/mock/RPM-GPG-KEY-CentOS-6
+DEBUG util.py:417:  Importing GPG key 0xC105B9DE:
+DEBUG util.py:417:   Userid     : "CentOS-6 Key (CentOS 6 Official Signing Key) <centos-6-key@centos.org>"
+DEBUG util.py:417:   Fingerprint: c1da c52d 1664 e8a4 386d ba43 0946 fca2 c105 b9de
+DEBUG util.py:417:   From       : /etc/pki/mock/RPM-GPG-KEY-CentOS-6
+DEBUG util.py:417:  Retrieving key from file:///etc/pki/mock/RPM-GPG-KEY-EPEL-6
+DEBUG util.py:417:  Importing GPG key 0x0608B895:
+DEBUG util.py:417:   Userid     : "EPEL (6) <epel@fedoraproject.org>"
+DEBUG util.py:417:   Fingerprint: 8c3b e96a f230 9184 da5c 0dae 3b49 df2a 0608 b895
+DEBUG util.py:417:   From       : /etc/pki/mock/RPM-GPG-KEY-EPEL-6
+DEBUG util.py:417:  Running transaction check
+DEBUG util.py:417:  Running transaction test
+DEBUG util.py:417:  Transaction test succeeded
+DEBUG util.py:417:  Running transaction
+DEBUG util.py:417:    Installing : libgcc-4.4.7-17.el6.x86_64                                 1/161 
+DEBUG util.py:417:    Installing : setup-2.8.14-20.el6_4.1.noarch                             2/161 
+DEBUG util.py:417:  warning: /etc/hosts created as /etc/hosts.rpmnew
+DEBUG util.py:417:    Installing : filesystem-2.4.30-3.el6.x86_64                             3/161 
+DEBUG util.py:417:    Installing : centos-release-6-8.el6.centos.12.3.x86_64                  4/161 
+DEBUG util.py:417:    Installing : python-srpm-macros-3-11.el6.noarch                         5/161 
+DEBUG util.py:417:    Installing : python-rpm-macros-3-11.el6.noarch                          6/161 
+DEBUG util.py:417:    Installing : basesystem-10.0-4.el6.noarch                               7/161 
+DEBUG util.py:417:    Installing : kernel-firmware-2.6.32-642.13.1.el6.noarch                 8/161 
+DEBUG util.py:417:    Installing : python2-rpm-macros-3-11.el6.noarch                         9/161 
+DEBUG util.py:417:    Installing : tzdata-2016j-1.el6.noarch                                 10/161 
+DEBUG util.py:417:    Installing : ncurses-base-5.7-4.20090207.el6.x86_64                    11/161 
+DEBUG util.py:417:    Installing : nss-softokn-freebl-3.14.3-23.3.el6_8.x86_64               12/161 
+DEBUG util.py:417:    Installing : glibc-common-2.12-1.192.el6.x86_64                        13/161 
+DEBUG util.py:417:    Installing : glibc-2.12-1.192.el6.x86_64                               14/161 
+DEBUG util.py:417:    Installing : ncurses-libs-5.7-4.20090207.el6.x86_64                    15/161 
+DEBUG util.py:417:    Installing : bash-4.1.2-41.el6_8.x86_64                                16/161 
+DEBUG util.py:417:    Installing : libattr-2.4.44-7.el6.x86_64                               17/161 
+DEBUG util.py:417:    Installing : libcap-2.16-5.5.el6.x86_64                                18/161 
+DEBUG util.py:417:    Installing : zlib-1.2.3-29.el6.x86_64                                  19/161 
+DEBUG util.py:417:    Installing : info-4.13a-8.el6.x86_64                                   20/161 
+DEBUG util.py:417:    Installing : db4-4.7.25-20.el6_8.1.x86_64                              21/161 
+DEBUG util.py:417:    Installing : bzip2-libs-1.0.5-7.el6_0.x86_64                           22/161 
+DEBUG util.py:417:    Installing : nspr-4.11.0-1.el6.x86_64                                  23/161 
+DEBUG util.py:417:    Installing : libstdc++-4.4.7-17.el6.x86_64                             24/161 
+DEBUG util.py:417:    Installing : nss-util-3.21.3-1.el6_8.x86_64                            25/161 
+DEBUG util.py:417:    Installing : libacl-2.2.49-6.el6.x86_64                                26/161 
+DEBUG util.py:417:    Installing : popt-1.13-7.el6.x86_64                                    27/161 
+DEBUG util.py:417:    Installing : xz-libs-4.999.9-0.5.beta.20091007git.el6.x86_64           28/161 
+DEBUG util.py:417:    Installing : gmp-4.3.1-10.el6.x86_64                                   29/161 
+DEBUG util.py:417:    Installing : libsepol-2.0.41-4.el6.x86_64                              30/161 
+DEBUG util.py:417:    Installing : libselinux-2.0.94-7.el6.x86_64                            31/161 
+DEBUG util.py:417:    Installing : sed-4.2.1-10.el6.x86_64                                   32/161 
+DEBUG util.py:417:    Installing : chkconfig-1.3.49.5-1.el6.x86_64                           33/161 
+DEBUG util.py:417:    Installing : elfutils-libelf-0.164-2.el6.x86_64                        34/161 
+DEBUG util.py:417:    Installing : audit-libs-2.4.5-3.el6.x86_64                             35/161 
+DEBUG util.py:417:    Installing : readline-6.0-4.el6.x86_64                                 36/161 
+DEBUG util.py:417:    Installing : gawk-3.1.7-10.el6_7.3.x86_64                              37/161 
+DEBUG util.py:417:    Installing : file-libs-5.04-30.el6.x86_64                              38/161 
+DEBUG util.py:417:    Installing : libcom_err-1.41.12-22.el6.x86_64                          39/161 
+DEBUG util.py:417:    Installing : 1:dbus-libs-1.2.24-8.el6_6.x86_64                         40/161 
+DEBUG util.py:417:    Installing : lua-5.1.4-4.1.el6.x86_64                                  41/161 
+DEBUG util.py:417:    Installing : 1:findutils-4.4.2-9.el6.x86_64                            42/161 
+DEBUG util.py:417:    Installing : binutils-2.20.51.0.2-5.44.el6.x86_64                      43/161 
+DEBUG util.py:417:    Installing : cpio-2.10-12.el6_5.x86_64                                 44/161 
+DEBUG util.py:417:    Installing : libidn-1.18-2.el6.x86_64                                  45/161 
+DEBUG util.py:417:    Installing : expat-2.0.1-13.el6_8.x86_64                               46/161 
+DEBUG util.py:417:    Installing : file-5.04-30.el6.x86_64                                   47/161 
+DEBUG util.py:417:    Installing : sqlite-3.6.20-1.el6_7.2.x86_64                            48/161 
+DEBUG util.py:417:    Installing : nss-softokn-3.14.3-23.3.el6_8.x86_64                      49/161 
+DEBUG util.py:417:    Installing : mpfr-2.4.1-6.el6.x86_64                                   50/161 
+DEBUG util.py:417:    Installing : xz-4.999.9-0.5.beta.20091007git.el6.x86_64                51/161 
+DEBUG util.py:417:    Installing : pcre-7.8-7.el6.x86_64                                     52/161 
+DEBUG util.py:417:    Installing : grep-2.20-5.el6_8.x86_64                                  53/161 
+DEBUG util.py:417:    Installing : bzip2-1.0.5-7.el6_0.x86_64                                54/161 
+DEBUG util.py:417:    Installing : diffutils-2.8.1-28.el6.x86_64                             55/161 
+DEBUG util.py:417:    Installing : libtasn1-2.3-6.el6_5.x86_64                               56/161 
+DEBUG util.py:417:    Installing : p11-kit-0.18.5-2.el6_5.2.x86_64                           57/161 
+DEBUG util.py:417:    Installing : libuuid-2.17.2-12.24.el6_8.1.x86_64                       58/161 
+DEBUG util.py:417:    Installing : libblkid-2.17.2-12.24.el6_8.1.x86_64                      59/161 
+DEBUG util.py:417:    Installing : 1:pkgconfig-0.23-9.1.el6.x86_64                           60/161 
+DEBUG util.py:417:    Installing : sysvinit-tools-2.87-6.dsf.el6.x86_64                      61/161 
+DEBUG util.py:417:    Installing : gdbm-1.8.0-39.el6.x86_64                                  62/161 
+DEBUG util.py:417:    Installing : 1:perl-Pod-Escapes-1.04-141.el6_7.1.x86_64                63/161 
+DEBUG util.py:417:    Installing : 4:perl-libs-5.10.1-141.el6_7.1.x86_64                     64/161 
+DEBUG util.py:417:    Installing : 3:perl-version-0.77-141.el6_7.1.x86_64                    65/161 
+DEBUG util.py:417:    Installing : 1:perl-Module-Pluggable-3.90-141.el6_7.1.x86_64           66/161 
+DEBUG util.py:417:    Installing : 1:perl-Pod-Simple-3.13-141.el6_7.1.x86_64                 67/161 
+DEBUG util.py:417:    Installing : 4:perl-5.10.1-141.el6_7.1.x86_64                          68/161 
+DEBUG util.py:417:    Installing : p11-kit-trust-0.18.5-2.el6_5.2.x86_64                     69/161 
+DEBUG util.py:417:    Installing : xz-lzma-compat-4.999.9-0.5.beta.20091007git.el6.x86_64    70/161 
+DEBUG util.py:417:    Installing : cpp-4.4.7-17.el6.x86_64                                   71/161 
+DEBUG util.py:417:    Installing : libnih-1.0.1-7.el6.x86_64                                 72/161 
+DEBUG util.py:417:    Installing : upstart-0.6.5-16.el6.x86_64                               73/161 
+DEBUG util.py:417:    Installing : elfutils-libs-0.164-2.el6.x86_64                          74/161 
+DEBUG util.py:417:    Installing : elfutils-0.164-2.el6.x86_64                               75/161 
+DEBUG util.py:417:    Installing : 2:tar-1.23-15.el6_8.x86_64                                76/161 
+DEBUG util.py:417:    Installing : net-tools-1.60-110.el6_2.x86_64                           77/161 
+DEBUG util.py:417:    Installing : checkpolicy-2.0.22-1.el6.x86_64                           78/161 
+DEBUG util.py:417:    Installing : psmisc-22.6-19.el6_5.x86_64                               79/161 
+DEBUG util.py:417:    Installing : procps-3.2.8-36.el6.x86_64                                80/161 
+DEBUG util.py:417:    Installing : patch-2.6-6.el6.x86_64                                    81/161 
+DEBUG util.py:417:    Installing : libselinux-utils-2.0.94-7.el6.x86_64                      82/161 
+DEBUG util.py:417:    Installing : ppl-0.10.2-11.el6.x86_64                                  83/161 
+DEBUG util.py:417:    Installing : cloog-ppl-0.15.7-1.2.el6.x86_64                           84/161 
+DEBUG util.py:417:    Installing : libxml2-2.9.3-4.el6.x86_64                                85/161 
+DEBUG util.py:417:    Installing : gamin-0.1.10-9.el6.x86_64                                 86/161 
+DEBUG util.py:417:    Installing : glib2-2.28.8-5.el6.x86_64                                 87/161 
+DEBUG util.py:417:    Installing : shared-mime-info-0.70-6.el6.x86_64                        88/161 
+DEBUG util.py:417:    Installing : dbus-glib-0.86-6.el6.x86_64                               89/161 
+DEBUG util.py:417:    Installing : grubby-7.0.15-7.el6.x86_64                                90/161 
+DEBUG util.py:417:    Installing : libusb-0.1.12-23.el6.x86_64                               91/161 
+DEBUG util.py:417:    Installing : libstdc++-devel-4.4.7-17.el6.x86_64                       92/161 
+DEBUG util.py:417:    Installing : unzip-6.0-4.el6.x86_64                                    93/161 
+DEBUG util.py:417:    Installing : db4-utils-4.7.25-20.el6_8.1.x86_64                        94/161 
+DEBUG util.py:417:    Installing : cyrus-sasl-lib-2.1.23-15.el6_6.2.x86_64                   95/161 
+DEBUG util.py:417:    Installing : which-2.19-6.el6.x86_64                                   96/161 
+DEBUG util.py:417:    Installing : 1:make-3.81-23.el6.x86_64                                 97/161 
+DEBUG util.py:417:    Installing : libgomp-4.4.7-17.el6.x86_64                               98/161 
+DEBUG util.py:417:    Installing : epel-release-6-8.noarch                                   99/161 
+DEBUG util.py:417:    Installing : dash-0.5.5.1-4.el6.x86_64                                100/161 
+DEBUG util.py:417:    Installing : ncurses-5.7-4.20090207.el6.x86_64                        101/161 
+DEBUG util.py:417:    Installing : groff-1.18.1.4-21.el6.x86_64                             102/161 
+DEBUG util.py:417:    Installing : less-436-13.el6.x86_64                                   103/161 
+DEBUG util.py:417:    Installing : coreutils-libs-8.4-43.el6.x86_64                         104/161 
+DEBUG util.py:417:    Installing : gzip-1.3.12-22.el6.x86_64                                105/161 
+DEBUG util.py:417:    Installing : cracklib-2.8.16-4.el6.x86_64                             106/161 
+DEBUG util.py:417:    Installing : cracklib-dicts-2.8.16-4.el6.x86_64                       107/161 
+DEBUG util.py:417:    Installing : coreutils-8.4-43.el6.x86_64                              108/161 
+DEBUG util.py:417:    Installing : pam-1.1.1-22.el6.x86_64                                  109/161 
+DEBUG util.py:417:    Installing : module-init-tools-3.9-25.el6.x86_64                      110/161 
+DEBUG util.py:417:    Installing : hwdata-0.233-16.1.el6.noarch                             111/161 
+DEBUG util.py:417:    Installing : plymouth-scripts-0.8.3-27.el6.centos.1.x86_64            112/161 
+DEBUG util.py:417:    Installing : libpciaccess-0.13.4-1.el6.x86_64                         113/161 
+DEBUG util.py:417:    Installing : redhat-rpm-config-9.0.3-51.el6.centos.noarch             114/161 
+DEBUG util.py:417:    Installing : nss-3.21.3-2.el6_8.x86_64                                115/161 
+DEBUG util.py:417:    Installing : nss-sysinit-3.21.3-2.el6_8.x86_64                        116/161 
+DEBUG util.py:417:    Installing : nss-tools-3.21.3-2.el6_8.x86_64                          117/161 
+DEBUG util.py:417:    Installing : redhat-logos-60.0.14-12.el6.centos.noarch                118/161 
+DEBUG util.py:417:    Installing : ca-certificates-2015.2.6-65.0.1.el6_7.noarch             119/161 
+DEBUG util.py:417:    Installing : 2:ethtool-3.5-6.el6.x86_64                               120/161 
+DEBUG util.py:417:    Installing : libffi-3.0.5-3.2.el6.x86_64                              121/161 
+DEBUG util.py:417:    Installing : plymouth-core-libs-0.8.3-27.el6.centos.1.x86_64          122/161 
+DEBUG util.py:417:    Installing : ustr-1.0.4-9.1.el6.x86_64                                123/161 
+DEBUG util.py:417:    Installing : libsemanage-2.0.43-5.1.el6.x86_64                        124/161 
+DEBUG util.py:417:    Installing : 2:shadow-utils-4.1.5.1-5.el6.x86_64                      125/161 
+DEBUG util.py:417:    Installing : libutempter-1.1.5-4.1.el6.x86_64                         126/161 
+DEBUG util.py:417:    Installing : MAKEDEV-3.24-6.el6.x86_64                                127/161 
+DEBUG util.py:417:    Installing : keyutils-libs-1.4-5.el6.x86_64                           128/161 
+DEBUG util.py:417:    Installing : krb5-libs-1.10.3-57.el6.x86_64                           129/161 
+DEBUG util.py:417:    Installing : openssl-1.0.1e-48.el6_8.3.x86_64                         130/161 
+DEBUG util.py:417:    Installing : python-2.6.6-66.el6_8.x86_64                             131/161 
+DEBUG util.py:417:    Installing : python-libs-2.6.6-66.el6_8.x86_64                        132/161 
+DEBUG util.py:417:    Installing : libssh2-1.4.2-2.el6_7.1.x86_64                           133/161 
+DEBUG util.py:417:    Installing : libcurl-7.19.7-52.el6.x86_64                             134/161 
+DEBUG util.py:417:    Installing : rpm-libs-4.8.0-55.el6.x86_64                             135/161 
+DEBUG util.py:417:    Installing : curl-7.19.7-52.el6.x86_64                                136/161 
+DEBUG util.py:417:    Installing : rpm-4.8.0-55.el6.x86_64                                  137/161 
+DEBUG util.py:417:    Installing : openldap-2.4.40-12.el6.x86_64                            138/161 
+DEBUG util.py:417:    Installing : gdb-7.2-90.el6.x86_64                                    139/161 
+DEBUG util.py:417:    Installing : mingetty-1.08-5.el6.x86_64                               140/161 
+DEBUG util.py:417:    Installing : kbd-misc-1.15-11.el6.noarch                              141/161 
+DEBUG util.py:417:    Installing : policycoreutils-2.0.83-30.1.el6_8.x86_64                 142/161 
+DEBUG util.py:417:    Installing : iptables-1.4.7-16.el6.x86_64                             143/161 
+DEBUG util.py:417:    Installing : iproute-2.6.32-54.el6.x86_64                             144/161 
+DEBUG util.py:417:    Installing : kbd-1.15-11.el6.x86_64                                   145/161 
+DEBUG util.py:417:    Installing : libdrm-2.4.65-2.el6.x86_64                               146/161 
+DEBUG util.py:417:    Installing : iputils-20071127-21.el6.x86_64                           147/161 
+DEBUG util.py:417:    Installing : plymouth-0.8.3-27.el6.centos.1.x86_64                    148/161 
+DEBUG util.py:417:    Installing : dracut-004-409.el6_8.2.noarch                            149/161 
+DEBUG util.py:417:    Installing : dracut-kernel-004-409.el6_8.2.noarch                     150/161 
+DEBUG util.py:417:    Installing : initscripts-9.03.53-1.el6.centos.1.x86_64                151/161 
+DEBUG util.py:417:    Installing : kernel-2.6.32-642.13.1.el6.x86_64                        152/161 
+DEBUG util.py:417:    Installing : util-linux-ng-2.17.2-12.24.el6_8.1.x86_64                153/161 
+DEBUG util.py:417:    Installing : udev-147-2.73.el6_8.2.x86_64                             154/161 
+DEBUG util.py:417:    Installing : kernel-headers-2.6.32-642.13.1.el6.x86_64                155/161 
+DEBUG util.py:417:    Installing : glibc-headers-2.12-1.192.el6.x86_64                      156/161 
+DEBUG util.py:417:    Installing : glibc-devel-2.12-1.192.el6.x86_64                        157/161 
+DEBUG util.py:417:    Installing : gcc-4.4.7-17.el6.x86_64                                  158/161 
+DEBUG util.py:417:    Installing : gcc-c++-4.4.7-17.el6.x86_64                              159/161 
+DEBUG util.py:417:    Installing : rpm-build-4.8.0-55.el6.x86_64                            160/161 
+DEBUG util.py:417:    Installing : epel-rpm-macros-6-16.noarch                              161/161 
+DEBUG util.py:417:    Verifying  : 2:tar-1.23-15.el6_8.x86_64                                 1/161 
+DEBUG util.py:417:    Verifying  : iputils-20071127-21.el6.x86_64                             2/161 
+DEBUG util.py:417:    Verifying  : libtasn1-2.3-6.el6_5.x86_64                                3/161 
+DEBUG util.py:417:    Verifying  : gcc-c++-4.4.7-17.el6.x86_64                                4/161 
+DEBUG util.py:417:    Verifying  : gamin-0.1.10-9.el6.x86_64                                  5/161 
+DEBUG util.py:417:    Verifying  : kernel-headers-2.6.32-642.13.1.el6.x86_64                  6/161 
+DEBUG util.py:417:    Verifying  : libcom_err-1.41.12-22.el6.x86_64                           7/161 
+DEBUG util.py:417:    Verifying  : cpp-4.4.7-17.el6.x86_64                                    8/161 
+DEBUG util.py:417:    Verifying  : libcurl-7.19.7-52.el6.x86_64                               9/161 
+DEBUG util.py:417:    Verifying  : 4:perl-5.10.1-141.el6_7.1.x86_64                          10/161 
+DEBUG util.py:417:    Verifying  : 1:findutils-4.4.2-9.el6.x86_64                            11/161 
+DEBUG util.py:417:    Verifying  : pcre-7.8-7.el6.x86_64                                     12/161 
+DEBUG util.py:417:    Verifying  : filesystem-2.4.30-3.el6.x86_64                            13/161 
+DEBUG util.py:417:    Verifying  : lua-5.1.4-4.1.el6.x86_64                                  14/161 
+DEBUG util.py:417:    Verifying  : net-tools-1.60-110.el6_2.x86_64                           15/161 
+DEBUG util.py:417:    Verifying  : bzip2-1.0.5-7.el6_0.x86_64                                16/161 
+DEBUG util.py:417:    Verifying  : diffutils-2.8.1-28.el6.x86_64                             17/161 
+DEBUG util.py:417:    Verifying  : file-libs-5.04-30.el6.x86_64                              18/161 
+DEBUG util.py:417:    Verifying  : kbd-misc-1.15-11.el6.noarch                               19/161 
+DEBUG util.py:417:    Verifying  : redhat-rpm-config-9.0.3-51.el6.centos.noarch              20/161 
+DEBUG util.py:417:    Verifying  : dbus-glib-0.86-6.el6.x86_64                               21/161 
+DEBUG util.py:417:    Verifying  : module-init-tools-3.9-25.el6.x86_64                       22/161 
+DEBUG util.py:417:    Verifying  : sqlite-3.6.20-1.el6_7.2.x86_64                            23/161 
+DEBUG util.py:417:    Verifying  : curl-7.19.7-52.el6.x86_64                                 24/161 
+DEBUG util.py:417:    Verifying  : glibc-devel-2.12-1.192.el6.x86_64                         25/161 
+DEBUG util.py:417:    Verifying  : coreutils-libs-8.4-43.el6.x86_64                          26/161 
+DEBUG util.py:417:    Verifying  : pam-1.1.1-22.el6.x86_64                                   27/161 
+DEBUG util.py:417:    Verifying  : openssl-1.0.1e-48.el6_8.3.x86_64                          28/161 
+DEBUG util.py:417:    Verifying  : 2:ethtool-3.5-6.el6.x86_64                                29/161 
+DEBUG util.py:417:    Verifying  : bzip2-libs-1.0.5-7.el6_0.x86_64                           30/161 
+DEBUG util.py:417:    Verifying  : less-436-13.el6.x86_64                                    31/161 
+DEBUG util.py:417:    Verifying  : 4:perl-libs-5.10.1-141.el6_7.1.x86_64                     32/161 
+DEBUG util.py:417:    Verifying  : libffi-3.0.5-3.2.el6.x86_64                               33/161 
+DEBUG util.py:417:    Verifying  : db4-utils-4.7.25-20.el6_8.1.x86_64                        34/161 
+DEBUG util.py:417:    Verifying  : 2:shadow-utils-4.1.5.1-5.el6.x86_64                       35/161 
+DEBUG util.py:417:    Verifying  : glib2-2.28.8-5.el6.x86_64                                 36/161 
+DEBUG util.py:417:    Verifying  : checkpolicy-2.0.22-1.el6.x86_64                           37/161 
+DEBUG util.py:417:    Verifying  : iptables-1.4.7-16.el6.x86_64                              38/161 
+DEBUG util.py:417:    Verifying  : nss-softokn-freebl-3.14.3-23.3.el6_8.x86_64               39/161 
+DEBUG util.py:417:    Verifying  : info-4.13a-8.el6.x86_64                                   40/161 
+DEBUG util.py:417:    Verifying  : plymouth-core-libs-0.8.3-27.el6.centos.1.x86_64           41/161 
+DEBUG util.py:417:    Verifying  : popt-1.13-7.el6.x86_64                                    42/161 
+DEBUG util.py:417:    Verifying  : psmisc-22.6-19.el6_5.x86_64                               43/161 
+DEBUG util.py:417:    Verifying  : libxml2-2.9.3-4.el6.x86_64                                44/161 
+DEBUG util.py:417:    Verifying  : python-2.6.6-66.el6_8.x86_64                              45/161 
+DEBUG util.py:417:    Verifying  : epel-release-6-8.noarch                                   46/161 
+DEBUG util.py:417:    Verifying  : xz-4.999.9-0.5.beta.20091007git.el6.x86_64                47/161 
+DEBUG util.py:417:    Verifying  : libuuid-2.17.2-12.24.el6_8.1.x86_64                       48/161 
+DEBUG util.py:417:    Verifying  : ustr-1.0.4-9.1.el6.x86_64                                 49/161 
+DEBUG util.py:417:    Verifying  : libutempter-1.1.5-4.1.el6.x86_64                          50/161 
+DEBUG util.py:417:    Verifying  : iproute-2.6.32-54.el6.x86_64                              51/161 
+DEBUG util.py:417:    Verifying  : mpfr-2.4.1-6.el6.x86_64                                   52/161 
+DEBUG util.py:417:    Verifying  : ncurses-5.7-4.20090207.el6.x86_64                         53/161 
+DEBUG util.py:417:    Verifying  : dash-0.5.5.1-4.el6.x86_64                                 54/161 
+DEBUG util.py:417:    Verifying  : ncurses-base-5.7-4.20090207.el6.x86_64                    55/161 
+DEBUG util.py:417:    Verifying  : rpm-build-4.8.0-55.el6.x86_64                             56/161 
+DEBUG util.py:417:    Verifying  : cloog-ppl-0.15.7-1.2.el6.x86_64                           57/161 
+DEBUG util.py:417:    Verifying  : p11-kit-trust-0.18.5-2.el6_5.2.x86_64                     58/161 
+DEBUG util.py:417:    Verifying  : db4-4.7.25-20.el6_8.1.x86_64                              59/161 
+DEBUG util.py:417:    Verifying  : 1:perl-Pod-Escapes-1.04-141.el6_7.1.x86_64                60/161 
+DEBUG util.py:417:    Verifying  : libgcc-4.4.7-17.el6.x86_64                                61/161 
+DEBUG util.py:417:    Verifying  : python-srpm-macros-3-11.el6.noarch                        62/161 
+DEBUG util.py:417:    Verifying  : libcap-2.16-5.5.el6.x86_64                                63/161 
+DEBUG util.py:417:    Verifying  : nss-sysinit-3.21.3-2.el6_8.x86_64                         64/161 
+DEBUG util.py:417:    Verifying  : nss-tools-3.21.3-2.el6_8.x86_64                           65/161 
+DEBUG util.py:417:    Verifying  : setup-2.8.14-20.el6_4.1.noarch                            66/161 
+DEBUG util.py:417:    Verifying  : kbd-1.15-11.el6.x86_64                                    67/161 
+DEBUG util.py:417:    Verifying  : 1:pkgconfig-0.23-9.1.el6.x86_64                           68/161 
+DEBUG util.py:417:    Verifying  : nspr-4.11.0-1.el6.x86_64                                  69/161 
+DEBUG util.py:417:    Verifying  : util-linux-ng-2.17.2-12.24.el6_8.1.x86_64                 70/161 
+DEBUG util.py:417:    Verifying  : keyutils-libs-1.4-5.el6.x86_64                            71/161 
+DEBUG util.py:417:    Verifying  : policycoreutils-2.0.83-30.1.el6_8.x86_64                  72/161 
+DEBUG util.py:417:    Verifying  : initscripts-9.03.53-1.el6.centos.1.x86_64                 73/161 
+DEBUG util.py:417:    Verifying  : dracut-004-409.el6_8.2.noarch                             74/161 
+DEBUG util.py:417:    Verifying  : libselinux-2.0.94-7.el6.x86_64                            75/161 
+DEBUG util.py:417:    Verifying  : redhat-logos-60.0.14-12.el6.centos.noarch                 76/161 
+DEBUG util.py:417:    Verifying  : ca-certificates-2015.2.6-65.0.1.el6_7.noarch              77/161 
+DEBUG util.py:417:    Verifying  : libacl-2.2.49-6.el6.x86_64                                78/161 
+DEBUG util.py:417:    Verifying  : krb5-libs-1.10.3-57.el6.x86_64                            79/161 
+DEBUG util.py:417:    Verifying  : dracut-kernel-004-409.el6_8.2.noarch                      80/161 
+DEBUG util.py:417:    Verifying  : openldap-2.4.40-12.el6.x86_64                             81/161 
+DEBUG util.py:417:    Verifying  : upstart-0.6.5-16.el6.x86_64                               82/161 
+DEBUG util.py:417:    Verifying  : udev-147-2.73.el6_8.2.x86_64                              83/161 
+DEBUG util.py:417:    Verifying  : glibc-2.12-1.192.el6.x86_64                               84/161 
+DEBUG util.py:417:    Verifying  : libpciaccess-0.13.4-1.el6.x86_64                          85/161 
+DEBUG util.py:417:    Verifying  : expat-2.0.1-13.el6_8.x86_64                               86/161 
+DEBUG util.py:417:    Verifying  : libblkid-2.17.2-12.24.el6_8.1.x86_64                      87/161 
+DEBUG util.py:417:    Verifying  : libstdc++-4.4.7-17.el6.x86_64                             88/161 
+DEBUG util.py:417:    Verifying  : nss-util-3.21.3-1.el6_8.x86_64                            89/161 
+DEBUG util.py:417:    Verifying  : kernel-2.6.32-642.13.1.el6.x86_64                         90/161 
+DEBUG util.py:417:    Verifying  : shared-mime-info-0.70-6.el6.x86_64                        91/161 
+DEBUG util.py:417:    Verifying  : centos-release-6-8.el6.centos.12.3.x86_64                 92/161 
+DEBUG util.py:417:    Verifying  : libnih-1.0.1-7.el6.x86_64                                 93/161 
+DEBUG util.py:417:    Verifying  : sysvinit-tools-2.87-6.dsf.el6.x86_64                      94/161 
+DEBUG util.py:417:    Verifying  : MAKEDEV-3.24-6.el6.x86_64                                 95/161 
+DEBUG util.py:417:    Verifying  : gdb-7.2-90.el6.x86_64                                     96/161 
+DEBUG util.py:417:    Verifying  : python-rpm-macros-3-11.el6.noarch                         97/161 
+DEBUG util.py:417:    Verifying  : tzdata-2016j-1.el6.noarch                                 98/161 
+DEBUG util.py:417:    Verifying  : glibc-common-2.12-1.192.el6.x86_64                        99/161 
+DEBUG util.py:417:    Verifying  : rpm-libs-4.8.0-55.el6.x86_64                             100/161 
+DEBUG util.py:417:    Verifying  : cyrus-sasl-lib-2.1.23-15.el6_6.2.x86_64                  101/161 
+DEBUG util.py:417:    Verifying  : elfutils-libelf-0.164-2.el6.x86_64                       102/161 
+DEBUG util.py:417:    Verifying  : python2-rpm-macros-3-11.el6.noarch                       103/161 
+DEBUG util.py:417:    Verifying  : libsemanage-2.0.43-5.1.el6.x86_64                        104/161 
+DEBUG util.py:417:    Verifying  : python-libs-2.6.6-66.el6_8.x86_64                        105/161 
+DEBUG util.py:417:    Verifying  : kernel-firmware-2.6.32-642.13.1.el6.noarch               106/161 
+DEBUG util.py:417:    Verifying  : sed-4.2.1-10.el6.x86_64                                  107/161 
+DEBUG util.py:417:    Verifying  : readline-6.0-4.el6.x86_64                                108/161 
+DEBUG util.py:417:    Verifying  : binutils-2.20.51.0.2-5.44.el6.x86_64                     109/161 
+DEBUG util.py:417:    Verifying  : elfutils-libs-0.164-2.el6.x86_64                         110/161 
+DEBUG util.py:417:    Verifying  : 3:perl-version-0.77-141.el6_7.1.x86_64                   111/161 
+DEBUG util.py:417:    Verifying  : ppl-0.10.2-11.el6.x86_64                                 112/161 
+DEBUG util.py:417:    Verifying  : procps-3.2.8-36.el6.x86_64                               113/161 
+DEBUG util.py:417:    Verifying  : plymouth-0.8.3-27.el6.centos.1.x86_64                    114/161 
+DEBUG util.py:417:    Verifying  : libdrm-2.4.65-2.el6.x86_64                               115/161 
+DEBUG util.py:417:    Verifying  : patch-2.6-6.el6.x86_64                                   116/161 
+DEBUG util.py:417:    Verifying  : file-5.04-30.el6.x86_64                                  117/161 
+DEBUG util.py:417:    Verifying  : rpm-4.8.0-55.el6.x86_64                                  118/161 
+DEBUG util.py:417:    Verifying  : audit-libs-2.4.5-3.el6.x86_64                            119/161 
+DEBUG util.py:417:    Verifying  : p11-kit-0.18.5-2.el6_5.2.x86_64                          120/161 
+DEBUG util.py:417:    Verifying  : unzip-6.0-4.el6.x86_64                                   121/161 
+DEBUG util.py:417:    Verifying  : basesystem-10.0-4.el6.noarch                             122/161 
+DEBUG util.py:417:    Verifying  : grubby-7.0.15-7.el6.x86_64                               123/161 
+DEBUG util.py:417:    Verifying  : epel-rpm-macros-6-16.noarch                              124/161 
+DEBUG util.py:417:    Verifying  : groff-1.18.1.4-21.el6.x86_64                             125/161 
+DEBUG util.py:417:    Verifying  : ncurses-libs-5.7-4.20090207.el6.x86_64                   126/161 
+DEBUG util.py:417:    Verifying  : which-2.19-6.el6.x86_64                                  127/161 
+DEBUG util.py:417:    Verifying  : libssh2-1.4.2-2.el6_7.1.x86_64                           128/161 
+DEBUG util.py:417:    Verifying  : coreutils-8.4-43.el6.x86_64                              129/161 
+DEBUG util.py:417:    Verifying  : 1:perl-Module-Pluggable-3.90-141.el6_7.1.x86_64          130/161 
+DEBUG util.py:417:    Verifying  : gdbm-1.8.0-39.el6.x86_64                                 131/161 
+DEBUG util.py:417:    Verifying  : cracklib-2.8.16-4.el6.x86_64                             132/161 
+DEBUG util.py:417:    Verifying  : xz-libs-4.999.9-0.5.beta.20091007git.el6.x86_64          133/161 
+DEBUG util.py:417:    Verifying  : zlib-1.2.3-29.el6.x86_64                                 134/161 
+DEBUG util.py:417:    Verifying  : gawk-3.1.7-10.el6_7.3.x86_64                             135/161 
+DEBUG util.py:417:    Verifying  : libattr-2.4.44-7.el6.x86_64                              136/161 
+DEBUG util.py:417:    Verifying  : cpio-2.10-12.el6_5.x86_64                                137/161 
+DEBUG util.py:417:    Verifying  : nss-3.21.3-2.el6_8.x86_64                                138/161 
+DEBUG util.py:417:    Verifying  : libusb-0.1.12-23.el6.x86_64                              139/161 
+DEBUG util.py:417:    Verifying  : 1:dbus-libs-1.2.24-8.el6_6.x86_64                        140/161 
+DEBUG util.py:417:    Verifying  : 1:make-3.81-23.el6.x86_64                                141/161 
+DEBUG util.py:417:    Verifying  : 1:perl-Pod-Simple-3.13-141.el6_7.1.x86_64                142/161 
+DEBUG util.py:417:    Verifying  : chkconfig-1.3.49.5-1.el6.x86_64                          143/161 
+DEBUG util.py:417:    Verifying  : gmp-4.3.1-10.el6.x86_64                                  144/161 
+DEBUG util.py:417:    Verifying  : xz-lzma-compat-4.999.9-0.5.beta.20091007git.el6.x86_64   145/161 
+DEBUG util.py:417:    Verifying  : libstdc++-devel-4.4.7-17.el6.x86_64                      146/161 
+DEBUG util.py:417:    Verifying  : plymouth-scripts-0.8.3-27.el6.centos.1.x86_64            147/161 
+DEBUG util.py:417:    Verifying  : bash-4.1.2-41.el6_8.x86_64                               148/161 
+DEBUG util.py:417:    Verifying  : cracklib-dicts-2.8.16-4.el6.x86_64                       149/161 
+DEBUG util.py:417:    Verifying  : elfutils-0.164-2.el6.x86_64                              150/161 
+DEBUG util.py:417:    Verifying  : libidn-1.18-2.el6.x86_64                                 151/161 
+DEBUG util.py:417:    Verifying  : glibc-headers-2.12-1.192.el6.x86_64                      152/161 
+DEBUG util.py:417:    Verifying  : libsepol-2.0.41-4.el6.x86_64                             153/161 
+DEBUG util.py:417:    Verifying  : grep-2.20-5.el6_8.x86_64                                 154/161 
+DEBUG util.py:417:    Verifying  : libselinux-utils-2.0.94-7.el6.x86_64                     155/161 
+DEBUG util.py:417:    Verifying  : nss-softokn-3.14.3-23.3.el6_8.x86_64                     156/161 
+DEBUG util.py:417:    Verifying  : gcc-4.4.7-17.el6.x86_64                                  157/161 
+DEBUG util.py:417:    Verifying  : gzip-1.3.12-22.el6.x86_64                                158/161 
+DEBUG util.py:417:    Verifying  : libgomp-4.4.7-17.el6.x86_64                              159/161 
+DEBUG util.py:417:    Verifying  : mingetty-1.08-5.el6.x86_64                               160/161 
+DEBUG util.py:417:    Verifying  : hwdata-0.233-16.1.el6.noarch                             161/161 
+DEBUG util.py:417:  Installed:
+DEBUG util.py:417:    bash.x86_64 0:4.1.2-41.el6_8                                                  
+DEBUG util.py:417:    bzip2.x86_64 0:1.0.5-7.el6_0                                                  
+DEBUG util.py:417:    coreutils.x86_64 0:8.4-43.el6                                                 
+DEBUG util.py:417:    cpio.x86_64 0:2.10-12.el6_5                                                   
+DEBUG util.py:417:    diffutils.x86_64 0:2.8.1-28.el6                                               
+DEBUG util.py:417:    epel-release.noarch 0:6-8                                                     
+DEBUG util.py:417:    epel-rpm-macros.noarch 0:6-16                                                 
+DEBUG util.py:417:    findutils.x86_64 1:4.4.2-9.el6                                                
+DEBUG util.py:417:    gawk.x86_64 0:3.1.7-10.el6_7.3                                                
+DEBUG util.py:417:    gcc.x86_64 0:4.4.7-17.el6                                                     
+DEBUG util.py:417:    gcc-c++.x86_64 0:4.4.7-17.el6                                                 
+DEBUG util.py:417:    grep.x86_64 0:2.20-5.el6_8                                                    
+DEBUG util.py:417:    gzip.x86_64 0:1.3.12-22.el6                                                   
+DEBUG util.py:417:    info.x86_64 0:4.13a-8.el6                                                     
+DEBUG util.py:417:    make.x86_64 1:3.81-23.el6                                                     
+DEBUG util.py:417:    patch.x86_64 0:2.6-6.el6                                                      
+DEBUG util.py:417:    redhat-rpm-config.noarch 0:9.0.3-51.el6.centos                                
+DEBUG util.py:417:    rpm-build.x86_64 0:4.8.0-55.el6                                               
+DEBUG util.py:417:    sed.x86_64 0:4.2.1-10.el6                                                     
+DEBUG util.py:417:    shadow-utils.x86_64 2:4.1.5.1-5.el6                                           
+DEBUG util.py:417:    tar.x86_64 2:1.23-15.el6_8                                                    
+DEBUG util.py:417:    unzip.x86_64 0:6.0-4.el6                                                      
+DEBUG util.py:417:    util-linux-ng.x86_64 0:2.17.2-12.24.el6_8.1                                   
+DEBUG util.py:417:    which.x86_64 0:2.19-6.el6                                                     
+DEBUG util.py:417:    xz.x86_64 0:4.999.9-0.5.beta.20091007git.el6                                  
+DEBUG util.py:417:  Dependency Installed:
+DEBUG util.py:417:    MAKEDEV.x86_64 0:3.24-6.el6                                                   
+DEBUG util.py:417:    audit-libs.x86_64 0:2.4.5-3.el6                                               
+DEBUG util.py:417:    basesystem.noarch 0:10.0-4.el6                                                
+DEBUG util.py:417:    binutils.x86_64 0:2.20.51.0.2-5.44.el6                                        
+DEBUG util.py:417:    bzip2-libs.x86_64 0:1.0.5-7.el6_0                                             
+DEBUG util.py:417:    ca-certificates.noarch 0:2015.2.6-65.0.1.el6_7                                
+DEBUG util.py:417:    centos-release.x86_64 0:6-8.el6.centos.12.3                                   
+DEBUG util.py:417:    checkpolicy.x86_64 0:2.0.22-1.el6                                             
+DEBUG util.py:417:    chkconfig.x86_64 0:1.3.49.5-1.el6                                             
+DEBUG util.py:417:    cloog-ppl.x86_64 0:0.15.7-1.2.el6                                             
+DEBUG util.py:417:    coreutils-libs.x86_64 0:8.4-43.el6                                            
+DEBUG util.py:417:    cpp.x86_64 0:4.4.7-17.el6                                                     
+DEBUG util.py:417:    cracklib.x86_64 0:2.8.16-4.el6                                                
+DEBUG util.py:417:    cracklib-dicts.x86_64 0:2.8.16-4.el6                                          
+DEBUG util.py:417:    curl.x86_64 0:7.19.7-52.el6                                                   
+DEBUG util.py:417:    cyrus-sasl-lib.x86_64 0:2.1.23-15.el6_6.2                                     
+DEBUG util.py:417:    dash.x86_64 0:0.5.5.1-4.el6                                                   
+DEBUG util.py:417:    db4.x86_64 0:4.7.25-20.el6_8.1                                                
+DEBUG util.py:417:    db4-utils.x86_64 0:4.7.25-20.el6_8.1                                          
+DEBUG util.py:417:    dbus-glib.x86_64 0:0.86-6.el6                                                 
+DEBUG util.py:417:    dbus-libs.x86_64 1:1.2.24-8.el6_6                                             
+DEBUG util.py:417:    dracut.noarch 0:004-409.el6_8.2                                               
+DEBUG util.py:417:    dracut-kernel.noarch 0:004-409.el6_8.2                                        
+DEBUG util.py:417:    elfutils.x86_64 0:0.164-2.el6                                                 
+DEBUG util.py:417:    elfutils-libelf.x86_64 0:0.164-2.el6                                          
+DEBUG util.py:417:    elfutils-libs.x86_64 0:0.164-2.el6                                            
+DEBUG util.py:417:    ethtool.x86_64 2:3.5-6.el6                                                    
+DEBUG util.py:417:    expat.x86_64 0:2.0.1-13.el6_8                                                 
+DEBUG util.py:417:    file.x86_64 0:5.04-30.el6                                                     
+DEBUG util.py:417:    file-libs.x86_64 0:5.04-30.el6                                                
+DEBUG util.py:417:    filesystem.x86_64 0:2.4.30-3.el6                                              
+DEBUG util.py:417:    gamin.x86_64 0:0.1.10-9.el6                                                   
+DEBUG util.py:417:    gdb.x86_64 0:7.2-90.el6                                                       
+DEBUG util.py:417:    gdbm.x86_64 0:1.8.0-39.el6                                                    
+DEBUG util.py:417:    glib2.x86_64 0:2.28.8-5.el6                                                   
+DEBUG util.py:417:    glibc.x86_64 0:2.12-1.192.el6                                                 
+DEBUG util.py:417:    glibc-common.x86_64 0:2.12-1.192.el6                                          
+DEBUG util.py:417:    glibc-devel.x86_64 0:2.12-1.192.el6                                           
+DEBUG util.py:417:    glibc-headers.x86_64 0:2.12-1.192.el6                                         
+DEBUG util.py:417:    gmp.x86_64 0:4.3.1-10.el6                                                     
+DEBUG util.py:417:    groff.x86_64 0:1.18.1.4-21.el6                                                
+DEBUG util.py:417:    grubby.x86_64 0:7.0.15-7.el6                                                  
+DEBUG util.py:417:    hwdata.noarch 0:0.233-16.1.el6                                                
+DEBUG util.py:417:    initscripts.x86_64 0:9.03.53-1.el6.centos.1                                   
+DEBUG util.py:417:    iproute.x86_64 0:2.6.32-54.el6                                                
+DEBUG util.py:417:    iptables.x86_64 0:1.4.7-16.el6                                                
+DEBUG util.py:417:    iputils.x86_64 0:20071127-21.el6                                              
+DEBUG util.py:417:    kbd.x86_64 0:1.15-11.el6                                                      
+DEBUG util.py:417:    kbd-misc.noarch 0:1.15-11.el6                                                 
+DEBUG util.py:417:    kernel.x86_64 0:2.6.32-642.13.1.el6                                           
+DEBUG util.py:417:    kernel-firmware.noarch 0:2.6.32-642.13.1.el6                                  
+DEBUG util.py:417:    kernel-headers.x86_64 0:2.6.32-642.13.1.el6                                   
+DEBUG util.py:417:    keyutils-libs.x86_64 0:1.4-5.el6                                              
+DEBUG util.py:417:    krb5-libs.x86_64 0:1.10.3-57.el6                                              
+DEBUG util.py:417:    less.x86_64 0:436-13.el6                                                      
+DEBUG util.py:417:    libacl.x86_64 0:2.2.49-6.el6                                                  
+DEBUG util.py:417:    libattr.x86_64 0:2.4.44-7.el6                                                 
+DEBUG util.py:417:    libblkid.x86_64 0:2.17.2-12.24.el6_8.1                                        
+DEBUG util.py:417:    libcap.x86_64 0:2.16-5.5.el6                                                  
+DEBUG util.py:417:    libcom_err.x86_64 0:1.41.12-22.el6                                            
+DEBUG util.py:417:    libcurl.x86_64 0:7.19.7-52.el6                                                
+DEBUG util.py:417:    libdrm.x86_64 0:2.4.65-2.el6                                                  
+DEBUG util.py:417:    libffi.x86_64 0:3.0.5-3.2.el6                                                 
+DEBUG util.py:417:    libgcc.x86_64 0:4.4.7-17.el6                                                  
+DEBUG util.py:417:    libgomp.x86_64 0:4.4.7-17.el6                                                 
+DEBUG util.py:417:    libidn.x86_64 0:1.18-2.el6                                                    
+DEBUG util.py:417:    libnih.x86_64 0:1.0.1-7.el6                                                   
+DEBUG util.py:417:    libpciaccess.x86_64 0:0.13.4-1.el6                                            
+DEBUG util.py:417:    libselinux.x86_64 0:2.0.94-7.el6                                              
+DEBUG util.py:417:    libselinux-utils.x86_64 0:2.0.94-7.el6                                        
+DEBUG util.py:417:    libsemanage.x86_64 0:2.0.43-5.1.el6                                           
+DEBUG util.py:417:    libsepol.x86_64 0:2.0.41-4.el6                                                
+DEBUG util.py:417:    libssh2.x86_64 0:1.4.2-2.el6_7.1                                              
+DEBUG util.py:417:    libstdc++.x86_64 0:4.4.7-17.el6                                               
+DEBUG util.py:417:    libstdc++-devel.x86_64 0:4.4.7-17.el6                                         
+DEBUG util.py:417:    libtasn1.x86_64 0:2.3-6.el6_5                                                 
+DEBUG util.py:417:    libusb.x86_64 0:0.1.12-23.el6                                                 
+DEBUG util.py:417:    libutempter.x86_64 0:1.1.5-4.1.el6                                            
+DEBUG util.py:417:    libuuid.x86_64 0:2.17.2-12.24.el6_8.1                                         
+DEBUG util.py:417:    libxml2.x86_64 0:2.9.3-4.el6                                                  
+DEBUG util.py:417:    lua.x86_64 0:5.1.4-4.1.el6                                                    
+DEBUG util.py:417:    mingetty.x86_64 0:1.08-5.el6                                                  
+DEBUG util.py:417:    module-init-tools.x86_64 0:3.9-25.el6                                         
+DEBUG util.py:417:    mpfr.x86_64 0:2.4.1-6.el6                                                     
+DEBUG util.py:417:    ncurses.x86_64 0:5.7-4.20090207.el6                                           
+DEBUG util.py:417:    ncurses-base.x86_64 0:5.7-4.20090207.el6                                      
+DEBUG util.py:417:    ncurses-libs.x86_64 0:5.7-4.20090207.el6                                      
+DEBUG util.py:417:    net-tools.x86_64 0:1.60-110.el6_2                                             
+DEBUG util.py:417:    nspr.x86_64 0:4.11.0-1.el6                                                    
+DEBUG util.py:417:    nss.x86_64 0:3.21.3-2.el6_8                                                   
+DEBUG util.py:417:    nss-softokn.x86_64 0:3.14.3-23.3.el6_8                                        
+DEBUG util.py:417:    nss-softokn-freebl.x86_64 0:3.14.3-23.3.el6_8                                 
+DEBUG util.py:417:    nss-sysinit.x86_64 0:3.21.3-2.el6_8                                           
+DEBUG util.py:417:    nss-tools.x86_64 0:3.21.3-2.el6_8                                             
+DEBUG util.py:417:    nss-util.x86_64 0:3.21.3-1.el6_8                                              
+DEBUG util.py:417:    openldap.x86_64 0:2.4.40-12.el6                                               
+DEBUG util.py:417:    openssl.x86_64 0:1.0.1e-48.el6_8.3                                            
+DEBUG util.py:417:    p11-kit.x86_64 0:0.18.5-2.el6_5.2                                             
+DEBUG util.py:417:    p11-kit-trust.x86_64 0:0.18.5-2.el6_5.2                                       
+DEBUG util.py:417:    pam.x86_64 0:1.1.1-22.el6                                                     
+DEBUG util.py:417:    pcre.x86_64 0:7.8-7.el6                                                       
+DEBUG util.py:417:    perl.x86_64 4:5.10.1-141.el6_7.1                                              
+DEBUG util.py:417:    perl-Module-Pluggable.x86_64 1:3.90-141.el6_7.1                               
+DEBUG util.py:417:    perl-Pod-Escapes.x86_64 1:1.04-141.el6_7.1                                    
+DEBUG util.py:417:    perl-Pod-Simple.x86_64 1:3.13-141.el6_7.1                                     
+DEBUG util.py:417:    perl-libs.x86_64 4:5.10.1-141.el6_7.1                                         
+DEBUG util.py:417:    perl-version.x86_64 3:0.77-141.el6_7.1                                        
+DEBUG util.py:417:    pkgconfig.x86_64 1:0.23-9.1.el6                                               
+DEBUG util.py:417:    plymouth.x86_64 0:0.8.3-27.el6.centos.1                                       
+DEBUG util.py:417:    plymouth-core-libs.x86_64 0:0.8.3-27.el6.centos.1                             
+DEBUG util.py:417:    plymouth-scripts.x86_64 0:0.8.3-27.el6.centos.1                               
+DEBUG util.py:417:    policycoreutils.x86_64 0:2.0.83-30.1.el6_8                                    
+DEBUG util.py:417:    popt.x86_64 0:1.13-7.el6                                                      
+DEBUG util.py:417:    ppl.x86_64 0:0.10.2-11.el6                                                    
+DEBUG util.py:417:    procps.x86_64 0:3.2.8-36.el6                                                  
+DEBUG util.py:417:    psmisc.x86_64 0:22.6-19.el6_5                                                 
+DEBUG util.py:417:    python.x86_64 0:2.6.6-66.el6_8                                                
+DEBUG util.py:417:    python-libs.x86_64 0:2.6.6-66.el6_8                                           
+DEBUG util.py:417:    python-rpm-macros.noarch 0:3-11.el6                                           
+DEBUG util.py:417:    python-srpm-macros.noarch 0:3-11.el6                                          
+DEBUG util.py:417:    python2-rpm-macros.noarch 0:3-11.el6                                          
+DEBUG util.py:417:    readline.x86_64 0:6.0-4.el6                                                   
+DEBUG util.py:417:    redhat-logos.noarch 0:60.0.14-12.el6.centos                                   
+DEBUG util.py:417:    rpm.x86_64 0:4.8.0-55.el6                                                     
+DEBUG util.py:417:    rpm-libs.x86_64 0:4.8.0-55.el6                                                
+DEBUG util.py:417:    setup.noarch 0:2.8.14-20.el6_4.1                                              
+DEBUG util.py:417:    shared-mime-info.x86_64 0:0.70-6.el6                                          
+DEBUG util.py:417:    sqlite.x86_64 0:3.6.20-1.el6_7.2                                              
+DEBUG util.py:417:    sysvinit-tools.x86_64 0:2.87-6.dsf.el6                                        
+DEBUG util.py:417:    tzdata.noarch 0:2016j-1.el6                                                   
+DEBUG util.py:417:    udev.x86_64 0:147-2.73.el6_8.2                                                
+DEBUG util.py:417:    upstart.x86_64 0:0.6.5-16.el6                                                 
+DEBUG util.py:417:    ustr.x86_64 0:1.0.4-9.1.el6                                                   
+DEBUG util.py:417:    xz-libs.x86_64 0:4.999.9-0.5.beta.20091007git.el6                             
+DEBUG util.py:417:    xz-lzma-compat.x86_64 0:4.999.9-0.5.beta.20091007git.el6                      
+DEBUG util.py:417:    zlib.x86_64 0:1.2.3-29.el6                                                    
+DEBUG util.py:417:  Complete!
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/os-release
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  DEBUG: Unsharing. Flags: 134217728
+DEBUG util.py:417:  userdel: user 'mockbuild' does not exist
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  DEBUG: Unsharing. Flags: 134217728
+DEBUG util.py:417:  groupdel: group 'mockbuild' does not exist
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  DEBUG: Unsharing. Flags: 134217728
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  DEBUG: Unsharing. Flags: 134217728
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['sync'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['tar', '--one-file-system', '--exclude-caches', '--exclude-caches-under', '--use-compress-program', 'pigz', '-cf', '/var/cache/mock/fpfis-6-x86_64/root_cache/cache.tar.gz', '-C', '/var/lib/mock/fpfis-6-x86_64/root', '--exclude=./proc', '--exclude=./sys', '--exclude=./dev', '--exclude=./tmp/ccache', '--exclude=./var/cache/yum', '--exclude=./var/cache/dnf', '--exclude=./proc', '--exclude=./sys', '--exclude=./dev/shm', '--exclude=./dev/pts', '--exclude=./var/cache/yum/', '.'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+INFO backend.py:168:  Installed packages:
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: /bin/rpm --root /var/lib/mock/fpfis-6-x86_64/root -qa with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOSTNAME': 'mock', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell True
+DEBUG util.py:417:  gpg-pubkey-0608b895-4bd22942
+DEBUG util.py:417:  setup-2.8.14-20.el6_4.1.noarch
+DEBUG util.py:417:  centos-release-6-8.el6.centos.12.3.x86_64
+DEBUG util.py:417:  python-rpm-macros-3-11.el6.noarch
+DEBUG util.py:417:  kernel-firmware-2.6.32-642.13.1.el6.noarch
+DEBUG util.py:417:  tzdata-2016j-1.el6.noarch
+DEBUG util.py:417:  nss-softokn-freebl-3.14.3-23.3.el6_8.x86_64
+DEBUG util.py:417:  glibc-2.12-1.192.el6.x86_64
+DEBUG util.py:417:  bash-4.1.2-41.el6_8.x86_64
+DEBUG util.py:417:  libcap-2.16-5.5.el6.x86_64
+DEBUG util.py:417:  info-4.13a-8.el6.x86_64
+DEBUG util.py:417:  bzip2-libs-1.0.5-7.el6_0.x86_64
+DEBUG util.py:417:  libstdc++-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  libacl-2.2.49-6.el6.x86_64
+DEBUG util.py:417:  xz-libs-4.999.9-0.5.beta.20091007git.el6.x86_64
+DEBUG util.py:417:  libsepol-2.0.41-4.el6.x86_64
+DEBUG util.py:417:  sed-4.2.1-10.el6.x86_64
+DEBUG util.py:417:  elfutils-libelf-0.164-2.el6.x86_64
+DEBUG util.py:417:  readline-6.0-4.el6.x86_64
+DEBUG util.py:417:  file-libs-5.04-30.el6.x86_64
+DEBUG util.py:417:  dbus-libs-1.2.24-8.el6_6.x86_64
+DEBUG util.py:417:  findutils-4.4.2-9.el6.x86_64
+DEBUG util.py:417:  cpio-2.10-12.el6_5.x86_64
+DEBUG util.py:417:  expat-2.0.1-13.el6_8.x86_64
+DEBUG util.py:417:  sqlite-3.6.20-1.el6_7.2.x86_64
+DEBUG util.py:417:  mpfr-2.4.1-6.el6.x86_64
+DEBUG util.py:417:  pcre-7.8-7.el6.x86_64
+DEBUG util.py:417:  bzip2-1.0.5-7.el6_0.x86_64
+DEBUG util.py:417:  libtasn1-2.3-6.el6_5.x86_64
+DEBUG util.py:417:  libuuid-2.17.2-12.24.el6_8.1.x86_64
+DEBUG util.py:417:  pkgconfig-0.23-9.1.el6.x86_64
+DEBUG util.py:417:  gdbm-1.8.0-39.el6.x86_64
+DEBUG util.py:417:  perl-libs-5.10.1-141.el6_7.1.x86_64
+DEBUG util.py:417:  perl-Module-Pluggable-3.90-141.el6_7.1.x86_64
+DEBUG util.py:417:  perl-5.10.1-141.el6_7.1.x86_64
+DEBUG util.py:417:  xz-lzma-compat-4.999.9-0.5.beta.20091007git.el6.x86_64
+DEBUG util.py:417:  libnih-1.0.1-7.el6.x86_64
+DEBUG util.py:417:  elfutils-libs-0.164-2.el6.x86_64
+DEBUG util.py:417:  tar-1.23-15.el6_8.x86_64
+DEBUG util.py:417:  checkpolicy-2.0.22-1.el6.x86_64
+DEBUG util.py:417:  procps-3.2.8-36.el6.x86_64
+DEBUG util.py:417:  libselinux-utils-2.0.94-7.el6.x86_64
+DEBUG util.py:417:  cloog-ppl-0.15.7-1.2.el6.x86_64
+DEBUG util.py:417:  gamin-0.1.10-9.el6.x86_64
+DEBUG util.py:417:  shared-mime-info-0.70-6.el6.x86_64
+DEBUG util.py:417:  grubby-7.0.15-7.el6.x86_64
+DEBUG util.py:417:  libstdc++-devel-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  db4-utils-4.7.25-20.el6_8.1.x86_64
+DEBUG util.py:417:  which-2.19-6.el6.x86_64
+DEBUG util.py:417:  libgomp-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  dash-0.5.5.1-4.el6.x86_64
+DEBUG util.py:417:  groff-1.18.1.4-21.el6.x86_64
+DEBUG util.py:417:  coreutils-libs-8.4-43.el6.x86_64
+DEBUG util.py:417:  cracklib-2.8.16-4.el6.x86_64
+DEBUG util.py:417:  coreutils-8.4-43.el6.x86_64
+DEBUG util.py:417:  module-init-tools-3.9-25.el6.x86_64
+DEBUG util.py:417:  plymouth-scripts-0.8.3-27.el6.centos.1.x86_64
+DEBUG util.py:417:  redhat-rpm-config-9.0.3-51.el6.centos.noarch
+DEBUG util.py:417:  nss-sysinit-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  redhat-logos-60.0.14-12.el6.centos.noarch
+DEBUG util.py:417:  ethtool-3.5-6.el6.x86_64
+DEBUG util.py:417:  plymouth-core-libs-0.8.3-27.el6.centos.1.x86_64
+DEBUG util.py:417:  libsemanage-2.0.43-5.1.el6.x86_64
+DEBUG util.py:417:  libutempter-1.1.5-4.1.el6.x86_64
+DEBUG util.py:417:  keyutils-libs-1.4-5.el6.x86_64
+DEBUG util.py:417:  openssl-1.0.1e-48.el6_8.3.x86_64
+DEBUG util.py:417:  python-libs-2.6.6-66.el6_8.x86_64
+DEBUG util.py:417:  libcurl-7.19.7-52.el6.x86_64
+DEBUG util.py:417:  curl-7.19.7-52.el6.x86_64
+DEBUG util.py:417:  openldap-2.4.40-12.el6.x86_64
+DEBUG util.py:417:  mingetty-1.08-5.el6.x86_64
+DEBUG util.py:417:  policycoreutils-2.0.83-30.1.el6_8.x86_64
+DEBUG util.py:417:  iproute-2.6.32-54.el6.x86_64
+DEBUG util.py:417:  libdrm-2.4.65-2.el6.x86_64
+DEBUG util.py:417:  plymouth-0.8.3-27.el6.centos.1.x86_64
+DEBUG util.py:417:  dracut-kernel-004-409.el6_8.2.noarch
+DEBUG util.py:417:  kernel-2.6.32-642.13.1.el6.x86_64
+DEBUG util.py:417:  udev-147-2.73.el6_8.2.x86_64
+DEBUG util.py:417:  glibc-headers-2.12-1.192.el6.x86_64
+DEBUG util.py:417:  gcc-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  rpm-build-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  gpg-pubkey-c105b9de-4e0fd3a3
+DEBUG util.py:417:  libgcc-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  filesystem-2.4.30-3.el6.x86_64
+DEBUG util.py:417:  python-srpm-macros-3-11.el6.noarch
+DEBUG util.py:417:  basesystem-10.0-4.el6.noarch
+DEBUG util.py:417:  python2-rpm-macros-3-11.el6.noarch
+DEBUG util.py:417:  ncurses-base-5.7-4.20090207.el6.x86_64
+DEBUG util.py:417:  glibc-common-2.12-1.192.el6.x86_64
+DEBUG util.py:417:  ncurses-libs-5.7-4.20090207.el6.x86_64
+DEBUG util.py:417:  libattr-2.4.44-7.el6.x86_64
+DEBUG util.py:417:  zlib-1.2.3-29.el6.x86_64
+DEBUG util.py:417:  db4-4.7.25-20.el6_8.1.x86_64
+DEBUG util.py:417:  nspr-4.11.0-1.el6.x86_64
+DEBUG util.py:417:  nss-util-3.21.3-1.el6_8.x86_64
+DEBUG util.py:417:  popt-1.13-7.el6.x86_64
+DEBUG util.py:417:  gmp-4.3.1-10.el6.x86_64
+DEBUG util.py:417:  libselinux-2.0.94-7.el6.x86_64
+DEBUG util.py:417:  chkconfig-1.3.49.5-1.el6.x86_64
+DEBUG util.py:417:  audit-libs-2.4.5-3.el6.x86_64
+DEBUG util.py:417:  gawk-3.1.7-10.el6_7.3.x86_64
+DEBUG util.py:417:  libcom_err-1.41.12-22.el6.x86_64
+DEBUG util.py:417:  lua-5.1.4-4.1.el6.x86_64
+DEBUG util.py:417:  binutils-2.20.51.0.2-5.44.el6.x86_64
+DEBUG util.py:417:  libidn-1.18-2.el6.x86_64
+DEBUG util.py:417:  file-5.04-30.el6.x86_64
+DEBUG util.py:417:  nss-softokn-3.14.3-23.3.el6_8.x86_64
+DEBUG util.py:417:  xz-4.999.9-0.5.beta.20091007git.el6.x86_64
+DEBUG util.py:417:  grep-2.20-5.el6_8.x86_64
+DEBUG util.py:417:  diffutils-2.8.1-28.el6.x86_64
+DEBUG util.py:417:  p11-kit-0.18.5-2.el6_5.2.x86_64
+DEBUG util.py:417:  libblkid-2.17.2-12.24.el6_8.1.x86_64
+DEBUG util.py:417:  sysvinit-tools-2.87-6.dsf.el6.x86_64
+DEBUG util.py:417:  perl-Pod-Escapes-1.04-141.el6_7.1.x86_64
+DEBUG util.py:417:  perl-version-0.77-141.el6_7.1.x86_64
+DEBUG util.py:417:  perl-Pod-Simple-3.13-141.el6_7.1.x86_64
+DEBUG util.py:417:  p11-kit-trust-0.18.5-2.el6_5.2.x86_64
+DEBUG util.py:417:  cpp-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  upstart-0.6.5-16.el6.x86_64
+DEBUG util.py:417:  elfutils-0.164-2.el6.x86_64
+DEBUG util.py:417:  net-tools-1.60-110.el6_2.x86_64
+DEBUG util.py:417:  psmisc-22.6-19.el6_5.x86_64
+DEBUG util.py:417:  patch-2.6-6.el6.x86_64
+DEBUG util.py:417:  ppl-0.10.2-11.el6.x86_64
+DEBUG util.py:417:  libxml2-2.9.3-4.el6.x86_64
+DEBUG util.py:417:  glib2-2.28.8-5.el6.x86_64
+DEBUG util.py:417:  dbus-glib-0.86-6.el6.x86_64
+DEBUG util.py:417:  libusb-0.1.12-23.el6.x86_64
+DEBUG util.py:417:  unzip-6.0-4.el6.x86_64
+DEBUG util.py:417:  cyrus-sasl-lib-2.1.23-15.el6_6.2.x86_64
+DEBUG util.py:417:  make-3.81-23.el6.x86_64
+DEBUG util.py:417:  epel-release-6-8.noarch
+DEBUG util.py:417:  ncurses-5.7-4.20090207.el6.x86_64
+DEBUG util.py:417:  less-436-13.el6.x86_64
+DEBUG util.py:417:  gzip-1.3.12-22.el6.x86_64
+DEBUG util.py:417:  cracklib-dicts-2.8.16-4.el6.x86_64
+DEBUG util.py:417:  pam-1.1.1-22.el6.x86_64
+DEBUG util.py:417:  hwdata-0.233-16.1.el6.noarch
+DEBUG util.py:417:  libpciaccess-0.13.4-1.el6.x86_64
+DEBUG util.py:417:  nss-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  nss-tools-3.21.3-2.el6_8.x86_64
+DEBUG util.py:417:  ca-certificates-2015.2.6-65.0.1.el6_7.noarch
+DEBUG util.py:417:  libffi-3.0.5-3.2.el6.x86_64
+DEBUG util.py:417:  ustr-1.0.4-9.1.el6.x86_64
+DEBUG util.py:417:  shadow-utils-4.1.5.1-5.el6.x86_64
+DEBUG util.py:417:  MAKEDEV-3.24-6.el6.x86_64
+DEBUG util.py:417:  krb5-libs-1.10.3-57.el6.x86_64
+DEBUG util.py:417:  python-2.6.6-66.el6_8.x86_64
+DEBUG util.py:417:  libssh2-1.4.2-2.el6_7.1.x86_64
+DEBUG util.py:417:  rpm-libs-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  rpm-4.8.0-55.el6.x86_64
+DEBUG util.py:417:  gdb-7.2-90.el6.x86_64
+DEBUG util.py:417:  kbd-misc-1.15-11.el6.noarch
+DEBUG util.py:417:  iptables-1.4.7-16.el6.x86_64
+DEBUG util.py:417:  kbd-1.15-11.el6.x86_64
+DEBUG util.py:417:  iputils-20071127-21.el6.x86_64
+DEBUG util.py:417:  dracut-004-409.el6_8.2.noarch
+DEBUG util.py:417:  initscripts-9.03.53-1.el6.centos.1.x86_64
+DEBUG util.py:417:  util-linux-ng-2.17.2-12.24.el6_8.1.x86_64
+DEBUG util.py:417:  kernel-headers-2.6.32-642.13.1.el6.x86_64
+DEBUG util.py:417:  glibc-devel-2.12-1.192.el6.x86_64
+DEBUG util.py:417:  gcc-c++-4.4.7-17.el6.x86_64
+DEBUG util.py:417:  epel-rpm-macros-6-16.noarch
+DEBUG util.py:542:  Child return code was: 0
+INFO buildroot.py:189:  ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/solr.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Falseenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x188af10>uid=0)
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/solr.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  DEBUG: Unsharing. Flags: 134217728
+DEBUG util.py:417:  error: File /builddir/build/SOURCES/solr-5.2.1.tgz: No such file or directory
+DEBUG util.py:417:  Building target platforms: x86_64
+DEBUG util.py:417:  Building for target x86_64
+DEBUG util.py:542:  Child return code was: 1
+INFO util.py:472:  EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/solr.spec
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.8-moby
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  DEBUG: Unsharing. Flags: 134217728
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 9672
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  DEBUG: Unsharing. Flags: 134217728
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  DEBUG: Unsharing. Flags: 134217728
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+INFO buildroot.py:189:  ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/solr.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Falseenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0xbebf10>uid=0)
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/solr.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  DEBUG: Unsharing. Flags: 134217728
+DEBUG util.py:417:  error: File /builddir/build/SOURCES/solr-5.2.1.tgz: No such file or directory
+DEBUG util.py:417:  Building target platforms: x86_64
+DEBUG util.py:417:  Building for target x86_64
+DEBUG util.py:542:  Child return code was: 1
+INFO util.py:472:  EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/solr.spec
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.8-moby
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  DEBUG: Unsharing. Flags: 134217728
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 9804
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  DEBUG: Unsharing. Flags: 134217728
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  DEBUG: Unsharing. Flags: 134217728
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+INFO buildroot.py:189:  ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/solr.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Falseenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x296bf10>uid=0)
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/solr.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  DEBUG: Unsharing. Flags: 134217728
+DEBUG util.py:417:  Building target platforms: x86_64
+DEBUG util.py:417:  Building for target x86_64
+DEBUG util.py:417:  Wrote: /builddir/build/SRPMS/apache-solr-5.2.1-EC.src.rpm
+DEBUG util.py:542:  Child return code was: 0
+DEBUG backend.py:340:  Copying package to result dir
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.

@@ -1,0 +1,33 @@
+2017-02-14 13:20:32,396 - Mock Version: 1.2.17
+2017-02-14 13:20:32,899 - Start: yum install
+2017-02-14 13:25:48,007 - Finish: yum install
+2017-02-14 13:25:49,668 - Start: creating cache
+2017-02-14 13:26:08,237 - Finish: creating cache
+2017-02-14 13:26:08,239 - Finish: chroot init
+2017-02-14 13:26:08,579 - Start: buildsrpm
+2017-02-14 13:26:08,612 - Start: rpmbuild -bs
+2017-02-14 13:26:08,810 - Finish: rpmbuild -bs
+2017-02-14 13:26:08,814 - Finish: buildsrpm
+2017-02-14 13:26:08,817 - Start: clean chroot
+2017-02-14 13:26:17,438 - Finish: clean chroot
+2017-02-14 13:40:15,053 - Mock Version: 1.2.17
+2017-02-14 13:40:17,091 - Start: yum update
+2017-02-14 13:40:41,204 - Finish: yum update
+2017-02-14 13:40:41,215 - Finish: chroot init
+2017-02-14 13:40:41,220 - Start: buildsrpm
+2017-02-14 13:40:41,248 - Start: rpmbuild -bs
+2017-02-14 13:40:41,449 - Finish: rpmbuild -bs
+2017-02-14 13:40:41,453 - Finish: buildsrpm
+2017-02-14 13:40:41,454 - Start: clean chroot
+2017-02-14 13:40:46,318 - Finish: clean chroot
+2017-02-14 13:43:56,717 - Mock Version: 1.2.17
+2017-02-14 13:43:59,023 - Start: yum update
+2017-02-14 13:44:06,650 - Finish: yum update
+2017-02-14 13:44:06,663 - Finish: chroot init
+2017-02-14 13:44:06,669 - Start: buildsrpm
+2017-02-14 13:44:07,576 - Start: rpmbuild -bs
+2017-02-14 13:44:14,319 - Finish: rpmbuild -bs
+2017-02-14 13:44:19,849 - Finish: buildsrpm
+2017-02-14 13:44:19,851 - Start: clean chroot
+2017-02-14 13:44:24,765 - Finish: clean chroot
+2017-02-14 13:44:24,767 - Finish: run
