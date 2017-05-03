@@ -8,7 +8,7 @@
 %define start_script_path /usr/lib/systemd/system/solr.service
 
 Name:           solr5
-Version:        5.2.1
+Version:        5.5.4
 Release:        EC
 Summary:        Apache Search Server
 Source:         https://archive.apache.org/dist/lucene/solr/%{version}/solr-%{version}.tgz
