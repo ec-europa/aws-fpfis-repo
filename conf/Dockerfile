@@ -1,7 +1,7 @@
 FROM centos
 MAINTAINER Gregory Boddin
 
-RUN yum install -y spectool mock
+RUN yum install -y spectool mock cmake
 RUN useradd mock -g mock
 
 ADD fpfis-*.cfg /etc/mock/
