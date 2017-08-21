@@ -23,6 +23,8 @@ echo "Using container name : ${CONTAINER}"
 [ ! -d SOURCES/${PACKAGE} ] && mkdir SOURCES/${PACKAGE}
 
 # reset log files :
+chmod -R 0777 RPMS
+chmod -R 0777 SRPMS
 cat /dev/null > RPMS/build.log
 cat /dev/null > RPMS/root.log
 cat /dev/null > RPMS/trace.log
