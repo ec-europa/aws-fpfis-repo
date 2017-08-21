@@ -27,11 +27,7 @@ Source0:        https://github.com/libgit2/libgit2/archive/v0.26.0.tar.gz
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
 BuildRequires:  openssl-devel
-%else
-BuildRequires:  libopenssl-devel
-%endif
 
 %description
 libgit2 is a portable, pure C implementation of the Git core methods
