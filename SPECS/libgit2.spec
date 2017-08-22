@@ -59,7 +59,7 @@ pushd build
 popd
 
 # Include previous ABI version for temporary binary compatibility
-cp -a %{_libdir}/libgit2.so.*21* $RPM_BUILD_ROOT%{_libdir}
+cp -a %{_libdir}/libgit2.so.*26* $RPM_BUILD_ROOT%{_libdir}
 
 %check
 pushd build
