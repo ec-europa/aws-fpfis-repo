@@ -11,7 +11,7 @@ after_success:
   - find RPMS SRPMS|grep "\.rpm$"
 after_failure:
   - tail -n 500 SRPMS/*log
-  - tail -n 1000 RPMS/*log
+  - tail -n 3000 RPMS/*log
 before_deploy:
   - openssl aes-256-cbc -K $encrypted_d8c49141ab0d_key -iv $encrypted_d8c49141ab0d_iv -in deploy.key.enc -out deploy.key -d
   - chmod 600 deploy.key
