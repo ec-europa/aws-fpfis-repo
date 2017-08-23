@@ -40,7 +40,7 @@ find examples -name ".gitignore" -delete -print
 sed -i 's|@CMAKE_INSTALL_PREFIX@/||' libgit2.pc.in
 
 # Don't test network
-sed -i 's/libgit2_clar libgit2_clar -ionline/libgit2_clar libgit2_clar -xstructinit -ionline/' CMakeLists.txt
+sed -i 's/OPTION( BUILD_CLAR/OPTION( BUILD_CLAR \"disable test\" OFF #OPTION( BUILD_CLAR /' CMakeLists.txt
 sed -i 's/ionline/xonline/' CMakeLists.txt
 
 # Remove bundled libraries
