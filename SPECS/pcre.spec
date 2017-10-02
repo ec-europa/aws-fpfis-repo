@@ -8,7 +8,7 @@ Summary: Perl-compatible regular expression library
 Group: System Environment/Libraries
 License: BSD
 URL: http://www.pcre.org/
-Source: ftp://ftp.csx.cam.ac.uk/pub/software/programming/%{name}/%{?rcversion:Testing/}%{name}-%{myversion}.tar.bz2
+Source: %{name}-%{myversion}.tar.bz2
 # Upstream thinks RPATH is good idea.
 Patch0: pcre-8.21-multilib.patch
 # Refused by upstream, bug #675477
