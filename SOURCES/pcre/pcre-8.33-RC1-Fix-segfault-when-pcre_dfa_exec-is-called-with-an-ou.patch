@@ -1,0 +1,267 @@
+From f4176cfb682170c5e9246949df653c82200d7259 Mon Sep 17 00:00:00 2001
+From: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date: Wed, 15 May 2013 16:53:18 +0000
+Subject: [PATCH] Fix segfault when pcre_dfa_exec() is called with an output
+ vector of length less than 2.
+
+git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1334 2f5784b3-3f2a-0410-8824-cb99058d5e15
+
+Petr Pisar: Port to 8.33-RC1.
+<https://bugzilla.redhat.com/show_bug.cgi?id=963284>
+
+diff --git a/pcre_dfa_exec.c b/pcre_dfa_exec.c
+index 8211760..02bd3f0 100644
+--- a/pcre_dfa_exec.c
++++ b/pcre_dfa_exec.c
+@@ -636,7 +636,7 @@ for (;;)
+     const pcre_uchar *code;
+     int state_offset = current_state->offset;
+     int codevalue, rrc;
+-    unsigned int count;
++    int count;
+ 
+ #ifdef PCRE_DEBUG
+     printf ("%.*sProcessing state %d c=", rlevel*2-2, SP, state_offset);
+@@ -1255,7 +1255,7 @@ for (;;)
+               (d != OP_ANY || !IS_NEWLINE(ptr)) &&
+               ((ctypes[c] & toptable1[d]) ^ toptable2[d]) != 0))
+           {
+-          if (++count >= GET2(code, 1))
++          if (++count >= (int)GET2(code, 1))
+             { ADD_NEW(state_offset + 1 + IMM2_SIZE + 1, 0); }
+           else
+             { ADD_NEW(state_offset, count); }
+@@ -1289,7 +1289,7 @@ for (;;)
+             active_count--;           /* Remove non-match possibility */
+             next_active_state--;
+             }
+-          if (++count >= GET2(code, 1))
++          if (++count >= (int)GET2(code, 1))
+             { ADD_NEW(state_offset + 2 + IMM2_SIZE, 0); }
+           else
+             { ADD_NEW(state_offset, count); }
+@@ -1903,7 +1903,7 @@ for (;;)
+             active_count--;           /* Remove non-match possibility */
+             next_active_state--;
+             }
+-          if (++count >= GET2(code, 1))
++          if (++count >= (int)GET2(code, 1))
+             { ADD_NEW(state_offset + 1 + IMM2_SIZE + 3, 0); }
+           else
+             { ADD_NEW(state_offset, count); }
+@@ -1942,7 +1942,7 @@ for (;;)
+           }
+         if (nptr >= end_subject && (md->moptions & PCRE_PARTIAL_HARD) != 0)
+             reset_could_continue = TRUE;
+-        if (++count >= GET2(code, 1))
++        if (++count >= (int)GET2(code, 1))
+           { ADD_NEW_DATA(-(state_offset + 2 + IMM2_SIZE), 0, ncount); }
+         else
+           { ADD_NEW_DATA(-state_offset, count, ncount); }
+@@ -1984,7 +1984,7 @@ for (;;)
+             active_count--;           /* Remove non-match possibility */
+             next_active_state--;
+             }
+-          if (++count >= GET2(code, 1))
++          if (++count >= (int)GET2(code, 1))
+             { ADD_NEW_DATA(-(state_offset + 2 + IMM2_SIZE), 0, ncount); }
+           else
+             { ADD_NEW_DATA(-state_offset, count, ncount); }
+@@ -2024,7 +2024,7 @@ for (;;)
+             active_count--;           /* Remove non-match possibility */
+             next_active_state--;
+             }
+-          if (++count >= GET2(code, 1))
++          if (++count >= (int)GET2(code, 1))
+             { ADD_NEW_DATA(-(state_offset + 2 + IMM2_SIZE), 0, 0); }
+           else
+             { ADD_NEW_DATA(-state_offset, count, 0); }
+@@ -2061,7 +2061,7 @@ for (;;)
+             active_count--;           /* Remove non-match possibility */
+             next_active_state--;
+             }
+-          if (++count >= GET2(code, 1))
++          if (++count >= (int)GET2(code, 1))
+             { ADD_NEW_DATA(-(state_offset + 2 + IMM2_SIZE), 0, 0); }
+           else
+             { ADD_NEW_DATA(-state_offset, count, 0); }
+@@ -2431,7 +2431,7 @@ for (;;)
+           }
+         if ((c == d || c == otherd) == (codevalue < OP_NOTSTAR))
+           {
+-          if (++count >= GET2(code, 1))
++          if (++count >= (int)GET2(code, 1))
+             { ADD_NEW(state_offset + dlen + 1 + IMM2_SIZE, 0); }
+           else
+             { ADD_NEW(state_offset, count); }
+@@ -2480,7 +2480,7 @@ for (;;)
+             active_count--;             /* Remove non-match possibility */
+             next_active_state--;
+             }
+-          if (++count >= GET2(code, 1))
++          if (++count >= (int)GET2(code, 1))
+             { ADD_NEW(state_offset + dlen + 1 + IMM2_SIZE, 0); }
+           else
+             { ADD_NEW(state_offset, count); }
+@@ -2553,11 +2553,11 @@ for (;;)
+           case OP_CRRANGE:
+           case OP_CRMINRANGE:
+           count = current_state->count;  /* Already matched */
+-          if (count >= GET2(ecode, 1))
++          if (count >= (int)GET2(ecode, 1))
+             { ADD_ACTIVE(next_state_offset + 1 + 2 * IMM2_SIZE, 0); }
+           if (isinclass)
+             {
+-            unsigned int max = GET2(ecode, 1 + IMM2_SIZE);
++            int max = (int)GET2(ecode, 1 + IMM2_SIZE);
+             if (++count >= max && max != 0)   /* Max 0 => no limit */
+               { ADD_NEW(next_state_offset + 1 + 2 * IMM2_SIZE, 0); }
+             else
+diff --git a/pcretest.c b/pcretest.c
+index 25f3853..20dc0f1 100644
+--- a/pcretest.c
++++ b/pcretest.c
+@@ -5043,7 +5043,7 @@ while (!done)
+           DFA_WS_DIMENSION);
+         if (count == 0)
+           {
+-          fprintf(outfile, "Matched, but too many subsidiary matches\n");
++          fprintf(outfile, "Matched, but offsets vector is too small to show all matches\n");
+           count = use_size_offsets/2;
+           }
+         }
+diff --git a/testdata/testinput8 b/testdata/testinput8
+index e235445..d91013b 100644
+--- a/testdata/testinput8
++++ b/testdata/testinput8
+@@ -4798,4 +4798,7 @@
+     xxxxxxxxabcd
+     xx\xa0xxxxxabcd 
+ 
++/abcd/
++    abcd\O0
++
+ /-- End of testinput8 --/
+diff --git a/testdata/testoutput10 b/testdata/testoutput10
+index 9ee0f76..0e04205 100644
+--- a/testdata/testoutput10
++++ b/testdata/testoutput10
+@@ -813,7 +813,7 @@ No match
+     11111111111111111111111111111111111111111111111111111111111111111111111
+ No match
+     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+-Matched, but too many subsidiary matches
++Matched, but offsets vector is too small to show all matches
+  0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  1: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  2: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+@@ -841,7 +841,7 @@ Matched, but too many subsidiary matches
+     11111111111111111111111111111111111111111111111111111111111111111111111
+ No match
+     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+-Matched, but too many subsidiary matches
++Matched, but offsets vector is too small to show all matches
+  0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  1: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  2: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+@@ -869,7 +869,7 @@ Matched, but too many subsidiary matches
+     11111111111111111111111111111111111111111111111111111111111111111111111
+ No match
+     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+-Matched, but too many subsidiary matches
++Matched, but offsets vector is too small to show all matches
+  0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  1: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  2: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+@@ -897,7 +897,7 @@ Matched, but too many subsidiary matches
+     11111111111111111111111111111111111111111111111111111111111111111111111
+ No match
+     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+-Matched, but too many subsidiary matches
++Matched, but offsets vector is too small to show all matches
+  0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  1: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  2: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+@@ -925,7 +925,7 @@ Matched, but too many subsidiary matches
+     11111111111111111111111111111111111111111111111111111111111111111111111
+ No match
+     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+-Matched, but too many subsidiary matches
++Matched, but offsets vector is too small to show all matches
+  0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  1: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  2: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+diff --git a/testdata/testoutput8 b/testdata/testoutput8
+index 527ba4d..75affbe 100644
+--- a/testdata/testoutput8
++++ b/testdata/testoutput8
+@@ -49,7 +49,7 @@ No match
+ 16: a
+ 17: 
+     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 
+-Matched, but too many subsidiary matches
++Matched, but offsets vector is too small to show all matches
+  0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  1: aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  2: aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+@@ -3260,7 +3260,7 @@ No match
+ 
+ /(.*)(\d*)/
+     I have 2 numbers: 53147
+-Matched, but too many subsidiary matches
++Matched, but offsets vector is too small to show all matches
+  0: I have 2 numbers: 53147
+  1: I have 2 numbers: 5314
+  2: I have 2 numbers: 531
+@@ -3295,7 +3295,7 @@ Matched, but too many subsidiary matches
+  
+ /(.*?)(\d*)/
+     I have 2 numbers: 53147
+-Matched, but too many subsidiary matches
++Matched, but offsets vector is too small to show all matches
+  0: I have 2 numbers: 53147
+  1: I have 2 numbers: 5314
+  2: I have 2 numbers: 531
+@@ -7848,7 +7848,7 @@ Error -26 (nested recursion at the same subject position)
+ 
+ /(a+)/
+     \O6aaaa
+-Matched, but too many subsidiary matches
++Matched, but offsets vector is too small to show all matches
+  0: aaaa
+  1: aaa
+  2: aa
+@@ -8016,4 +8016,8 @@ Error -30 (invalid data in workspace for DFA restart)
+  0: xx\xa0xxxxxabcd
+  1: xx\xa0xxxxxabc
+ 
++/abcd/
++    abcd\O0
++Matched, but offsets vector is too small to show all matches
++
+ /-- End of testinput8 --/
+diff --git a/testdata/testoutput9 b/testdata/testoutput9
+index 95cd618..0bb101a 100644
+--- a/testdata/testoutput9
++++ b/testdata/testoutput9
+@@ -434,7 +434,7 @@ No match
+ 
+ /\D*/8
+   aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+-Matched, but too many subsidiary matches
++Matched, but offsets vector is too small to show all matches
+  0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  1: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  2: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+@@ -460,7 +460,7 @@ Matched, but too many subsidiary matches
+ 
+ /\D*/8
+   \x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}
+-Matched, but too many subsidiary matches
++Matched, but offsets vector is too small to show all matches
+  0: \x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}
+  1: \x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}
+  2: \x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}\x{100}
+-- 
+1.8.1.4
+

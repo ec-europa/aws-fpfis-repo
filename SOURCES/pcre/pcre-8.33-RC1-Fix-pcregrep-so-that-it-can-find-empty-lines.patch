@@ -1,0 +1,147 @@
+From 038a52f90a30d93c5688a882620bfd392f386076 Mon Sep 17 00:00:00 2001
+From: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date: Fri, 10 May 2013 11:40:06 +0000
+Subject: [PATCH] Fix pcregrep so that it can find empty lines.
+
+git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1324 2f5784b3-3f2a-0410-8824-cb99058d5e15
+
+Petr Pisar: Ported to 8.33-RC1.
+
+diff --git a/RunGrepTest b/RunGrepTest
+index 94fd808..daaf8af 100755
+--- a/RunGrepTest
++++ b/RunGrepTest
+@@ -486,6 +486,22 @@ echo "---------------------------- Test 101 ------------------------------" >>te
+ (cd $srcdir; $valgrind $pcregrep -o3 -Ho2 -o12 --only-matching=1 -o3 --colour=always --om-separator='|' '(\w+) binary (\w+)(\.)?' ./testdata/grepinput) >>testtry
+ echo "RC=$?" >>testtry
+ 
++echo "---------------------------- Test 102 -----------------------------" >>testtry
++(cd $srcdir; $valgrind $pcregrep -n "^$" ./testdata/grepinput3) >>testtry 2>&1
++echo "RC=$?" >>testtry
++
++echo "---------------------------- Test 103 -----------------------------" >>testtry
++(cd $srcdir; $valgrind $pcregrep --only-matching "^$" ./testdata/grepinput3) >>testtry 2>&1
++echo "RC=$?" >>testtry
++
++echo "---------------------------- Test 104 -----------------------------" >>testtry
++(cd $srcdir; $valgrind $pcregrep -n --only-matching "^$" ./testdata/grepinput3) >>testtry 2>&1
++echo "RC=$?" >>testtry
++
++echo "---------------------------- Test 105 -----------------------------" >>testtry
++(cd $srcdir; $valgrind $pcregrep --colour=always "ipsum|" ./testdata/grepinput3) >>testtry 2>&1
++echo "RC=$?" >>testtry
++
+ 
+ # Now compare the results.
+ 
+diff --git a/pcregrep.c b/pcregrep.c
+index 2e0dc03..1d20733 100644
+--- a/pcregrep.c
++++ b/pcregrep.c
+@@ -1378,6 +1378,7 @@ to find all possible matches.
+ Arguments:
+   matchptr     the start of the subject
+   length       the length of the subject to match
++  options      options for pcre_exec 
+   startoffset  where to start matching
+   offsets      the offets vector to fill in
+   mrc          address of where to put the result of pcre_exec()
+@@ -1388,8 +1389,8 @@ Returns:      TRUE if there was a match
+ */
+ 
+ static BOOL
+-match_patterns(char *matchptr, size_t length, int startoffset, int *offsets,
+-  int *mrc)
++match_patterns(char *matchptr, size_t length, unsigned int options, 
++  int startoffset, int *offsets, int *mrc)
+ {
+ int i;
+ size_t slen = length;
+@@ -1404,7 +1405,7 @@ if (slen > 200)
+ for (i = 1; p != NULL; p = p->next, i++)
+   {
+   *mrc = pcre_exec(p->compiled, p->hint, matchptr, (int)length,
+-    startoffset, PCRE_NOTEMPTY, offsets, OFFSET_SIZE);
++    startoffset, options, offsets, OFFSET_SIZE);
+   if (*mrc >= 0) return TRUE;
+   if (*mrc == PCRE_ERROR_NOMATCH) continue;
+   fprintf(stderr, "pcregrep: pcre_exec() gave error %d while matching ", *mrc);
+@@ -1539,6 +1540,7 @@ while (ptr < endptr)
+   int endlinelength;
+   int mrc = 0;
+   int startoffset = 0;
++  unsigned int options = 0; 
+   BOOL match;
+   char *matchptr = ptr;
+   char *t = ptr;
+@@ -1628,9 +1630,12 @@ while (ptr < endptr)
+ 
+   /* Run through all the patterns until one matches or there is an error other
+   than NOMATCH. This code is in a subroutine so that it can be re-used for
+-  finding subsequent matches when colouring matched lines. */
++  finding subsequent matches when colouring matched lines. After finding one 
++  match, set PCRE_NOTEMPTY to disable any further matches of null strings in 
++  this line. */
+ 
+-  match = match_patterns(matchptr, length, startoffset, offsets, &mrc);
++  match = match_patterns(matchptr, length, options, startoffset, offsets, &mrc);
++  options = PCRE_NOTEMPTY;
+ 
+   /* If it's a match or a not-match (as required), do what's wanted. */
+ 
+@@ -1871,7 +1876,8 @@ while (ptr < endptr)
+           {
+           startoffset = offsets[1];
+           if (startoffset >= (int)linelength + endlinelength ||
+-              !match_patterns(matchptr, length, startoffset, offsets, &mrc))
++              !match_patterns(matchptr, length, options, startoffset, offsets,
++                &mrc))
+             break;
+           FWRITE(matchptr + startoffset, 1, offsets[0] - startoffset, stdout);
+           fprintf(stdout, "%c[%sm", 0x1b, colour_string);
+diff --git a/testdata/grepoutput b/testdata/grepoutput
+index 733b9d6..cf04091 100644
+--- a/testdata/grepoutput
++++ b/testdata/grepoutput
+@@ -705,3 +705,38 @@ RC=0
+ ./testdata/grepinput:[1;31mzero[00m|[1;31ma[00m
+ ./testdata/grepinput:[1;31m.[00m|[1;31mzero[00m|[1;31mthe[00m|[1;31m.[00m
+ RC=0
++---------------------------- Test 102 -----------------------------
++2:
++5:
++7:
++9:
++12:
++14:
++RC=0
++---------------------------- Test 103 -----------------------------
++RC=0
++---------------------------- Test 104 -----------------------------
++2:
++5:
++7:
++9:
++12:
++14:
++RC=0
++---------------------------- Test 105 -----------------------------
++[1;31m[00mtriple:	t1_txt	s1_tag	s_txt	p_tag	p_txt	o_tag	o_txt
++[1;31m[00m
++[1;31m[00mtriple:	t2_txt	s1_tag	s_txt	p_tag	p_txt	o_tag	
++[1;31m[00mLorem [1;31mipsum[00m dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
++[1;31m[00m
++[1;31m[00mtriple:	t3_txt	s2_tag	s_txt	p_tag	p_txt	o_tag	o_txt
++[1;31m[00m
++[1;31m[00mtriple:	t4_txt	s1_tag	s_txt	p_tag	p_txt	o_tag	o_txt
++[1;31m[00m
++[1;31m[00mtriple:	t5_txt	s1_tag	s_txt	p_tag	p_txt	o_tag	
++[1;31m[00mo_txt
++[1;31m[00m
++[1;31m[00mtriple:	t6_txt	s2_tag	s_txt	p_tag	p_txt	o_tag	o_txt
++[1;31m[00m
++[1;31m[00mtriple:	t7_txt	s1_tag	s_txt	p_tag	p_txt	o_tag	o_txt
++RC=0
+-- 
+1.8.1.4
+

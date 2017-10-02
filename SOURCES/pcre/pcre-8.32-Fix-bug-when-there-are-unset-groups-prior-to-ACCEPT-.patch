@@ -1,0 +1,78 @@
+From 69285b9e6fa30790d5fc0bcb3d2bcb1713836093 Mon Sep 17 00:00:00 2001
+From: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date: Wed, 5 Nov 2014 15:08:03 +0000
+Subject: [PATCH] Fix bug when there are unset groups prior to (*ACCEPT) within
+ a capturing group.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1510 2f5784b3-3f2a-0410-8824-cb99058d5e15
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+
+Petr Pisar: Ported to 8.32
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ pcre_exec.c          | 13 ++++++++++++-
+ testdata/testinput1  |  3 +++
+ testdata/testoutput1 |  9 +++++++++
+ 3 files changed, 24 insertions(+), 1 deletion(-)
+
+diff --git a/pcre_exec.c b/pcre_exec.c
+index 478a026..74a2b49 100644
+--- a/pcre_exec.c
++++ b/pcre_exec.c
+@@ -1539,7 +1539,18 @@ for (;;)
+       md->offset_vector[offset] =
+         md->offset_vector[md->offset_end - number];
+       md->offset_vector[offset+1] = (int)(eptr - md->start_subject);
+-      if (offset_top <= offset) offset_top = offset + 2;
++
++      /* If this group is at or above the current highwater mark, ensure that
++      any groups between the current high water mark and this group are marked
++      unset and then update the high water mark. */
++
++      if (offset >= offset_top)
++        {
++        register int *iptr = md->offset_vector + offset_top;
++        register int *iend = md->offset_vector + offset;
++        while (iptr < iend) *iptr++ = -1;
++        offset_top = offset + 2;
++        }
+       }
+     ecode += 1 + IMM2_SIZE;
+     break;
+diff --git a/testdata/testinput1 b/testdata/testinput1
+index c248758..3e1061e 100644
+--- a/testdata/testinput1
++++ b/testdata/testinput1
+@@ -5318,4 +5318,7 @@ name were given. ---/
+ '\A(?:[^\"]++|\"(?:[^\"]++|\"\")++\")++'
+     NON QUOTED \"QUOT\"\"ED\" AFTER \"NOT MATCHED
+ 
++/(?:((abcd))|(((?:(?:(?:(?:abc|(?:abcdef))))b)abcdefghi)abc)|((*ACCEPT)))/
++    1234abcd
++
+ /-- End of testinput1 --/
+diff --git a/testdata/testoutput1 b/testdata/testoutput1
+index 9741d1a..5015448 100644
+--- a/testdata/testoutput1
++++ b/testdata/testoutput1
+@@ -8815,4 +8815,13 @@ No match
+     NON QUOTED \"QUOT\"\"ED\" AFTER \"NOT MATCHED
+  0: NON QUOTED "QUOT""ED" AFTER 
+ 
++/(?:((abcd))|(((?:(?:(?:(?:abc|(?:abcdef))))b)abcdefghi)abc)|((*ACCEPT)))/
++    1234abcd
++ 0: 
++ 1: <unset>
++ 2: <unset>
++ 3: <unset>
++ 4: <unset>
++ 5: 
++
+ /-- End of testinput1 --/
+-- 
+2.1.0
+

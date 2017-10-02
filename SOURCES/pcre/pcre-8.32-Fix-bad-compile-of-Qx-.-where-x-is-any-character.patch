@@ -1,0 +1,68 @@
+From 5561a6a57fc7f663e9d88e9d1beab4de8725f49a Mon Sep 17 00:00:00 2001
+From: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date: Wed, 18 Jun 2014 17:17:03 +0000
+Subject: [PATCH] Fix bad compile of [\Qx]... where x is any character.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1487 2f5784b3-3f2a-0410-8824-cb99058d5e15
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+
+Petr Pisar: Ported to 8.32.
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ pcre_compile.c       | 2 +-
+ testdata/testinput1  | 6 ++++++
+ testdata/testoutput1 | 8 ++++++++
+ 3 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/pcre_compile.c b/pcre_compile.c
+index 7a2d7c7..8926099 100644
+--- a/pcre_compile.c
++++ b/pcre_compile.c
+@@ -4543,7 +4543,7 @@ for (;; ptr++)
+       whatever repeat count may follow. In the case of reqchar, save the
+       previous value for reinstating. */
+ 
+-      if (class_one_char == 1 && ptr[1] == CHAR_RIGHT_SQUARE_BRACKET)
++      if (!inescq && class_one_char == 1 && ptr[1] == CHAR_RIGHT_SQUARE_BRACKET)
+         {
+         ptr++;
+         zeroreqchar = reqchar;
+diff --git a/testdata/testinput1 b/testdata/testinput1
+index e6d048a..a125dee 100644
+--- a/testdata/testinput1
++++ b/testdata/testinput1
+@@ -5303,4 +5303,10 @@ name were given. ---/
+ "(?>.*?)foo"
+     abcdfooxyz
+ 
++/[\Qa]\E]+/
++    aa]]
++
++/[\Q]a\E]+/
++    aa]]
++
+ /-- End of testinput1 --/
+diff --git a/testdata/testoutput1 b/testdata/testoutput1
+index 8310e94..69b3d37 100644
+--- a/testdata/testoutput1
++++ b/testdata/testoutput1
+@@ -8795,4 +8795,12 @@ No match
+     abcdfooxyz
+  0: foo
+ 
++/[\Qa]\E]+/
++    aa]]
++ 0: aa]]
++
++/[\Q]a\E]+/
++    aa]]
++ 0: aa]]
++
+ /-- End of testinput1 --/
+-- 
+1.9.3
+

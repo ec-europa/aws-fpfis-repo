@@ -1,0 +1,849 @@
+From d779878352fdce2ca955a5a3135d2c8f2b27ba13 Mon Sep 17 00:00:00 2001
+From: zherczeg <zherczeg@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date: Sun, 22 Dec 2013 16:27:35 +0000
+Subject: [PATCH] A new flag is set, when property checks are present in an
+ XCLASS.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Ported to 8.32:
+
+commit f928c7adccd8daa61e76c22130d79689ec41f21c
+Author: zherczeg <zherczeg@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date:   Sun Dec 22 16:27:35 2013 +0000
+
+    A new flag is set, when property checks are present in an XCLASS.
+
+    git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1414 2f5784b3-3f2a-0410-8824-cb99058d5e15
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ pcre_compile.c        |  52 +++++++++++++++--------
+ pcre_exec.c           |  14 +------
+ pcre_internal.h       |   5 ++-
+ pcre_jit_compile.c    | 114 +++++++++++++++++++++++++++++++++++++-------------
+ pcre_printint.c       |  15 ++++++-
+ pcre_study.c          |  62 ++++++++++++++++++---------
+ pcre_xclass.c         |   5 +++
+ testdata/saved16BE-1  | Bin 402 -> 402 bytes
+ testdata/saved16LE-1  | Bin 402 -> 402 bytes
+ testdata/saved32BE-1  | Bin 544 -> 552 bytes
+ testdata/saved32LE-1  | Bin 544 -> 552 bytes
+ testdata/testoutput17 |   4 +-
+ testdata/testoutput23 |  34 +++++++++++++--
+ testdata/testoutput25 |  34 +++++++++++++--
+ testdata/testoutput5  |  10 ++---
+ testdata/testoutput7  |   4 +-
+ 16 files changed, 256 insertions(+), 97 deletions(-)
+
+diff --git a/pcre_compile.c b/pcre_compile.c
+index 3c75218..962b4d3 100644
+--- a/pcre_compile.c
++++ b/pcre_compile.c
+@@ -3512,6 +3512,7 @@ add_to_class(pcre_uint8 *classbits, pcre_uchar **uchardptr, int options,
+   compile_data *cd, pcre_uint32 start, pcre_uint32 end)
+ {
+ pcre_uint32 c;
++pcre_uint32 classbits_end = (end <= 0xff ? end : 0xff);
+ int n8 = 0;
+ 
+ /* If caseless matching is required, scan the range and process alternate
+@@ -3555,7 +3556,7 @@ if ((options & PCRE_CASELESS) != 0)
+ 
+   /* Not UTF-mode, or no UCP */
+ 
+-  for (c = start; c <= end && c < 256; c++)
++  for (c = start; c <= classbits_end; c++)
+     {
+     SETBIT(classbits, cd->fcc[c]);
+     n8++;
+@@ -3580,20 +3581,19 @@ in all cases. */
+ 
+ #endif /* COMPILE_PCRE[8|16] */
+ 
+-/* If all characters are less than 256, use the bit map. Otherwise use extra
+-data. */
++/* Use the bitmap for characters < 256. Otherwise use extra data.*/
+ 
+-if (end < 0x100)
++for (c = start; c <= classbits_end; c++)
+   {
+-  for (c = start; c <= end; c++)
+-    {
+-    n8++;
+-    SETBIT(classbits, c);
+-    }
++  /* Regardless of start, c will always be <= 255. */
++  SETBIT(classbits, c);
++  n8++;
+   }
+ 
+-else
+-  {
++#if defined SUPPORT_UTF || !defined COMPILE_PCRE8
++if (start <= 0xff) start = 0xff + 1;
++
++if (end >= start) {
+   pcre_uchar *uchardata = *uchardptr;
+ 
+ #ifdef SUPPORT_UTF
+@@ -3635,6 +3635,7 @@ else
+ 
+   *uchardptr = uchardata;   /* Updata extra data pointer */
+   }
++#endif /* SUPPORT_UTF || !COMPILE_PCRE8 */
+ 
+ return n8;    /* Number of 8-bit characters */
+ }
+@@ -3856,6 +3857,9 @@ for (;; ptr++)
+   BOOL reset_bracount;
+   int class_has_8bitchar;
+   int class_one_char;
++#if defined SUPPORT_UTF || !defined COMPILE_PCRE8
++  BOOL xclass_has_prop;
++#endif
+   int newoptions;
+   int recno;
+   int refsign;
+@@ -4161,13 +4165,26 @@ for (;; ptr++)
+ 
+     should_flip_negation = FALSE;
+ 
++    /* Extended class (xclass) will be used when characters > 255
++    might match. */
++
++#if defined SUPPORT_UTF || !defined COMPILE_PCRE8
++    xclass = FALSE;
++    class_uchardata = code + LINK_SIZE + 2;   /* For XCLASS items */
++    class_uchardata_base = class_uchardata;   /* Save the start */
++#endif
++
+     /* For optimization purposes, we track some properties of the class:
+     class_has_8bitchar will be non-zero if the class contains at least one <
+     256 character; class_one_char will be 1 if the class contains just one
+-    character. */
++    character; xclass_has_prop will be TRUE if unicode property checks
++    are present in the class. */
+ 
+     class_has_8bitchar = 0;
+     class_one_char = 0;
++#if defined SUPPORT_UTF || !defined COMPILE_PCRE8
++    xclass_has_prop = FALSE;
++#endif
+ 
+     /* Initialize the 32-char bit map to all zeros. We build the map in a
+     temporary bit of memory, in case the class contains fewer than two
+@@ -4176,12 +4193,6 @@ for (;; ptr++)
+ 
+     memset(classbits, 0, 32 * sizeof(pcre_uint8));
+ 
+-#if defined SUPPORT_UTF || !defined COMPILE_PCRE8
+-    xclass = FALSE;
+-    class_uchardata = code + LINK_SIZE + 2;   /* For XCLASS items */
+-    class_uchardata_base = class_uchardata;   /* Save the start */
+-#endif
+-
+     /* Process characters until ] is reached. By writing this as a "do" it
+     means that an initial ] is taken as a data character. At the start of the
+     loop, c contains the first byte of the character. */
+@@ -4305,6 +4316,7 @@ for (;; ptr++)
+             *class_uchardata++ = local_negate? XCL_NOTPROP : XCL_PROP;
+             *class_uchardata++ = ptype;
+             *class_uchardata++ = 0;
++            xclass_has_prop = TRUE;
+             ptr = tempptr + 1;
+             continue;
+             
+@@ -4490,6 +4502,7 @@ for (;; ptr++)
+                 XCL_PROP : XCL_NOTPROP;
+               *class_uchardata++ = ptype;
+               *class_uchardata++ = pdata;
++              xclass_has_prop = TRUE;
+               class_has_8bitchar--;                /* Undo! */
+               continue;
+               }
+@@ -4767,6 +4780,7 @@ for (;; ptr++)
+       *code++ = OP_XCLASS;
+       code += LINK_SIZE;
+       *code = negate_class? XCL_NOT:0;
++      if (xclass_has_prop) *code |= XCL_HASPROP;
+ 
+       /* If the map is required, move up the extra data to make room for it;
+       otherwise just move the code pointer to the end of the extra data. */
+@@ -4776,6 +4790,8 @@ for (;; ptr++)
+         *code++ |= XCL_MAP;
+         memmove(code + (32 / sizeof(pcre_uchar)), code,
+           IN_UCHARS(class_uchardata - code));
++        if (negate_class && !xclass_has_prop)
++          for (c = 0; c < 32; c++) classbits[c] = ~classbits[c];
+         memcpy(code, classbits, 32);
+         code = class_uchardata + (32 / sizeof(pcre_uchar));
+         }
+diff --git a/pcre_exec.c b/pcre_exec.c
+index 74a2b49..48d9199 100644
+--- a/pcre_exec.c
++++ b/pcre_exec.c
+@@ -6732,18 +6732,8 @@ for(;;)
+ #ifndef COMPILE_PCRE8
+         if (c > 255) c = 255;
+ #endif
+-        if ((start_bits[c/8] & (1 << (c&7))) == 0)
+-          {
+-          start_match++;
+-#if defined SUPPORT_UTF && defined COMPILE_PCRE8
+-          /* In non 8-bit mode, the iteration will stop for
+-          characters > 255 at the beginning or not stop at all. */
+-          if (utf)
+-            ACROSSCHAR(start_match < end_subject, *start_match,
+-              start_match++);
+-#endif
+-          }
+-        else break;
++        if ((start_bits[c/8] & (1 << (c&7))) != 0) break;
++        start_match++;
+         }
+       }
+     }   /* Starting optimizations */
+diff --git a/pcre_internal.h b/pcre_internal.h
+index 389848f..10bd911 100644
+--- a/pcre_internal.h
++++ b/pcre_internal.h
+@@ -1849,8 +1849,9 @@ table. */
+ /* Flag bits and data types for the extended class (OP_XCLASS) for classes that
+ contain characters with values greater than 255. */
+ 
+-#define XCL_NOT    0x01    /* Flag: this is a negative class */
+-#define XCL_MAP    0x02    /* Flag: a 32-byte map is present */
++#define XCL_NOT       0x01    /* Flag: this is a negative class */
++#define XCL_MAP       0x02    /* Flag: a 32-byte map is present */
++#define XCL_HASPROP   0x04    /* Flag: property checks are present. */
+ 
+ #define XCL_END       0    /* Marks end of individual items */
+ #define XCL_SINGLE    1    /* Single item (one multibyte char) follows */
+diff --git a/pcre_jit_compile.c b/pcre_jit_compile.c
+index 5f74833..e425b91 100644
+--- a/pcre_jit_compile.c
++++ b/pcre_jit_compile.c
+@@ -2877,7 +2877,7 @@ if (firstline)
+   OP1(SLJIT_MOV, STR_END, 0, TMP3, 0);
+ }
+ 
+-static SLJIT_INLINE void fast_forward_start_bits(compiler_common *common, sljit_uw start_bits, BOOL firstline)
++static SLJIT_INLINE void fast_forward_start_bits(compiler_common *common, pcre_uint8 *start_bits, BOOL firstline)
+ {
+ DEFINE_COMPILER;
+ struct sljit_label *start;
+@@ -2908,7 +2908,7 @@ JUMPHERE(jump);
+ #endif
+ OP2(SLJIT_AND, TMP2, 0, TMP1, 0, SLJIT_IMM, 0x7);
+ OP2(SLJIT_LSHR, TMP1, 0, TMP1, 0, SLJIT_IMM, 3);
+-OP1(SLJIT_MOV_UB, TMP1, 0, SLJIT_MEM1(TMP1), start_bits);
++OP1(SLJIT_MOV_UB, TMP1, 0, SLJIT_MEM1(TMP1), (sljit_sw)start_bits);
+ OP2(SLJIT_SHL, TMP2, 0, SLJIT_IMM, 1, TMP2, 0);
+ OP2(SLJIT_AND | SLJIT_SET_E, SLJIT_UNUSED, 0, TMP1, 0, TMP2, 0);
+ found = JUMP(SLJIT_C_NOT_ZERO);
+@@ -3194,8 +3194,40 @@ switch(ranges[0])
+   case 2:
+   if (readch)
+     read_char(common);
+-  OP2(SLJIT_SUB, TMP1, 0, TMP1, 0, SLJIT_IMM, ranges[2]);
+-  add_jump(compiler, backtracks, CMP(ranges[1] != 0 ? SLJIT_C_LESS : SLJIT_C_GREATER_EQUAL, TMP1, 0, SLJIT_IMM, ranges[3] - ranges[2]));
++  if (ranges[2] + 1 != ranges[3])
++    {
++    OP2(SLJIT_SUB, TMP1, 0, TMP1, 0, SLJIT_IMM, ranges[2]);
++    add_jump(compiler, backtracks, CMP(ranges[1] != 0 ? SLJIT_C_LESS : SLJIT_C_GREATER_EQUAL, TMP1, 0, SLJIT_IMM, ranges[3] - ranges[2]));
++    }
++  else
++    add_jump(compiler, backtracks, CMP(ranges[1] != 0 ? SLJIT_C_EQUAL : SLJIT_C_NOT_EQUAL, TMP1, 0, SLJIT_IMM, ranges[2]));
++  return TRUE;
++
++  case 3:
++  if (readch)
++    read_char(common);
++  if (ranges[1] != 0)
++    {
++    add_jump(compiler, backtracks, CMP(SLJIT_C_GREATER_EQUAL, TMP1, 0, SLJIT_IMM, ranges[4]));
++    if (ranges[2] + 1 != ranges[3])
++      {
++      OP2(SLJIT_SUB, TMP1, 0, TMP1, 0, SLJIT_IMM, ranges[2]);
++      add_jump(compiler, backtracks, CMP(SLJIT_C_LESS, TMP1, 0, SLJIT_IMM, ranges[3] - ranges[2]));
++      }
++    else
++      add_jump(compiler, backtracks, CMP(SLJIT_C_EQUAL, TMP1, 0, SLJIT_IMM, ranges[2]));
++    }
++  else
++    {
++    add_jump(compiler, backtracks, CMP(SLJIT_C_LESS, TMP1, 0, SLJIT_IMM, ranges[2]));
++    if (ranges[3] + 1 != ranges[4])
++      {
++      OP2(SLJIT_SUB, TMP1, 0, TMP1, 0, SLJIT_IMM, ranges[3]);
++      add_jump(compiler, backtracks, CMP(SLJIT_C_LESS, TMP1, 0, SLJIT_IMM, ranges[4] - ranges[3]));
++      }
++    else
++      add_jump(compiler, backtracks, CMP(SLJIT_C_EQUAL, TMP1, 0, SLJIT_IMM, ranges[3]));
++    }
+   return TRUE;
+ 
+   case 4:
+@@ -3264,15 +3296,15 @@ if (bit != 0)
+ ranges[0] = length;
+ }
+ 
+-static BOOL check_class_ranges(compiler_common *common, const pcre_uint8 *bits, BOOL nclass, jump_list **backtracks)
++static BOOL check_class_ranges(compiler_common *common, const pcre_uint8 *bits, BOOL nclass, BOOL invert, jump_list **backtracks)
+ {
+ int ranges[2 + MAX_RANGE_SIZE];
+ pcre_uint8 bit, cbit, all;
+ int i, byte, length = 0;
+ 
+ bit = bits[0] & 0x1;
+-ranges[1] = bit;
+-/* Can be 0 or 255. */
++ranges[1] = !invert ? bit : (bit ^ 0x1);
++/* All bits will be zero or one (since bit is zero or one). */
+ all = -bit;
+ 
+ for (i = 0; i < 256; )
+@@ -3693,7 +3725,7 @@ static void compile_xclass_matchingpath(compiler_common *common, pcre_uchar *cc,
+ {
+ DEFINE_COMPILER;
+ jump_list *found = NULL;
+-jump_list **list = (*cc & XCL_NOT) == 0 ? &found : backtracks;
++jump_list **list = (cc[0] & XCL_NOT) == 0 ? &found : backtracks;
+ pcre_int32 c, charoffset;
+ const pcre_uint32 *other_cases;
+ struct sljit_jump *jump = NULL;
+@@ -3712,36 +3744,62 @@ pcre_int32 typeoffset;
+ detect_partial_match(common, backtracks);
+ read_char(common);
+ 
+-if ((*cc++ & XCL_MAP) != 0)
++cc++;
++if ((cc[-1] & XCL_HASPROP) == 0)
+   {
+-  OP1(SLJIT_MOV, TMP3, 0, TMP1, 0);
+-#ifndef COMPILE_PCRE8
+-  jump = CMP(SLJIT_C_GREATER, TMP1, 0, SLJIT_IMM, 255);
+-#elif defined SUPPORT_UTF
+-  if (common->utf)
+-    jump = CMP(SLJIT_C_GREATER, TMP1, 0, SLJIT_IMM, 255);
++  if ((cc[-1] & XCL_MAP) != 0)
++    {
++    OP1(SLJIT_MOV, TMP3, 0, TMP1, 0);
++#ifdef SUPPORT_UCP
++    charsaved = TRUE;
+ #endif
++    if (!check_class_ranges(common, (const pcre_uint8 *)cc, TRUE, FALSE, backtracks))
++      {
++      jump = CMP(SLJIT_C_GREATER, TMP1, 0, SLJIT_IMM, 255);
++
++      OP2(SLJIT_AND, TMP2, 0, TMP1, 0, SLJIT_IMM, 0x7);
++      OP2(SLJIT_LSHR, TMP1, 0, TMP1, 0, SLJIT_IMM, 3);
++      OP1(SLJIT_MOV_UB, TMP1, 0, SLJIT_MEM1(TMP1), (sljit_sw)cc);
++      OP2(SLJIT_SHL, TMP2, 0, SLJIT_IMM, 1, TMP2, 0);
++      OP2(SLJIT_AND | SLJIT_SET_E, SLJIT_UNUSED, 0, TMP1, 0, TMP2, 0);
++      add_jump(compiler, &found, JUMP(SLJIT_C_NOT_ZERO));
++      add_jump(compiler, backtracks, JUMP(SLJIT_JUMP));
++
++      JUMPHERE(jump);
++      }
++    else
++      add_jump(compiler, &found, CMP(SLJIT_C_LESS_EQUAL, TMP3, 0, SLJIT_IMM, 0xff));
+ 
+-  if (!check_class_ranges(common, (const pcre_uint8 *)cc, TRUE, list))
++    OP1(SLJIT_MOV, TMP1, 0, TMP3, 0);
++    cc += 32 / sizeof(pcre_uchar);
++    }
++  else
++    add_jump(compiler, (cc[-1] & XCL_NOT) == 0 ? backtracks : &found, CMP(SLJIT_C_LESS_EQUAL, TMP1, 0, SLJIT_IMM, 0xff));
++  }
++else if ((cc[-1] & XCL_MAP) != 0)
++  {
++  OP1(SLJIT_MOV, TMP3, 0, TMP1, 0);
++#ifdef SUPPORT_UCP
++  charsaved = TRUE;
++#endif
++  if (!check_class_ranges(common, (const pcre_uint8 *)cc, FALSE, TRUE, list))
+     {
++#ifdef COMPILE_PCRE8
++    SLJIT_ASSERT(common->utf);
++#endif
++    jump = CMP(SLJIT_C_GREATER, TMP1, 0, SLJIT_IMM, 255);
++
+     OP2(SLJIT_AND, TMP2, 0, TMP1, 0, SLJIT_IMM, 0x7);
+     OP2(SLJIT_LSHR, TMP1, 0, TMP1, 0, SLJIT_IMM, 3);
+     OP1(SLJIT_MOV_UB, TMP1, 0, SLJIT_MEM1(TMP1), (sljit_sw)cc);
+     OP2(SLJIT_SHL, TMP2, 0, SLJIT_IMM, 1, TMP2, 0);
+     OP2(SLJIT_AND | SLJIT_SET_E, SLJIT_UNUSED, 0, TMP1, 0, TMP2, 0);
+     add_jump(compiler, list, JUMP(SLJIT_C_NOT_ZERO));
+-    }
+ 
+-#ifndef COMPILE_PCRE8
+-  JUMPHERE(jump);
+-#elif defined SUPPORT_UTF
+-  if (common->utf)
+     JUMPHERE(jump);
+-#endif
++    }
++
+   OP1(SLJIT_MOV, TMP1, 0, TMP3, 0);
+-#ifdef SUPPORT_UCP
+-  charsaved = TRUE;
+-#endif
+   cc += 32 / sizeof(pcre_uchar);
+   }
+ 
+@@ -4278,7 +4336,7 @@ switch(type)
+ #ifdef SUPPORT_UCP
+   case OP_NOTPROP:
+   case OP_PROP:
+-  propdata[0] = 0;
++  propdata[0] = XCL_HASPROP;
+   propdata[1] = type == OP_NOTPROP ? XCL_NOTPROP : XCL_PROP;
+   propdata[2] = cc[0];
+   propdata[3] = cc[1];
+@@ -4636,7 +4694,7 @@ switch(type)
+   case OP_NCLASS:
+   detect_partial_match(common, backtracks);
+   read_char(common);
+-  if (check_class_ranges(common, (const pcre_uint8 *)cc, type == OP_NCLASS, backtracks))
++  if (check_class_ranges(common, (const pcre_uint8 *)cc, type == OP_NCLASS, FALSE, backtracks))
+     return cc + 32 / sizeof(pcre_uchar);
+ 
+ #if defined SUPPORT_UTF || !defined COMPILE_PCRE8
+@@ -8033,7 +8091,7 @@ if ((re->options & PCRE_ANCHORED) == 0)
+     else if ((re->flags & PCRE_STARTLINE) != 0)
+       fast_forward_newline(common, (re->options & PCRE_FIRSTLINE) != 0);
+     else if ((re->flags & PCRE_STARTLINE) == 0 && study != NULL && (study->flags & PCRE_STUDY_MAPPED) != 0)
+-      fast_forward_start_bits(common, (sljit_uw)study->start_bits, (re->options & PCRE_FIRSTLINE) != 0);
++      fast_forward_start_bits(common, study->start_bits, (re->options & PCRE_FIRSTLINE) != 0);
+     }
+   }
+ if (common->req_char_ptr != 0)
+diff --git a/pcre_printint.c b/pcre_printint.c
+index c6dcbe6..a71b3b6 100644
+--- a/pcre_printint.c
++++ b/pcre_printint.c
+@@ -619,7 +619,9 @@ for(;;)
+       int i;
+       unsigned int min, max;
+       BOOL printmap;
++      BOOL invertmap = FALSE;
+       pcre_uint8 *map;
++      pcre_uint8 inverted_map[32];
+ 
+       fprintf(f, "    [");
+ 
+@@ -628,7 +630,12 @@ for(;;)
+         extra = GET(code, 1);
+         ccode = code + LINK_SIZE + 1;
+         printmap = (*ccode & XCL_MAP) != 0;
+-        if ((*ccode++ & XCL_NOT) != 0) fprintf(f, "^");
++        if ((*ccode & XCL_NOT) != 0)
++          {
++          invertmap = (*ccode & XCL_HASPROP) == 0;
++          fprintf(f, "^");
++          }
++        ccode++;
+         }
+       else
+         {
+@@ -641,6 +648,12 @@ for(;;)
+       if (printmap)
+         {
+         map = (pcre_uint8 *)ccode;
++        if (invertmap)
++          {
++          for (i = 0; i < 32; i++) inverted_map[i] = ~map[i];
++          map = inverted_map;
++          }
++
+         for (i = 0; i < 256; i++)
+           {
+           if ((map[i/8] & (1 << (i&7))) != 0)
+diff --git a/pcre_study.c b/pcre_study.c
+index 12d2a66..2d11d87 100644
+--- a/pcre_study.c
++++ b/pcre_study.c
+@@ -835,9 +835,6 @@ do
+       case OP_SOM:
+       case OP_THEN:
+       case OP_THEN_ARG:
+-#if defined SUPPORT_UTF || !defined COMPILE_PCRE8
+-      case OP_XCLASS:
+-#endif
+       return SSB_FAIL;
+ 
+       /* We can ignore word boundary tests. */
+@@ -1221,6 +1218,16 @@ do
+       with a value >= 0xc4 is a potentially valid starter because it starts a
+       character with a value > 255. */
+ 
++#if defined SUPPORT_UTF || !defined COMPILE_PCRE8
++      case OP_XCLASS:
++      if ((tcode[1 + LINK_SIZE] & XCL_HASPROP) != 0)
++        return SSB_FAIL;
++      /* All bits are set. */
++      if ((tcode[1 + LINK_SIZE] & XCL_MAP) == 0 && (tcode[1 + LINK_SIZE] & XCL_NOT) != 0)
++        return SSB_FAIL;
++#endif
++      /* Fall through */
++
+       case OP_NCLASS:
+ #if defined SUPPORT_UTF && defined COMPILE_PCRE8
+       if (utf)
+@@ -1237,8 +1244,21 @@ do
+       case OP_CLASS:
+         {
+         pcre_uint8 *map;
+-        tcode++;
+-        map = (pcre_uint8 *)tcode;
++#if defined SUPPORT_UTF || !defined COMPILE_PCRE8
++        map = NULL;
++        if (*tcode == OP_XCLASS)
++          {
++          if ((tcode[1 + LINK_SIZE] & XCL_MAP) != 0)
++            map = (pcre_uint8 *)(tcode + 1 + LINK_SIZE + 1);
++          tcode += GET(tcode, 1);
++          }
++        else
++#endif
++          {
++          tcode++;
++          map = (pcre_uint8 *)tcode;
++          tcode += 32 / sizeof(pcre_uchar);
++          }
+ 
+         /* In UTF-8 mode, the bits in a bit map correspond to character
+         values, not to byte values. However, the bit map we are constructing is
+@@ -1246,31 +1266,35 @@ do
+         value is > 127. In fact, there are only two possible starting bytes for
+         characters in the range 128 - 255. */
+ 
+-#if defined SUPPORT_UTF && defined COMPILE_PCRE8
+-        if (utf)
++#if defined SUPPORT_UTF || !defined COMPILE_PCRE8
++        if (map != NULL)
++#endif
+           {
+-          for (c = 0; c < 16; c++) start_bits[c] |= map[c];
+-          for (c = 128; c < 256; c++)
++#if defined SUPPORT_UTF && defined COMPILE_PCRE8
++          if (utf)
+             {
+-            if ((map[c/8] && (1 << (c&7))) != 0)
++            for (c = 0; c < 16; c++) start_bits[c] |= map[c];
++            for (c = 128; c < 256; c++)
+               {
+-              int d = (c >> 6) | 0xc0;            /* Set bit for this starter */
+-              start_bits[d/8] |= (1 << (d&7));    /* and then skip on to the */
+-              c = (c & 0xc0) + 0x40 - 1;          /* next relevant character. */
++              if ((map[c/8] && (1 << (c&7))) != 0)
++                {
++                int d = (c >> 6) | 0xc0;            /* Set bit for this starter */
++                start_bits[d/8] |= (1 << (d&7));    /* and then skip on to the */
++                c = (c & 0xc0) + 0x40 - 1;          /* next relevant character. */
++                }
+               }
+             }
+-          }
+-        else
++          else
+ #endif
+-          {
+-          /* In non-UTF-8 mode, the two bit maps are completely compatible. */
+-          for (c = 0; c < 32; c++) start_bits[c] |= map[c];
++            {
++            /* In non-UTF-8 mode, the two bit maps are completely compatible. */
++            for (c = 0; c < 32; c++) start_bits[c] |= map[c];
++            }
+           }
+ 
+         /* Advance past the bit map, and act on what follows. For a zero
+         minimum repeat, continue; otherwise stop processing. */
+ 
+-        tcode += 32 / sizeof(pcre_uchar);
+         switch (*tcode)
+           {
+           case OP_CRSTAR:
+diff --git a/pcre_xclass.c b/pcre_xclass.c
+index dd7008a..bbde1c3 100644
+--- a/pcre_xclass.c
++++ b/pcre_xclass.c
+@@ -81,6 +81,11 @@ additional data. */
+ 
+ if (c < 256)
+   {
++  if ((*data & XCL_HASPROP) == 0)
++    {
++    if ((*data & XCL_MAP) == 0) return negated;
++    return (((pcre_uint8 *)(data + 1))[c/8] & (1 << (c&7))) != 0;
++    }
+   if ((*data & XCL_MAP) != 0 &&
+     (((pcre_uint8 *)(data + 1))[c/8] & (1 << (c&7))) != 0)
+     return !negated; /* char found */
+diff --git a/testdata/saved16BE-1 b/testdata/saved16BE-1
+index 297f2f2f06300780b83aa64af93e56e7174bc745..4e9a5fffcd14701d14611fa7e47116175c9e152d 100644
+GIT binary patch
+delta 97
+zcmbQlJc)V2kFftx@b~}m{~(MG7#KMi7?^G_-2czOz);Gd&XB_(!NC0g-~a#L(Ul_c
+JC;KtF004^`M^*p;
+
+delta 74
+zcmbQlJc)V24{HV}U}CUf0AUQk$icwCbc5mkf1pe$gE~VFg9HOJ10w?i$K*mrnaTc)
+F&Hz>236=l=
+
+diff --git a/testdata/saved16LE-1 b/testdata/saved16LE-1
+index deb44919bbbc263c227c51454f2dd25d582c7a6b..a3dfe05565b5e3f8e8fffd4791531165ca3fa95c 100644
+GIT binary patch
+delta 97
+zcmbQlJc)V2kFftx@b~}m{~(MG7#SEim>3vt{J+n@P|Bdrki#Isz|8Rf-~a#L(Ul_c
+JC;KtF004`CM^*p;
+
+delta 74
+zcmbQlJc)V24{HV}U}CUf0AX~%$iTqC#K3Ul|9u9AQU-N~90mynW(Ee3@Z>^9>B)YK
+FE&x_M36%f<
+
+diff --git a/testdata/saved32BE-1 b/testdata/saved32BE-1
+index 42af7b42b026869ac20fae8a78430470c298a8e3..3da404b8cd5982b17eb3e1e84baf8f83d3b4971e 100644
+GIT binary patch
+delta 120
+zcmZ3$vVui`fr0T00|SFjfOC*5h&@q2l$DQxoq=gGBa`GrYf+Z}K(H}{g;4>-0D-^%
+dkApFUhae|cFzP7$|M&m@cZ3)QYw{7s7yw1mPJ93W
+
+delta 84
+zcmZ3%vVcW^fr0T20|SFjfOC*5h&@q2l$D2poq=hhks1q7f?;C}3nM>>0Rl`679c!X
+ckV#~6GovOe10w?i2aqQ=S%Hat@;SyR05;DJ9{>OV
+
+diff --git a/testdata/saved32LE-1 b/testdata/saved32LE-1
+index a4044fd17483cc002bb94b3ba83e7cb347ec3a49..6ba74dafd9606361f94e89b2c0cc16892108f6e7 100644
+GIT binary patch
+delta 109
+zcmZ3$vVw(|fr0T00|SGOYmjrmmx;XMtb7dY3`~<5nZ!3*C@?Dghl0QVkN*c@bTGMs
+VQAgqbzyJTgqst)iCm&&q0RVZWNt6Hp
+
+delta 71
+zcmZ3%vVet`fr0T20|SGOYmjrmn~A*QtUL_t3``ph^%?nr!eGF}V8H;y6ZJ(Ww=in3
+VGB7eQa7<=olAh?mGWh~y1OUEm3|0UD
+
+diff --git a/testdata/testoutput17 b/testdata/testoutput17
+index ef82dc9..071539a 100644
+--- a/testdata/testoutput17
++++ b/testdata/testoutput17
+@@ -290,7 +290,7 @@ No options
+ No first char
+ No need char
+ Subject length lower bound = 1
+-No set of starting bytes
++Starting byte set: \x09 \x20 \xa0 \xff 
+     \x{1681}\x{200b}\x{1680}\x{2000}\x{202f}\x{3000}
+  0: \x{1680}\x{2000}\x{202f}\x{3000}
+     \x{3001}\x{2fff}\x{200a}\xa0\x{2000}
+@@ -346,7 +346,7 @@ No options
+ No first char
+ No need char
+ Subject length lower bound = 1
+-No set of starting bytes
++Starting byte set: \x0a \x0b \x0c \x0d \x85 \xff 
+     \x{2027}\x{2030}\x{2028}\x{2029}
+  0: \x{2028}\x{2029}
+     \x09\x0e\x84\x86\x85\x0a\x0b\x0c\x0d
+diff --git a/testdata/testoutput23 b/testdata/testoutput23
+index 7b3634c..f7b6f31 100644
+--- a/testdata/testoutput23
++++ b/testdata/testoutput23
+@@ -14,7 +14,7 @@ Failed: character value in \x{...} sequence is too large at offset 8
+ /[\H]/BZSI
+ ------------------------------------------------------------------
+         Bra
+-        [\x00-\x08\x0a-\x1f!-\x9f\x{a1}-\x{167f}\x{1681}-\x{180d}\x{180f}-\x{1fff}\x{200b}-\x{202e}\x{2030}-\x{205e}\x{2060}-\x{2fff}\x{3001}-\x{ffff}]
++        [\x00-\x08\x0a-\x1f!-\x9f\xa1-\xff\x{100}-\x{167f}\x{1681}-\x{180d}\x{180f}-\x{1fff}\x{200b}-\x{202e}\x{2030}-\x{205e}\x{2060}-\x{2fff}\x{3001}-\x{ffff}]
+         Ket
+         End
+ ------------------------------------------------------------------
+@@ -23,12 +23,25 @@ No options
+ No first char
+ No need char
+ Subject length lower bound = 1
+-No set of starting bytes
++Starting byte set: \x00 \x01 \x02 \x03 \x04 \x05 \x06 \x07 \x08 \x0a \x0b 
++  \x0c \x0d \x0e \x0f \x10 \x11 \x12 \x13 \x14 \x15 \x16 \x17 \x18 \x19 \x1a 
++  \x1b \x1c \x1d \x1e \x1f ! " # $ % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 
++  : ; < = > ? @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ \ ] ^ 
++  _ ` a b c d e f g h i j k l m n o p q r s t u v w x y z { | } ~ \x7f \x80 
++  \x81 \x82 \x83 \x84 \x85 \x86 \x87 \x88 \x89 \x8a \x8b \x8c \x8d \x8e \x8f 
++  \x90 \x91 \x92 \x93 \x94 \x95 \x96 \x97 \x98 \x99 \x9a \x9b \x9c \x9d \x9e 
++  \x9f \xa1 \xa2 \xa3 \xa4 \xa5 \xa6 \xa7 \xa8 \xa9 \xaa \xab \xac \xad \xae 
++  \xaf \xb0 \xb1 \xb2 \xb3 \xb4 \xb5 \xb6 \xb7 \xb8 \xb9 \xba \xbb \xbc \xbd 
++  \xbe \xbf \xc0 \xc1 \xc2 \xc3 \xc4 \xc5 \xc6 \xc7 \xc8 \xc9 \xca \xcb \xcc 
++  \xcd \xce \xcf \xd0 \xd1 \xd2 \xd3 \xd4 \xd5 \xd6 \xd7 \xd8 \xd9 \xda \xdb 
++  \xdc \xdd \xde \xdf \xe0 \xe1 \xe2 \xe3 \xe4 \xe5 \xe6 \xe7 \xe8 \xe9 \xea 
++  \xeb \xec \xed \xee \xef \xf0 \xf1 \xf2 \xf3 \xf4 \xf5 \xf6 \xf7 \xf8 \xf9 
++  \xfa \xfb \xfc \xfd \xfe \xff 
+ 
+ /[\V]/BZSI
+ ------------------------------------------------------------------
+         Bra
+-        [\x00-\x09\x0e-\x84\x{86}-\x{2027}\x{202a}-\x{ffff}]
++        [\x00-\x09\x0e-\x84\x86-\xff\x{100}-\x{2027}\x{202a}-\x{ffff}]
+         Ket
+         End
+ ------------------------------------------------------------------
+@@ -37,6 +50,19 @@ No options
+ No first char
+ No need char
+ Subject length lower bound = 1
+-No set of starting bytes
++Starting byte set: \x00 \x01 \x02 \x03 \x04 \x05 \x06 \x07 \x08 \x09 \x0e 
++  \x0f \x10 \x11 \x12 \x13 \x14 \x15 \x16 \x17 \x18 \x19 \x1a \x1b \x1c \x1d 
++  \x1e \x1f \x20 ! " # $ % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > 
++  ? @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ \ ] ^ _ ` a b c 
++  d e f g h i j k l m n o p q r s t u v w x y z { | } ~ \x7f \x80 \x81 \x82 
++  \x83 \x84 \x86 \x87 \x88 \x89 \x8a \x8b \x8c \x8d \x8e \x8f \x90 \x91 \x92 
++  \x93 \x94 \x95 \x96 \x97 \x98 \x99 \x9a \x9b \x9c \x9d \x9e \x9f \xa0 \xa1 
++  \xa2 \xa3 \xa4 \xa5 \xa6 \xa7 \xa8 \xa9 \xaa \xab \xac \xad \xae \xaf \xb0 
++  \xb1 \xb2 \xb3 \xb4 \xb5 \xb6 \xb7 \xb8 \xb9 \xba \xbb \xbc \xbd \xbe \xbf 
++  \xc0 \xc1 \xc2 \xc3 \xc4 \xc5 \xc6 \xc7 \xc8 \xc9 \xca \xcb \xcc \xcd \xce 
++  \xcf \xd0 \xd1 \xd2 \xd3 \xd4 \xd5 \xd6 \xd7 \xd8 \xd9 \xda \xdb \xdc \xdd 
++  \xde \xdf \xe0 \xe1 \xe2 \xe3 \xe4 \xe5 \xe6 \xe7 \xe8 \xe9 \xea \xeb \xec 
++  \xed \xee \xef \xf0 \xf1 \xf2 \xf3 \xf4 \xf5 \xf6 \xf7 \xf8 \xf9 \xfa \xfb 
++  \xfc \xfd \xfe \xff 
+ 
+ /-- End of testinput23 --/
+diff --git a/testdata/testoutput25 b/testdata/testoutput25
+index 2a4066d..16f375b 100644
+--- a/testdata/testoutput25
++++ b/testdata/testoutput25
+@@ -51,7 +51,7 @@ Need char = \x{800000}
+ /[\H]/BZSI
+ ------------------------------------------------------------------
+         Bra
+-        [\x00-\x08\x0a-\x1f!-\x9f\x{a1}-\x{167f}\x{1681}-\x{180d}\x{180f}-\x{1fff}\x{200b}-\x{202e}\x{2030}-\x{205e}\x{2060}-\x{2fff}\x{3001}-\x{ffffffff}]
++        [\x00-\x08\x0a-\x1f!-\x9f\xa1-\xff\x{100}-\x{167f}\x{1681}-\x{180d}\x{180f}-\x{1fff}\x{200b}-\x{202e}\x{2030}-\x{205e}\x{2060}-\x{2fff}\x{3001}-\x{ffffffff}]
+         Ket
+         End
+ ------------------------------------------------------------------
+@@ -60,12 +60,25 @@ No options
+ No first char
+ No need char
+ Subject length lower bound = 1
+-No set of starting bytes
++Starting byte set: \x00 \x01 \x02 \x03 \x04 \x05 \x06 \x07 \x08 \x0a \x0b 
++  \x0c \x0d \x0e \x0f \x10 \x11 \x12 \x13 \x14 \x15 \x16 \x17 \x18 \x19 \x1a 
++  \x1b \x1c \x1d \x1e \x1f ! " # $ % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 
++  : ; < = > ? @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ \ ] ^ 
++  _ ` a b c d e f g h i j k l m n o p q r s t u v w x y z { | } ~ \x7f \x80 
++  \x81 \x82 \x83 \x84 \x85 \x86 \x87 \x88 \x89 \x8a \x8b \x8c \x8d \x8e \x8f 
++  \x90 \x91 \x92 \x93 \x94 \x95 \x96 \x97 \x98 \x99 \x9a \x9b \x9c \x9d \x9e 
++  \x9f \xa1 \xa2 \xa3 \xa4 \xa5 \xa6 \xa7 \xa8 \xa9 \xaa \xab \xac \xad \xae 
++  \xaf \xb0 \xb1 \xb2 \xb3 \xb4 \xb5 \xb6 \xb7 \xb8 \xb9 \xba \xbb \xbc \xbd 
++  \xbe \xbf \xc0 \xc1 \xc2 \xc3 \xc4 \xc5 \xc6 \xc7 \xc8 \xc9 \xca \xcb \xcc 
++  \xcd \xce \xcf \xd0 \xd1 \xd2 \xd3 \xd4 \xd5 \xd6 \xd7 \xd8 \xd9 \xda \xdb 
++  \xdc \xdd \xde \xdf \xe0 \xe1 \xe2 \xe3 \xe4 \xe5 \xe6 \xe7 \xe8 \xe9 \xea 
++  \xeb \xec \xed \xee \xef \xf0 \xf1 \xf2 \xf3 \xf4 \xf5 \xf6 \xf7 \xf8 \xf9 
++  \xfa \xfb \xfc \xfd \xfe \xff 
+ 
+ /[\V]/BZSI
+ ------------------------------------------------------------------
+         Bra
+-        [\x00-\x09\x0e-\x84\x{86}-\x{2027}\x{202a}-\x{ffffffff}]
++        [\x00-\x09\x0e-\x84\x86-\xff\x{100}-\x{2027}\x{202a}-\x{ffffffff}]
+         Ket
+         End
+ ------------------------------------------------------------------
+@@ -74,6 +87,19 @@ No options
+ No first char
+ No need char
+ Subject length lower bound = 1
+-No set of starting bytes
++Starting byte set: \x00 \x01 \x02 \x03 \x04 \x05 \x06 \x07 \x08 \x09 \x0e 
++  \x0f \x10 \x11 \x12 \x13 \x14 \x15 \x16 \x17 \x18 \x19 \x1a \x1b \x1c \x1d 
++  \x1e \x1f \x20 ! " # $ % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > 
++  ? @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ \ ] ^ _ ` a b c 
++  d e f g h i j k l m n o p q r s t u v w x y z { | } ~ \x7f \x80 \x81 \x82 
++  \x83 \x84 \x86 \x87 \x88 \x89 \x8a \x8b \x8c \x8d \x8e \x8f \x90 \x91 \x92 
++  \x93 \x94 \x95 \x96 \x97 \x98 \x99 \x9a \x9b \x9c \x9d \x9e \x9f \xa0 \xa1 
++  \xa2 \xa3 \xa4 \xa5 \xa6 \xa7 \xa8 \xa9 \xaa \xab \xac \xad \xae \xaf \xb0 
++  \xb1 \xb2 \xb3 \xb4 \xb5 \xb6 \xb7 \xb8 \xb9 \xba \xbb \xbc \xbd \xbe \xbf 
++  \xc0 \xc1 \xc2 \xc3 \xc4 \xc5 \xc6 \xc7 \xc8 \xc9 \xca \xcb \xcc \xcd \xce 
++  \xcf \xd0 \xd1 \xd2 \xd3 \xd4 \xd5 \xd6 \xd7 \xd8 \xd9 \xda \xdb \xdc \xdd 
++  \xde \xdf \xe0 \xe1 \xe2 \xe3 \xe4 \xe5 \xe6 \xe7 \xe8 \xe9 \xea \xeb \xec 
++  \xed \xee \xef \xf0 \xf1 \xf2 \xf3 \xf4 \xf5 \xf6 \xf7 \xf8 \xf9 \xfa \xfb 
++  \xfc \xfd \xfe \xff 
+ 
+ /-- End of testinput25 --/
+diff --git a/testdata/testoutput5 b/testdata/testoutput5
+index 0e84054..f8578c0 100644
+--- a/testdata/testoutput5
++++ b/testdata/testoutput5
+@@ -248,7 +248,7 @@ No match
+ /[z-\x{100}]/8DZ
+ ------------------------------------------------------------------
+         Bra
+-        [z-\x{100}]
++        [z-\xff\x{100}]
+         Ket
+         End
+ ------------------------------------------------------------------
+@@ -786,7 +786,7 @@ No match
+ /[\H]/8BZ
+ ------------------------------------------------------------------
+         Bra
+-        [\x00-\x08\x0a-\x1f!-\x9f\x{a1}-\x{167f}\x{1681}-\x{180d}\x{180f}-\x{1fff}\x{200b}-\x{202e}\x{2030}-\x{205e}\x{2060}-\x{2fff}\x{3001}-\x{10ffff}]
++        [\x00-\x08\x0a-\x1f!-\x9f\xa1-\xff\x{100}-\x{167f}\x{1681}-\x{180d}\x{180f}-\x{1fff}\x{200b}-\x{202e}\x{2030}-\x{205e}\x{2060}-\x{2fff}\x{3001}-\x{10ffff}]
+         Ket
+         End
+ ------------------------------------------------------------------
+@@ -794,7 +794,7 @@ No match
+ /[\V]/8BZ
+ ------------------------------------------------------------------
+         Bra
+-        [\x00-\x09\x0e-\x84\x{86}-\x{2027}\x{202a}-\x{10ffff}]
++        [\x00-\x09\x0e-\x84\x86-\xff\x{100}-\x{2027}\x{202a}-\x{10ffff}]
+         Ket
+         End
+ ------------------------------------------------------------------
+@@ -1594,7 +1594,7 @@ Failed: disallowed Unicode code point (>= 0xd800 && <= 0xdfff) at offset 7
+ /[\H\x{d7ff}]+/8BZ
+ ------------------------------------------------------------------
+         Bra
+-        [\x00-\x08\x0a-\x1f!-\x9f\x{a1}-\x{167f}\x{1681}-\x{180d}\x{180f}-\x{1fff}\x{200b}-\x{202e}\x{2030}-\x{205e}\x{2060}-\x{2fff}\x{3001}-\x{10ffff}\x{d7ff}]+
++        [\x00-\x08\x0a-\x1f!-\x9f\xa1-\xff\x{100}-\x{167f}\x{1681}-\x{180d}\x{180f}-\x{1fff}\x{200b}-\x{202e}\x{2030}-\x{205e}\x{2060}-\x{2fff}\x{3001}-\x{10ffff}\x{d7ff}]+
+         Ket
+         End
+ ------------------------------------------------------------------
+@@ -1634,7 +1634,7 @@ Failed: disallowed Unicode code point (>= 0xd800 && <= 0xdfff) at offset 7
+ /[\V\x{d7ff}]+/8BZ
+ ------------------------------------------------------------------
+         Bra
+-        [\x00-\x09\x0e-\x84\x{86}-\x{2027}\x{202a}-\x{10ffff}\x{d7ff}]+
++        [\x00-\x09\x0e-\x84\x86-\xff\x{100}-\x{2027}\x{202a}-\x{10ffff}\x{d7ff}]+
+         Ket
+         End
+ ------------------------------------------------------------------
+diff --git a/testdata/testoutput7 b/testdata/testoutput7
+index e3f607c..b02f923 100644
+--- a/testdata/testoutput7
++++ b/testdata/testoutput7
+@@ -124,7 +124,7 @@ No match
+ /[z-\x{100}]/8iDZ 
+ ------------------------------------------------------------------
+         Bra
+-        [Z\x{39c}\x{3bc}\x{1e9e}\x{178}z-\x{101}]
++        [Zz-\xff\x{39c}\x{3bc}\x{1e9e}\x{178}\x{100}-\x{101}]
+         Ket
+         End
+ ------------------------------------------------------------------
+@@ -162,7 +162,7 @@ No match
+ /[z-\x{100}]/8DZi
+ ------------------------------------------------------------------
+         Bra
+-        [Z\x{39c}\x{3bc}\x{1e9e}\x{178}z-\x{101}]
++        [Zz-\xff\x{39c}\x{3bc}\x{1e9e}\x{178}\x{100}-\x{101}]
+         Ket
+         End
+ ------------------------------------------------------------------
+-- 
+2.7.4
+

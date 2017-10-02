@@ -1,0 +1,153 @@
+From 01611089a2be24b740e67d5fac8d7b44b2330302 Mon Sep 17 00:00:00 2001
+From: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date: Wed, 10 Feb 2016 19:13:17 +0000
+Subject: [PATCH] Fix workspace overflow for (*ACCEPT) with deeply nested
+ parentheses.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Ported to 8.32:
+
+commit 943a5105b9fe2842851003f692c7077a6cdbeefe
+Author: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date:   Wed Feb 10 19:13:17 2016 +0000
+
+    Fix workspace overflow for (*ACCEPT) with deeply nested parentheses.
+
+    git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1631 2f5784b3-3f2a-0410-8824-cb99058d5e15
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ pcre_compile.c           | 21 ++++++++++++++++++---
+ pcre_internal.h          |  2 +-
+ pcreposix.c              |  3 ++-
+ testdata/testinput11     |  2 ++
+ testdata/testoutput11-16 |  3 +++
+ testdata/testoutput11-32 |  3 +++
+ testdata/testoutput11-8  |  3 +++
+ 7 files changed, 32 insertions(+), 5 deletions(-)
+
+diff --git a/pcre_compile.c b/pcre_compile.c
+index 8eb4b0f..746dc70 100644
+--- a/pcre_compile.c
++++ b/pcre_compile.c
+@@ -508,6 +508,7 @@ static const char error_texts[] =
+   "name is too long in (*MARK), (*PRUNE), (*SKIP), or (*THEN)\0"
+   "character value in \\u.... sequence is too large\0"
+   "invalid UTF-32 string\0"
++  "regular expression is too complicated\0"
+   ;
+ 
+ /* Table to identify digits and hex digits. This is used when compiling
+@@ -3881,7 +3882,8 @@ for (;; ptr++)
+     if (code > cd->start_workspace + cd->workspace_size -
+         WORK_SIZE_SAFETY_MARGIN)                       /* Check for overrun */
+       {
+-      *errorcodeptr = ERR52;
++      *errorcodeptr = (code >= cd->start_workspace + cd->workspace_size)?
++        ERR52 : ERR87;
+       goto FAILED;
+       }
+ 
+@@ -5701,8 +5703,21 @@ for (;; ptr++)
+             cd->had_accept = TRUE;
+             for (oc = cd->open_caps; oc != NULL; oc = oc->next)
+               {
+-              *code++ = OP_CLOSE;
+-              PUT2INC(code, 0, oc->number);
++              if (lengthptr != NULL)
++                {
++#ifdef COMPILE_PCRE8
++                *lengthptr += 1 + IMM2_SIZE;
++#elif defined COMPILE_PCRE16
++                *lengthptr += 2 + IMM2_SIZE;
++#elif defined COMPILE_PCRE32
++                *lengthptr += 4 + IMM2_SIZE;
++#endif
++                }
++              else
++                {
++                *code++ = OP_CLOSE;
++                PUT2INC(code, 0, oc->number);
++                }
+               }
+             setverb = *code++ =
+               (cd->assert_depth > 0)? OP_ASSERT_ACCEPT : OP_ACCEPT;
+diff --git a/pcre_internal.h b/pcre_internal.h
+index 536b3d8..157de08 100644
+--- a/pcre_internal.h
++++ b/pcre_internal.h
+@@ -2270,7 +2270,7 @@ enum { ERR0,  ERR1,  ERR2,  ERR3,  ERR4,  ERR5,  ERR6,  ERR7,  ERR8,  ERR9,
+        ERR40, ERR41, ERR42, ERR43, ERR44, ERR45, ERR46, ERR47, ERR48, ERR49,
+        ERR50, ERR51, ERR52, ERR53, ERR54, ERR55, ERR56, ERR57, ERR58, ERR59,
+        ERR60, ERR61, ERR62, ERR63, ERR64, ERR65, ERR66, ERR67, ERR68, ERR69,
+-       ERR70, ERR71, ERR72, ERR73, ERR74, ERR75, ERR76, ERR77, ERRCOUNT };
++       ERR70, ERR71, ERR72, ERR73, ERR74, ERR75, ERR76, ERR77, ERR87, ERRCOUNT };
+ 
+ /* JIT compiling modes. The function list is indexed by them. */
+ enum { JIT_COMPILE, JIT_PARTIAL_SOFT_COMPILE, JIT_PARTIAL_HARD_COMPILE,
+diff --git a/pcreposix.c b/pcreposix.c
+index 15195c0..700676c 100644
+--- a/pcreposix.c
++++ b/pcreposix.c
+@@ -162,7 +162,8 @@ static const int eint[] = {
+   /* 75 */
+   REG_BADPAT,  /* overlong MARK name */
+   REG_BADPAT,  /* character value in \u.... sequence is too large */
+-  REG_BADPAT   /* invalid UTF-32 string (should not occur) */
++  REG_BADPAT,  /* invalid UTF-32 string (should not occur) */
++  REG_BADPAT   /* pattern too complicated */
+ };
+ 
+ /* Table of texts corresponding to POSIX error codes */
+diff --git a/testdata/testinput11 b/testdata/testinput11
+index 7e8e542..014c722 100644
+--- a/testdata/testinput11
++++ b/testdata/testinput11
+@@ -134,4 +134,6 @@ is required for these tests. --/
+ 
+ /(((a\2)|(a*)\g<-1>))*a?/B
+ 
++/([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00](*ACCEPT)/
++
+ /-- End of testinput11 --/
+diff --git a/testdata/testoutput11-16 b/testdata/testoutput11-16
+index 3cb3049..6ae9e2f 100644
+--- a/testdata/testoutput11-16
++++ b/testdata/testoutput11-16
+@@ -734,4 +734,7 @@ Memory allocation (code space): 14
+  41     End
+ ------------------------------------------------------------------
+ 
++/([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00](*ACCEPT)/
++Failed: regular expression is too complicated at offset 490
++
+ /-- End of testinput11 --/
+diff --git a/testdata/testoutput11-32 b/testdata/testoutput11-32
+index 10dee82..124e3d1 100644
+--- a/testdata/testoutput11-32
++++ b/testdata/testoutput11-32
+@@ -734,4 +734,7 @@ Memory allocation (code space): 28
+  41     End
+ ------------------------------------------------------------------
+ 
++/([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00](*ACCEPT)/
++Failed: missing ) at offset 509
++
+ /-- End of testinput11 --/
+diff --git a/testdata/testoutput11-8 b/testdata/testoutput11-8
+index a1bd60a..36f6e64 100644
+--- a/testdata/testoutput11-8
++++ b/testdata/testoutput11-8
+@@ -734,4 +734,7 @@ Memory allocation (code space): 10
+  60     End
+ ------------------------------------------------------------------
+ 
++/([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00]([00](*ACCEPT)/
++Failed: missing ) at offset 509
++
+ /-- End of testinput11 --/
+-- 
+2.5.5
+

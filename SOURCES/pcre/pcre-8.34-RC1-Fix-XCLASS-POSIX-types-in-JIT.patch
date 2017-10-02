@@ -1,0 +1,52 @@
+From 2cadfa0ec8900bb784aa4c4171ad5aec0e9b7edf Mon Sep 17 00:00:00 2001
+From: zherczeg <zherczeg@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date: Sat, 30 Nov 2013 07:05:00 +0000
+Subject: [PATCH] Fix XCLASS POSIX types in JIT.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1406 2f5784b3-3f2a-0410-8824-cb99058d5e15
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ pcre_jit_compile.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/pcre_jit_compile.c b/pcre_jit_compile.c
+index c71b5a4..15555a6 100644
+--- a/pcre_jit_compile.c
++++ b/pcre_jit_compile.c
+@@ -4431,10 +4431,10 @@ while (*cc != XCL_END)
+       OP2(SLJIT_SUB | SLJIT_SET_U, SLJIT_UNUSED, 0, TMP1, 0, SLJIT_IMM, 0x2069 - 0x2066);
+       OP_FLAGS(SLJIT_MOV, TMP2, 0, SLJIT_UNUSED, 0, SLJIT_C_LESS_EQUAL);
+ 
+-      OP2(SLJIT_SUB | SLJIT_SET_U, SLJIT_UNUSED, 0, TMP1, 0, SLJIT_IMM, 0x061c - 0x2066);
++      OP2(SLJIT_SUB | SLJIT_SET_E, SLJIT_UNUSED, 0, TMP1, 0, SLJIT_IMM, 0x061c - 0x2066);
+       OP_FLAGS(SLJIT_OR, TMP2, 0, TMP2, 0, SLJIT_C_EQUAL);
+ 
+-      OP2(SLJIT_SUB | SLJIT_SET_U, SLJIT_UNUSED, 0, TMP1, 0, SLJIT_IMM, 0x180e - 0x2066);
++      OP2(SLJIT_SUB | SLJIT_SET_E, SLJIT_UNUSED, 0, TMP1, 0, SLJIT_IMM, 0x180e - 0x2066);
+       OP_FLAGS(SLJIT_OR, TMP2, 0, TMP2, 0, SLJIT_C_EQUAL);
+ 
+       JUMPHERE(jump);
+@@ -4447,7 +4447,7 @@ while (*cc != XCL_END)
+       OP2(SLJIT_SUB | SLJIT_SET_U, SLJIT_UNUSED, 0, typereg, 0, SLJIT_IMM, ucp_So - ucp_Ll);
+       OP_FLAGS(SLJIT_MOV, TMP2, 0, SLJIT_UNUSED, 0, SLJIT_C_GREATER);
+ 
+-      OP2(SLJIT_SUB | SLJIT_SET_U, SLJIT_UNUSED, 0, typereg, 0, SLJIT_IMM, ucp_Zs - ucp_Ll);
++      OP2(SLJIT_SUB | SLJIT_SET_E, SLJIT_UNUSED, 0, typereg, 0, SLJIT_IMM, ucp_Zs - ucp_Ll);
+       OP_FLAGS(SLJIT_AND, TMP2, 0, TMP2, 0, SLJIT_C_NOT_EQUAL);
+ 
+       jump = CMP(SLJIT_C_NOT_EQUAL, typereg, 0, SLJIT_IMM, ucp_Cf - ucp_Ll);
+@@ -4457,7 +4457,7 @@ while (*cc != XCL_END)
+       OP2(SLJIT_SUB | SLJIT_SET_U, SLJIT_UNUSED, 0, TMP1, 0, SLJIT_IMM, 0x2069 - 0x2066);
+       OP_FLAGS(SLJIT_MOV, TMP2, 0, SLJIT_UNUSED, 0, SLJIT_C_LESS_EQUAL);
+ 
+-      OP2(SLJIT_SUB | SLJIT_SET_U, SLJIT_UNUSED, 0, TMP1, 0, SLJIT_IMM, 0x061c - 0x2066);
++      OP2(SLJIT_SUB | SLJIT_SET_E, SLJIT_UNUSED, 0, TMP1, 0, SLJIT_IMM, 0x061c - 0x2066);
+       OP_FLAGS(SLJIT_OR, TMP2, 0, TMP2, 0, SLJIT_C_EQUAL);
+ 
+       JUMPHERE(jump);
+-- 
+2.7.4
+

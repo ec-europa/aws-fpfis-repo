@@ -1,112 +1,133 @@
-# Is this a stable/testing release:
+# This is stable release:
 #%%global rcversion RC1
-Name:       pcre
-Version:    8.41
-Release:    %{?rcversion:0.}1%{?rcversion:.%rcversion}%{?dist}.2
+Name: pcre
+Version: 8.32
+Release: %{?rcversion:0.}17%{?rcversion:.%rcversion}%{?dist}
 %global myversion %{version}%{?rcversion:-%rcversion}
-Summary:    Perl-compatible regular expression library
-## Source package only:
-# INSTALL:                  ???
-# install-sh:               MIT and Public Domain
-# ltmain.sh:                (GPLv2+ or BSD) and GPLv3+
-# missing:                  GPLv2+ or BSD
-# compile:                  GPLv2+ or BSD
-# config.sub:               GPLv3+ or BSD
-# m4/ax_pthread.m4:         GPLv3+ with exception
-# m4/libtool.m4:            GPLv2+ or BSD
-# m4/ltversion.m4:          FSFULLR
-# m4/pcre_visibility.m4:    FSFULLR
-# m4/lt~obsolete.m4:        FSFULLR
-# m4/ltsugar.m4:            FSFULLR
-# m4/ltoptions.m4:          FSFULLR
-# aclocal.m4:               (GPLv2+ or BSD) and FSFULLR
-# Makefile.in:              FSFULLR
-# configure:                FSFUL
-# test-driver:              GPLv2+ with exception
-# testdata:                 Public Domain (see LICENSE file)
-## Binary packages:
-# other files:              BSD
-License:    BSD
-URL:        http://www.pcre.org/
-Source:     ftp://ftp.csx.cam.ac.uk/pub/software/programming/%{name}/%{?rcversion:Testing/}%{name}-%{myversion}.tar.bz2
-# Upstream thinks RPATH is a good idea.
-Patch0:     pcre-8.21-multilib.patch
+Summary: Perl-compatible regular expression library
+Group: System Environment/Libraries
+License: BSD
+URL: http://www.pcre.org/
+Source: ftp://ftp.csx.cam.ac.uk/pub/software/programming/%{name}/%{?rcversion:Testing/}%{name}-%{myversion}.tar.bz2
+# Upstream thinks RPATH is good idea.
+Patch0: pcre-8.21-multilib.patch
 # Refused by upstream, bug #675477
-Patch1:     pcre-8.32-refused_spelling_terminated.patch
-BuildRequires:  readline-devel
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  coreutils
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
-BuildRequires:  glibc-common
-BuildRequires:  libtool
-BuildRequires:  make
-# perl not used because config.h.generic is pregenerated
-# Tests:
-BuildRequires:  bash
-BuildRequires:  diffutils
-BuildRequires:  grep
+Patch1: pcre-8.32-refused_spelling_terminated.patch
+# In upstream after 8.32
+Patch2: pcre-8.32-Fix-forward-search-in-JIT-when-link-size-is-3-or-gre.patch
+# In upstream after 8.32
+Patch3: pcre-8.32-Fix-two-buffer-over-read-issues-in-16-and-32-bit-mod.patch
+# Fix pcregrep on empty line, in upstream after 8.33-RC1
+Patch4: pcre-8.33-RC1-Fix-pcregrep-so-that-it-can-find-empty-lines.patch
+# Grow buffer in pcretest properly, in upstream after 8.33-RC1
+Patch5: pcre-8.33-RC1-Fix-pcretest-crash-with-a-data-line-longer-than-6553.patch
+# Fix passing too small output vector to pcre_dfa_exec, in upstream after
+# 8.33-RC1, bug #963284
+Patch6: pcre-8.33-RC1-Fix-segfault-when-pcre_dfa_exec-is-called-with-an-ou.patch
+# Fix jitted range check, in upstream after 8.34, bug #1048101
+Patch7: pcre-8.34-Fix-range-check-in-JIT-path.patch
+# Fix unused memory usage on zero-repeat assertion condition, bug #1169797,
+# CVE-2014-8964, in upstream after 8.36
+Patch8: pcre-8.32-Fix-zero-repeat-assertion-condition-bug.patch
+# Fix compiling expression where start-anchored character with more than one
+# other case follows circumflex in multiline UTF mode, bug #1110621,
+# in upstream 8.36
+Patch9: pcre-8.32-Fix-bad-starting-data-when-char-with-more-than-one-o.patch
+# Fix character class with a literal quotation, bug #1111091,
+# upstream bug #1494, in upstream after 8.35
+Patch10: pcre-8.32-Fix-bad-compile-of-Qx-.-where-x-is-any-character.patch
+# Fix empty-matching possessive zero-repeat groups in interpreted mode,
+# bug #1119320, upstream bug #1500, in upstream after 8.35
+Patch11: pcre-8.33-Fix-empty-matching-possessive-zero-repeat-groups-bug.patch
+# Fix compiler crash for zero-repeated groups with a recursive back reference,
+# bug #1119356, upstream bug #1503, in upstream after 8.35
+Patch12: pcre-8.32-Fix-compiler-crash-misbehaviour-for-zero-repeated-gr.patch
+# Reset non-matched groups within capturing group up to forced match,
+# bug #1161597, in upstream after 8.36
+Patch13: pcre-8.32-Fix-bug-when-there-are-unset-groups-prior-to-ACCEPT-.patch
+# Fix static linking, bug #1217111, in upstream after 8.37-RC1
+Patch14: pcre-8.37-RC1-Fix-static-linking-issue-with-pkg-config.patch
+# Fix checking whether a group could match an empty string, bug #1330509,
+# in upstream after 8.33, needed for
+# Fix-compile-time-loop-for-recursive-reference-within.patch
+Patch15: pcre-8.32-Fix-checking-whether-a-group-could-match-an-empty-st.patch
+# Fix CVE-2015-2328 (infinite recursion compiling pattern with recursive
+# reference in a group with indefinite repeat), bug #1330509,
+# upstream bug #1515, in upstream after 8.35
+Patch16: pcre-8.32-Fix-compile-time-loop-for-recursive-reference-within.patch
+# Fix duplicate names memory calculation error, bug #1330509,
+# in upstream after 8.37,
+# needed for Fix-buffer-overflow-for-named-references-in-situatio.patch
+Patch17: pcre-8.32-Fix-duplicate-names-memory-calculation-error.patch
+# Fix named forward reference to duplicate group number overflow bug,
+# bug #1330509, in upstream after 8.37,
+# needed for Fix-buffer-overflow-for-named-references-in-situatio.patch
+Patch18: pcre-8.32-Fix-named-forward-reference-to-duplicate-group-numbe.patch
+# Fix CVE-2015-8385 (buffer overflow caused by named forward reference to
+# duplicate group number), bug #1330509, in upstream after 8.37
+Patch19: pcre-8.32-Fix-buffer-overflow-for-named-references-in-situatio.patch
+# Fix CVE-2015-8386 (buffer overflow caused by lookbehind assertion),
+# bug #1330509, in upstream after 8.37
+Patch20: pcre-8.32-Fix-buffer-overflow-for-lookbehind-within-mutually-r.patch
+# Fix CVE-2015-3217 (stack overflow caused by mishandled group empty match),
+# bug #1330509, in upstream after 8.37
+Patch21: pcre-8.32-Fix-group-empty-match-bug.patch
+# Fix CVE-2015-5073 and CVE-2015-8388 (buffer overflow for forward reference
+# within backward assertion with excess closing parenthesis), bug #1330509,
+# in upstream after 8.37
+Patch22: pcre-8.32-Fix-buffer-overflow-for-forward-reference-within-bac.patch
+# Fix CVE-2015-8391 (inefficient posix character class syntax check),
+# bug #1330509, in upstream after 8.37
+Patch23: pcre-8.32-Fix-run-for-ever-bug-for-deeply-nested-sequences.patch
+# Fix CVE-2016-3191 (workspace overflow for (*ACCEPT) with deeply nested
+# parentheses), bug #1330509, in upstream after 8.38
+Patch24: pcre-8.32-Fix-workspace-overflow-for-ACCEPT-with-deeply-nested.patch
+# 1/3 Let [:graph:], [:print:], and [:punct:] POSIX classes to handle Unicode
+# characters in UCP mode to match Perl behavior, bug #1400267,
+# in upstream 8.34
+Patch25: pcre-8.32-Update-POSIX-class-handling-in-UCP-mode.patch
+# 2/3 Let [:graph:], [:print:], and [:punct:] POSIX classes to handle Unicode
+# characters in UCP mode with JIT, bug #1400267, in upstream 8.34
+Patch26: pcre-8.32-Add-support-for-PT_PXGRAPH-PT_PXPRINT-and-PT_PXPUNCT.patch
+# 3/3 Fix XCLASS POSIX JIT compilation, tests failed on 32-bit PowerPC,
+# bug #1400267, in upstream 8.34
+Patch27: pcre-8.34-RC1-Fix-XCLASS-POSIX-types-in-JIT.patch
+# Fix matching Unicode ranges in JIT mode, bug #1402288, in upstream 8.35
+Patch28: pcre-8.32-A-new-flag-is-set-when-property-checks-are-present-i.patch
+# git required for A-new-flag-is-set-when-property-checks-are-present-i.patch
+BuildRequires: git
+BuildRequires: readline-devel
+# New libtool to get rid of rpath
+BuildRequires: autoconf, automake, libtool
 
 %description
-PCRE, Perl-compatible regular expression, library has its own native API, but
-a set of wrapper functions that are based on the POSIX API are also supplied
-in the libpcreposix library. Note that this just provides a POSIX calling
-interface to PCRE: the regular expressions themselves still follow Perl syntax
-and semantics. This package provides support for strings in 8-bit and UTF-8
-encodings. Detailed change log is provided by %{name}-doc package.
-
-%package utf16
-Summary:    UTF-16 variant of PCRE
-Conflicts:  %{name}%{?_isa} < 8.38-12
-
-%description utf16
-This is Perl-compatible regular expression library working on UTF-16 strings.
-Detailed change log is provided by %{name}-doc package.
-
-%package utf32
-Summary:    UTF-32 variant of PCRE
-Conflicts:  %{name}%{?_isa} < 8.38-12
-
-%description utf32
-This is Perl-compatible regular expression library working on UTF-32 strings.
-Detailed change log is provided by %{name}-doc package.
-
-%package cpp
-Summary:    C++ bindings for PCRE
-Requires:   %{name}%{?_isa} = %{version}-%{release}
-
-%description cpp
-This is C++ bindings for the Perl-compatible regular expression library.
-Detailed change log is provided by %{name}-doc package.
-
-%package doc
-Summary:    Change log for %{name}
-BuildArch:  noarch
-
-%description doc
-These are large documentation files about PCRE.
+Perl-compatible regular expression library.
+PCRE has its own native API, but a set of "wrapper" functions that are based on
+the POSIX API are also supplied in the library libpcreposix. Note that this
+just provides a POSIX calling interface to PCRE: the regular expressions
+themselves still follow Perl syntax and semantics. The header file
+for the POSIX-style functions is called pcreposix.h.
 
 %package devel
-Summary:    Development files for %{name}
-Requires:   %{name}%{?_isa} = %{version}-%{release}
-Requires:   %{name}-cpp%{?_isa} = %{version}-%{release}
-Requires:   %{name}-utf16%{?_isa} = %{version}-%{release}
-Requires:   %{name}-utf32%{?_isa} = %{version}-%{release}
+Summary: Development files for %{name}
+Group: Development/Libraries
+Requires: %{name}%{?_isa} = %{version}-%{release}
 
 %description devel
 Development files (Headers, libraries for dynamic linking, etc) for %{name}.
 
 %package static
-Summary:    Static library for %{name}
-Requires:   %{name}-devel%{_isa} = %{version}-%{release}
+Summary: Static library for %{name}
+Group: Development/Libraries
+Requires: %{name}-devel%{_isa} = %{version}-%{release}
 
 %description static
 Library for static linking for %{name}.
 
 %package tools
-Summary:    Auxiliary utilities for %{name}
-Requires:   %{name}%{_isa} = %{version}-%{release}
+Summary: Auxiliary utilities for %{name}
+Group: Development/Tools
+Requires: %{name}%{_isa} = %{version}-%{release}
 
 %description tools
 Utilities demonstrating PCRE capabilities like pcregrep or pcretest.
@@ -114,11 +135,38 @@ Utilities demonstrating PCRE capabilities like pcregrep or pcretest.
 %prep
 %setup -q -n %{name}-%{myversion}
 # Get rid of rpath
-%patch0 -p1
-%patch1 -p1
+%patch0 -p1 -b .multilib
+%patch1 -p1 -b .terminated_typos
+%patch2 -p1 -b .forward_jit
+%patch3 -p1 -b .buffer_over_read
+%patch4 -p1 -b .pcregrep_empty_line
+%patch5 -p1 -b .pcretest_grow_buffer
+%patch6 -p1 -b .vector_size
+%patch7 -p1 -b .jitted_range_check
+%patch8 -p1 -b .zero_repeat_assertion
+%patch9 -p1 -b .starting_data
+%patch10 -p1 -b .class_with_literal
+%patch11 -p1 -b .empty_zero_repeat_group
+%patch12 -p1 -b .compiler_crash_zero_group
+%patch13 -p1 -b .reset_groups
+%patch14 -p1 -b .static_linking
+%patch15 -p1 -b .group_match_empty
+%patch16 -p1 -b .compiler_loop_recursive_reference
+%patch17 -p1 -b .duplicate_names_memory_calculation
+%patch18 -p1 -b .forward_reference_to_duplicate_group_number
+%patch19 -p1 -b .named_references_in_pqp
+%patch20 -p1 -b .lookbehind_within_mutally_recusive_subroutines
+%patch21 -p1 -b .group_empty_match
+%patch22 -p1 -b .CVE-2015-5073
+%patch23 -p1 -b .deeply_nested_bracket_colon
+%patch24 -p1 -b .accept_with_nested_parentheses
+%patch25 -p1 -b .posix_classes_in_ucp
+%patch26 -p1 -b .posix_classes_in_ucp_jit
+%patch27 -p1 -b .posix_classes_in_ucp_jit_types
+# Apply a Git binary patch
+git --work-tree=. apply %{PATCH28}
 # Because of rpath patch
-libtoolize --copy --force
-autoreconf -vif
+libtoolize --copy --force && autoreconf -vif
 # One contributor's name is non-UTF-8
 for F in ChangeLog; do
     iconv -f latin1 -t utf8 "$F" >"${F}.utf8"
@@ -127,23 +175,20 @@ for F in ChangeLog; do
 done
 
 %build
-# There is a strict-aliasing problem on PPC64, bug #881232
+# There is an explicit request to optimize PCRE more, bugs #1051072, #1123498
+%global _performance_build 1
 %ifarch ppc64
+# There is a strict-aliasing problem on PPC64, bug #881232
 %global optflags %{optflags} -fno-strict-aliasing
 %endif
 %configure \
-%ifarch s390 s390x sparc64 sparcv9 riscv64
+%ifarch aarch64 ppc64le s390 s390x sparc64 sparcv9
     --disable-jit \
 %else
     --enable-jit \
 %endif
-    --enable-pcretest-libreadline \
-    --enable-utf \
-    --enable-unicode-properties \
-    --enable-pcre8 \
-    --enable-pcre16 \
-    --enable-pcre32 \
-    --disable-silent-rules
+    --enable-pcretest-libreadline --enable-utf --enable-unicode-properties \
+    --enable-pcre8 --enable-pcre16 --enable-pcre32
 make %{?_smp_mflags}
 
 %install
@@ -154,46 +199,19 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 rm -rf $RPM_BUILD_ROOT%{_docdir}/pcre
 
 %check
-%ifarch s390 s390x ppc
+%ifarch s390 ppc
 # larger stack is needed on s390, ppc
 ulimit -s 10240
 %endif
-make %{?_smp_mflags} check VERBOSE=yes
+make check VERBOSE=yes
 
 %post -p /sbin/ldconfig
+
 %postun -p /sbin/ldconfig
 
-%post utf16 -p /sbin/ldconfig
-%postun utf16 -p /sbin/ldconfig
-
-%post utf32 -p /sbin/ldconfig
-%postun utf32 -p /sbin/ldconfig
-
-%post cpp -p /sbin/ldconfig
-%postun cpp -p /sbin/ldconfig
-
 %files
-%{_libdir}/libpcre.so.*
-%{_libdir}/libpcreposix.so.*
-%{!?_licensedir:%global license %%doc}
-%license COPYING LICENCE
-%doc AUTHORS NEWS
-
-%files utf16
-%{_libdir}/libpcre16.so.*
-%license COPYING LICENCE
-%doc AUTHORS NEWS
-
-%files utf32
-%{_libdir}/libpcre32.so.*
-%license COPYING LICENCE
-%doc AUTHORS NEWS
-
-%files cpp
-%{_libdir}/libpcrecpp.so.*
-
-%files doc
-%doc ChangeLog
+%{_libdir}/*.so.*
+%doc AUTHORS COPYING LICENCE NEWS README ChangeLog
 
 %files devel
 %{_libdir}/*.so
@@ -203,12 +221,11 @@ make %{?_smp_mflags} check VERBOSE=yes
 %{_mandir}/man3/*
 %{_bindir}/pcre-config
 %doc doc/*.txt doc/html
-%doc README HACKING pcredemo.c
+%doc HACKING pcredemo.c
 
 %files static
 %{_libdir}/*.a
-%{!?_licensedir:%global license %%doc}
-%license COPYING LICENCE
+%doc COPYING LICENCE 
 
 %files tools
 %{_bindir}/pcregrep
@@ -217,313 +234,73 @@ make %{?_smp_mflags} check VERBOSE=yes
 %{_mandir}/man1/pcretest.*
 
 %changelog
-* Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 8.41-1.2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
+* Tue Dec 06 2016 Petr Pisar <ppisar@redhat.com> - 8.32-17
+- Let [:graph:], [:print:], and [:punct:] POSIX classes to handle Unicode
+  characters in UCP mode to match Perl behavior (bug #1400267)
+- Fix matching Unicode ranges in JIT mode (bug #1402288)
 
-* Thu Jul 27 2017 Fedora Release Engineering <releng@fedoraproject.org> - 8.41-1.1
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
-
-* Fri Jul 07 2017 Petr Pisar <ppisar@redhat.com> - 8.41-1
-- 8.41 bump
-
-* Wed Jun 14 2017 Petr Pisar <ppisar@redhat.com> - 8.41-0.1.RC1
-- 8.41 RC1 bump
-
-* Fri Apr 21 2017 Petr Pisar <ppisar@redhat.com> - 8.40-7
-- Fix a buffer overflow in pcretest tool when copying a string in UTF-32 mode
-- Fix CVE-2017-7186 in JIT mode (a crash when finding a Unicode property for
-  a character with a code point greater than 0x10ffff in UTF-32 library while
-  UTF mode is disabled) (bug #1434504)
-
-* Mon Mar 27 2017 Petr Pisar <ppisar@redhat.com> - 8.40-6
-- Fix DFA match for a possessively repeated character class (upstream bug #2086)
-
-* Mon Feb 27 2017 Petr Pisar <ppisar@redhat.com> - 8.40-5
-- Fix a crash in pcretest when \O directive was supplied with too big number
-  (upstream bug #2044)
-- Document pcretest input cannot contain binary zeroes (upstream bug #2045)
-- Fix CVE-2017-7244 (a crash when finding a Unicode property for a character
-  with a code point greater than 0x10ffff in UTF-32 library while UTF mode is
-  disabled) (upstream bug #2052)
-
-* Thu Feb 23 2017 Petr Pisar <ppisar@redhat.com> - 8.40-4
-- Fix a crash in pcretest when printing non-ASCII characters
-  (upstream bug #2043)
-
-* Tue Feb 21 2017 Petr Pisar <ppisar@redhat.com> - 8.40-3
-- Fix parsing comments between quantifiers (upstream bug #2019)
-
-* Tue Feb 14 2017 Petr Pisar <ppisar@redhat.com> - 8.40-2
-- Fix pcregrep multi-line matching --only-matching option (upstream bug #1848)
-- Fix CVE-2017-6004 (a crash in JIT compilation) (upstream bug #2035)
-- Fix a potenial buffer overflow in formatting a pcregrep error message
-  (upstream bug #2037)
-
-* Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 8.40-1.2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
-
-* Thu Jan 12 2017 Igor Gnatenko <ignatenko@redhat.com> - 8.40-1.1
-- Rebuild for readline 7.x
-
-* Thu Jan 12 2017 Petr Pisar <ppisar@redhat.com> - 8.40-1
-- 8.40 bump
-
-* Mon Dec 12 2016 Petr Pisar <ppisar@redhat.com> - 8.40-0.1.RC1
-- 8.40-RC1 bump
-
-* Mon Oct 24 2016 Petr Pisar <ppisar@redhat.com> - 8.39-6
-- Document assert capture limitation (upstream bug #1887)
-
-* Wed Oct 19 2016 Petr Pisar <ppisar@redhat.com> - 8.39-5
-- Fix internal option documentation in pcrepattern(3) (upstream bug #1875)
-- Fix optimization bugs for patterns starting with lookaheads
-  (upstream bug #1882)
-
-* Fri Oct 14 2016 Petr Pisar <ppisar@redhat.com> - 8.39-4
-- Fix displaying position in pcretest callout with an escape sequence greater
-  than \x{ff}
-- Fix pcrepattern(3) documentation
-- Fix miscopmilation of conditionals when a group name start with "R"
-  (upstream bug #1873)
-
-* Tue Aug 30 2016 Petr Pisar <ppisar@redhat.com> - 8.39-3
-- Fix register overwite in JIT when SSE2 acceleration is enabled
-- Fix matching characters above 255 when a negative character type was used
-  without enabled UCP in a positive class (upstream bug #1866)
-
-* Mon Jun 20 2016 Petr Pisar <ppisar@redhat.com> - 8.39-2
-- Fix repeated pcregrep output if -o with -M options were used and the match
-  extended over a line boundary (upstream bug #1848)
-
-* Tue Jun 14 2016 Petr Pisar <ppisar@redhat.com> - 8.39-1
-- 8.39 bump
-
-* Tue May 24 2016 Petr Pisar <ppisar@redhat.com> - 8.39-0.1.RC1
-- 8.39-RC1 bump
-
-* Thu Apr 07 2016 Petr Pisar <ppisar@redhat.com> - 8.38-14
-- Separate pcre-cpp subpackage for C++ bindings, thanks to Yaakov Selkowitz
-  (bug #1324580)
-- Correct pcre-devel dependencies
-- Remove rich dependency from pcre-doc
-
-* Mon Mar 07 2016 Petr Pisar <ppisar@redhat.com> - 8.38-13
-- Remove useless dependencies between UTF variants
-
-* Mon Mar 07 2016 Petr Pisar <ppisar@redhat.com> - 8.38-12
-- Move UTF-16 and UTF-32 libraries into pcre-ut16 and pcre-32 subpackages
-
-* Mon Mar 07 2016 Petr Pisar <ppisar@redhat.com> - 8.38-11
-- Ship ChangeLog in pcre-doc package
-
-* Sat Mar  5 2016 Peter Robinson <pbrobinson@fedoraproject.org> 8.38-10
-- Don't ship ChangeLog, details covered in NEWS
-- Ship README in devel as it covers API and build, not general info
-
-* Mon Feb 29 2016 Petr Pisar <ppisar@redhat.com> - 8.38-9
-- Fix a non-diagnosis of missing assection after (?(?C) that could corrupt
-  process stack (upstream bug #1780)
-- Fix a typo in pcre_study()
-
-* Mon Feb 29 2016 Petr Pisar <ppisar@redhat.com> - 8.38-8
-- Fix CVE-2016-1283 (a heap buffer overflow in handling of nested duplicate
-  named groups with a nested back reference) (bug #1295386)
-- Fix a heap buffer overflow in pcretest causing infinite loop when matching
-  globally with an ovector less than 2 (bug #1312786)
-
-* Thu Feb 11 2016 Petr Pisar <ppisar@redhat.com> - 8.38-7
-- Fix pcretest for expressions with a callout inside a look-behind assertion
-  (upstream bug #1783)
+* Wed Apr 27 2016 Petr Pisar <ppisar@redhat.com> - 8.32-16
+- Fix CVE-2015-2328 (infinite recursion compiling pattern with recursive
+  reference in a group with indefinite repeat) (bug #1330509)
+- Fix CVE-2015-8385 (buffer overflow caused by named forward reference to
+  duplicate group number) (bug #1330509)
+- Fix CVE-2015-8386 (buffer overflow caused by lookbehind assertion)
+  (bug #1330509)
+- Fix CVE-2015-3217 (stack overflow caused by mishandled group empty match)
+  (bug #1330509)
+- Fix CVE-2015-5073 and CVE-2015-8388 (buffer overflow for forward reference
+  within backward assertion with excess closing parenthesis) (bug #1330509)
+- Fix CVE-2015-8391 (inefficient posix character class syntax check)
+  (bug #1330509)
 - Fix CVE-2016-3191 (workspace overflow for (*ACCEPT) with deeply nested
-  parentheses) (upstream bug #1791)
+  parentheses) (bug #1330509)
 
-* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 8.38-6.1
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
-
-* Tue Dec 08 2015 Petr Pisar <ppisar@redhat.com> - 8.38-6
-- Fix a crash in pcre_get_substring_list() if the use of \K caused the start
-  of the match to be earlier than the end (upstream bug #1744)
-
-* Mon Dec 07 2015 Petr Pisar <ppisar@redhat.com> - 8.38-5
-- Fix possible crash in pcre_copy_named_substring() if a named substring has
-  number greater than the space in the ovector (upstream bug #1741)
-- Fix a buffer overflow when compiling an expression with named groups with
-  a group that reset capture numbers (upstream bug #1742)
-
-* Fri Dec 04 2015 Petr Pisar <ppisar@redhat.com> - 8.38-4
-- Fix compiling expressions with global extended modifier that is disabled by
-  local no-extended option at the start of the expression just after
-  a whitespace
-
-* Tue Dec 01 2015 Petr Pisar <ppisar@redhat.com> - 8.38-3
-- Fix compiling expressions with negated classes in UCP mode
-  (upstream bug #1732)
-- Fix compiling expressions with an isolated \E between an item and its
-  qualifier with auto-callouts (upstream bug #1724)
-- Fix crash in regexec() if REG_STARTEND option is set and pmatch argument is
-  NULL (upstream bug #1727)
-- Fix a stack overflow when formatting a 32-bit integer in pcregrep tool
-  (upstream bug #1728)
-- Fix compiling expressions with an empty \Q\E sequence between an item and
-  its qualifier with auto-callouts (upstream bug #1735)
-
-* Fri Nov 27 2015 Petr Pisar <ppisar@redhat.com> - 8.38-2
-- Fix compiling comments with auto-callouts
-
-* Tue Nov 24 2015 Petr Pisar <ppisar@redhat.com> - 8.38-1
-- 8.38 bump
-
-* Wed Nov 18 2015 Petr Pisar <ppisar@redhat.com> - 8.38-0.2.RC1
-- Fix crash when compiling an expression with long (*MARK) or (*THEN) names
-- Fix compiling a POSIX character class followed by a single ASCII character
-  in a class item while UCP mode is active (upstream bug #1717)
-- Fix mismatching characters in the range 128-255 against [:punct:] in UCP
-  mode (upstream bug #1718)
-
-* Thu Oct 29 2015 Petr Pisar <ppisar@redhat.com> - 8.38-0.1.RC1
-- 8.38-RC1 bump
-
-* Mon Oct 12 2015 Petr Pisar <ppisar@redhat.com> - 8.37-5
-- Fix compiling classes with a negative escape and a property escape
-  (upstream bug #1697)
-
-* Tue Aug 25 2015 Petr Pisar <ppisar@redhat.com> - 8.37-4
-- Fix CVE-2015-8381 (a heap overflow when compiling certain expression with
-  named references) (bug #1256452)
-
-* Thu Aug 06 2015 Petr Pisar <ppisar@redhat.com> - 8.37-3
-- Fix a buffer overflow with duplicated named groups with a reference between
-  their definition, with a group that reset capture numbers
-- Fix a buffer overflow with a forward reference by name to a group whose
-  number is the same as the current group
-- Fix CVE-2015-8385 (a buffer overflow with duplicated named groups and an
-  occurrence of "(?|") (bug #1250946)
-
-* Wed Jul 01 2015 Petr Pisar <ppisar@redhat.com> - 8.37-2
-- Fix CVE-2015-3210 (heap overflow when compiling an expression with named
-  recursive back reference and the name is duplicated) (bug #1236659)
-- Fix CVE-2015-5073 (heap overflow when compiling an expression with an
-  forward reference within backward asserion with excessive closing
-  paranthesis) (bug #1237224)
-
-* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 8.37-1.1
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
-
-* Tue Apr 28 2015 Petr Pisar <ppisar@redhat.com> - 8.37-1
-- 8.37 bump
-
-* Thu Apr 23 2015 Petr Pisar <ppisar@redhat.com> - 8.37-0.2.RC1
-- Fix static linking (bug #1214494)
-- Package pcredemo.c as a documentation for pcre-devel
-- Fix JIT on AArch64
-
-* Wed Apr 22 2015 Petr Pisar <ppisar@redhat.com> - 8.37-0.1.RC1
-- 8.37 RC1 bump
-
-* Thu Apr 09 2015 Petr Pisar <ppisar@redhat.com> - 8.36-5
-- Fix computing size for pattern with a negated special calss in on-UCP mode
-  (bug #1210383)
-- Fix compilation of a pattern with mutual recursion nested inside other group
-  (bug #1210393)
-- Fix compilation of a parenthesized comment (bug #1210410)
-- Fix compliation of mutual recursion inside a lookbehind assertion
-  (bug #1210417)
-- Fix pcregrep loop when \K is used in a lookbehind assertion (bug #1210423)
-- Fix pcretest loop when \K is used in a lookbehind assertion (bug #1210423)
-- Fix backtracking for \C\X* in UTF-8 mode (bug #1210576)
-
-* Thu Mar 26 2015 Petr Pisar <ppisar@redhat.com> - 8.36-4
-- Fix computing size of JIT read-only data (bug #1206131)
-
-* Thu Feb 19 2015 David Tardon <dtardon@redhat.com> - 8.36-3.1
-- rebuild for C++ stdlib API changes in gcc5
-
-* Thu Nov 20 2014 Petr Pisar <ppisar@redhat.com> - 8.36-3
-- Fix CVE-2014-8964 (unused memory usage on zero-repeat assertion condition)
-  (bug #1165626)
-
-* Fri Nov 07 2014 Petr Pisar <ppisar@redhat.com> - 8.36-2
-- Reset non-matched groups within capturing group up to forced match
-  (bug #1161587)
-
-* Tue Oct 07 2014 Petr Pisar <ppisar@redhat.com> - 8.36-1
-- 8.36 bump
-
-* Tue Sep 16 2014 Petr Pisar <ppisar@redhat.com> - 8.36-0.1.RC1
-- 8.36 RC1 bump
-- Enable JIT on aarch64
-
-* Sun Aug 17 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 8.35-6.1
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
-
-* Mon Aug 11 2014 Petr Pisar <ppisar@redhat.com> - 8.35-6
-- Fix compile-time loop for recursive reference within a group with an
-  indefinite repeat (bug #1128577)
-
-* Wed Jul 30 2014 Tom Callaway <spot@fedoraproject.org> - 8.35-5
-- fix license handling
-
-* Mon Jul 14 2014 Petr Pisar <ppisar@redhat.com> - 8.35-4
+* Wed Apr 29 2015 Petr Pisar <ppisar@redhat.com> - 8.32-15
+- Fix compiling expression where start-anchored character with more than one
+  other case follows circumflex in multiline UTF mode (bug #1110621)
+- Fix character class with a literal quotation (bug #1111091)
 - Fix empty-matching possessive zero-repeat groups in interpreted mode
-  (bug #1119241)
-- Fix memory leaks in pcregrep (bug #1119257)
+  (bug #1119320)
 - Fix compiler crash for zero-repeated groups with a recursive back reference
-  (bug #1119272)
+  (bug #1119356)
+- Reset non-matched groups within capturing group up to forced match
+  (bug #1161597)
+- Fix static linking (bug #1217111)
+- Package pcredemo.c as a documentation for pcre-devel (bug #1217118)
 
-* Thu Jun 19 2014 Petr Pisar <ppisar@redhat.com> - 8.35-3
-- Fix bad starting data when char with more than one other case follows
-  circumflex in multiline UTF mode (bug #1110620)
-- Fix not including VT in starting characters for \s if pcre_study() is used
-  (bug #1111045)
-- Fix character class with a literal quotation (bug #1111054)
+* Tue Dec 02 2014 Petr Pisar <ppisar@redhat.com> - 8.32-14
+- Fix CVE-2014-8964 (unused memory usage on zero-repeat assertion condition)
+  (bug #1169797)
 
-* Fri Jun 06 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 8.35-2.1
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+* Fri Aug 01 2014 Petr Pisar <ppisar@redhat.com> - 8.32-13
+- Disable unsupported JIT mode on little-endian 64-bit PowerPC platform
+  (bug #1125642)
+- Raise optimization level to 3 on little-endian 64-bit PowerPC (bug #1123498)
 
-* Fri Apr 11 2014 Petr Pisar <ppisar@redhat.com> - 8.35-2
-- Do no rely on wrapping signed integer while parsing {min,max} expression
-  (bug #1086630)
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 8.32-12
+- Mass rebuild 2014-01-24
 
-* Wed Apr 09 2014 Petr Pisar <ppisar@redhat.com> - 8.35-1
-- 8.35 bump
-- Run tests in parallel
+* Fri Jan 10 2014 Petr Pisar <ppisar@redhat.com> - 8.32-11
+- Raise optimization to level 3 on 64-bit PowerPC (bug #1051072)
 
-* Fri Mar 14 2014 Petr Pisar <ppisar@redhat.com> - 8.35-0.1.RC1
-- 8.35-RC1 bump
+* Thu Jan 09 2014 Petr Pisar <ppisar@redhat.com> - 8.32-10
+- Fix jitted range check (bug #1048101)
 
-* Tue Mar 11 2014 Petr Pisar <ppisar@redhat.com> - 8.34-4
-- Fix max/min quantifiers in ungreedy mode (bug #1074500)
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 8.32-9
+- Mass rebuild 2013-12-27
 
-* Tue Jan 21 2014 Dan Horák <dan[at]danny.cz> - 8.34-3
-- enlarge stack for tests on s390x
-
-* Thu Jan 09 2014 Petr Pisar <ppisar@redhat.com> - 8.34-2
-- Fix jitted range check (bug #1048097)
-
-* Mon Dec 16 2013 Petr Pisar <ppisar@redhat.com> - 8.34-1
-- 8.34 bump
-
-* Wed Oct 16 2013 Petr Pisar <ppisar@redhat.com> - 8.33-3
+* Wed Oct 16 2013 Petr Pisar <ppisar@redhat.com> - 8.33-8
 - Disable strict-aliasing on PPC64 (bug #881232)
 
-* Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 8.33-2.1
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
-
-* Mon Jun 03 2013 Petr Pisar <ppisar@redhat.com> - 8.33-2
+* Mon Jun 03 2013 Petr Pisar <ppisar@redhat.com> - 8.32-7
 - Disable unsupported JIT on aarch64 (bug #969693)
 
-* Thu May 30 2013 Petr Pisar <ppisar@redhat.com> - 8.33-1
-- 8.33 bump
-
-* Thu May 16 2013 Petr Pisar <ppisar@redhat.com> - 8.33-0.3.RC1
+* Thu May 16 2013 Petr Pisar <ppisar@redhat.com> - 8.32-6
 - Fix passing too small output vector to pcre_dfa_exec (bug #963284)
 
-* Mon May 13 2013 Petr Pisar <ppisar@redhat.com> - 8.33-0.2.RC1
+* Mon May 13 2013 Petr Pisar <ppisar@redhat.com> - 8.32-5
 - Fix bad handling of empty lines in pcregrep tool (bug #961789)
 - Fix possible pcretest crash with a data line longer than 65536 bytes
-
-* Thu May 02 2013 Petr Pisar <ppisar@redhat.com> - 8.33-0.1.RC1
-- 8.33-RC1 bump
 
 * Mon Jan 28 2013 Petr Pisar <ppisar@redhat.com> - 8.32-4
 - Fix forward search in JIT when link size is 3 or greater
@@ -655,3 +432,176 @@ make %{?_smp_mflags} check VERBOSE=yes
 
 * Mon May 09 2011 Petr Pisar <ppisar@redhat.com> - 8.12-4
 - Fix caseless reference matching in UTF-8 mode when the upper/lower case
+  characters have different lengths (bug #702623)
+
+* Mon May 09 2011 Petr Pisar <ppisar@redhat.com> - 8.12-3
+- Fix typos in manual pages (bugs #675476, #675477)
+- Clean spec file up
+
+* Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 8.12-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
+* Mon Jan 17 2011 Petr Pisar <ppisar@redhat.com> - 8.12-1
+- 8.12 bump
+- Remove accepted pcre-8.11-Fix-typo-in-pcreprecompile-3.patch
+
+* Mon Dec 13 2010 Petr Pisar <ppisar@redhat.com> - 8.11-1
+- 8.11 bump
+- See ChangeLog for changes. Namely changes have been made to the way
+  PCRE_PARTIAL_HARD affects the matching of $, \z, \Z, \b, and \B.
+- Fix typo in pcreprecompile(3) manual
+- Document why shared library is not under /usr
+
+* Mon Jul 12 2010 Petr Pisar <ppisar@redhat.com> - 8.10-1
+- 8.10 bump (bug #612635)
+- Add LICENCE to static subpackage because COPYING refers to it
+- Remove useless rpath by using new libtool (simple sed does not work anymore
+  because tests need to link against just-compiled library in %%check phase)
+
+* Thu Jul 08 2010 Petr Pisar <ppisar@redhat.com> - 7.8-4
+- Add COPYING to static subpackage
+- Remove useless rpath
+
+* Sat Jul 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 7.8-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
+* Thu Feb 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 7.8-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
+* Wed Oct 1 2008 Lubomir Rintel <lkundrak@v3.sk> - 7.8-1
+- Update to 7.8, drop upstreamed patches
+- Fix destination of documentation (#427763)
+- Use buildroot macro consistently
+- Separate the static library, as per current Guidelines
+- Satisfy rpmlint
+
+* Fri Jul  4 2008 Tomas Hoger <thoger@redhat.com> - 7.3-4
+- Apply Tavis Ormandy's patch for CVE-2008-2371.
+
+* Tue Feb 12 2008 Tomas Hoger <thoger@redhat.com> - 7.3-3
+- Backport patch from upstream pcre 7.6 to address buffer overflow
+  caused by "a character class containing a very large number of
+  characters with codepoints greater than 255 (in UTF-8 mode)"
+  CVE-2008-0674, #431660
+- Try re-enabling make check again.
+
+* Fri Nov 16 2007 Stepan Kasal <skasal@redhat.com> - 7.3-2
+- Remove obsolete ``reqs''
+- add dist tag
+- update BuildRoot
+
+* Mon Sep 17 2007 Than Ngo <than@redhat.com> - 7.3-1
+- bz292501, update to 7.3
+
+* Mon Jan 22 2007 Than Ngo <than@redhat.com> - 7.0-1
+- 7.0
+
+* Mon Nov 27 2006 Than Ngo <than@redhat.com> - 6.7-1
+- update to 6.7
+- fix #217303, enable-unicode-properties
+- sane stack limit
+
+* Wed Jul 12 2006 Jesse Keating <jkeating@redhat.com> - 6.6-1.1
+- rebuild
+
+* Tue May 09 2006 Than Ngo <than@redhat.com> 6.6-1
+- update to 6.6
+- fix multilib problem
+
+* Fri Feb 10 2006 Jesse Keating <jkeating@redhat.com> - 6.3-1.2.1
+- bump again for double-long bug on ppc(64)
+
+* Tue Feb 07 2006 Jesse Keating <jkeating@redhat.com> - 6.3-1.2
+- rebuilt for new gcc4.1 snapshot and glibc changes
+
+* Fri Dec 09 2005 Jesse Keating <jkeating@redhat.com>
+- rebuilt
+
+* Wed Aug 24 2005 Than Ngo <than@redhat.com> 6.3-1
+- update to 6.3
+
+* Fri Mar  4 2005 Joe Orton <jorton@redhat.com> 5.0-4
+- rebuild
+
+* Fri Feb 11 2005 Joe Orton <jorton@redhat.com> 5.0-3
+- don't print $libdir in 'pcre-config --libs' output
+
+* Thu Nov 18 2004 Joe Orton <jorton@redhat.com> 5.0-2
+- include LICENCE, AUTHORS in docdir
+- run make check
+- move %%configure to %%build
+
+* Thu Nov 18 2004 Than Ngo <than@redhat.com> 5.0-1
+- update to 5.0
+- change License: BSD
+- fix header location #64248
+
+* Tue Jun 15 2004 Elliot Lee <sopwith@redhat.com>
+- rebuilt
+
+* Tue Mar 23 2004 Than Ngo <than@redhat.com> 4.5-2
+- add the correct pcre license, #118781
+
+* Fri Mar 12 2004 Than Ngo <than@redhat.com> 4.5-1
+- update to 4.5
+
+* Tue Mar 02 2004 Elliot Lee <sopwith@redhat.com>
+- rebuilt
+
+* Fri Feb 13 2004 Elliot Lee <sopwith@redhat.com>
+- rebuilt
+
+* Fri Sep 26 2003 Harald Hoyer <harald@redhat.de> 4.4-1
+- 4.4
+
+* Wed Jun 04 2003 Elliot Lee <sopwith@redhat.com>
+- rebuilt
+
+* Wed May  7 2003 Than Ngo <than@redhat.com> 4.2-1
+- update to 4.2
+
+* Wed Jan 22 2003 Tim Powers <timp@redhat.com>
+- rebuilt
+
+* Tue Jan 21 2003 Than Ngo <than@redhat.com> 3.9-9
+- build with utf8, bug #81504
+
+* Fri Nov 22 2002 Elliot Lee <sopwith@redhat.com> 3.9-8
+- Really remove .la files
+
+* Fri Oct 11 2002 Than Ngo <than@redhat.com> 3.9-7
+- remove .la
+
+* Thu Oct 10 2002 Than Ngo <than@redhat.com> 3.9-7
+- Typo bug
+
+* Wed Oct  9 2002 Than Ngo <than@redhat.com> 3.9-6
+- Added missing so symlink
+
+* Thu Sep 19 2002 Than Ngo <than@redhat.com> 3.9-5.1
+- Fixed to build s390/s390x/x86_64
+
+* Thu Jun 27 2002 Bernhard Rosenkraenzer <bero@redhat.com> 3.9-5
+- Fix #65009
+
+* Fri Jun 21 2002 Tim Powers <timp@redhat.com>
+- automated rebuild
+
+* Thu May 23 2002 Tim Powers <timp@redhat.com>
+- automated rebuild
+
+* Mon Mar  4 2002 Bernhard Rosenkraenzer <bero@redhat.com> 3.9-2
+- rebuild
+
+* Fri Jan 11 2002 Bernhard Rosenkraenzer <bero@redhat.com> 3.9-1
+- Update to 3.9
+
+* Wed Nov 14 2001 Bernhard Rosenkraenzer <bero@redhat.com> 3.7-1
+- Update to 3.7
+
+* Thu May 17 2001 Bernhard Rosenkraenzer <bero@redhat.com> 3.4-2
+- Move libpcre to /lib, grep uses it these days (#41104)
+
+* Wed Apr 18 2001 Bernhard Rosenkraenzer <bero@redhat.com>
+- Move this to a separate package, used to be in kdesupport, but it's
+  generally useful...

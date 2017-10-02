@@ -1,0 +1,80 @@
+From 9febe70a64d1669ec0151e51149af1e66bc04b5f Mon Sep 17 00:00:00 2001
+From: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date: Tue, 21 Jul 2015 13:47:22 +0000
+Subject: [PATCH] Fix "run for ever" bug for deeply nested [: sequences.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Ported to 8.32:
+
+commit 485a930d11bfd1ba8c292fe14976f0a3e12c2b93
+Author: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date:   Tue Jul 21 13:47:22 2015 +0000
+
+    Fix "run for ever" bug for deeply nested [: sequences.
+
+    git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1579 2f5784b3-3f2a-0410-8824-cb99058d5e15
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ pcre_compile.c       | 17 +++++------------
+ testdata/testinput2  |  2 ++
+ testdata/testoutput2 |  3 +++
+ 3 files changed, 10 insertions(+), 12 deletions(-)
+
+diff --git a/pcre_compile.c b/pcre_compile.c
+index aa7f4d6..8eb4b0f 100644
+--- a/pcre_compile.c
++++ b/pcre_compile.c
+@@ -2780,19 +2780,12 @@ for (++ptr; *ptr != CHAR_NULL; ptr++)
+   {
+   if (*ptr == CHAR_BACKSLASH && ptr[1] == CHAR_RIGHT_SQUARE_BRACKET)
+     ptr++;
+-  else if (*ptr == CHAR_RIGHT_SQUARE_BRACKET) return FALSE;
+-  else
++  else if ((*ptr == CHAR_LEFT_SQUARE_BRACKET && ptr[1] == terminator) ||
++            *ptr == CHAR_RIGHT_SQUARE_BRACKET) return FALSE;
++  else if (*ptr == terminator && ptr[1] == CHAR_RIGHT_SQUARE_BRACKET)
+     {
+-    if (*ptr == terminator && ptr[1] == CHAR_RIGHT_SQUARE_BRACKET)
+-      {
+-      *endptr = ptr;
+-      return TRUE;
+-      }
+-    if (*ptr == CHAR_LEFT_SQUARE_BRACKET &&
+-         (ptr[1] == CHAR_COLON || ptr[1] == CHAR_DOT ||
+-          ptr[1] == CHAR_EQUALS_SIGN) &&
+-        check_posix_syntax(ptr, endptr))
+-      return FALSE;
++    *endptr = ptr;
++    return TRUE;
+     }
+   }
+ return FALSE;
+diff --git a/testdata/testinput2 b/testdata/testinput2
+index 2f460dc..61535de 100644
+--- a/testdata/testinput2
++++ b/testdata/testinput2
+@@ -3829,4 +3829,6 @@ settings of the anchored and startline bits. --/
+ 
+ /(?=di(?<=(?1))|(?=(.))))/
+ 
++"[[[.\xe8Nq\xffq\xff\xe0\x2|||::Nq\xffq\xff\xe0\x6\x2|||::[[[:[::::::[[[[[::::::::[:[[[:[:::[[[[[[[[[[[[:::::::::::::::::[[.\xe8Nq\xffq\xff\xe0\x2|||::Nq\xffq\xff\xe0\x6\x2|||::[[[:[::::::[[[[[::::::::[:[[[:[:::[[[[[[[[[[[[[[:::E[[[:[:[[:[:::[[:::E[[[:[:[[:'[:::::E[[[:[::::::[[[:[[[[[[[::E[[[:[::::::[[[:[[[[[[[[:[[::[::::[[:::::::[[:[[[[[[[:[[::[:[[:[~"
++
+ /-- End of testinput2 --/
+diff --git a/testdata/testoutput2 b/testdata/testoutput2
+index 3c09fdf..ab1b2ca 100644
+--- a/testdata/testoutput2
++++ b/testdata/testoutput2
+@@ -12543,4 +12543,7 @@ No match
+ /(?=di(?<=(?1))|(?=(.))))/
+ Failed: unmatched parentheses at offset 23
+ 
++"[[[.\xe8Nq\xffq\xff\xe0\x2|||::Nq\xffq\xff\xe0\x6\x2|||::[[[:[::::::[[[[[::::::::[:[[[:[:::[[[[[[[[[[[[:::::::::::::::::[[.\xe8Nq\xffq\xff\xe0\x2|||::Nq\xffq\xff\xe0\x6\x2|||::[[[:[::::::[[[[[::::::::[:[[[:[:::[[[[[[[[[[[[[[:::E[[[:[:[[:[:::[[:::E[[[:[:[[:'[:::::E[[[:[::::::[[[:[[[[[[[::E[[[:[::::::[[[:[[[[[[[[:[[::[::::[[:::::::[[:[[[[[[[:[[::[:[[:[~"
++Failed: missing terminating ] for character class at offset 353
++
+ /-- End of testinput2 --/
+-- 
+2.5.5
+

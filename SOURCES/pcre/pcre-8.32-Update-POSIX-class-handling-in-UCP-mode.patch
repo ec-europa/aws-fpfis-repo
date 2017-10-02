@@ -1,0 +1,1122 @@
+From e74dcd1eec9227fe23c06de2ff109e48695fd879 Mon Sep 17 00:00:00 2001
+From: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date: Sat, 2 Nov 2013 18:29:05 +0000
+Subject: [PATCH 1/2] Update POSIX class handling in UCP mode.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Petr Pisar: Ported to 8.32:
+
+commit fa3832825e3fe0d49f93658882775cdd6c26129e
+Author: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date:   Sat Nov 2 18:29:05 2013 +0000
+
+    Update POSIX class handling in UCP mode.
+
+    git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1387 2f5784b3-3f2a-0410-8824-cb99058d5e15
+
+It also adjusts some test 7 outputs because 8.32 does not contain
+auto-possessification improvement from
+
+commit 5f42224005b7d9a503903e3342ec7ada75590b07
+Author: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date:   Tue Oct 1 16:54:40 2013 +0000
+
+    Refactored auto-possessification code.
+
+    git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1363 2f5784b3-3f2a-0410-8824-cb99058d5e15
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ doc/pcrepattern.3    |  37 +++++--
+ pcre_compile.c       |  75 +++++++++++---
+ pcre_internal.h      |  16 ++-
+ pcre_printint.c      |  59 ++++++++---
+ pcre_xclass.c        |  63 ++++++++++--
+ testdata/testinput6  | 146 ++++++++++++++++++++++++++
+ testdata/testinput7  |  10 ++
+ testdata/testoutput6 | 286 ++++++++++++++++++++++++++++++++++++++++++++++++++-
+ testdata/testoutput7 | 117 ++++++++++++++++++++-
+ 9 files changed, 752 insertions(+), 57 deletions(-)
+
+diff --git a/doc/pcrepattern.3 b/doc/pcrepattern.3
+index c9c7b45..f638846 100644
+--- a/doc/pcrepattern.3
++++ b/doc/pcrepattern.3
+@@ -861,8 +861,9 @@ the "mark" property always have the "extend" grapheme breaking property.
+ .sp
+ As well as the standard Unicode properties described above, PCRE supports four
+ more that make it possible to convert traditional escape sequences such as \ew
+-and \es and POSIX character classes to use Unicode properties. PCRE uses these
+-non-standard, non-Perl properties internally when PCRE_UCP is set. They are:
++and \es to use Unicode properties. PCRE uses these non-standard, non-Perl
++properties internally when PCRE_UCP is set. However, they may also be used
++explicitly. These properties are:
+ .sp
+   Xan   Any alphanumeric character
+   Xps   Any POSIX space character
+@@ -873,6 +874,7 @@ Xan matches characters that have either the L (letter) or the N (number)
+ property. Xps matches the characters tab, linefeed, vertical tab, form feed, or
+ carriage return, and any other character that has the Z (separator) property.
+ Xsp is the same as Xps, except that vertical tab is excluded. Xwd matches the
++:qa
+ same characters as Xan, plus underscore.
+ .
+ .
+@@ -1258,8 +1260,8 @@ supported, and an error is given if they are encountered.
+ By default, in UTF modes, characters with values greater than 128 do not match
+ any of the POSIX character classes. However, if the PCRE_UCP option is passed
+ to \fBpcre_compile()\fP, some of the classes are changed so that Unicode
+-character properties are used. This is achieved by replacing the POSIX classes
+-by other sequences, as follows:
++character properties are used. This is achieved by replacing certain POSIX
++classes by other sequences, as follows:
+ .sp
+   [:alnum:]  becomes  \ep{Xan}
+   [:alpha:]  becomes  \ep{L}
+@@ -1270,9 +1272,30 @@ by other sequences, as follows:
+   [:upper:]  becomes  \ep{Lu}
+   [:word:]   becomes  \ep{Xwd}
+ .sp
+-Negated versions, such as [:^alpha:] use \eP instead of \ep. The other POSIX
+-classes are unchanged, and match only characters with code points less than
+-128.
++Negated versions, such as [:^alpha:] use \eP instead of \ep. Three other POSIX 
++classes are handled specially in UCP mode:
++.TP 10
++[:graph:]
++This matches characters that have glyphs that mark the page when printed. In 
++Unicode property terms, it matches all characters with the L, M, N, P, S, or Cf 
++properties, except for:
++.sp
++  U+061C           Arabic Letter Mark
++  U+180E           Mongolian Vowel Separator 
++  U+2066 - U+2069  Various "isolate"s
++.sp
++.TP 10
++[:print:]
++This matches the same characters as [:graph:] plus space characters that are 
++not controls, that is, characters with the Zs property.
++.TP 10
++[:punct:]
++This matches all characters that have the Unicode P (punctuation) property,
++plus those characters whose code points are less than 128 that have the S
++(Symbol) property.
++.P
++The other POSIX classes are unchanged, and match only characters with code
++points less than 128.
+ .
+ .
+ .SH "VERTICAL BAR"
+diff --git a/pcre_compile.c b/pcre_compile.c
+index 746dc70..3c75218 100644
+--- a/pcre_compile.c
++++ b/pcre_compile.c
+@@ -257,7 +257,8 @@ static const int verbcount = sizeof(verbs)/sizeof(verbitem);
+ now all in a single string, to reduce the number of relocations when a shared
+ library is dynamically loaded. The list of lengths is terminated by a zero
+ length entry. The first three must be alpha, lower, upper, as this is assumed
+-for handling case independence. */
++for handling case independence. The indices for graph, print, and punct are
++needed, so identify them. */
+ 
+ static const char posix_names[] =
+   STRING_alpha0 STRING_lower0 STRING_upper0 STRING_alnum0
+@@ -268,6 +269,11 @@ static const char posix_names[] =
+ static const pcre_uint8 posix_name_lengths[] = {
+   5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 6, 0 };
+ 
++#define PC_GRAPH  8
++#define PC_PRINT  9
++#define PC_PUNCT 10
++
++
+ /* Table of class bit maps for each POSIX class. Each class is formed from a
+ base map, with an optional addition or removal of another map. Then, for some
+ classes, there is some additional tweaking: for [:blank:] the vertical space
+@@ -295,9 +301,8 @@ static const int posix_class_maps[] = {
+   cbit_xdigit,-1,          0              /* xdigit */
+ };
+ 
+-/* Table of substitutes for \d etc when PCRE_UCP is set. The POSIX class
+-substitutes must be in the order of the names, defined above, and there are
+-both positive and negative cases. NULL means no substitute. */
++/* Table of substitutes for \d etc when PCRE_UCP is set. They are replaced by
++Unicode property escapes. */
+ 
+ #ifdef SUPPORT_UCP
+ static const pcre_uchar string_PNd[]  = {
+@@ -322,12 +327,18 @@ static const pcre_uchar string_pXwd[] = {
+ static const pcre_uchar *substitutes[] = {
+   string_PNd,           /* \D */
+   string_pNd,           /* \d */
+-  string_PXsp,          /* \S */       /* NOTE: Xsp is Perl space */
+-  string_pXsp,          /* \s */
++  string_PXsp,          /* \S */   /* Xsp is Perl space, but from 8.34, Perl */
++  string_pXsp,          /* \s */   /* space and POSIX space are the same. */
+   string_PXwd,          /* \W */
+   string_pXwd           /* \w */
+ };
+ 
++/* The POSIX class substitutes must be in the order of the POSIX class names,
++defined above, and there are both positive and negative cases. NULL means no
++general substitute of a Unicode property escape (\p or \P). However, for some
++POSIX classes (e.g. graph, print, punct) a special property code is compiled
++directly. */
++
+ static const pcre_uchar string_pL[] =   {
+   CHAR_BACKSLASH, CHAR_p, CHAR_LEFT_CURLY_BRACKET,
+   CHAR_L, CHAR_RIGHT_CURLY_BRACKET, '\0' };
+@@ -375,8 +386,8 @@ static const pcre_uchar *posix_substitutes[] = {
+   NULL,                 /* graph */
+   NULL,                 /* print */
+   NULL,                 /* punct */
+-  string_pXps,          /* space */    /* NOTE: Xps is POSIX space */
+-  string_pXwd,          /* word */
++  string_pXps,          /* space */   /* Xps is POSIX space, but from 8.34 */
++  string_pXwd,          /* word  */   /* Perl and POSIX space are the same */
+   NULL,                 /* xdigit */
+   /* Negated cases */
+   string_PL,            /* ^alpha */
+@@ -390,8 +401,8 @@ static const pcre_uchar *posix_substitutes[] = {
+   NULL,                 /* ^graph */
+   NULL,                 /* ^print */
+   NULL,                 /* ^punct */
+-  string_PXps,          /* ^space */   /* NOTE: Xps is POSIX space */
+-  string_PXwd,          /* ^word */
++  string_PXps,          /* ^space */  /* Xps is POSIX space, but from 8.34 */
++  string_PXwd,          /* ^word */   /* Perl and POSIX space are the same */
+   NULL                  /* ^xdigit */
+ };
+ #define POSIX_SUBSIZE (sizeof(posix_substitutes) / sizeof(pcre_uchar *))
+@@ -4258,24 +4269,58 @@ for (;; ptr++)
+           posix_class = 0;
+ 
+         /* When PCRE_UCP is set, some of the POSIX classes are converted to
+-        different escape sequences that use Unicode properties. */
++        different escape sequences that use Unicode properties \p or \P. Others
++        that are not available via \p or \P generate XCL_PROP/XCL_NOTPROP
++        directly. */
+ 
+ #ifdef SUPPORT_UCP
+         if ((options & PCRE_UCP) != 0)
+           {
++          unsigned int ptype = 0;
+           int pc = posix_class + ((local_negate)? POSIX_SUBSIZE/2 : 0);
++
++          /* The posix_substitutes table specifies which POSIX classes can be 
++          converted to \p or \P items. */
++           
+           if (posix_substitutes[pc] != NULL)
+             {
+             nestptr = tempptr + 1;
+             ptr = posix_substitutes[pc] - 1;
+             continue;
+             }
++            
++          /* There are three other classes that generate special property calls 
++          that are recognized only in an XCLASS. */ 
++
++          else switch(posix_class)
++            {
++            case PC_GRAPH:
++            ptype = PT_PXGRAPH;
++            /* Fall through */
++            case PC_PRINT:
++            if (ptype == 0) ptype = PT_PXPRINT;
++            /* Fall through */
++            case PC_PUNCT:
++            if (ptype == 0) ptype = PT_PXPUNCT;
++            *class_uchardata++ = local_negate? XCL_NOTPROP : XCL_PROP;
++            *class_uchardata++ = ptype;
++            *class_uchardata++ = 0;
++            ptr = tempptr + 1;
++            continue;
++            
++            /* For all other POSIX classes, no special action is taken in UCP
++            mode. Fall through to the non_UCP case. */
++
++            default:
++            break; 
++            }
+           }
+ #endif
+-        /* In the non-UCP case, we build the bit map for the POSIX class in a
+-        chunk of local store because we may be adding and subtracting from it,
+-        and we don't want to subtract bits that may be in the main map already.
+-        At the end we or the result into the bit map that is being built. */
++        /* In the non-UCP case, or when UCP makes no difference, we build the
++        bit map for the POSIX class in a chunk of local store because we may be
++        adding and subtracting from it, and we don't want to subtract bits that
++        may be in the main map already. At the end we or the result into the
++        bit map that is being built. */
+ 
+         posix_class *= 3;
+ 
+diff --git a/pcre_internal.h b/pcre_internal.h
+index 157de08..389848f 100644
+--- a/pcre_internal.h
++++ b/pcre_internal.h
+@@ -1836,6 +1836,16 @@ only. */
+ #define PT_WORD       8    /* Word - L plus N plus underscore */
+ #define PT_CLIST      9    /* Pseudo-property: match character list */
+ 
++/* The following special properties are used only in XCLASS items, when POSIX 
++classes are specified and PCRE_UCP is set - in other words, for Unicode 
++handling of these classes. They are not available via the \p or \P escapes like 
++those in the above list, and so they do not take part in the autopossessifying 
++table. */
++
++#define PT_PXGRAPH   11    /* [:graph:] - characters that mark the paper */
++#define PT_PXPRINT   12    /* [:print:] - [:graph:] plus non-control spaces */
++#define PT_PXPUNCT   13    /* [:punct:] - punctuation characters */
++
+ /* Flag bits and data types for the extended class (OP_XCLASS) for classes that
+ contain characters with values greater than 255. */
+ 
+@@ -1849,9 +1859,9 @@ contain characters with values greater than 255. */
+ #define XCL_NOTPROP   4    /* Unicode inverted property (ditto) */
+ 
+ /* These are escaped items that aren't just an encoding of a particular data
+-value such as \n. They must have non-zero values, as check_escape() returns
+-0 for a data character.  Also, they must appear in the same order as in the opcode
+-definitions below, up to ESC_z. There's a dummy for OP_ALLANY because it
++value such as \n. They must have non-zero values, as check_escape() returns 0
++for a data character.  Also, they must appear in the same order as in the
++opcode definitions below, up to ESC_z. There's a dummy for OP_ALLANY because it
+ corresponds to "." in DOTALL mode rather than an escape sequence. It is also
+ used for [^] in JavaScript compatibility mode, and for \C in non-utf mode. In
+ non-DOTALL mode, "." behaves like \N.
+diff --git a/pcre_printint.c b/pcre_printint.c
+index 10b5754..c6dcbe6 100644
+--- a/pcre_printint.c
++++ b/pcre_printint.c
+@@ -608,9 +608,9 @@ for(;;)
+     print_prop(f, code, "    ", "");
+     break;
+ 
+-    /* OP_XCLASS can only occur in UTF or PCRE16 modes. However, there's no
+-    harm in having this code always here, and it makes it less messy without
+-    all those #ifdefs. */
++    /* OP_XCLASS cannot occur in 8-bit, non-UTF mode. However, there's no harm
++    in having this code always here, and it makes it less messy without all
++    those #ifdefs. */
+ 
+     case OP_CLASS:
+     case OP_NCLASS:
+@@ -671,27 +671,52 @@ for(;;)
+         pcre_uchar ch;
+         while ((ch = *ccode++) != XCL_END)
+           {
+-          if (ch == XCL_PROP)
+-            {
+-            unsigned int ptype = *ccode++;
+-            unsigned int pvalue = *ccode++;
+-            fprintf(f, "\\p{%s}", get_ucpname(ptype, pvalue));
+-            }
+-          else if (ch == XCL_NOTPROP)
+-            {
+-            unsigned int ptype = *ccode++;
+-            unsigned int pvalue = *ccode++;
+-            fprintf(f, "\\P{%s}", get_ucpname(ptype, pvalue));
+-            }
+-          else
++          BOOL not = FALSE; 
++          const char *notch = ""; 
++           
++          switch(ch)
+             {
++            case XCL_NOTPROP: 
++            not = TRUE;
++            notch = "^"; 
++            /* Fall through */
++               
++            case XCL_PROP:  
++              {
++              unsigned int ptype = *ccode++;
++              unsigned int pvalue = *ccode++;
++              
++              switch(ptype)
++                {
++                case PT_PXGRAPH:
++                fprintf(f, "[:%sgraph:]", notch);
++                break;    
++
++                case PT_PXPRINT:
++                fprintf(f, "[:%sprint:]", notch);
++                break;    
++
++                case PT_PXPUNCT:
++                fprintf(f, "[:%spunct:]", notch);
++                break;    
++
++                default:
++                fprintf(f, "\\%c{%s}", (not? 'P':'p'), 
++                  get_ucpname(ptype, pvalue));
++                break;
++                }    
++              }
++            break;
++             
++            default:
+             ccode += 1 + print_char(f, ccode, utf);
+             if (ch == XCL_RANGE)
+               {
+               fprintf(f, "-");
+               ccode += 1 + print_char(f, ccode, utf);
+               }
+-            }
++            break; 
++            } 
+           }
+         }
+ 
+diff --git a/pcre_xclass.c b/pcre_xclass.c
+index fa73cd8..dd7008a 100644
+--- a/pcre_xclass.c
++++ b/pcre_xclass.c
+@@ -128,57 +128,102 @@ while ((t = *data++) != XCL_END)
+   else  /* XCL_PROP & XCL_NOTPROP */
+     {
+     const ucd_record *prop = GET_UCD(c);
++    BOOL isprop = t == XCL_PROP; 
+ 
+     switch(*data)
+       {
+       case PT_ANY:
+-      if (t == XCL_PROP) return !negated;
++      if (isprop) return !negated;
+       break;
+ 
+       case PT_LAMP:
+       if ((prop->chartype == ucp_Lu || prop->chartype == ucp_Ll ||
+-           prop->chartype == ucp_Lt) == (t == XCL_PROP)) return !negated;
++           prop->chartype == ucp_Lt) == isprop) return !negated;
+       break;
+ 
+       case PT_GC:
+-      if ((data[1] == PRIV(ucp_gentype)[prop->chartype]) == (t == XCL_PROP))
++      if ((data[1] == PRIV(ucp_gentype)[prop->chartype]) == isprop)
+         return !negated;
+       break;
+ 
+       case PT_PC:
+-      if ((data[1] == prop->chartype) == (t == XCL_PROP)) return !negated;
++      if ((data[1] == prop->chartype) == isprop) return !negated;
+       break;
+ 
+       case PT_SC:
+-      if ((data[1] == prop->script) == (t == XCL_PROP)) return !negated;
++      if ((data[1] == prop->script) == isprop) return !negated;
+       break;
+ 
+       case PT_ALNUM:
+       if ((PRIV(ucp_gentype)[prop->chartype] == ucp_L ||
+-           PRIV(ucp_gentype)[prop->chartype] == ucp_N) == (t == XCL_PROP))
++           PRIV(ucp_gentype)[prop->chartype] == ucp_N) == isprop)
+         return !negated;
+       break;
+ 
+       case PT_SPACE:    /* Perl space */
+       if ((PRIV(ucp_gentype)[prop->chartype] == ucp_Z ||
+            c == CHAR_HT || c == CHAR_NL || c == CHAR_FF || c == CHAR_CR)
+-             == (t == XCL_PROP))
++             == isprop)
+         return !negated;
+       break;
+ 
+       case PT_PXSPACE:  /* POSIX space */
+       if ((PRIV(ucp_gentype)[prop->chartype] == ucp_Z ||
+            c == CHAR_HT || c == CHAR_NL || c == CHAR_VT ||
+-           c == CHAR_FF || c == CHAR_CR) == (t == XCL_PROP))
++           c == CHAR_FF || c == CHAR_CR) == isprop)
+         return !negated;
+       break;
+ 
+       case PT_WORD:
+       if ((PRIV(ucp_gentype)[prop->chartype] == ucp_L ||
+            PRIV(ucp_gentype)[prop->chartype] == ucp_N || c == CHAR_UNDERSCORE)
+-             == (t == XCL_PROP))
++             == isprop)
+         return !negated;
+       break;
++      
++      /* The following three properties can occur only in an XCLASS, as there
++      is no \p or \P coding for them. */
++
++      /* Graphic character. Implement this as not Z (space or separator) and 
++      not C (other), except for Cf (format) with a few exceptions. This seems 
++      to be what Perl does. The exceptional characters are:
++       
++      U+061C           Arabic Letter Mark
++      U+180E           Mongolian Vowel Separator 
++      U+2066 - U+2069  Various "isolate"s
++      */ 
++      
++      case PT_PXGRAPH:
++      if ((PRIV(ucp_gentype)[prop->chartype] != ucp_Z &&
++            (PRIV(ucp_gentype)[prop->chartype] != ucp_C ||
++              (prop->chartype == ucp_Cf && 
++                c != 0x061c && c != 0x180e && (c < 0x2066 || c > 0x2069))
++         )) == isprop)
++        return !negated;        
++      break;
++      
++      /* Printable character: same as graphic, with the addition of Zs, i.e. 
++      not Zl and not Zp, and U+180E. */
++
++      case PT_PXPRINT:
++      if ((prop->chartype != ucp_Zl &&
++           prop->chartype != ucp_Zp && 
++            (PRIV(ucp_gentype)[prop->chartype] != ucp_C ||
++              (prop->chartype == ucp_Cf && 
++                c != 0x061c && (c < 0x2066 || c > 0x2069))
++         )) == isprop)
++        return !negated;        
++      break;
++      
++      /* Punctuation: all Unicode punctuation, plus ASCII characters that 
++      Unicode treats as symbols rather than punctuation, for Perl
++      compatibility (these are $+<=>^`|~). */
++
++      case PT_PXPUNCT:
++      if ((PRIV(ucp_gentype)[prop->chartype] == ucp_P ||
++            (c < 256 && PRIV(ucp_gentype)[prop->chartype] == ucp_S)) == isprop)
++        return !negated;
++      break;           
+ 
+       /* This should never occur, but compilers may mutter if there is no
+       default. */
+diff --git a/testdata/testinput6 b/testdata/testinput6
+index 219a30e..adafb89 100644
+--- a/testdata/testinput6
++++ b/testdata/testinput6
+@@ -1319,4 +1319,150 @@
+ /^s?c/mi8
+     scat
+ 
++/^[[:graph:]]+$/8W
++    Letter:ABC
++    Mark:\x{300}\x{1d172}\x{1d17b}
++    Number:9\x{660}
++    Punctuation:\x{66a},;
++    Symbol:\x{6de}<>\x{fffc}
++    Cf-property:\x{ad}\x{600}\x{601}\x{602}\x{603}\x{604}\x{6dd}\x{70f}
++    \x{200b}\x{200c}\x{200d}\x{200e}\x{200f}
++    \x{202a}\x{202b}\x{202c}\x{202d}\x{202e}
++    \x{2060}\x{2061}\x{2062}\x{2063}\x{2064}
++    \x{206a}\x{206b}\x{206c}\x{206d}\x{206e}\x{206f}
++    \x{feff}
++    \x{fff9}\x{fffa}\x{fffb}
++    \x{110bd}
++    \x{1d173}\x{1d174}\x{1d175}\x{1d176}\x{1d177}\x{1d178}\x{1d179}\x{1d17a}
++    \x{e0001}
++    \x{e0020}\x{e0030}\x{e0040}\x{e0050}\x{e0060}\x{e0070}\x{e007f}
++    ** Failers
++    \x{09}
++    \x{0a}
++    \x{1D}
++    \x{20}
++    \x{85}
++    \x{a0}
++    \x{61c}
++    \x{1680}
++    \x{180e}
++    \x{2028}
++    \x{2029}
++    \x{202f}
++    \x{2065}
++    \x{2066}
++    \x{2067}
++    \x{2068}
++    \x{2069}
++    \x{3000}
++    \x{e0002}
++    \x{e001f}
++    \x{e0080} 
++
++/^[[:print:]]+$/8W
++    Space: \x{a0}
++    \x{1680}\x{2000}\x{2001}\x{2002}\x{2003}\x{2004}\x{2005}
++    \x{2006}\x{2007}\x{2008}\x{2009}\x{200a} 
++    \x{202f}\x{205f} 
++    \x{3000}
++    Letter:ABC
++    Mark:\x{300}\x{1d172}\x{1d17b}
++    Number:9\x{660}
++    Punctuation:\x{66a},;
++    Symbol:\x{6de}<>\x{fffc}
++    Cf-property:\x{ad}\x{600}\x{601}\x{602}\x{603}\x{604}\x{6dd}\x{70f}
++    \x{180e}
++    \x{200b}\x{200c}\x{200d}\x{200e}\x{200f}
++    \x{202a}\x{202b}\x{202c}\x{202d}\x{202e}
++    \x{202f}
++    \x{2060}\x{2061}\x{2062}\x{2063}\x{2064}
++    \x{206a}\x{206b}\x{206c}\x{206d}\x{206e}\x{206f}
++    \x{feff}
++    \x{fff9}\x{fffa}\x{fffb}
++    \x{110bd}
++    \x{1d173}\x{1d174}\x{1d175}\x{1d176}\x{1d177}\x{1d178}\x{1d179}\x{1d17a}
++    \x{e0001}
++    \x{e0020}\x{e0030}\x{e0040}\x{e0050}\x{e0060}\x{e0070}\x{e007f}
++    ** Failers
++    \x{09}
++    \x{1D}
++    \x{85}
++    \x{61c}
++    \x{2028}
++    \x{2029}
++    \x{2065}
++    \x{2066}
++    \x{2067}
++    \x{2068}
++    \x{2069}
++    \x{e0002}
++    \x{e001f}
++    \x{e0080} 
++
++/^[[:punct:]]+$/8W
++    \$+<=>^`|~
++    !\"#%&'()*,-./:;?@[\\]_{}
++    \x{a1}\x{a7}  
++    \x{37e} 
++    ** Failers
++    abcde  
++
++/^[[:^graph:]]+$/8W
++    \x{09}\x{0a}\x{1D}\x{20}\x{85}\x{a0}\x{61c}\x{1680}\x{180e}
++    \x{2028}\x{2029}\x{202f}\x{2065}\x{2066}\x{2067}\x{2068}\x{2069}
++    \x{3000}\x{e0002}\x{e001f}\x{e0080}
++    ** Failers
++    Letter:ABC
++    Mark:\x{300}\x{1d172}\x{1d17b}
++    Number:9\x{660}
++    Punctuation:\x{66a},;
++    Symbol:\x{6de}<>\x{fffc}
++    Cf-property:\x{ad}\x{600}\x{601}\x{602}\x{603}\x{604}\x{6dd}\x{70f}
++    \x{200b}\x{200c}\x{200d}\x{200e}\x{200f}
++    \x{202a}\x{202b}\x{202c}\x{202d}\x{202e}
++    \x{2060}\x{2061}\x{2062}\x{2063}\x{2064}
++    \x{206a}\x{206b}\x{206c}\x{206d}\x{206e}\x{206f}
++    \x{feff}
++    \x{fff9}\x{fffa}\x{fffb}
++    \x{110bd}
++    \x{1d173}\x{1d174}\x{1d175}\x{1d176}\x{1d177}\x{1d178}\x{1d179}\x{1d17a}
++    \x{e0001}
++    \x{e0020}\x{e0030}\x{e0040}\x{e0050}\x{e0060}\x{e0070}\x{e007f}
++
++/^[[:^print:]]+$/8W
++    \x{09}\x{1D}\x{85}\x{61c}\x{2028}\x{2029}\x{2065}\x{2066}\x{2067}
++    \x{2068}\x{2069}\x{e0002}\x{e001f}\x{e0080}
++    ** Failers
++    Space: \x{a0}
++    \x{1680}\x{2000}\x{2001}\x{2002}\x{2003}\x{2004}\x{2005}
++    \x{2006}\x{2007}\x{2008}\x{2009}\x{200a} 
++    \x{202f}\x{205f} 
++    \x{3000}
++    Letter:ABC
++    Mark:\x{300}\x{1d172}\x{1d17b}
++    Number:9\x{660}
++    Punctuation:\x{66a},;
++    Symbol:\x{6de}<>\x{fffc}
++    Cf-property:\x{ad}\x{600}\x{601}\x{602}\x{603}\x{604}\x{6dd}\x{70f}
++    \x{180e}
++    \x{200b}\x{200c}\x{200d}\x{200e}\x{200f}
++    \x{202a}\x{202b}\x{202c}\x{202d}\x{202e}
++    \x{202f}
++    \x{2060}\x{2061}\x{2062}\x{2063}\x{2064}
++    \x{206a}\x{206b}\x{206c}\x{206d}\x{206e}\x{206f}
++    \x{feff}
++    \x{fff9}\x{fffa}\x{fffb}
++    \x{110bd}
++    \x{1d173}\x{1d174}\x{1d175}\x{1d176}\x{1d177}\x{1d178}\x{1d179}\x{1d17a}
++    \x{e0001}
++    \x{e0020}\x{e0030}\x{e0040}\x{e0050}\x{e0060}\x{e0070}\x{e007f}
++
++/^[[:^punct:]]+$/8W
++    abcde  
++    ** Failers
++    \$+<=>^`|~
++    !\"#%&'()*,-./:;?@[\\]_{}
++    \x{a1}\x{a7}  
++    \x{37e} 
++
+ /-- End of testinput6 --/
+diff --git a/testdata/testinput7 b/testdata/testinput7
+index 252d246..bcdcef9 100644
+--- a/testdata/testinput7
++++ b/testdata/testinput7
+@@ -672,4 +672,14 @@ of case for anything other than the ASCII letters. --/
+ /^s?c/mi8I
+     scat
+ 
++/\D+\X \d+\X \S+\X \s+\X \W+\X \w+\X \C+\X \R+\X \H+\X \h+\X \V+\X \v+\X a+\X \n+\X .+\X/BZx
++
++/.+\X/BZxs
++
++/\X+$/BZxm
++
++/\X+\D \X+\d \X+\S \X+\s \X+\W \X+\w \X+. \X+\C \X+\R \X+\H \X+\h \X+\V \X+\v \X+\X \X+\Z \X+\z \X+$/BZx
++
++/\d+\s{0,5}=\s*\S?=\w{0,4}\W*/8WBZ
++
+ /-- End of testinput7 --/
+diff --git a/testdata/testoutput6 b/testdata/testoutput6
+index 090d23f..c426efc 100644
+--- a/testdata/testoutput6
++++ b/testdata/testoutput6
+@@ -1338,15 +1338,15 @@ No match
+ 
+ /^[[:graph:]]*/8W
+     A\x{a1}\x{a0}
+- 0: A
++ 0: A\x{a1}
+ 
+ /^[[:print:]]*/8W
+     A z\x{a0}\x{a1}
+- 0: A z
++ 0: A z\x{a0}\x{a1}
+ 
+ /^[[:punct:]]*/8W
+     .+\x{a1}\x{a0}
+- 0: .+
++ 0: .+\x{a1}
+ 
+ /\p{Zs}*?\R/
+     ** Failers
+@@ -2138,4 +2138,284 @@ No match
+     scat
+  0: sc
+ 
++/^[[:graph:]]+$/8W
++    Letter:ABC
++ 0: Letter:ABC
++    Mark:\x{300}\x{1d172}\x{1d17b}
++ 0: Mark:\x{300}\x{1d172}\x{1d17b}
++    Number:9\x{660}
++ 0: Number:9\x{660}
++    Punctuation:\x{66a},;
++ 0: Punctuation:\x{66a},;
++    Symbol:\x{6de}<>\x{fffc}
++ 0: Symbol:\x{6de}<>\x{fffc}
++    Cf-property:\x{ad}\x{600}\x{601}\x{602}\x{603}\x{604}\x{6dd}\x{70f}
++ 0: Cf-property:\x{ad}\x{600}\x{601}\x{602}\x{603}\x{604}\x{6dd}\x{70f}
++    \x{200b}\x{200c}\x{200d}\x{200e}\x{200f}
++ 0: \x{200b}\x{200c}\x{200d}\x{200e}\x{200f}
++    \x{202a}\x{202b}\x{202c}\x{202d}\x{202e}
++ 0: \x{202a}\x{202b}\x{202c}\x{202d}\x{202e}
++    \x{2060}\x{2061}\x{2062}\x{2063}\x{2064}
++ 0: \x{2060}\x{2061}\x{2062}\x{2063}\x{2064}
++    \x{206a}\x{206b}\x{206c}\x{206d}\x{206e}\x{206f}
++ 0: \x{206a}\x{206b}\x{206c}\x{206d}\x{206e}\x{206f}
++    \x{feff}
++ 0: \x{feff}
++    \x{fff9}\x{fffa}\x{fffb}
++ 0: \x{fff9}\x{fffa}\x{fffb}
++    \x{110bd}
++ 0: \x{110bd}
++    \x{1d173}\x{1d174}\x{1d175}\x{1d176}\x{1d177}\x{1d178}\x{1d179}\x{1d17a}
++ 0: \x{1d173}\x{1d174}\x{1d175}\x{1d176}\x{1d177}\x{1d178}\x{1d179}\x{1d17a}
++    \x{e0001}
++ 0: \x{e0001}
++    \x{e0020}\x{e0030}\x{e0040}\x{e0050}\x{e0060}\x{e0070}\x{e007f}
++ 0: \x{e0020}\x{e0030}\x{e0040}\x{e0050}\x{e0060}\x{e0070}\x{e007f}
++    ** Failers
++No match
++    \x{09}
++No match
++    \x{0a}
++No match
++    \x{1D}
++No match
++    \x{20}
++No match
++    \x{85}
++No match
++    \x{a0}
++No match
++    \x{61c}
++No match
++    \x{1680}
++No match
++    \x{180e}
++No match
++    \x{2028}
++No match
++    \x{2029}
++No match
++    \x{202f}
++No match
++    \x{2065}
++No match
++    \x{2066}
++No match
++    \x{2067}
++No match
++    \x{2068}
++No match
++    \x{2069}
++No match
++    \x{3000}
++No match
++    \x{e0002}
++No match
++    \x{e001f}
++No match
++    \x{e0080} 
++No match
++
++/^[[:print:]]+$/8W
++    Space: \x{a0}
++ 0: Space: \x{a0}
++    \x{1680}\x{2000}\x{2001}\x{2002}\x{2003}\x{2004}\x{2005}
++ 0: \x{1680}\x{2000}\x{2001}\x{2002}\x{2003}\x{2004}\x{2005}
++    \x{2006}\x{2007}\x{2008}\x{2009}\x{200a} 
++ 0: \x{2006}\x{2007}\x{2008}\x{2009}\x{200a}
++    \x{202f}\x{205f} 
++ 0: \x{202f}\x{205f}
++    \x{3000}
++ 0: \x{3000}
++    Letter:ABC
++ 0: Letter:ABC
++    Mark:\x{300}\x{1d172}\x{1d17b}
++ 0: Mark:\x{300}\x{1d172}\x{1d17b}
++    Number:9\x{660}
++ 0: Number:9\x{660}
++    Punctuation:\x{66a},;
++ 0: Punctuation:\x{66a},;
++    Symbol:\x{6de}<>\x{fffc}
++ 0: Symbol:\x{6de}<>\x{fffc}
++    Cf-property:\x{ad}\x{600}\x{601}\x{602}\x{603}\x{604}\x{6dd}\x{70f}
++ 0: Cf-property:\x{ad}\x{600}\x{601}\x{602}\x{603}\x{604}\x{6dd}\x{70f}
++    \x{180e}
++ 0: \x{180e}
++    \x{200b}\x{200c}\x{200d}\x{200e}\x{200f}
++ 0: \x{200b}\x{200c}\x{200d}\x{200e}\x{200f}
++    \x{202a}\x{202b}\x{202c}\x{202d}\x{202e}
++ 0: \x{202a}\x{202b}\x{202c}\x{202d}\x{202e}
++    \x{202f}
++ 0: \x{202f}
++    \x{2060}\x{2061}\x{2062}\x{2063}\x{2064}
++ 0: \x{2060}\x{2061}\x{2062}\x{2063}\x{2064}
++    \x{206a}\x{206b}\x{206c}\x{206d}\x{206e}\x{206f}
++ 0: \x{206a}\x{206b}\x{206c}\x{206d}\x{206e}\x{206f}
++    \x{feff}
++ 0: \x{feff}
++    \x{fff9}\x{fffa}\x{fffb}
++ 0: \x{fff9}\x{fffa}\x{fffb}
++    \x{110bd}
++ 0: \x{110bd}
++    \x{1d173}\x{1d174}\x{1d175}\x{1d176}\x{1d177}\x{1d178}\x{1d179}\x{1d17a}
++ 0: \x{1d173}\x{1d174}\x{1d175}\x{1d176}\x{1d177}\x{1d178}\x{1d179}\x{1d17a}
++    \x{e0001}
++ 0: \x{e0001}
++    \x{e0020}\x{e0030}\x{e0040}\x{e0050}\x{e0060}\x{e0070}\x{e007f}
++ 0: \x{e0020}\x{e0030}\x{e0040}\x{e0050}\x{e0060}\x{e0070}\x{e007f}
++    ** Failers
++ 0: ** Failers
++    \x{09}
++No match
++    \x{1D}
++No match
++    \x{85}
++No match
++    \x{61c}
++No match
++    \x{2028}
++No match
++    \x{2029}
++No match
++    \x{2065}
++No match
++    \x{2066}
++No match
++    \x{2067}
++No match
++    \x{2068}
++No match
++    \x{2069}
++No match
++    \x{e0002}
++No match
++    \x{e001f}
++No match
++    \x{e0080} 
++No match
++
++/^[[:punct:]]+$/8W
++    \$+<=>^`|~
++ 0: $+<=>^`|~
++    !\"#%&'()*,-./:;?@[\\]_{}
++ 0: !"#%&'()*,-./:;?@[\]_{}
++    \x{a1}\x{a7}  
++ 0: \x{a1}\x{a7}
++    \x{37e} 
++ 0: \x{37e}
++    ** Failers
++No match
++    abcde  
++No match
++
++/^[[:^graph:]]+$/8W
++    \x{09}\x{0a}\x{1D}\x{20}\x{85}\x{a0}\x{61c}\x{1680}\x{180e}
++ 0: \x{09}\x{0a}\x{1d} \x{85}\x{a0}\x{61c}\x{1680}\x{180e}
++    \x{2028}\x{2029}\x{202f}\x{2065}\x{2066}\x{2067}\x{2068}\x{2069}
++ 0: \x{2028}\x{2029}\x{202f}\x{2065}\x{2066}\x{2067}\x{2068}\x{2069}
++    \x{3000}\x{e0002}\x{e001f}\x{e0080}
++ 0: \x{3000}\x{e0002}\x{e001f}\x{e0080}
++    ** Failers
++No match
++    Letter:ABC
++No match
++    Mark:\x{300}\x{1d172}\x{1d17b}
++No match
++    Number:9\x{660}
++No match
++    Punctuation:\x{66a},;
++No match
++    Symbol:\x{6de}<>\x{fffc}
++No match
++    Cf-property:\x{ad}\x{600}\x{601}\x{602}\x{603}\x{604}\x{6dd}\x{70f}
++No match
++    \x{200b}\x{200c}\x{200d}\x{200e}\x{200f}
++No match
++    \x{202a}\x{202b}\x{202c}\x{202d}\x{202e}
++No match
++    \x{2060}\x{2061}\x{2062}\x{2063}\x{2064}
++No match
++    \x{206a}\x{206b}\x{206c}\x{206d}\x{206e}\x{206f}
++No match
++    \x{feff}
++No match
++    \x{fff9}\x{fffa}\x{fffb}
++No match
++    \x{110bd}
++No match
++    \x{1d173}\x{1d174}\x{1d175}\x{1d176}\x{1d177}\x{1d178}\x{1d179}\x{1d17a}
++No match
++    \x{e0001}
++No match
++    \x{e0020}\x{e0030}\x{e0040}\x{e0050}\x{e0060}\x{e0070}\x{e007f}
++No match
++
++/^[[:^print:]]+$/8W
++    \x{09}\x{1D}\x{85}\x{61c}\x{2028}\x{2029}\x{2065}\x{2066}\x{2067}
++ 0: \x{09}\x{1d}\x{85}\x{61c}\x{2028}\x{2029}\x{2065}\x{2066}\x{2067}
++    \x{2068}\x{2069}\x{e0002}\x{e001f}\x{e0080}
++ 0: \x{2068}\x{2069}\x{e0002}\x{e001f}\x{e0080}
++    ** Failers
++No match
++    Space: \x{a0}
++No match
++    \x{1680}\x{2000}\x{2001}\x{2002}\x{2003}\x{2004}\x{2005}
++No match
++    \x{2006}\x{2007}\x{2008}\x{2009}\x{200a} 
++No match
++    \x{202f}\x{205f} 
++No match
++    \x{3000}
++No match
++    Letter:ABC
++No match
++    Mark:\x{300}\x{1d172}\x{1d17b}
++No match
++    Number:9\x{660}
++No match
++    Punctuation:\x{66a},;
++No match
++    Symbol:\x{6de}<>\x{fffc}
++No match
++    Cf-property:\x{ad}\x{600}\x{601}\x{602}\x{603}\x{604}\x{6dd}\x{70f}
++No match
++    \x{180e}
++No match
++    \x{200b}\x{200c}\x{200d}\x{200e}\x{200f}
++No match
++    \x{202a}\x{202b}\x{202c}\x{202d}\x{202e}
++No match
++    \x{202f}
++No match
++    \x{2060}\x{2061}\x{2062}\x{2063}\x{2064}
++No match
++    \x{206a}\x{206b}\x{206c}\x{206d}\x{206e}\x{206f}
++No match
++    \x{feff}
++No match
++    \x{fff9}\x{fffa}\x{fffb}
++No match
++    \x{110bd}
++No match
++    \x{1d173}\x{1d174}\x{1d175}\x{1d176}\x{1d177}\x{1d178}\x{1d179}\x{1d17a}
++No match
++    \x{e0001}
++No match
++    \x{e0020}\x{e0030}\x{e0040}\x{e0050}\x{e0060}\x{e0070}\x{e007f}
++No match
++
++/^[[:^punct:]]+$/8W
++    abcde  
++ 0: abcde
++    ** Failers
++No match
++    \$+<=>^`|~
++No match
++    !\"#%&'()*,-./:;?@[\\]_{}
++No match
++    \x{a1}\x{a7}  
++No match
++    \x{37e} 
++No match
++
+ /-- End of testinput6 --/
+diff --git a/testdata/testoutput7 b/testdata/testoutput7
+index 5f0f546..e3f607c 100644
+--- a/testdata/testoutput7
++++ b/testdata/testoutput7
+@@ -820,7 +820,7 @@ No match
+ /[[:graph:]]/WBZ
+ ------------------------------------------------------------------
+         Bra
+-        [!-~]
++        [[:graph:]]
+         Ket
+         End
+ ------------------------------------------------------------------
+@@ -828,7 +828,7 @@ No match
+ /[[:print:]]/WBZ
+ ------------------------------------------------------------------
+         Bra
+-        [ -~]
++        [[:print:]]
+         Ket
+         End
+ ------------------------------------------------------------------
+@@ -836,7 +836,7 @@ No match
+ /[[:punct:]]/WBZ
+ ------------------------------------------------------------------
+         Bra
+-        [!-/:-@[-`{-~]
++        [[:punct:]]
+         Ket
+         End
+ ------------------------------------------------------------------
+@@ -1478,4 +1478,115 @@ Need char = 'c' (caseless)
+     scat
+  0: sc
+ 
++/\D+\X \d+\X \S+\X \s+\X \W+\X \w+\X \C+\X \R+\X \H+\X \h+\X \V+\X \v+\X a+\X \n+\X .+\X/BZx
++------------------------------------------------------------------
++        Bra
++        \D+
++        extuni
++        \d+
++        extuni
++        \S+
++        extuni
++        \s+
++        extuni
++        \W+
++        extuni
++        \w+
++        extuni
++        AllAny+
++        extuni
++        \R+
++        extuni
++        \H+
++        extuni
++        \h+
++        extuni
++        \V+
++        extuni
++        \v+
++        extuni
++        a+
++        extuni
++        \x0a+
++        extuni
++        Any+
++        extuni
++        Ket
++        End
++------------------------------------------------------------------
++
++/.+\X/BZxs
++------------------------------------------------------------------
++        Bra
++        AllAny+
++        extuni
++        Ket
++        End
++------------------------------------------------------------------
++
++/\X+$/BZxm
++------------------------------------------------------------------
++        Bra
++        extuni+
++     /m $
++        Ket
++        End
++------------------------------------------------------------------
++
++/\X+\D \X+\d \X+\S \X+\s \X+\W \X+\w \X+. \X+\C \X+\R \X+\H \X+\h \X+\V \X+\v \X+\X \X+\Z \X+\z \X+$/BZx
++------------------------------------------------------------------
++        Bra
++        extuni+
++        \D
++        extuni+
++        \d
++        extuni+
++        \S
++        extuni+
++        \s
++        extuni+
++        \W
++        extuni+
++        \w
++        extuni+
++        Any
++        extuni+
++        AllAny
++        extuni+
++        \R
++        extuni+
++        \H
++        extuni+
++        \h
++        extuni+
++        \V
++        extuni+
++        \v
++        extuni+
++        extuni
++        extuni+
++        \Z
++        extuni+
++        \z
++        extuni+
++        $
++        Ket
++        End
++------------------------------------------------------------------
++
++/\d+\s{0,5}=\s*\S?=\w{0,4}\W*/8WBZ
++------------------------------------------------------------------
++        Bra
++        prop Nd +
++        prop Xsp {0,5}
++        =
++        prop Xsp *
++        notprop Xsp ?
++        =
++        prop Xwd {0,4}
++        notprop Xwd *
++        Ket
++        End
++------------------------------------------------------------------
++
+ /-- End of testinput7 --/
+-- 
+2.7.4
+

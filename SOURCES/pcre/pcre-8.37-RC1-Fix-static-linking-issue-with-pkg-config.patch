@@ -1,0 +1,44 @@
+From 2765d0933715e6b2c78a4e74fa8d5cad27273f29 Mon Sep 17 00:00:00 2001
+From: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date: Thu, 23 Apr 2015 17:34:33 +0000
+Subject: [PATCH] Fix static linking issue with pkg-config.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1552 2f5784b3-3f2a-0410-8824-cb99058d5e15
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+
+diff --git a/libpcre.pc.in b/libpcre.pc.in
+index 1f26b32..0a35da8 100644
+--- a/libpcre.pc.in
++++ b/libpcre.pc.in
+@@ -9,4 +9,5 @@ Name: libpcre
+ Description: PCRE - Perl compatible regular expressions C library with 8 bit character support
+ Version: @PACKAGE_VERSION@
+ Libs: -L${libdir} -lpcre
++Libs.private: @PTHREAD_CFLAGS@ @PTHREAD_LIBS@
+ Cflags: -I${includedir} @PCRE_STATIC_CFLAG@
+diff --git a/libpcre16.pc.in b/libpcre16.pc.in
+index f589b75..080c9dc 100644
+--- a/libpcre16.pc.in
++++ b/libpcre16.pc.in
+@@ -9,4 +9,5 @@ Name: libpcre16
+ Description: PCRE - Perl compatible regular expressions C library with 16 bit character support
+ Version: @PACKAGE_VERSION@
+ Libs: -L${libdir} -lpcre16
++Libs.private: @PTHREAD_CFLAGS@ @PTHREAD_LIBS@
+ Cflags: -I${includedir} @PCRE_STATIC_CFLAG@
+diff --git a/libpcre32.pc.in b/libpcre32.pc.in
+index 6582105..a3ae0e1 100644
+--- a/libpcre32.pc.in
++++ b/libpcre32.pc.in
+@@ -9,4 +9,5 @@ Name: libpcre32
+ Description: PCRE - Perl compatible regular expressions C library with 32 bit character support
+ Version: @PACKAGE_VERSION@
+ Libs: -L${libdir} -lpcre32
++Libs.private: @PTHREAD_CFLAGS@ @PTHREAD_LIBS@
+ Cflags: -I${includedir} @PCRE_STATIC_CFLAG@
+-- 
+2.1.0
+

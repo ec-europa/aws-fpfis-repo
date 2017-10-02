@@ -1,0 +1,187 @@
+From 93c413c5fac105d90f77ab5d03e31e0f64fc6142 Mon Sep 17 00:00:00 2001
+From: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date: Tue, 27 May 2014 13:18:31 +0000
+Subject: [PATCH] Fix empty-matching possessive zero-repeat groups bug.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1478 2f5784b3-3f2a-0410-8824-cb99058d5e15
+
+Petr Pisar: Ported to 8.33.
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ pcre_exec.c          | 41 ++++++++++++++++++++++++++---------------
+ testdata/testinput1  |  9 +++++++++
+ testdata/testinput8  |  6 ++++++
+ testdata/testoutput1 | 12 ++++++++++++
+ testdata/testoutput8 |  8 ++++++++
+ 5 files changed, 61 insertions(+), 15 deletions(-)
+
+diff --git a/pcre_exec.c b/pcre_exec.c
+index ab76d02..481e899 100644
+--- a/pcre_exec.c
++++ b/pcre_exec.c
+@@ -1169,10 +1169,15 @@ for (;;)
+         if (rrc == MATCH_KETRPOS)
+           {
+           offset_top = md->end_offset_top;
+-          eptr = md->end_match_ptr;
+           ecode = md->start_code + code_offset;
+           save_capture_last = md->capture_last;
+           matched_once = TRUE;
++          if (eptr == md->end_match_ptr)   /* Matched an empty string */
++            {
++            do ecode += GET(ecode, 1); while (*ecode == OP_ALT);
++            break;
++            }  
++          eptr = md->end_match_ptr;
+           continue;
+           }
+ 
+@@ -1242,9 +1247,14 @@ for (;;)
+       if (rrc == MATCH_KETRPOS)
+         {
+         offset_top = md->end_offset_top;
+-        eptr = md->end_match_ptr;
+         ecode = md->start_code + code_offset;
+         matched_once = TRUE;
++        if (eptr == md->end_match_ptr)  /* Matched an empty string */
++          {
++          do ecode += GET(ecode, 1); while (*ecode == OP_ALT);
++          break;
++          }  
++        eptr = md->end_match_ptr;
+         continue;
+         }
+ 
+@@ -1976,7 +1986,7 @@ for (;;)
+     case OP_KETRMAX:
+     case OP_KETRPOS:
+     prev = ecode - GET(ecode, 1);
+-
++    
+     /* If this was a group that remembered the subject start, in order to break
+     infinite repeats of empty string matches, retrieve the subject start from
+     the chain. Otherwise, set it NULL. */
+@@ -2001,7 +2011,7 @@ for (;;)
+       md->start_match_ptr = mstart;
+       RRETURN(MATCH_MATCH);         /* Sets md->mark */
+       }
+-
++      
+     /* For capturing groups we have to check the group number back at the start
+     and if necessary complete handling an extraction by setting the offsets and
+     bumping the high water mark. Whole-pattern recursion is coded as a recurse
+@@ -2061,6 +2071,18 @@ for (;;)
+         }
+       }
+ 
++    /* OP_KETRPOS is a possessive repeating ket. Remember the current position,
++    and return the MATCH_KETRPOS. This makes it possible to do the repeats one
++    at a time from the outer level, thus saving stack. This must precede the 
++    empty string test - in this case that test is done at the outer level. */
++
++    if (*ecode == OP_KETRPOS)
++      {
++      md->end_match_ptr = eptr;
++      md->end_offset_top = offset_top;
++      RRETURN(MATCH_KETRPOS);
++      }
++
+     /* For an ordinary non-repeating ket, just continue at this level. This
+     also happens for a repeating ket if no characters were matched in the
+     group. This is the forcible breaking of infinite loops as implemented in
+@@ -2083,17 +2105,6 @@ for (;;)
+       break;
+       }
+ 
+-    /* OP_KETRPOS is a possessive repeating ket. Remember the current position,
+-    and return the MATCH_KETRPOS. This makes it possible to do the repeats one
+-    at a time from the outer level, thus saving stack. */
+-
+-    if (*ecode == OP_KETRPOS)
+-      {
+-      md->end_match_ptr = eptr;
+-      md->end_offset_top = offset_top;
+-      RRETURN(MATCH_KETRPOS);
+-      }
+-
+     /* The normal repeating kets try the rest of the pattern or restart from
+     the preceding bracket, in the appropriate order. In the second case, we can
+     use tail recursion to avoid using another stack frame, unless we have an
+diff --git a/testdata/testinput1 b/testdata/testinput1
+index d77d8ac..6bde9ec 100644
+--- a/testdata/testinput1
++++ b/testdata/testinput1
+@@ -5614,4 +5614,13 @@ AbcdCBefgBhiBqz
+ /[\Q]a\E]+/
+     aa]]
+ 
++'\A(?:[^\"]++|\"(?:[^\"]*+|\"\")*+\")++'
++    NON QUOTED \"QUOT\"\"ED\" AFTER \"NOT MATCHED
++
++'\A(?:[^\"]++|\"(?:[^\"]++|\"\")*+\")++'
++    NON QUOTED \"QUOT\"\"ED\" AFTER \"NOT MATCHED
++
++'\A(?:[^\"]++|\"(?:[^\"]++|\"\")++\")++'
++    NON QUOTED \"QUOT\"\"ED\" AFTER \"NOT MATCHED
++
+ /-- End of testinput1 --/
+diff --git a/testdata/testinput8 b/testdata/testinput8
+index d91013b..98a0b38 100644
+--- a/testdata/testinput8
++++ b/testdata/testinput8
+@@ -4801,4 +4801,10 @@
+ /abcd/
+     abcd\O0
+ 
++'\A(?:[^\"]++|\"(?:[^\"]*+|\"\")*+\")++'
++    NON QUOTED \"QUOT\"\"ED\" AFTER \"NOT MATCHED
++
++'\A(?:[^\"]++|\"(?:[^\"]++|\"\")*+\")++'
++    NON QUOTED \"QUOT\"\"ED\" AFTER \"NOT MATCHED
++
+ /-- End of testinput8 --/
+diff --git a/testdata/testoutput1 b/testdata/testoutput1
+index 1b0b8dc..cb9592d 100644
+--- a/testdata/testoutput1
++++ b/testdata/testoutput1
+@@ -9208,4 +9208,16 @@ No match
+     aa]]
+  0: aa]]
+ 
++'\A(?:[^\"]++|\"(?:[^\"]*+|\"\")*+\")++'
++    NON QUOTED \"QUOT\"\"ED\" AFTER \"NOT MATCHED
++ 0: NON QUOTED "QUOT""ED" AFTER 
++
++'\A(?:[^\"]++|\"(?:[^\"]++|\"\")*+\")++'
++    NON QUOTED \"QUOT\"\"ED\" AFTER \"NOT MATCHED
++ 0: NON QUOTED "QUOT""ED" AFTER 
++
++'\A(?:[^\"]++|\"(?:[^\"]++|\"\")++\")++'
++    NON QUOTED \"QUOT\"\"ED\" AFTER \"NOT MATCHED
++ 0: NON QUOTED "QUOT""ED" AFTER 
++
+ /-- End of testinput1 --/
+diff --git a/testdata/testoutput8 b/testdata/testoutput8
+index 75affbe..666b67e 100644
+--- a/testdata/testoutput8
++++ b/testdata/testoutput8
+@@ -8020,4 +8020,12 @@ Error -30 (invalid data in workspace for DFA restart)
+     abcd\O0
+ Matched, but offsets vector is too small to show all matches
+ 
++'\A(?:[^\"]++|\"(?:[^\"]*+|\"\")*+\")++'
++    NON QUOTED \"QUOT\"\"ED\" AFTER \"NOT MATCHED
++ 0: NON QUOTED "QUOT""ED" AFTER 
++
++'\A(?:[^\"]++|\"(?:[^\"]++|\"\")*+\")++'
++    NON QUOTED \"QUOT\"\"ED\" AFTER \"NOT MATCHED
++ 0: NON QUOTED "QUOT""ED" AFTER 
++
+ /-- End of testinput8 --/
+-- 
+1.9.3
+

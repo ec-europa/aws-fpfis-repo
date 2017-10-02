@@ -1,0 +1,66 @@
+From eb1ab619f3f36539e53e6a481a0aa168afa10596 Mon Sep 17 00:00:00 2001
+From: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date: Tue, 19 May 2015 16:02:06 +0000
+Subject: [PATCH] Fix buffer overflow for lookbehind within mutually recursive
+ subroutines.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Ported to 8.32:
+
+commit 9f2cf82ed9380bb4a726250833d6a0d295be8747
+Author: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date:   Tue May 19 16:02:06 2015 +0000
+
+    Fix buffer overflow for lookbehind within mutually recursive subroutines.
+
+    git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1560 2f5784b3-3f2a-0410-8824-cb99058d5e15
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ pcre_compile.c       | 2 +-
+ testdata/testinput2  | 3 +++
+ testdata/testoutput2 | 3 +++
+ 3 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/pcre_compile.c b/pcre_compile.c
+index 0215861..7d203eb 100644
+--- a/pcre_compile.c
++++ b/pcre_compile.c
+@@ -1811,7 +1811,7 @@ for (;;)
+     case OP_ASSERTBACK:
+     case OP_ASSERTBACK_NOT:
+     do cc += GET(cc, 1); while (*cc == OP_ALT);
+-    cc += PRIV(OP_lengths)[*cc];
++    cc += 1 + LINK_SIZE;
+     break;
+ 
+     /* Skip over things that don't match chars */
+diff --git a/testdata/testinput2 b/testdata/testinput2
+index bb11212..1b83cf2 100644
+--- a/testdata/testinput2
++++ b/testdata/testinput2
+@@ -3822,4 +3822,7 @@ settings of the anchored and startline bits. --/
+ 
+ /(?J:(?|(:(?|(?'R')(\k'R')|((?'R')))H'Rk'Rf)|s(?'R')))/
+ 
++".*?\h.+.\.+\R*?\xd(?i)(?=!(?=b`b`b`\`b\xa9b!)`\a`bbbbbbbbbbbbb`bbbbbbbbbbbb*R\x85bbbbbbb\C?{((?2)(?))((
++\H){8(?<=(?1){29}\xa8bbbb\x16\xd\xc6^($(?<! )(\xa9H4){4}h}1)B))\x15')"
++
+ /-- End of testinput2 --/
+diff --git a/testdata/testoutput2 b/testdata/testoutput2
+index 2dd2381..e33b4e2 100644
+--- a/testdata/testoutput2
++++ b/testdata/testoutput2
+@@ -12519,4 +12519,7 @@ No match
+ 
+ /(?J:(?|(:(?|(?'R')(\k'R')|((?'R')))H'Rk'Rf)|s(?'R')))/
+ 
++".*?\h.+.\.+\R*?\xd(?i)(?=!(?=b`b`b`\`b\xa9b!)`\a`bbbbbbbbbbbbb`bbbbbbbbbbbb*R\x85bbbbbbb\C?{((?2)(?))((
++\H){8(?<=(?1){29}\xa8bbbb\x16\xd\xc6^($(?<! )(\xa9H4){4}h}1)B))\x15')"
++
+ /-- End of testinput2 --/
+-- 
+2.5.5
+

@@ -1,0 +1,94 @@
+From 17b16354612fa15b0d385e0ac57d0e0b4494ddac Mon Sep 17 00:00:00 2001
+From: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date: Wed, 18 Jun 2014 16:31:32 +0000
+Subject: [PATCH] Fix bad starting data when char with more than one other case
+ follows circumflex in multiline UTF mode.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1485 2f5784b3-3f2a-0410-8824-cb99058d5e15
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+
+Petr Pisar: Ported to 8.32.
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ pcre_compile.c       | 3 ++-
+ testdata/testinput6  | 3 +++
+ testdata/testinput7  | 3 +++
+ testdata/testoutput6 | 4 ++++
+ testdata/testoutput7 | 8 ++++++++
+ 5 files changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/pcre_compile.c b/pcre_compile.c
+index 5f0c8ed..7a2d7c7 100644
+--- a/pcre_compile.c
++++ b/pcre_compile.c
+@@ -3991,7 +3991,8 @@ for (;; ptr++)
+     previous = NULL;
+     if ((options & PCRE_MULTILINE) != 0)
+       {
+-      if (firstcharflags == REQ_UNSET) firstcharflags = REQ_NONE;
++      if (firstcharflags == REQ_UNSET) 
++        zerofirstcharflags = firstcharflags = REQ_NONE;
+       *code++ = OP_CIRCM;
+       }
+     else *code++ = OP_CIRC;
+diff --git a/testdata/testinput6 b/testdata/testinput6
+index a4bfb3c..219a30e 100644
+--- a/testdata/testinput6
++++ b/testdata/testinput6
+@@ -1316,4 +1316,7 @@
+ /\x{017f}+/8i
+     \x{0053}\x{0073}\x{017f}
+ 
++/^s?c/mi8
++    scat
++
+ /-- End of testinput6 --/
+diff --git a/testdata/testinput7 b/testdata/testinput7
+index b265f1f..252d246 100644
+--- a/testdata/testinput7
++++ b/testdata/testinput7
+@@ -669,4 +669,7 @@ of case for anything other than the ASCII letters. --/
+ /is{2}t/8i
+     iskt
+ 
++/^s?c/mi8I
++    scat
++
+ /-- End of testinput7 --/
+diff --git a/testdata/testoutput6 b/testdata/testoutput6
+index 0182746..090d23f 100644
+--- a/testdata/testoutput6
++++ b/testdata/testoutput6
+@@ -2134,4 +2134,8 @@ No match
+     \x{0053}\x{0073}\x{017f}
+  0: Ss\x{17f}
+ 
++/^s?c/mi8
++    scat
++ 0: sc
++
+ /-- End of testinput6 --/
+diff --git a/testdata/testoutput7 b/testdata/testoutput7
+index 4f8b7b9..5f0f546 100644
+--- a/testdata/testoutput7
++++ b/testdata/testoutput7
+@@ -1470,4 +1470,12 @@ No match
+     iskt
+ No match
+ 
++/^s?c/mi8I
++Capturing subpattern count = 0
++Options: caseless multiline utf
++First char at start or follows newline
++Need char = 'c' (caseless)
++    scat
++ 0: sc
++
+ /-- End of testinput7 --/
+-- 
+1.9.3
+
