@@ -195,7 +195,7 @@ make %{?_smp_mflags}
 make install DESTDIR=$RPM_BUILD_ROOT
 # Get rid of unneeded *.la files
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
-ln -s $RPM_BUILD_ROOT%{_libdir}/libpcre.so.1 $RPM_BUILD_ROOT%{_libdir}/libpcre.so.0
+ln -s %{_libdir}/libpcre.so.1 %{_libdir}/libpcre.so.0
 # These are handled by %%doc in %%files
 rm -rf $RPM_BUILD_ROOT%{_docdir}/pcre
 
