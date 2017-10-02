@@ -190,7 +190,7 @@ done
     --enable-pcretest-libreadline --enable-utf --enable-unicode-properties \
     --enable-pcre8 --enable-pcre16 --enable-pcre32
 make %{?_smp_mflags}
-ln -s %{_libdir}/libpcre.so.1 %{_builddir}/%{_libdir}/libpcre.so.0
+ln -s %{_libdir}/libpcre.so.1 %{_builddir}/%{name}-%{myversion}/%{_libdir}/libpcre.so.0
 
 %install
 make install DESTDIR=$RPM_BUILD_ROOT
