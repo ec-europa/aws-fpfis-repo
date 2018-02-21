@@ -61,7 +61,7 @@ docker exec -u ${UID} ${CONTAINER}  /usr/bin/mock -r fpfis-${EL}-x86_64 --spec=/
 
 echo "Building RPM ..."
 
-docker exec -u ${UID} ${CONTAINER} /usr/bin/mock --clean -r fpfis-${EL}-x86_64  -D "dist .${DIST}" --resultdir=/mock/build/RPMS --rebuild /mock/build/SRPMS/$(ls -1utr SRPMS/|grep ^${PACKAGE}-.*src\.rpm$|head -1)
+docker exec -u ${UID} ${CONTAINER} /usr/bin/mock --clean -r fpfis-${EL}-x86_64  -D "dist .${DIST}" --resultdir=/mock/build/RPMS --rebuild /mock/build/SRPMS/$(ls -1utr /mock/build/SRPMS/|grep ^${PACKAGE}-.*src\.rpm$|head -1)
 
 echo "Stop Container ..."
 
