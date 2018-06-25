@@ -6,7 +6,7 @@ Group:          System Environment/Base
 
 License:        GPLv2
 URL:            https://github.com/s3fs-fuse/s3fs-fuse
-Source0:        https://github.com/s3fs-fuse/s3fs-fuse/archive/%{name}-%{version}.tar.gz
+Source0:        https://github.com/s3fs-fuse/s3fs-fuse/archive/v%{version}.tar.gz
 Source1:        passwd-s3fs
 
 
