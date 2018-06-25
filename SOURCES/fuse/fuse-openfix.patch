@@ -21,13 +21,13 @@ diff -up fuse-2.7.2/lib/fuse.c.BAD fuse-2.7.2/lib/fuse.c
 +		err = (((struct fuse_operations_compat2 *) &fs->op)->open)(path, fi->flags);
  	return err;
  }
-
+ 
 diff -up fuse-2.7.2/lib/fuse_lowlevel.c.BAD fuse-2.7.2/lib/fuse_lowlevel.c
 --- lib/fuse_lowlevel.c	2008-01-21 09:57:52.000000000 -0500
 +++ lib/fuse_lowlevel.c	2008-01-21 09:58:15.000000000 -0500
 @@ -605,7 +605,7 @@ static void do_open(fuse_req_t req, fuse
  	fi.flags = arg->flags;
-
+ 
  	if (req->f->op.open)
 -		req->f->op.open(req, nodeid, &fi);
 +		(req->f->op.open)(req, nodeid, &fi);
