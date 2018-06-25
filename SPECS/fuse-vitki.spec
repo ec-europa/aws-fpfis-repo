@@ -10,7 +10,7 @@ Summary:        File System in Userspace (FUSE) utilities
 Group:          System Environment/Base
 License:        GPL+
 URL:            https://github.com/libfuse
-Source0:        https://github.com/libfuse/libfuse/releases/download/fuse_2_9_4/%{name}-%{version}.tar.gz
+Source0:        https://github.com/libfuse/libfuse/releases/download/fuse_2_9_5/%{name}-%{version}.tar.gz
 Source1:        fuse-udev.nodes
 Source2:        fuse-makedev.d-fuse
 
