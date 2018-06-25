@@ -14,9 +14,9 @@ Source0:        https://github.com/libfuse/libfuse/releases/download/fuse_2_9_5/
 Source1:        fuse-udev.nodes
 Source2:        fuse-makedev.d-fuse
 
-Patch0:         fuse-udev_rules.patch
-Patch1:         fuse-openfix.patch
-Patch2:         fusermount.patch
+#Patch0:         fuse-udev_rules.patch
+#Patch1:         fuse-openfix.patch
+#Patch2:         fusermount.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:       kernel >= 2.6.14
 Requires:       which
@@ -59,9 +59,9 @@ pgk-config) to develop FUSE based applications/filesystems.
 %setup -q -n fuse-2.9.5
 #disable device creation during build/install
 sed -i 's|mknod|echo Disabled: mknod |g' util/Makefile.am
-%patch0 -p0 -b .patch0
-%patch1 -p0 -b .patch1
-%patch2 -p0 -b .patch2
+#%patch0 -p0 -b .patch0
+#%patch1 -p0 -b .patch1
+#%patch2 -p0 -b .patch2
 
 %build
 touch config.rpath
