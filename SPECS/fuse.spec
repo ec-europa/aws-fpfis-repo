@@ -56,7 +56,7 @@ pgk-config) to develop FUSE based applications/filesystems.
 
 
 %prep
-%setup -q -n libfuse-fuse_2_8_5
+%setup -q -n fuse_2.9.5
 #disable device creation during build/install
 sed -i 's|mknod|echo Disabled: mknod |g' util/Makefile.am
 %patch0 -p0 -b .patch0
