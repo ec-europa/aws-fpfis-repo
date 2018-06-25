@@ -68,12 +68,11 @@ sed -i 's|mknod|echo Disabled: mknod |g' util/Makefile.am
 #./makeconf.sh
 # Can't pass --disable-static here, or else the utils don't build
 %configure \
- --disable-kernel-module \
  --libdir=/%{_lib} \
  --bindir=/bin \
  --exec-prefix=/
-make CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -j8" %{?_smp_mflags}
-
+#make CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -j8" %{?_smp_mflags}
+make -j8
 
 %install
 rm -rf $RPM_BUILD_ROOT
