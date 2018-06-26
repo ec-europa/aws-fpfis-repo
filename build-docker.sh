@@ -51,6 +51,8 @@ fi
 
 echo "Building ${PACKAGE}..."
 
+docker exec ${CONTAINER} rm -rf /etc/mock/fpfis* && cp -f /mock/build/conf/*.cfg /etc/mock/
+
 echo "Downloading dependencies ..."
 
 docker exec ${CONTAINER} spectool -g -C /mock/build/SOURCES/${PACKAGE} /mock/build/SPECS/${SPECFILE}
