@@ -1,6 +1,6 @@
 %define vitver  03
 %define rhver   %((head -1 /etc/redhat-release 2>/dev/null || echo 0) | tr -cd 0-9 | cut -c1)
-%define relver  99.vitki.%{vitver}%{?dist}%{!?dist:.el%{rhver}}
+%define relver  EC.%{vitver}%{?dist}%{!?dist:.el%{rhver}}
 
 Name:           fuse
 Version:        2.9.5
@@ -67,12 +67,19 @@ sed -i 's|mknod|echo Disabled: mknod |g' util/Makefile.am
 #touch config.rpath
 #./makeconf.sh
 # Can't pass --disable-static here, or else the utils don't build
+#%configure \
+# --libdir=/%{_lib} \
+# --bindir=/bin \
+# --exec-prefix=/
+#make CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -j8" %{?_smp_mflags}
+autoreconf --force --install
+aclocal
+#./configure
 %configure \
  --libdir=/%{_lib} \
  --bindir=/bin \
  --exec-prefix=/
-#make CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -j8" %{?_smp_mflags}
-make -j8
+make CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing" -j8
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -120,7 +127,7 @@ fi
 
 %files
 %defattr(-,root,root,-)
-%doc AUTHORS ChangeLog COPYING FAQ Filesystems NEWS README README.NFS
+%doc AUTHORS ChangeLog COPYING  NEWS README.NFS
 /sbin/mount.fuse
 %attr(4750,root,fuse) /bin/fusermount
 /bin/ulockmgr_server
@@ -130,6 +137,8 @@ fi
 %{_bindir}/ulockmgr_server
 %config(noreplace) %{_sysconfdir}/udev/rules.d/99-fuse.rules
 %config(noreplace) %{_sysconfdir}/udev/makedev.d/99-fuse.nodes
+/usr/share/man/man1/
+/usr/share/man/man8/
 
 %files libs
 %defattr(-,root,root,-)
