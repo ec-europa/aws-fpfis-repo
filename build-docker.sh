@@ -31,9 +31,9 @@ cat /dev/null > SRPMS/root.log
 cat /dev/null > SRPMS/trace.log
 
 # Pull the image if missing :
-if [ -z $(docker images -q fpfis/mock) ]; then
+if [ -z $(docker images -q iadept/aws-mock) ]; then
   echo "Building base mock image"
-  docker pull fpfis/mock
+  docker pull iadept/aws-mock
 fi
 
 # Create container if does not exists :
