@@ -38,7 +38,7 @@ fi
 
 # Create container if does not exists :
 if [ -z $(docker ps -qaf name=${CONTAINER}) ] ; then
-  docker create --privileged=true --name ${CONTAINER} -v $(pwd):/mock/build fpfis/mock bash -c "while /bin/true; do sleep 10 ; uptime; done"
+  docker create --privileged=true --name ${CONTAINER} -v $(pwd):/mock/build iadept/aws-mock bash -c "while /bin/true; do sleep 10 ; uptime; done"
 fi
 
 # Start container if not running 
