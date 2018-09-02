@@ -5,14 +5,14 @@
 
 Name:           vmod-%{vmod}
 Version:        0.3
-Release:        %{_release}%{?dist}
+Release:        1%{?dist}
 Group:          System Environment/Libraries
 Summary:        DNS director for Varnish Cache
 URL:            https://github.com/nigoroll/libvmod-dynamic
 License:        BSD
 
 #Source:         %{name}-%{version}.tar.gz
-Source:         https://github.com/nigoroll/libvmod-dynamic/archive/v%{Version}.tar.gz
+Source:         https://github.com/nigoroll/libvmod-dynamic/archive/v%{version}.tar.gz
 
 BuildRequires:  varnish-devel >= 5.2.0
 BuildRequires:  pkgconfig
@@ -31,7 +31,7 @@ create backends.
 
 
 %prep
-%setup -qn v%{Version}
+%setup -qn v%{version}
 
 
 %build
