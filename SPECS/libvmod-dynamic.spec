@@ -12,7 +12,7 @@ URL:            https://github.com/nigoroll/libvmod-dynamic
 License:        BSD
 
 #Source:         %{name}-%{version}.tar.gz
-Source:         https://github.com/nigoroll/libvmod-dynamic/archive/v%{version}.tar.gz
+Source:         https://github.com/nigoroll/libvmod-dynamic/archive/v%{Version}.tar.gz
 
 BuildRequires:  varnish-devel >= 5.2.0
 BuildRequires:  pkgconfig
@@ -31,7 +31,7 @@ create backends.
 
 
 %prep
-%setup -qn v%{version}
+%setup -qn v%{Version}
 
 
 %build
