@@ -14,14 +14,14 @@ License:        BSD
 #Source:         %{name}-%{version}.tar.gz
 Source:         https://github.com/nigoroll/libvmod-dynamic/archive/v%{version}.tar.gz
 
-BuildRequires:  varnish-devel >= 5.2.0
+BuildRequires:  varnish-devel >= 5.2
 BuildRequires:  pkgconfig
 BuildRequires:  make
 BuildRequires:  gcc
 BuildRequires:  python-docutils >= 0.6
 
 # varnish from varnish5 at packagecloud
-Requires:       varnish >= 5.2.0
+Requires:       varnish >= 5.2
 
 Provides: %{name}, %{name}-debuginfo
 
