@@ -1,0 +1,1992 @@
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Falseenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7fd0b56dd150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0
+ENTER ['do'](['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=Falseuid=0env={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0private_network=Truelogger=<mockbuild.trace_decorator.getLog object at 0x7fd0b56dd150>printOutput=False)
+Executing command: ['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.3yHNGp
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=C
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf vmod-dynamic-0.3
++ /bin/tar -xvvf -
++ /usr/bin/gzip -dc /builddir/build/SOURCES/vmod-dynamic-0.3.tar.gz
+drwxr-xr-x rvanhoudt/staff   0 2017-11-24 17:09 vmod-dynamic-0.3/
+-rw-r--r-- rvanhoudt/staff 1315 2017-11-24 17:09 vmod-dynamic-0.3/configure.ac
+-rw-r--r-- rvanhoudt/staff 1338 2017-11-24 17:09 vmod-dynamic-0.3/LICENSE
+-rw-r--r-- rvanhoudt/staff  112 2017-11-24 17:09 vmod-dynamic-0.3/Makefile.am
+-rw-r--r-- rvanhoudt/staff   25 2017-11-24 17:09 vmod-dynamic-0.3/COPYING
+-rw-r--r-- rvanhoudt/staff  385 2017-11-24 17:09 vmod-dynamic-0.3/.gitignore
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/m4/
+-rw-r--r-- rvanhoudt/staff 4730 2017-11-24 17:09 vmod-dynamic-0.3/README.rst
+-rw-r--r-- rvanhoudt/staff  542 2017-11-24 17:09 vmod-dynamic-0.3/.travis.yml
+-rwxr-xr-x rvanhoudt/staff 1096 2017-11-24 17:09 vmod-dynamic-0.3/autogen.sh
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/
+-rw-r--r-- rvanhoudt/staff 3422 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.h
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/
+-rw-r--r-- rvanhoudt/staff  662 2017-11-24 17:09 vmod-dynamic-0.3/src/Makefile.am
+-rw-r--r-- rvanhoudt/staff 22426 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.c
+-rw-r--r-- rvanhoudt/staff  9401 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.vcc
+-rw-r--r-- rvanhoudt/staff   974 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test09.vtc
+-rw-r--r-- rvanhoudt/staff   846 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test08.vtc
+-rw-r--r-- rvanhoudt/staff   575 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test01.vtc
+-rw-r--r-- rvanhoudt/staff  1448 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test03.vtc
+-rw-r--r-- rvanhoudt/staff   756 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test02.vtc
+-rw-r--r-- rvanhoudt/staff   439 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test06.vtc
+-rw-r--r-- rvanhoudt/staff   905 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test12.vtc
+-rw-r--r-- rvanhoudt/staff  1788 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test13.vtc
+-rw-r--r-- rvanhoudt/staff  1406 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test07.vtc
+-rw-r--r-- rvanhoudt/staff   725 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test11.vtc
+-rw-r--r-- rvanhoudt/staff  1540 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test05.vtc
+-rw-r--r-- rvanhoudt/staff  1150 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test04.vtc
+-rw-r--r-- rvanhoudt/staff   618 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test10.vtc
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/
+-rw-r--r-- rvanhoudt/staff   596 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/varnishcache_varnish5.repo
+-rwxr-xr-x rvanhoudt/staff  1840 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/pkg
+-rw-r--r-- rvanhoudt/staff  1718 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/vmod-dynamic.spec
+-rw-r--r-- rvanhoudt/staff     2 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/compat
+-rw-r--r-- rvanhoudt/staff   149 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/changelog
+-rw-r--r-- rvanhoudt/staff    19 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/docs
+-rwxr-xr-x rvanhoudt/staff   218 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/rules
+-rw-r--r-- rvanhoudt/staff  1350 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/copyright
+-rw-r--r-- rvanhoudt/staff    30 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/dirs
+-rw-r--r-- rvanhoudt/staff   484 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/control
+-rw-r--r-- rvanhoudt/staff   632 2017-11-24 17:09 vmod-dynamic-0.3/m4/ax_pkg_check_var.m4
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.7Zm2MU
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd vmod-dynamic-0.3
++ /bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
++ umask 022
++ cd /builddir/build/BUILD
++ cd vmod-dynamic-0.3
++ LANG=C
++ export LANG
++ unset DISPLAY
++ ./autogen
+/var/tmp/rpm-tmp.7Zm2MU: line 32: ./autogen: No such file or directory
+error: Bad exit status from /var/tmp/rpm-tmp.7Zm2MU (%build)
+    Bad exit status from /var/tmp/rpm-tmp.7Zm2MU (%build)
+RPM build errors:
+Child return code was: 1
+EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f8f96da0150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0
+ENTER ['do'](['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=Falseuid=0env={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0private_network=Truelogger=<mockbuild.trace_decorator.getLog object at 0x7f8f96da0150>printOutput=True)
+Executing command: ['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.iWPKbu
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=C
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf vmod-dynamic-0.3
++ /bin/tar -xvvf -
++ /usr/bin/gzip -dc /builddir/build/SOURCES/vmod-dynamic-0.3.tar.gz
+drwxr-xr-x rvanhoudt/staff   0 2017-11-24 17:09 vmod-dynamic-0.3/
+-rw-r--r-- rvanhoudt/staff 1315 2017-11-24 17:09 vmod-dynamic-0.3/configure.ac
+-rw-r--r-- rvanhoudt/staff 1338 2017-11-24 17:09 vmod-dynamic-0.3/LICENSE
+-rw-r--r-- rvanhoudt/staff  112 2017-11-24 17:09 vmod-dynamic-0.3/Makefile.am
+-rw-r--r-- rvanhoudt/staff   25 2017-11-24 17:09 vmod-dynamic-0.3/COPYING
+-rw-r--r-- rvanhoudt/staff  385 2017-11-24 17:09 vmod-dynamic-0.3/.gitignore
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/m4/
+-rw-r--r-- rvanhoudt/staff 4730 2017-11-24 17:09 vmod-dynamic-0.3/README.rst
+-rw-r--r-- rvanhoudt/staff  542 2017-11-24 17:09 vmod-dynamic-0.3/.travis.yml
+-rwxr-xr-x rvanhoudt/staff 1096 2017-11-24 17:09 vmod-dynamic-0.3/autogen.sh
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/
+-rw-r--r-- rvanhoudt/staff 3422 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.h
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/
+-rw-r--r-- rvanhoudt/staff  662 2017-11-24 17:09 vmod-dynamic-0.3/src/Makefile.am
+-rw-r--r-- rvanhoudt/staff 22426 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.c
+-rw-r--r-- rvanhoudt/staff  9401 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.vcc
+-rw-r--r-- rvanhoudt/staff   974 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test09.vtc
+-rw-r--r-- rvanhoudt/staff   846 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test08.vtc
+-rw-r--r-- rvanhoudt/staff   575 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test01.vtc
+-rw-r--r-- rvanhoudt/staff  1448 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test03.vtc
+-rw-r--r-- rvanhoudt/staff   756 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test02.vtc
+-rw-r--r-- rvanhoudt/staff   439 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test06.vtc
+-rw-r--r-- rvanhoudt/staff   905 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test12.vtc
+-rw-r--r-- rvanhoudt/staff  1788 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test13.vtc
+-rw-r--r-- rvanhoudt/staff  1406 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test07.vtc
+-rw-r--r-- rvanhoudt/staff   725 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test11.vtc
+-rw-r--r-- rvanhoudt/staff  1540 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test05.vtc
+-rw-r--r-- rvanhoudt/staff  1150 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test04.vtc
+-rw-r--r-- rvanhoudt/staff   618 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test10.vtc
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/
+-rw-r--r-- rvanhoudt/staff   596 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/varnishcache_varnish5.repo
+-rwxr-xr-x rvanhoudt/staff  1840 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/pkg
+-rw-r--r-- rvanhoudt/staff  1718 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/vmod-dynamic.spec
+-rw-r--r-- rvanhoudt/staff     2 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/compat
+-rw-r--r-- rvanhoudt/staff   149 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/changelog
+-rw-r--r-- rvanhoudt/staff    19 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/docs
+-rwxr-xr-x rvanhoudt/staff   218 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/rules
+-rw-r--r-- rvanhoudt/staff  1350 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/copyright
+-rw-r--r-- rvanhoudt/staff    30 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/dirs
+-rw-r--r-- rvanhoudt/staff   484 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/control
+-rw-r--r-- rvanhoudt/staff   632 2017-11-24 17:09 vmod-dynamic-0.3/m4/ax_pkg_check_var.m4
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.qTLGmG
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd vmod-dynamic-0.3
++ /bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
++ umask 022
++ cd /builddir/build/BUILD
++ cd vmod-dynamic-0.3
++ LANG=C
++ export LANG
++ unset DISPLAY
++ ./autogen
+/var/tmp/rpm-tmp.qTLGmG: line 32: ./autogen: No such file or directory
+error: Bad exit status from /var/tmp/rpm-tmp.qTLGmG (%build)
+    Bad exit status from /var/tmp/rpm-tmp.qTLGmG (%build)
+RPM build errors:
+Child return code was: 1
+EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7fa2d5de5150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0
+ENTER ['do'](['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=Falseuid=0env={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0private_network=Truelogger=<mockbuild.trace_decorator.getLog object at 0x7fa2d5de5150>printOutput=True)
+Executing command: ['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.xuFvEb
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=C
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf vmod-dynamic-0.3
++ /bin/tar -xvvf -
++ /usr/bin/gzip -dc /builddir/build/SOURCES/vmod-dynamic-0.3.tar.gz
+drwxr-xr-x rvanhoudt/staff   0 2017-11-24 17:09 vmod-dynamic-0.3/
+-rw-r--r-- rvanhoudt/staff 1315 2017-11-24 17:09 vmod-dynamic-0.3/configure.ac
+-rw-r--r-- rvanhoudt/staff 1338 2017-11-24 17:09 vmod-dynamic-0.3/LICENSE
+-rw-r--r-- rvanhoudt/staff  112 2017-11-24 17:09 vmod-dynamic-0.3/Makefile.am
+-rw-r--r-- rvanhoudt/staff   25 2017-11-24 17:09 vmod-dynamic-0.3/COPYING
+-rw-r--r-- rvanhoudt/staff  385 2017-11-24 17:09 vmod-dynamic-0.3/.gitignore
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/m4/
+-rw-r--r-- rvanhoudt/staff 4730 2017-11-24 17:09 vmod-dynamic-0.3/README.rst
+-rw-r--r-- rvanhoudt/staff  542 2017-11-24 17:09 vmod-dynamic-0.3/.travis.yml
+-rwxr-xr-x rvanhoudt/staff 1096 2017-11-24 17:09 vmod-dynamic-0.3/autogen.sh
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/
+-rw-r--r-- rvanhoudt/staff 3422 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.h
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/
+-rw-r--r-- rvanhoudt/staff  662 2017-11-24 17:09 vmod-dynamic-0.3/src/Makefile.am
+-rw-r--r-- rvanhoudt/staff 22426 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.c
+-rw-r--r-- rvanhoudt/staff  9401 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.vcc
+-rw-r--r-- rvanhoudt/staff   974 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test09.vtc
+-rw-r--r-- rvanhoudt/staff   846 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test08.vtc
+-rw-r--r-- rvanhoudt/staff   575 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test01.vtc
+-rw-r--r-- rvanhoudt/staff  1448 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test03.vtc
+-rw-r--r-- rvanhoudt/staff   756 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test02.vtc
+-rw-r--r-- rvanhoudt/staff   439 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test06.vtc
+-rw-r--r-- rvanhoudt/staff   905 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test12.vtc
+-rw-r--r-- rvanhoudt/staff  1788 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test13.vtc
+-rw-r--r-- rvanhoudt/staff  1406 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test07.vtc
+-rw-r--r-- rvanhoudt/staff   725 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test11.vtc
+-rw-r--r-- rvanhoudt/staff  1540 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test05.vtc
+-rw-r--r-- rvanhoudt/staff  1150 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test04.vtc
+-rw-r--r-- rvanhoudt/staff   618 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test10.vtc
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/
+-rw-r--r-- rvanhoudt/staff   596 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/varnishcache_varnish5.repo
+-rwxr-xr-x rvanhoudt/staff  1840 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/pkg
+-rw-r--r-- rvanhoudt/staff  1718 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/vmod-dynamic.spec
+-rw-r--r-- rvanhoudt/staff     2 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/compat
+-rw-r--r-- rvanhoudt/staff   149 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/changelog
+-rw-r--r-- rvanhoudt/staff    19 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/docs
+-rwxr-xr-x rvanhoudt/staff   218 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/rules
+-rw-r--r-- rvanhoudt/staff  1350 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/copyright
+-rw-r--r-- rvanhoudt/staff    30 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/dirs
+-rw-r--r-- rvanhoudt/staff   484 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/control
+-rw-r--r-- rvanhoudt/staff   632 2017-11-24 17:09 vmod-dynamic-0.3/m4/ax_pkg_check_var.m4
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.1FJFbf
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd vmod-dynamic-0.3
++ /bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
++ umask 022
++ cd /builddir/build/BUILD
++ cd vmod-dynamic-0.3
++ LANG=C
++ export LANG
++ unset DISPLAY
++ ls
++ bash autogen.sh
+autogen.sh: line 25: automake: command not found
+WARNING: unable to determine automake version
++ aclocal -I m4 -I /usr/share/aclocal
+autogen.sh: line 52: aclocal: command not found
+error: Bad exit status from /var/tmp/rpm-tmp.1FJFbf (%build)
+    Bad exit status from /var/tmp/rpm-tmp.1FJFbf (%build)
+COPYING
+LICENSE
+Makefile.am
+README.rst
+autogen.sh
+configure.ac
+m4
+pkg
+src
+RPM build errors:
+Child return code was: 1
+EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec
+Mock Version: 1.2.17
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f5c5be25150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0
+ENTER ['do'](['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=Falseuid=0env={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0private_network=Truelogger=<mockbuild.trace_decorator.getLog object at 0x7f5c5be25150>printOutput=True)
+Executing command: ['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.nXV2in
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=C
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
+drwxr-xr-x rvanhoudt/staff   0 2017-11-24 17:09 vmod-dynamic-0.3/
+-rw-r--r-- rvanhoudt/staff 1315 2017-11-24 17:09 vmod-dynamic-0.3/configure.ac
+-rw-r--r-- rvanhoudt/staff 1338 2017-11-24 17:09 vmod-dynamic-0.3/LICENSE
+-rw-r--r-- rvanhoudt/staff  112 2017-11-24 17:09 vmod-dynamic-0.3/Makefile.am
+-rw-r--r-- rvanhoudt/staff   25 2017-11-24 17:09 vmod-dynamic-0.3/COPYING
+-rw-r--r-- rvanhoudt/staff  385 2017-11-24 17:09 vmod-dynamic-0.3/.gitignore
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/m4/
+-rw-r--r-- rvanhoudt/staff 4730 2017-11-24 17:09 vmod-dynamic-0.3/README.rst
+-rw-r--r-- rvanhoudt/staff  542 2017-11-24 17:09 vmod-dynamic-0.3/.travis.yml
+-rwxr-xr-x rvanhoudt/staff 1096 2017-11-24 17:09 vmod-dynamic-0.3/autogen.sh
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/
+-rw-r--r-- rvanhoudt/staff 3422 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.h
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/
+-rw-r--r-- rvanhoudt/staff  662 2017-11-24 17:09 vmod-dynamic-0.3/src/Makefile.am
+-rw-r--r-- rvanhoudt/staff 22426 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.c
+-rw-r--r-- rvanhoudt/staff  9401 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.vcc
+-rw-r--r-- rvanhoudt/staff   974 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test09.vtc
+-rw-r--r-- rvanhoudt/staff   846 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test08.vtc
+-rw-r--r-- rvanhoudt/staff   575 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test01.vtc
+-rw-r--r-- rvanhoudt/staff  1448 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test03.vtc
+-rw-r--r-- rvanhoudt/staff   756 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test02.vtc
+-rw-r--r-- rvanhoudt/staff   439 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test06.vtc
+-rw-r--r-- rvanhoudt/staff   905 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test12.vtc
+-rw-r--r-- rvanhoudt/staff  1788 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test13.vtc
+-rw-r--r-- rvanhoudt/staff  1406 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test07.vtc
+-rw-r--r-- rvanhoudt/staff   725 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test11.vtc
+-rw-r--r-- rvanhoudt/staff  1540 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test05.vtc
+-rw-r--r-- rvanhoudt/staff  1150 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test04.vtc
+-rw-r--r-- rvanhoudt/staff   618 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test10.vtc
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/
+-rw-r--r-- rvanhoudt/staff   596 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/varnishcache_varnish5.repo
+-rwxr-xr-x rvanhoudt/staff  1840 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/pkg
+-rw-r--r-- rvanhoudt/staff  1718 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/vmod-dynamic.spec
+-rw-r--r-- rvanhoudt/staff     2 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/compat
+-rw-r--r-- rvanhoudt/staff   149 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/changelog
+-rw-r--r-- rvanhoudt/staff    19 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/docs
+-rwxr-xr-x rvanhoudt/staff   218 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/rules
+-rw-r--r-- rvanhoudt/staff  1350 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/copyright
+-rw-r--r-- rvanhoudt/staff    30 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/dirs
+-rw-r--r-- rvanhoudt/staff   484 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/control
+-rw-r--r-- rvanhoudt/staff   632 2017-11-24 17:09 vmod-dynamic-0.3/m4/ax_pkg_check_var.m4
++ rm -rf vmod-dynamic-0.3
++ /usr/bin/gzip -dc /builddir/build/SOURCES/vmod-dynamic-0.3.tar.gz
++ /bin/tar -xvvf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd vmod-dynamic-0.3
++ /bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
++ umask 022
++ cd /builddir/build/BUILD
++ cd vmod-dynamic-0.3
++ LANG=C
++ export LANG
++ unset DISPLAY
++ ls
++ bash autogen.sh
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.hopS0l
+COPYING
+LICENSE
+Makefile.am
+README.rst
+autogen.sh
+configure.ac
+m4
+pkg
+src
++ aclocal -I m4 -I /usr/share/aclocal
+configure.ac:11: warning: macro `AM_PROG_AR' not found in library
+configure.ac:1: error: Autoconf version 2.68 or higher is required
+configure.ac:1: the top level
+autom4te: /usr/bin/m4 failed with exit status: 63
+aclocal: autom4te failed with exit status: 63
+error: 
+RPM build errors:
+Bad exit status from /var/tmp/rpm-tmp.hopS0l (%build)
+    Bad exit status from /var/tmp/rpm-tmp.hopS0l (%build)
+Child return code was: 1
+EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7fadd094a150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0
+ENTER ['do'](['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=Falseuid=0env={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0private_network=Truelogger=<mockbuild.trace_decorator.getLog object at 0x7fadd094a150>printOutput=True)
+Executing command: ['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.h0GKGS
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=C
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf vmod-dynamic-0.3
++ /usr/bin/gzip -dc /builddir/build/SOURCES/vmod-dynamic-0.3.tar.gz
++ /bin/tar -xvvf -
+drwxr-xr-x rvanhoudt/staff   0 2017-11-24 17:09 vmod-dynamic-0.3/
+-rw-r--r-- rvanhoudt/staff 1315 2017-11-24 17:09 vmod-dynamic-0.3/configure.ac
+-rw-r--r-- rvanhoudt/staff 1338 2017-11-24 17:09 vmod-dynamic-0.3/LICENSE
+-rw-r--r-- rvanhoudt/staff  112 2017-11-24 17:09 vmod-dynamic-0.3/Makefile.am
+-rw-r--r-- rvanhoudt/staff   25 2017-11-24 17:09 vmod-dynamic-0.3/COPYING
+-rw-r--r-- rvanhoudt/staff  385 2017-11-24 17:09 vmod-dynamic-0.3/.gitignore
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/m4/
+-rw-r--r-- rvanhoudt/staff 4730 2017-11-24 17:09 vmod-dynamic-0.3/README.rst
+-rw-r--r-- rvanhoudt/staff  542 2017-11-24 17:09 vmod-dynamic-0.3/.travis.yml
+-rwxr-xr-x rvanhoudt/staff 1096 2017-11-24 17:09 vmod-dynamic-0.3/autogen.sh
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/
+-rw-r--r-- rvanhoudt/staff 3422 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.h
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/
+-rw-r--r-- rvanhoudt/staff  662 2017-11-24 17:09 vmod-dynamic-0.3/src/Makefile.am
+-rw-r--r-- rvanhoudt/staff 22426 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.c
+-rw-r--r-- rvanhoudt/staff  9401 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.vcc
+-rw-r--r-- rvanhoudt/staff   974 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test09.vtc
+-rw-r--r-- rvanhoudt/staff   846 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test08.vtc
+-rw-r--r-- rvanhoudt/staff   575 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test01.vtc
+-rw-r--r-- rvanhoudt/staff  1448 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test03.vtc
+-rw-r--r-- rvanhoudt/staff   756 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test02.vtc
+-rw-r--r-- rvanhoudt/staff   439 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test06.vtc
+-rw-r--r-- rvanhoudt/staff   905 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test12.vtc
+-rw-r--r-- rvanhoudt/staff  1788 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test13.vtc
+-rw-r--r-- rvanhoudt/staff  1406 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test07.vtc
+-rw-r--r-- rvanhoudt/staff   725 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test11.vtc
+-rw-r--r-- rvanhoudt/staff  1540 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test05.vtc
+-rw-r--r-- rvanhoudt/staff  1150 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test04.vtc
+-rw-r--r-- rvanhoudt/staff   618 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test10.vtc
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/
+-rw-r--r-- rvanhoudt/staff   596 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/varnishcache_varnish5.repo
+-rwxr-xr-x rvanhoudt/staff  1840 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/pkg
+-rw-r--r-- rvanhoudt/staff  1718 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/vmod-dynamic.spec
+-rw-r--r-- rvanhoudt/staff     2 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/compat
+-rw-r--r-- rvanhoudt/staff   149 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/changelog
+-rw-r--r-- rvanhoudt/staff    19 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/docs
+-rwxr-xr-x rvanhoudt/staff   218 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/rules
+-rw-r--r-- rvanhoudt/staff  1350 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/copyright
+-rw-r--r-- rvanhoudt/staff    30 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/dirs
+-rw-r--r-- rvanhoudt/staff   484 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/control
+-rw-r--r-- rvanhoudt/staff   632 2017-11-24 17:09 vmod-dynamic-0.3/m4/ax_pkg_check_var.m4
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.TQBUEr
+COPYING
+LICENSE
+Makefile.am
+README.rst
+autogen.sh
+configure.ac
+m4
+pkg
+src
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd vmod-dynamic-0.3
++ /bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
++ umask 022
++ cd /builddir/build/BUILD
++ cd vmod-dynamic-0.3
++ LANG=C
++ export LANG
++ unset DISPLAY
++ ls
++ autoconf --version
+autoconf (GNU Autoconf) 2.63
+Copyright (C) 2008 Free Software Foundation, Inc.
+License GPLv2+: GNU GPL version 2 or later
+<http://gnu.org/licenses/old-licenses/gpl-2.0.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Written by David J. MacKenzie and Akim Demaille.
++ bash autogen.sh
++ aclocal -I m4 -I /usr/share/aclocal
+configure.ac:11: warning: macro `AM_PROG_AR' not found in library
+configure.ac:1: error: Autoconf version 2.68 or higher is required
+configure.ac:1: the top level
+autom4te: /usr/bin/m4 failed with exit status: 63
+aclocal: autom4te failed with exit status: 63
+RPM build errors:
+error: Bad exit status from /var/tmp/rpm-tmp.TQBUEr (%build)
+    Bad exit status from /var/tmp/rpm-tmp.TQBUEr (%build)
+Child return code was: 1
+EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7fc7da9a2150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0
+ENTER ['do'](['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=Falseuid=0env={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0private_network=Truelogger=<mockbuild.trace_decorator.getLog object at 0x7fc7da9a2150>printOutput=True)
+Executing command: ['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.xpZ9ZS
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=C
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf vmod-dynamic-0.3
++ /usr/bin/gzip -dc /builddir/build/SOURCES/vmod-dynamic-0.3.tar.gz
++ /bin/tar -xvvf -
+drwxr-xr-x rvanhoudt/staff   0 2017-11-24 17:09 vmod-dynamic-0.3/
+-rw-r--r-- rvanhoudt/staff 1315 2017-11-24 17:09 vmod-dynamic-0.3/configure.ac
+-rw-r--r-- rvanhoudt/staff 1338 2017-11-24 17:09 vmod-dynamic-0.3/LICENSE
+-rw-r--r-- rvanhoudt/staff  112 2017-11-24 17:09 vmod-dynamic-0.3/Makefile.am
+-rw-r--r-- rvanhoudt/staff   25 2017-11-24 17:09 vmod-dynamic-0.3/COPYING
+-rw-r--r-- rvanhoudt/staff  385 2017-11-24 17:09 vmod-dynamic-0.3/.gitignore
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/m4/
+-rw-r--r-- rvanhoudt/staff 4730 2017-11-24 17:09 vmod-dynamic-0.3/README.rst
+-rw-r--r-- rvanhoudt/staff  542 2017-11-24 17:09 vmod-dynamic-0.3/.travis.yml
+-rwxr-xr-x rvanhoudt/staff 1096 2017-11-24 17:09 vmod-dynamic-0.3/autogen.sh
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/
+-rw-r--r-- rvanhoudt/staff 3422 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.h
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/
+-rw-r--r-- rvanhoudt/staff  662 2017-11-24 17:09 vmod-dynamic-0.3/src/Makefile.am
+-rw-r--r-- rvanhoudt/staff 22426 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.c
+-rw-r--r-- rvanhoudt/staff  9401 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.vcc
+-rw-r--r-- rvanhoudt/staff   974 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test09.vtc
+-rw-r--r-- rvanhoudt/staff   846 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test08.vtc
+-rw-r--r-- rvanhoudt/staff   575 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test01.vtc
+-rw-r--r-- rvanhoudt/staff  1448 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test03.vtc
+-rw-r--r-- rvanhoudt/staff   756 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test02.vtc
+-rw-r--r-- rvanhoudt/staff   439 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test06.vtc
+-rw-r--r-- rvanhoudt/staff   905 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test12.vtc
+-rw-r--r-- rvanhoudt/staff  1788 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test13.vtc
+-rw-r--r-- rvanhoudt/staff  1406 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test07.vtc
+-rw-r--r-- rvanhoudt/staff   725 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test11.vtc
+-rw-r--r-- rvanhoudt/staff  1540 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test05.vtc
+-rw-r--r-- rvanhoudt/staff  1150 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test04.vtc
+-rw-r--r-- rvanhoudt/staff   618 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test10.vtc
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/
+-rw-r--r-- rvanhoudt/staff   596 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/varnishcache_varnish5.repo
+-rwxr-xr-x rvanhoudt/staff  1840 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/pkg
+-rw-r--r-- rvanhoudt/staff  1718 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/vmod-dynamic.spec
+-rw-r--r-- rvanhoudt/staff     2 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/compat
+-rw-r--r-- rvanhoudt/staff   149 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/changelog
+-rw-r--r-- rvanhoudt/staff    19 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/docs
+-rwxr-xr-x rvanhoudt/staff   218 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/rules
+-rw-r--r-- rvanhoudt/staff  1350 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/copyright
+-rw-r--r-- rvanhoudt/staff    30 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/dirs
+-rw-r--r-- rvanhoudt/staff   484 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/control
+-rw-r--r-- rvanhoudt/staff   632 2017-11-24 17:09 vmod-dynamic-0.3/m4/ax_pkg_check_var.m4
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.vZZ65l
+COPYING
+LICENSE
+Makefile.am
+README.rst
+autogen.sh
+configure.ac
+m4
+pkg
+src
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd vmod-dynamic-0.3
++ /bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
++ umask 022
++ cd /builddir/build/BUILD
++ cd vmod-dynamic-0.3
++ LANG=C
++ export LANG
++ unset DISPLAY
++ ls
++ autoconf --version
+autoconf (GNU Autoconf) 2.63
+Copyright (C) 2008 Free Software Foundation, Inc.
+License GPLv2+: GNU GPL version 2 or later
+<http://gnu.org/licenses/old-licenses/gpl-2.0.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Written by David J. MacKenzie and Akim Demaille.
++ bash autogen.sh
++ aclocal -I m4 -I /usr/share/aclocal
+configure.ac:11: warning: macro `AM_PROG_AR' not found in library
+configure.ac:1: error: Autoconf version 2.68 or higher is required
+configure.ac:1: the top level
+autom4te: /usr/bin/m4 failed with exit status: 63
+aclocal: autom4te failed with exit status: 63
+RPM build errors:
+error: Bad exit status from /var/tmp/rpm-tmp.vZZ65l (%build)
+    Bad exit status from /var/tmp/rpm-tmp.vZZ65l (%build)
+Child return code was: 1
+EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f222d98c150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0
+ENTER ['do'](['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=Falseuid=0env={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0private_network=Truelogger=<mockbuild.trace_decorator.getLog object at 0x7f222d98c150>printOutput=True)
+Executing command: ['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.VOUDd2
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=C
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf vmod-dynamic-0.3
++ /bin/tar -xvvf -
++ /usr/bin/gzip -dc /builddir/build/SOURCES/vmod-dynamic-0.3.tar.gz
+drwxr-xr-x rvanhoudt/staff   0 2017-11-24 17:09 vmod-dynamic-0.3/
+-rw-r--r-- rvanhoudt/staff 1315 2017-11-24 17:09 vmod-dynamic-0.3/configure.ac
+-rw-r--r-- rvanhoudt/staff 1338 2017-11-24 17:09 vmod-dynamic-0.3/LICENSE
+-rw-r--r-- rvanhoudt/staff  112 2017-11-24 17:09 vmod-dynamic-0.3/Makefile.am
+-rw-r--r-- rvanhoudt/staff   25 2017-11-24 17:09 vmod-dynamic-0.3/COPYING
+-rw-r--r-- rvanhoudt/staff  385 2017-11-24 17:09 vmod-dynamic-0.3/.gitignore
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/m4/
+-rw-r--r-- rvanhoudt/staff 4730 2017-11-24 17:09 vmod-dynamic-0.3/README.rst
+-rw-r--r-- rvanhoudt/staff  542 2017-11-24 17:09 vmod-dynamic-0.3/.travis.yml
+-rwxr-xr-x rvanhoudt/staff 1096 2017-11-24 17:09 vmod-dynamic-0.3/autogen.sh
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/
+-rw-r--r-- rvanhoudt/staff 3422 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.h
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/
+-rw-r--r-- rvanhoudt/staff  662 2017-11-24 17:09 vmod-dynamic-0.3/src/Makefile.am
+-rw-r--r-- rvanhoudt/staff 22426 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.c
+-rw-r--r-- rvanhoudt/staff  9401 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.vcc
+-rw-r--r-- rvanhoudt/staff   974 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test09.vtc
+-rw-r--r-- rvanhoudt/staff   846 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test08.vtc
+-rw-r--r-- rvanhoudt/staff   575 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test01.vtc
+-rw-r--r-- rvanhoudt/staff  1448 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test03.vtc
+-rw-r--r-- rvanhoudt/staff   756 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test02.vtc
+-rw-r--r-- rvanhoudt/staff   439 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test06.vtc
+-rw-r--r-- rvanhoudt/staff   905 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test12.vtc
+-rw-r--r-- rvanhoudt/staff  1788 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test13.vtc
+-rw-r--r-- rvanhoudt/staff  1406 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test07.vtc
+-rw-r--r-- rvanhoudt/staff   725 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test11.vtc
+-rw-r--r-- rvanhoudt/staff  1540 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test05.vtc
+-rw-r--r-- rvanhoudt/staff  1150 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test04.vtc
+-rw-r--r-- rvanhoudt/staff   618 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test10.vtc
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/
+-rw-r--r-- rvanhoudt/staff   596 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/varnishcache_varnish5.repo
+-rwxr-xr-x rvanhoudt/staff  1840 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/pkg
+-rw-r--r-- rvanhoudt/staff  1718 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/vmod-dynamic.spec
+-rw-r--r-- rvanhoudt/staff     2 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/compat
+-rw-r--r-- rvanhoudt/staff   149 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/changelog
+-rw-r--r-- rvanhoudt/staff    19 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/docs
+-rwxr-xr-x rvanhoudt/staff   218 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/rules
+-rw-r--r-- rvanhoudt/staff  1350 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/copyright
+-rw-r--r-- rvanhoudt/staff    30 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/dirs
+-rw-r--r-- rvanhoudt/staff   484 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/control
+-rw-r--r-- rvanhoudt/staff   632 2017-11-24 17:09 vmod-dynamic-0.3/m4/ax_pkg_check_var.m4
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.7mEzvS
+COPYING
+LICENSE
+Makefile.am
+README.rst
+autogen.sh
+configure.ac
+m4
+pkg
+src
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd vmod-dynamic-0.3
++ /bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
++ umask 022
++ cd /builddir/build/BUILD
++ cd vmod-dynamic-0.3
++ LANG=C
++ export LANG
++ unset DISPLAY
++ ls
++ '[' '!' -f /usr/bin/autoconf268 ']'
++ autoconf --version
+autoconf (GNU Autoconf) 2.63
+Copyright (C) 2008 Free Software Foundation, Inc.
+License GPLv2+: GNU GPL version 2 or later
+<http://gnu.org/licenses/old-licenses/gpl-2.0.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Written by David J. MacKenzie and Akim Demaille.
++ bash autogen.sh
++ aclocal -I m4 -I /usr/share/aclocal
+configure.ac:11: warning: macro `AM_PROG_AR' not found in library
+configure.ac:1: error: Autoconf version 2.68 or higher is required
+configure.ac:1: the top level
+autom4te: /usr/bin/m4 failed with exit status: 63
+aclocal: autom4te failed with exit status: 63
+RPM build errors:
+error: Bad exit status from /var/tmp/rpm-tmp.7mEzvS (%build)
+    Bad exit status from /var/tmp/rpm-tmp.7mEzvS (%build)
+Child return code was: 1
+EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f963f8f1150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0
+ENTER ['do'](['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=Falseuid=0env={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0private_network=Truelogger=<mockbuild.trace_decorator.getLog object at 0x7f963f8f1150>printOutput=True)
+Executing command: ['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.qMVjjc
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=C
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf vmod-dynamic-0.3
++ /usr/bin/gzip -dc /builddir/build/SOURCES/vmod-dynamic-0.3.tar.gz
++ /bin/tar -xvvf -
+drwxr-xr-x rvanhoudt/staff   0 2017-11-24 17:09 vmod-dynamic-0.3/
+-rw-r--r-- rvanhoudt/staff 1315 2017-11-24 17:09 vmod-dynamic-0.3/configure.ac
+-rw-r--r-- rvanhoudt/staff 1338 2017-11-24 17:09 vmod-dynamic-0.3/LICENSE
+-rw-r--r-- rvanhoudt/staff  112 2017-11-24 17:09 vmod-dynamic-0.3/Makefile.am
+-rw-r--r-- rvanhoudt/staff   25 2017-11-24 17:09 vmod-dynamic-0.3/COPYING
+-rw-r--r-- rvanhoudt/staff  385 2017-11-24 17:09 vmod-dynamic-0.3/.gitignore
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/m4/
+-rw-r--r-- rvanhoudt/staff 4730 2017-11-24 17:09 vmod-dynamic-0.3/README.rst
+-rw-r--r-- rvanhoudt/staff  542 2017-11-24 17:09 vmod-dynamic-0.3/.travis.yml
+-rwxr-xr-x rvanhoudt/staff 1096 2017-11-24 17:09 vmod-dynamic-0.3/autogen.sh
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/
+-rw-r--r-- rvanhoudt/staff 3422 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.h
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/
+-rw-r--r-- rvanhoudt/staff  662 2017-11-24 17:09 vmod-dynamic-0.3/src/Makefile.am
+-rw-r--r-- rvanhoudt/staff 22426 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.c
+-rw-r--r-- rvanhoudt/staff  9401 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.vcc
+-rw-r--r-- rvanhoudt/staff   974 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test09.vtc
+-rw-r--r-- rvanhoudt/staff   846 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test08.vtc
+-rw-r--r-- rvanhoudt/staff   575 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test01.vtc
+-rw-r--r-- rvanhoudt/staff  1448 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test03.vtc
+-rw-r--r-- rvanhoudt/staff   756 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test02.vtc
+-rw-r--r-- rvanhoudt/staff   439 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test06.vtc
+-rw-r--r-- rvanhoudt/staff   905 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test12.vtc
+-rw-r--r-- rvanhoudt/staff  1788 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test13.vtc
+-rw-r--r-- rvanhoudt/staff  1406 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test07.vtc
+-rw-r--r-- rvanhoudt/staff   725 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test11.vtc
+-rw-r--r-- rvanhoudt/staff  1540 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test05.vtc
+-rw-r--r-- rvanhoudt/staff  1150 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test04.vtc
+-rw-r--r-- rvanhoudt/staff   618 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test10.vtc
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/
+-rw-r--r-- rvanhoudt/staff   596 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/varnishcache_varnish5.repo
+-rwxr-xr-x rvanhoudt/staff  1840 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/pkg
+-rw-r--r-- rvanhoudt/staff  1718 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/vmod-dynamic.spec
+-rw-r--r-- rvanhoudt/staff     2 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/compat
+-rw-r--r-- rvanhoudt/staff   149 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/changelog
+-rw-r--r-- rvanhoudt/staff    19 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/docs
+-rwxr-xr-x rvanhoudt/staff   218 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/rules
+-rw-r--r-- rvanhoudt/staff  1350 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/copyright
+-rw-r--r-- rvanhoudt/staff    30 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/dirs
+-rw-r--r-- rvanhoudt/staff   484 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/control
+-rw-r--r-- rvanhoudt/staff   632 2017-11-24 17:09 vmod-dynamic-0.3/m4/ax_pkg_check_var.m4
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd vmod-dynamic-0.3
++ /bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
++ umask 022
++ cd /builddir/build/BUILD
++ cd vmod-dynamic-0.3
++ LANG=C
++ export LANG
++ unset DISPLAY
++ ls
++ yum install mlocate -y
+/var/tmp/rpm-tmp.Yq3xdj: line 33: yum: command not found
+error: Bad exit status from /var/tmp/rpm-tmp.Yq3xdj (%build)
+    Bad exit status from /var/tmp/rpm-tmp.Yq3xdj (%build)
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.Yq3xdj
+COPYING
+LICENSE
+Makefile.am
+README.rst
+autogen.sh
+configure.ac
+m4
+pkg
+src
+RPM build errors:
+Child return code was: 1
+EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f57c8bb8150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0
+ENTER ['do'](['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=Falseuid=0env={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0private_network=Truelogger=<mockbuild.trace_decorator.getLog object at 0x7f57c8bb8150>printOutput=True)
+Executing command: ['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.8wemPR
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=C
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf vmod-dynamic-0.3
++ /usr/bin/gzip -dc /builddir/build/SOURCES/vmod-dynamic-0.3.tar.gz
++ /bin/tar -xvvf -
+drwxr-xr-x rvanhoudt/staff   0 2017-11-24 17:09 vmod-dynamic-0.3/
+-rw-r--r-- rvanhoudt/staff 1315 2017-11-24 17:09 vmod-dynamic-0.3/configure.ac
+-rw-r--r-- rvanhoudt/staff 1338 2017-11-24 17:09 vmod-dynamic-0.3/LICENSE
+-rw-r--r-- rvanhoudt/staff  112 2017-11-24 17:09 vmod-dynamic-0.3/Makefile.am
+-rw-r--r-- rvanhoudt/staff   25 2017-11-24 17:09 vmod-dynamic-0.3/COPYING
+-rw-r--r-- rvanhoudt/staff  385 2017-11-24 17:09 vmod-dynamic-0.3/.gitignore
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/m4/
+-rw-r--r-- rvanhoudt/staff 4730 2017-11-24 17:09 vmod-dynamic-0.3/README.rst
+-rw-r--r-- rvanhoudt/staff  542 2017-11-24 17:09 vmod-dynamic-0.3/.travis.yml
+-rwxr-xr-x rvanhoudt/staff 1096 2017-11-24 17:09 vmod-dynamic-0.3/autogen.sh
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/
+-rw-r--r-- rvanhoudt/staff 3422 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.h
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/
+-rw-r--r-- rvanhoudt/staff  662 2017-11-24 17:09 vmod-dynamic-0.3/src/Makefile.am
+-rw-r--r-- rvanhoudt/staff 22426 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.c
+-rw-r--r-- rvanhoudt/staff  9401 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.vcc
+-rw-r--r-- rvanhoudt/staff   974 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test09.vtc
+-rw-r--r-- rvanhoudt/staff   846 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test08.vtc
+-rw-r--r-- rvanhoudt/staff   575 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test01.vtc
+-rw-r--r-- rvanhoudt/staff  1448 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test03.vtc
+-rw-r--r-- rvanhoudt/staff   756 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test02.vtc
+-rw-r--r-- rvanhoudt/staff   439 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test06.vtc
+-rw-r--r-- rvanhoudt/staff   905 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test12.vtc
+-rw-r--r-- rvanhoudt/staff  1788 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test13.vtc
+-rw-r--r-- rvanhoudt/staff  1406 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test07.vtc
+-rw-r--r-- rvanhoudt/staff   725 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test11.vtc
+-rw-r--r-- rvanhoudt/staff  1540 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test05.vtc
+-rw-r--r-- rvanhoudt/staff  1150 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test04.vtc
+-rw-r--r-- rvanhoudt/staff   618 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test10.vtc
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/
+-rw-r--r-- rvanhoudt/staff   596 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/varnishcache_varnish5.repo
+-rwxr-xr-x rvanhoudt/staff  1840 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/pkg
+-rw-r--r-- rvanhoudt/staff  1718 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/vmod-dynamic.spec
+-rw-r--r-- rvanhoudt/staff     2 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/compat
+-rw-r--r-- rvanhoudt/staff   149 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/changelog
+-rw-r--r-- rvanhoudt/staff    19 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/docs
+-rwxr-xr-x rvanhoudt/staff   218 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/rules
+-rw-r--r-- rvanhoudt/staff  1350 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/copyright
+-rw-r--r-- rvanhoudt/staff    30 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/dirs
+-rw-r--r-- rvanhoudt/staff   484 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/control
+-rw-r--r-- rvanhoudt/staff   632 2017-11-24 17:09 vmod-dynamic-0.3/m4/ax_pkg_check_var.m4
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.KdUM6r
+COPYING
+LICENSE
+Makefile.am
+README.rst
+autogen.sh
+configure.ac
+m4
+pkg
+src
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd vmod-dynamic-0.3
++ /bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
++ umask 022
++ cd /builddir/build/BUILD
++ cd vmod-dynamic-0.3
++ LANG=C
++ export LANG
++ unset DISPLAY
++ ls
++ updatedb
+/var/tmp/rpm-tmp.KdUM6r: line 33: updatedb: command not found
+error: Bad exit status from /var/tmp/rpm-tmp.KdUM6r (%build)
+    Bad exit status from /var/tmp/rpm-tmp.KdUM6r (%build)
+RPM build errors:
+Child return code was: 1
+EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7fa210264150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0
+ENTER ['do'](['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=Falseuid=0env={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0private_network=Truelogger=<mockbuild.trace_decorator.getLog object at 0x7fa210264150>printOutput=True)
+Executing command: ['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.zXDBbm
+drwxr-xr-x rvanhoudt/staff   0 2017-11-24 17:09 vmod-dynamic-0.3/
+-rw-r--r-- rvanhoudt/staff 1315 2017-11-24 17:09 vmod-dynamic-0.3/configure.ac
+-rw-r--r-- rvanhoudt/staff 1338 2017-11-24 17:09 vmod-dynamic-0.3/LICENSE
+-rw-r--r-- rvanhoudt/staff  112 2017-11-24 17:09 vmod-dynamic-0.3/Makefile.am
+-rw-r--r-- rvanhoudt/staff   25 2017-11-24 17:09 vmod-dynamic-0.3/COPYING
+-rw-r--r-- rvanhoudt/staff  385 2017-11-24 17:09 vmod-dynamic-0.3/.gitignore
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/m4/
+-rw-r--r-- rvanhoudt/staff 4730 2017-11-24 17:09 vmod-dynamic-0.3/README.rst
+-rw-r--r-- rvanhoudt/staff  542 2017-11-24 17:09 vmod-dynamic-0.3/.travis.yml
+-rwxr-xr-x rvanhoudt/staff 1096 2017-11-24 17:09 vmod-dynamic-0.3/autogen.sh
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/
+-rw-r--r-- rvanhoudt/staff 3422 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.h
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/
+-rw-r--r-- rvanhoudt/staff  662 2017-11-24 17:09 vmod-dynamic-0.3/src/Makefile.am
+-rw-r--r-- rvanhoudt/staff 22426 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.c
+-rw-r--r-- rvanhoudt/staff  9401 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.vcc
+-rw-r--r-- rvanhoudt/staff   974 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test09.vtc
+-rw-r--r-- rvanhoudt/staff   846 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test08.vtc
+-rw-r--r-- rvanhoudt/staff   575 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test01.vtc
+-rw-r--r-- rvanhoudt/staff  1448 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test03.vtc
+-rw-r--r-- rvanhoudt/staff   756 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test02.vtc
+-rw-r--r-- rvanhoudt/staff   439 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test06.vtc
+-rw-r--r-- rvanhoudt/staff   905 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test12.vtc
+-rw-r--r-- rvanhoudt/staff  1788 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test13.vtc
+-rw-r--r-- rvanhoudt/staff  1406 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test07.vtc
+-rw-r--r-- rvanhoudt/staff   725 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test11.vtc
+-rw-r--r-- rvanhoudt/staff  1540 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test05.vtc
+-rw-r--r-- rvanhoudt/staff  1150 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test04.vtc
+-rw-r--r-- rvanhoudt/staff   618 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test10.vtc
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/
+-rw-r--r-- rvanhoudt/staff   596 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/varnishcache_varnish5.repo
+-rwxr-xr-x rvanhoudt/staff  1840 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/pkg
+-rw-r--r-- rvanhoudt/staff  1718 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/vmod-dynamic.spec
+-rw-r--r-- rvanhoudt/staff     2 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/compat
+-rw-r--r-- rvanhoudt/staff   149 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/changelog
+-rw-r--r-- rvanhoudt/staff    19 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/docs
+-rwxr-xr-x rvanhoudt/staff   218 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/rules
+-rw-r--r-- rvanhoudt/staff  1350 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/copyright
+-rw-r--r-- rvanhoudt/staff    30 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/dirs
+-rw-r--r-- rvanhoudt/staff   484 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/control
+-rw-r--r-- rvanhoudt/staff   632 2017-11-24 17:09 vmod-dynamic-0.3/m4/ax_pkg_check_var.m4
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=C
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf vmod-dynamic-0.3
++ /usr/bin/gzip -dc /builddir/build/SOURCES/vmod-dynamic-0.3.tar.gz
++ /bin/tar -xvvf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd vmod-dynamic-0.3
++ /bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
++ umask 022
++ cd /builddir/build/BUILD
++ cd vmod-dynamic-0.3
++ LANG=C
++ export LANG
++ unset DISPLAY
++ ls
++ pwd
++ '[' '!' -f /usr/bin/autoconf268 ']'
++ autoconf --version
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.I0Dg4k
+COPYING
+LICENSE
+Makefile.am
+README.rst
+autogen.sh
+configure.ac
+m4
+pkg
+src
+/builddir/build/BUILD/vmod-dynamic-0.3
+autoconf (GNU Autoconf) 2.63
+Copyright (C) 2008 Free Software Foundation, Inc.
+License GPLv2+: GNU GPL version 2 or later
+<http://gnu.org/licenses/old-licenses/gpl-2.0.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Written by David J. MacKenzie and Akim Demaille.
++ bash autogen.sh
++ aclocal -I m4 -I /usr/share/aclocal
+configure.ac:11: warning: macro `AM_PROG_AR' not found in library
+configure.ac:1: error: Autoconf version 2.68 or higher is required
+configure.ac:1: the top level
+autom4te: /usr/bin/m4 failed with exit status: 63
+aclocal: autom4te failed with exit status: 63
+RPM build errors:
+error: Bad exit status from /var/tmp/rpm-tmp.I0Dg4k (%build)
+    Bad exit status from /var/tmp/rpm-tmp.I0Dg4k (%build)
+Child return code was: 1
+EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f544e614150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0
+ENTER ['do'](['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=Falseuid=0env={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0private_network=Truelogger=<mockbuild.trace_decorator.getLog object at 0x7f544e614150>printOutput=True)
+Executing command: ['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.TZhNGO
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=C
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf vmod-dynamic-0.3
++ /bin/tar -xvvf -
++ /usr/bin/gzip -dc /builddir/build/SOURCES/vmod-dynamic-0.3.tar.gz
+drwxr-xr-x rvanhoudt/staff   0 2017-11-24 17:09 vmod-dynamic-0.3/
+-rw-r--r-- rvanhoudt/staff 1315 2017-11-24 17:09 vmod-dynamic-0.3/configure.ac
+-rw-r--r-- rvanhoudt/staff 1338 2017-11-24 17:09 vmod-dynamic-0.3/LICENSE
+-rw-r--r-- rvanhoudt/staff  112 2017-11-24 17:09 vmod-dynamic-0.3/Makefile.am
+-rw-r--r-- rvanhoudt/staff   25 2017-11-24 17:09 vmod-dynamic-0.3/COPYING
+-rw-r--r-- rvanhoudt/staff  385 2017-11-24 17:09 vmod-dynamic-0.3/.gitignore
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/m4/
+-rw-r--r-- rvanhoudt/staff 4730 2017-11-24 17:09 vmod-dynamic-0.3/README.rst
+-rw-r--r-- rvanhoudt/staff  542 2017-11-24 17:09 vmod-dynamic-0.3/.travis.yml
+-rwxr-xr-x rvanhoudt/staff 1096 2017-11-24 17:09 vmod-dynamic-0.3/autogen.sh
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/
+-rw-r--r-- rvanhoudt/staff 3422 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.h
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/
+-rw-r--r-- rvanhoudt/staff  662 2017-11-24 17:09 vmod-dynamic-0.3/src/Makefile.am
+-rw-r--r-- rvanhoudt/staff 22426 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.c
+-rw-r--r-- rvanhoudt/staff  9401 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.vcc
+-rw-r--r-- rvanhoudt/staff   974 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test09.vtc
+-rw-r--r-- rvanhoudt/staff   846 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test08.vtc
+-rw-r--r-- rvanhoudt/staff   575 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test01.vtc
+-rw-r--r-- rvanhoudt/staff  1448 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test03.vtc
+-rw-r--r-- rvanhoudt/staff   756 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test02.vtc
+-rw-r--r-- rvanhoudt/staff   439 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test06.vtc
+-rw-r--r-- rvanhoudt/staff   905 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test12.vtc
+-rw-r--r-- rvanhoudt/staff  1788 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test13.vtc
+-rw-r--r-- rvanhoudt/staff  1406 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test07.vtc
+-rw-r--r-- rvanhoudt/staff   725 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test11.vtc
+-rw-r--r-- rvanhoudt/staff  1540 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test05.vtc
+-rw-r--r-- rvanhoudt/staff  1150 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test04.vtc
+-rw-r--r-- rvanhoudt/staff   618 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test10.vtc
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/
+-rw-r--r-- rvanhoudt/staff   596 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/varnishcache_varnish5.repo
+-rwxr-xr-x rvanhoudt/staff  1840 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/pkg
+-rw-r--r-- rvanhoudt/staff  1718 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/vmod-dynamic.spec
+-rw-r--r-- rvanhoudt/staff     2 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/compat
+-rw-r--r-- rvanhoudt/staff   149 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/changelog
+-rw-r--r-- rvanhoudt/staff    19 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/docs
+-rwxr-xr-x rvanhoudt/staff   218 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/rules
+-rw-r--r-- rvanhoudt/staff  1350 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/copyright
+-rw-r--r-- rvanhoudt/staff    30 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/dirs
+-rw-r--r-- rvanhoudt/staff   484 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/control
+-rw-r--r-- rvanhoudt/staff   632 2017-11-24 17:09 vmod-dynamic-0.3/m4/ax_pkg_check_var.m4
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.3EDxw8
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd vmod-dynamic-0.3
++ /bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
++ umask 022
++ cd /builddir/build/BUILD
++ cd vmod-dynamic-0.3
++ LANG=C
++ export LANG
++ unset DISPLAY
++ ls
++ pwd
++ whereis autoconf
++ whereis autoconf268
++ '[' '!' -f /usr/bin/autoconf268 ']'
++ autoconf --version
+COPYING
+LICENSE
+Makefile.am
+README.rst
+autogen.sh
+configure.ac
+m4
+pkg
+src
+/builddir/build/BUILD/vmod-dynamic-0.3
+autoconf: /usr/bin/autoconf /usr/share/autoconf /usr/share/man/man1/autoconf.1.gz
+autoconf268: /usr/bin/autoconf268 /usr/share/autoconf268 /usr/share/man/man1/autoconf268.1.gz
+autoconf (GNU Autoconf) 2.63
+Copyright (C) 2008 Free Software Foundation, Inc.
+License GPLv2+: GNU GPL version 2 or later
+<http://gnu.org/licenses/old-licenses/gpl-2.0.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Written by David J. MacKenzie and Akim Demaille.
++ bash autogen.sh
++ aclocal -I m4 -I /usr/share/aclocal
+configure.ac:11: warning: macro `AM_PROG_AR' not found in library
+configure.ac:1: error: Autoconf version 2.68 or higher is required
+configure.ac:1: the top level
+autom4te: /usr/bin/m4 failed with exit status: 63
+aclocal: autom4te failed with exit status: 63
+RPM build errors:
+error: Bad exit status from /var/tmp/rpm-tmp.3EDxw8 (%build)
+    Bad exit status from /var/tmp/rpm-tmp.3EDxw8 (%build)
+Child return code was: 1
+EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f85554cc150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0
+ENTER ['do'](['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=Falseuid=0env={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0private_network=Truelogger=<mockbuild.trace_decorator.getLog object at 0x7f85554cc150>printOutput=True)
+Executing command: ['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.JuQzUq
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=C
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf vmod-dynamic-0.3
++ /bin/tar -xvvf -
++ /usr/bin/gzip -dc /builddir/build/SOURCES/vmod-dynamic-0.3.tar.gz
+drwxr-xr-x rvanhoudt/staff   0 2017-11-24 17:09 vmod-dynamic-0.3/
+-rw-r--r-- rvanhoudt/staff 1315 2017-11-24 17:09 vmod-dynamic-0.3/configure.ac
+-rw-r--r-- rvanhoudt/staff 1338 2017-11-24 17:09 vmod-dynamic-0.3/LICENSE
+-rw-r--r-- rvanhoudt/staff  112 2017-11-24 17:09 vmod-dynamic-0.3/Makefile.am
+-rw-r--r-- rvanhoudt/staff   25 2017-11-24 17:09 vmod-dynamic-0.3/COPYING
+-rw-r--r-- rvanhoudt/staff  385 2017-11-24 17:09 vmod-dynamic-0.3/.gitignore
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/m4/
+-rw-r--r-- rvanhoudt/staff 4730 2017-11-24 17:09 vmod-dynamic-0.3/README.rst
+-rw-r--r-- rvanhoudt/staff  542 2017-11-24 17:09 vmod-dynamic-0.3/.travis.yml
+-rwxr-xr-x rvanhoudt/staff 1096 2017-11-24 17:09 vmod-dynamic-0.3/autogen.sh
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/
+-rw-r--r-- rvanhoudt/staff 3422 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.h
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/
+-rw-r--r-- rvanhoudt/staff  662 2017-11-24 17:09 vmod-dynamic-0.3/src/Makefile.am
+-rw-r--r-- rvanhoudt/staff 22426 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.c
+-rw-r--r-- rvanhoudt/staff  9401 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.vcc
+-rw-r--r-- rvanhoudt/staff   974 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test09.vtc
+-rw-r--r-- rvanhoudt/staff   846 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test08.vtc
+-rw-r--r-- rvanhoudt/staff   575 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test01.vtc
+-rw-r--r-- rvanhoudt/staff  1448 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test03.vtc
+-rw-r--r-- rvanhoudt/staff   756 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test02.vtc
+-rw-r--r-- rvanhoudt/staff   439 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test06.vtc
+-rw-r--r-- rvanhoudt/staff   905 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test12.vtc
+-rw-r--r-- rvanhoudt/staff  1788 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test13.vtc
+-rw-r--r-- rvanhoudt/staff  1406 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test07.vtc
+-rw-r--r-- rvanhoudt/staff   725 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test11.vtc
+-rw-r--r-- rvanhoudt/staff  1540 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test05.vtc
+-rw-r--r-- rvanhoudt/staff  1150 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test04.vtc
+-rw-r--r-- rvanhoudt/staff   618 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test10.vtc
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/
+-rw-r--r-- rvanhoudt/staff   596 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/varnishcache_varnish5.repo
+-rwxr-xr-x rvanhoudt/staff  1840 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/pkg
+-rw-r--r-- rvanhoudt/staff  1718 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/vmod-dynamic.spec
+-rw-r--r-- rvanhoudt/staff     2 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/compat
+-rw-r--r-- rvanhoudt/staff   149 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/changelog
+-rw-r--r-- rvanhoudt/staff    19 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/docs
+-rwxr-xr-x rvanhoudt/staff   218 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/rules
+-rw-r--r-- rvanhoudt/staff  1350 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/copyright
+-rw-r--r-- rvanhoudt/staff    30 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/dirs
+-rw-r--r-- rvanhoudt/staff   484 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/control
+-rw-r--r-- rvanhoudt/staff   632 2017-11-24 17:09 vmod-dynamic-0.3/m4/ax_pkg_check_var.m4
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd vmod-dynamic-0.3
++ /bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
++ umask 022
++ cd /builddir/build/BUILD
++ cd vmod-dynamic-0.3
++ LANG=C
++ export LANG
++ unset DISPLAY
++ ls
++ pwd
++ whereis autoconf
++ whereis autoconf268
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.z6dePg
+COPYING
+LICENSE
+Makefile.am
+README.rst
+autogen.sh
+configure.ac
+m4
+pkg
+src
+/builddir/build/BUILD/vmod-dynamic-0.3
+autoconf: /usr/bin/autoconf /usr/share/autoconf /usr/share/man/man1/autoconf.1.gz
+autoconf268: /usr/bin/autoconf268 /usr/share/autoconf268 /usr/share/man/man1/autoconf268.1.gz
++ '[' -f /usr/bin/autoconf268 ']'
++ rm -rf /usr/bin/autoconf
++ ln -s /usr/bin/autoconf268 /usr/bin/autoconf
++ autoconf --version
+autoconf (GNU Autoconf) 2.68
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+/Autoconf: GNU GPL version 3 or later
+<http://gnu.org/licenses/gpl.html>, <http://gnu.org/licenses/exceptions.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Written by David J. MacKenzie and Akim Demaille.
++ bash autogen.sh
++ aclocal -I m4 -I /usr/share/aclocal
+configure.ac:11: warning: macro `AM_PROG_AR' not found in library
+configure.ac:1: error: Autoconf version 2.68 or higher is required
+configure.ac:1: the top level
+autom4te: /usr/bin/m4 failed with exit status: 63
+aclocal: autom4te failed with exit status: 63
+RPM build errors:
+error: Bad exit status from /var/tmp/rpm-tmp.z6dePg (%build)
+    Bad exit status from /var/tmp/rpm-tmp.z6dePg (%build)
+Child return code was: 1
+EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7fa7e5207150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0
+ENTER ['do'](['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=Falseuid=0env={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0private_network=Truelogger=<mockbuild.trace_decorator.getLog object at 0x7fa7e5207150>printOutput=True)
+Executing command: ['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.7LgEQP
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=C
++ export LANG
++ unset DISPLAY
+drwxr-xr-x rvanhoudt/staff   0 2017-11-24 17:09 vmod-dynamic-0.3/
+-rw-r--r-- rvanhoudt/staff 1315 2017-11-24 17:09 vmod-dynamic-0.3/configure.ac
+-rw-r--r-- rvanhoudt/staff 1338 2017-11-24 17:09 vmod-dynamic-0.3/LICENSE
+-rw-r--r-- rvanhoudt/staff  112 2017-11-24 17:09 vmod-dynamic-0.3/Makefile.am
+-rw-r--r-- rvanhoudt/staff   25 2017-11-24 17:09 vmod-dynamic-0.3/COPYING
+-rw-r--r-- rvanhoudt/staff  385 2017-11-24 17:09 vmod-dynamic-0.3/.gitignore
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/m4/
+-rw-r--r-- rvanhoudt/staff 4730 2017-11-24 17:09 vmod-dynamic-0.3/README.rst
+-rw-r--r-- rvanhoudt/staff  542 2017-11-24 17:09 vmod-dynamic-0.3/.travis.yml
+-rwxr-xr-x rvanhoudt/staff 1096 2017-11-24 17:09 vmod-dynamic-0.3/autogen.sh
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/
+-rw-r--r-- rvanhoudt/staff 3422 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.h
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/
+-rw-r--r-- rvanhoudt/staff  662 2017-11-24 17:09 vmod-dynamic-0.3/src/Makefile.am
+-rw-r--r-- rvanhoudt/staff 22426 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.c
+-rw-r--r-- rvanhoudt/staff  9401 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.vcc
+-rw-r--r-- rvanhoudt/staff   974 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test09.vtc
+-rw-r--r-- rvanhoudt/staff   846 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test08.vtc
+-rw-r--r-- rvanhoudt/staff   575 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test01.vtc
+-rw-r--r-- rvanhoudt/staff  1448 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test03.vtc
+-rw-r--r-- rvanhoudt/staff   756 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test02.vtc
+-rw-r--r-- rvanhoudt/staff   439 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test06.vtc
+-rw-r--r-- rvanhoudt/staff   905 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test12.vtc
+-rw-r--r-- rvanhoudt/staff  1788 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test13.vtc
+-rw-r--r-- rvanhoudt/staff  1406 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test07.vtc
+-rw-r--r-- rvanhoudt/staff   725 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test11.vtc
+-rw-r--r-- rvanhoudt/staff  1540 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test05.vtc
+-rw-r--r-- rvanhoudt/staff  1150 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test04.vtc
+-rw-r--r-- rvanhoudt/staff   618 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test10.vtc
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/
+-rw-r--r-- rvanhoudt/staff   596 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/varnishcache_varnish5.repo
+-rwxr-xr-x rvanhoudt/staff  1840 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/pkg
+-rw-r--r-- rvanhoudt/staff  1718 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/vmod-dynamic.spec
+-rw-r--r-- rvanhoudt/staff     2 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/compat
+-rw-r--r-- rvanhoudt/staff   149 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/changelog
+-rw-r--r-- rvanhoudt/staff    19 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/docs
+-rwxr-xr-x rvanhoudt/staff   218 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/rules
+-rw-r--r-- rvanhoudt/staff  1350 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/copyright
+-rw-r--r-- rvanhoudt/staff    30 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/dirs
+-rw-r--r-- rvanhoudt/staff   484 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/control
+-rw-r--r-- rvanhoudt/staff   632 2017-11-24 17:09 vmod-dynamic-0.3/m4/ax_pkg_check_var.m4
++ cd /builddir/build/BUILD
++ rm -rf vmod-dynamic-0.3
++ /usr/bin/gzip -dc /builddir/build/SOURCES/vmod-dynamic-0.3.tar.gz
++ /bin/tar -xvvf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd vmod-dynamic-0.3
++ /bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
++ umask 022
++ cd /builddir/build/BUILD
++ cd vmod-dynamic-0.3
++ LANG=C
++ export LANG
++ unset DISPLAY
++ ls
++ pwd
++ whereis autoconf
++ whereis autoconf268
++ '[' -f /usr/bin/autoconf268 ']'
++ rm -rf /usr/bin/autoconf
++ ln -s /usr/bin/autoconf268 /usr/bin/autoconf
++ rm -rf /usr/bin/autom4te
++ ln -s /usr/bin/autom4te268 /usr/bin/autom4te
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.elg2X3
+COPYING
+LICENSE
+Makefile.am
+README.rst
+autogen.sh
+configure.ac
+m4
+pkg
+src
+/builddir/build/BUILD/vmod-dynamic-0.3
+autoconf: /usr/bin/autoconf /usr/share/autoconf /usr/share/man/man1/autoconf.1.gz
+autoconf268: /usr/bin/autoconf268 /usr/share/autoconf268 /usr/share/man/man1/autoconf268.1.gz
++ autoconf --version
+autoconf (GNU Autoconf) 2.68
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+/Autoconf: GNU GPL version 3 or later
+<http://gnu.org/licenses/gpl.html>, <http://gnu.org/licenses/exceptions.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Written by David J. MacKenzie and Akim Demaille.
++ bash autogen.sh
++ aclocal -I m4 -I /usr/share/aclocal
+configure.ac:11: warning: macro `AM_PROG_AR' not found in library
++ libtoolize --copy --force
+RPM build errors:
+autogen.sh: line 53: libtoolize: command not found
+error: Bad exit status from /var/tmp/rpm-tmp.elg2X3 (%build)
+    Bad exit status from /var/tmp/rpm-tmp.elg2X3 (%build)
+Child return code was: 1
+EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f2c7d09b150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0
+ENTER ['do'](['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=Falseuid=0env={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0private_network=Truelogger=<mockbuild.trace_decorator.getLog object at 0x7f2c7d09b150>printOutput=True)
+Executing command: ['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.KiGwky
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=C
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf vmod-dynamic-0.3
++ /usr/bin/gzip -dc /builddir/build/SOURCES/vmod-dynamic-0.3.tar.gz
++ /bin/tar -xvvf -
+drwxr-xr-x rvanhoudt/staff   0 2017-11-24 17:09 vmod-dynamic-0.3/
+-rw-r--r-- rvanhoudt/staff 1315 2017-11-24 17:09 vmod-dynamic-0.3/configure.ac
+-rw-r--r-- rvanhoudt/staff 1338 2017-11-24 17:09 vmod-dynamic-0.3/LICENSE
+-rw-r--r-- rvanhoudt/staff  112 2017-11-24 17:09 vmod-dynamic-0.3/Makefile.am
+-rw-r--r-- rvanhoudt/staff   25 2017-11-24 17:09 vmod-dynamic-0.3/COPYING
+-rw-r--r-- rvanhoudt/staff  385 2017-11-24 17:09 vmod-dynamic-0.3/.gitignore
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/m4/
+-rw-r--r-- rvanhoudt/staff 4730 2017-11-24 17:09 vmod-dynamic-0.3/README.rst
+-rw-r--r-- rvanhoudt/staff  542 2017-11-24 17:09 vmod-dynamic-0.3/.travis.yml
+-rwxr-xr-x rvanhoudt/staff 1096 2017-11-24 17:09 vmod-dynamic-0.3/autogen.sh
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/
+-rw-r--r-- rvanhoudt/staff 3422 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.h
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/
+-rw-r--r-- rvanhoudt/staff  662 2017-11-24 17:09 vmod-dynamic-0.3/src/Makefile.am
+-rw-r--r-- rvanhoudt/staff 22426 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.c
+-rw-r--r-- rvanhoudt/staff  9401 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.vcc
+-rw-r--r-- rvanhoudt/staff   974 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test09.vtc
+-rw-r--r-- rvanhoudt/staff   846 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test08.vtc
+-rw-r--r-- rvanhoudt/staff   575 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test01.vtc
+-rw-r--r-- rvanhoudt/staff  1448 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test03.vtc
+-rw-r--r-- rvanhoudt/staff   756 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test02.vtc
+-rw-r--r-- rvanhoudt/staff   439 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test06.vtc
+-rw-r--r-- rvanhoudt/staff   905 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test12.vtc
+-rw-r--r-- rvanhoudt/staff  1788 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test13.vtc
+-rw-r--r-- rvanhoudt/staff  1406 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test07.vtc
+-rw-r--r-- rvanhoudt/staff   725 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test11.vtc
+-rw-r--r-- rvanhoudt/staff  1540 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test05.vtc
+-rw-r--r-- rvanhoudt/staff  1150 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test04.vtc
+-rw-r--r-- rvanhoudt/staff   618 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test10.vtc
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/
+-rw-r--r-- rvanhoudt/staff   596 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/varnishcache_varnish5.repo
+-rwxr-xr-x rvanhoudt/staff  1840 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/pkg
+-rw-r--r-- rvanhoudt/staff  1718 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/vmod-dynamic.spec
+-rw-r--r-- rvanhoudt/staff     2 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/compat
+-rw-r--r-- rvanhoudt/staff   149 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/changelog
+-rw-r--r-- rvanhoudt/staff    19 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/docs
+-rwxr-xr-x rvanhoudt/staff   218 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/rules
+-rw-r--r-- rvanhoudt/staff  1350 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/copyright
+-rw-r--r-- rvanhoudt/staff    30 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/dirs
+-rw-r--r-- rvanhoudt/staff   484 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/control
+-rw-r--r-- rvanhoudt/staff   632 2017-11-24 17:09 vmod-dynamic-0.3/m4/ax_pkg_check_var.m4
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.eNMZuU
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd vmod-dynamic-0.3
++ /bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
++ umask 022
++ cd /builddir/build/BUILD
++ cd vmod-dynamic-0.3
++ LANG=C
++ export LANG
++ unset DISPLAY
++ ls
++ pwd
++ whereis autoconf
++ whereis autoconf268
+COPYING
+LICENSE
+Makefile.am
+README.rst
+autogen.sh
+configure.ac
+m4
+pkg
+src
+/builddir/build/BUILD/vmod-dynamic-0.3
+autoconf: /usr/bin/autoconf /usr/share/autoconf /usr/share/man/man1/autoconf.1.gz
+autoconf268: /usr/bin/autoconf268 /usr/share/autoconf268 /usr/share/man/man1/autoconf268.1.gz
++ '[' -f /usr/bin/autoconf268 ']'
++ rm -rf /usr/bin/autoconf
++ ln -s /usr/bin/autoconf268 /usr/bin/autoconf
++ rm -rf /usr/bin/autom4te
++ ln -s /usr/bin/autom4te268 /usr/bin/autom4te
++ autoconf --version
+autoconf (GNU Autoconf) 2.68
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+/Autoconf: GNU GPL version 3 or later
+<http://gnu.org/licenses/gpl.html>, <http://gnu.org/licenses/exceptions.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Written by David J. MacKenzie and Akim Demaille.
++ bash autogen.sh
++ aclocal -I m4 -I /usr/share/aclocal
+configure.ac:11: warning: macro `AM_PROG_AR' not found in library
+configure.ac:14: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2662: _AC_LINK_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2679: AC_LINK_IFELSE is expanded from...
+/usr/share/aclocal/libtool.m4:1022: _LT_SYS_MODULE_PATH_AIX is expanded from...
+/usr/share/aclocal/libtool.m4:4161: _LT_LINKER_SHLIBS is expanded from...
+/usr/share/aclocal/libtool.m4:5236: _LT_LANG_C_CONFIG is expanded from...
+/usr/share/aclocal/libtool.m4:138: _LT_SETUP is expanded from...
+/usr/share/aclocal/libtool.m4:67: LT_INIT is expanded from...
+configure.ac:14: the top level
+configure.ac:14: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2662: _AC_LINK_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2679: AC_LINK_IFELSE is expanded from...
+/usr/share/aclocal/libtool.m4:4161: _LT_LINKER_SHLIBS is expanded from...
+/usr/share/aclocal/libtool.m4:5236: _LT_LANG_C_CONFIG is expanded from...
+/usr/share/aclocal/libtool.m4:138: _LT_SETUP is expanded from...
+/usr/share/aclocal/libtool.m4:67: LT_INIT is expanded from...
+configure.ac:14: the top level
++ libtoolize --copy --force
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, `build-aux'.
+libtoolize: copying file `build-aux/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIR, `m4'.
+libtoolize: copying file `m4/libtool.m4'
+libtoolize: copying file `m4/ltoptions.m4'
+libtoolize: copying file `m4/ltsugar.m4'
+libtoolize: copying file `m4/ltversion.m4'
+libtoolize: copying file `m4/lt~obsolete.m4'
++ autoheader
+configure.ac:14: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2662: _AC_LINK_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2679: AC_LINK_IFELSE is expanded from...
+aclocal.m4:2216: _LT_SYS_MODULE_PATH_AIX is expanded from...
+aclocal.m4:5355: _LT_LINKER_SHLIBS is expanded from...
+aclocal.m4:6430: _LT_LANG_C_CONFIG is expanded from...
+aclocal.m4:1338: _LT_SETUP is expanded from...
+aclocal.m4:1267: LT_INIT is expanded from...
+configure.ac:14: the top level
+configure.ac:14: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2662: _AC_LINK_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2679: AC_LINK_IFELSE is expanded from...
+aclocal.m4:5355: _LT_LINKER_SHLIBS is expanded from...
+aclocal.m4:6430: _LT_LANG_C_CONFIG is expanded from...
+aclocal.m4:1338: _LT_SETUP is expanded from...
+aclocal.m4:1267: LT_INIT is expanded from...
+configure.ac:14: the top level
++ automake --add-missing --copy --foreign
+configure.ac:14: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2662: _AC_LINK_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2679: AC_LINK_IFELSE is expanded from...
+aclocal.m4:2216: _LT_SYS_MODULE_PATH_AIX is expanded from...
+aclocal.m4:5355: _LT_LINKER_SHLIBS is expanded from...
+aclocal.m4:6430: _LT_LANG_C_CONFIG is expanded from...
+aclocal.m4:1338: _LT_SETUP is expanded from...
+aclocal.m4:1267: LT_INIT is expanded from...
+configure.ac:14: the top level
+configure.ac:14: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2662: _AC_LINK_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2679: AC_LINK_IFELSE is expanded from...
+aclocal.m4:5355: _LT_LINKER_SHLIBS is expanded from...
+aclocal.m4:6430: _LT_LANG_C_CONFIG is expanded from...
+aclocal.m4:1338: _LT_SETUP is expanded from...
+aclocal.m4:1267: LT_INIT is expanded from...
+configure.ac:14: the top level
+configure.ac:14: installing `build-aux/config.guess'
+configure.ac:14: installing `build-aux/config.sub'
+configure.ac:9: installing `build-aux/install-sh'
+configure.ac:9: installing `build-aux/missing'
+src/Makefile.am: installing `build-aux/depcomp'
++ autoconf
+configure.ac:14: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2662: _AC_LINK_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2679: AC_LINK_IFELSE is expanded from...
+aclocal.m4:2216: _LT_SYS_MODULE_PATH_AIX is expanded from...
+aclocal.m4:5355: _LT_LINKER_SHLIBS is expanded from...
+aclocal.m4:6430: _LT_LANG_C_CONFIG is expanded from...
+aclocal.m4:1338: _LT_SETUP is expanded from...
+aclocal.m4:1267: LT_INIT is expanded from...
+configure.ac:14: the top level
+configure.ac:14: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2662: _AC_LINK_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2679: AC_LINK_IFELSE is expanded from...
+aclocal.m4:5355: _LT_LINKER_SHLIBS is expanded from...
+aclocal.m4:6430: _LT_LANG_C_CONFIG is expanded from...
+aclocal.m4:1338: _LT_SETUP is expanded from...
+aclocal.m4:1267: LT_INIT is expanded from...
+configure.ac:14: the top level
+configure.ac:11: error: possibly undefined macro: AM_PROG_AR
+RPM build errors:
+      If this token and others are legitimate, please use m4_pattern_allow.
+      See the Autoconf documentation.
+error: Bad exit status from /var/tmp/rpm-tmp.eNMZuU (%build)
+    Bad exit status from /var/tmp/rpm-tmp.eNMZuU (%build)
+Child return code was: 1
+EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f3d11ad2150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0
+ENTER ['do'](['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=Falseuid=0env={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0private_network=Truelogger=<mockbuild.trace_decorator.getLog object at 0x7f3d11ad2150>printOutput=True)
+Executing command: ['bash', '--login', '-c', u'/usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.xnrYBT
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=C
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
+-rwxr-xr-x rvanhoudt/staff 156 2017-11-24 17:09 ./._vmod-dynamic-0.3
+drwxr-xr-x rvanhoudt/staff   0 2017-11-24 17:09 vmod-dynamic-0.3/
+-rw-r--r-- rvanhoudt/staff 156 2018-09-03 22:31 vmod-dynamic-0.3/._configure.ac
+-rw-r--r-- rvanhoudt/staff 1341 2018-09-03 22:31 vmod-dynamic-0.3/configure.ac
+-rw-r--r-- rvanhoudt/staff  156 2017-11-24 17:09 vmod-dynamic-0.3/._LICENSE
+-rw-r--r-- rvanhoudt/staff 1338 2017-11-24 17:09 vmod-dynamic-0.3/LICENSE
+-rw-r--r-- rvanhoudt/staff  156 2017-11-24 17:09 vmod-dynamic-0.3/._Makefile.am
+-rw-r--r-- rvanhoudt/staff  112 2017-11-24 17:09 vmod-dynamic-0.3/Makefile.am
+-rw-r--r-- rvanhoudt/staff  156 2017-11-24 17:09 vmod-dynamic-0.3/._COPYING
+-rw-r--r-- rvanhoudt/staff   25 2017-11-24 17:09 vmod-dynamic-0.3/COPYING
+-rw-r--r-- rvanhoudt/staff  156 2017-11-24 17:09 vmod-dynamic-0.3/._.gitignore
+-rw-r--r-- rvanhoudt/staff  385 2017-11-24 17:09 vmod-dynamic-0.3/.gitignore
+-rwxr-xr-x rvanhoudt/staff  156 2018-09-03 21:11 vmod-dynamic-0.3/._m4
+drwxr-xr-x rvanhoudt/staff    0 2018-09-03 21:11 vmod-dynamic-0.3/m4/
+-rw-r--r-- rvanhoudt/staff  156 2017-11-24 17:09 vmod-dynamic-0.3/._README.rst
+-rw-r--r-- rvanhoudt/staff 4730 2017-11-24 17:09 vmod-dynamic-0.3/README.rst
+-rw-r--r-- rvanhoudt/staff  156 2017-11-24 17:09 vmod-dynamic-0.3/._.travis.yml
+-rw-r--r-- rvanhoudt/staff  542 2017-11-24 17:09 vmod-dynamic-0.3/.travis.yml
+-rwxr-xr-x rvanhoudt/staff  156 2017-11-24 17:09 vmod-dynamic-0.3/._autogen.sh
+-rwxr-xr-x rvanhoudt/staff 1096 2017-11-24 17:09 vmod-dynamic-0.3/autogen.sh
+-rwxr-xr-x rvanhoudt/staff  156 2018-09-03 21:11 vmod-dynamic-0.3/._pkg
+drwxr-xr-x rvanhoudt/staff    0 2018-09-03 21:11 vmod-dynamic-0.3/pkg/
+-rwxr-xr-x rvanhoudt/staff  156 2017-11-24 17:09 vmod-dynamic-0.3/._src
+drwxr-xr-x rvanhoudt/staff    0 2017-11-24 17:09 vmod-dynamic-0.3/src/
+-rw-r--r-- rvanhoudt/staff  156 2017-11-24 17:09 vmod-dynamic-0.3/src/._vmod_dynamic.h
+-rw-r--r-- rvanhoudt/staff 3422 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.h
+-rwxr-xr-x rvanhoudt/staff  156 2018-09-03 21:11 vmod-dynamic-0.3/src/._tests
+drwxr-xr-x rvanhoudt/staff    0 2018-09-03 21:11 vmod-dynamic-0.3/src/tests/
+-rw-r--r-- rvanhoudt/staff  156 2017-11-24 17:09 vmod-dynamic-0.3/src/._Makefile.am
+-rw-r--r-- rvanhoudt/staff  662 2017-11-24 17:09 vmod-dynamic-0.3/src/Makefile.am
+-rw-r--r-- rvanhoudt/staff  156 2017-11-24 17:09 vmod-dynamic-0.3/src/._vmod_dynamic.c
+-rw-r--r-- rvanhoudt/staff 22426 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.c
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/src/._vmod_dynamic.vcc
+-rw-r--r-- rvanhoudt/staff  9401 2017-11-24 17:09 vmod-dynamic-0.3/src/vmod_dynamic.vcc
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/._test09.vtc
+-rw-r--r-- rvanhoudt/staff   974 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test09.vtc
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/._test08.vtc
+-rw-r--r-- rvanhoudt/staff   846 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test08.vtc
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/._test01.vtc
+-rw-r--r-- rvanhoudt/staff   575 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test01.vtc
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/._test03.vtc
+-rw-r--r-- rvanhoudt/staff  1448 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test03.vtc
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/._test02.vtc
+-rw-r--r-- rvanhoudt/staff   756 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test02.vtc
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/._test06.vtc
+-rw-r--r-- rvanhoudt/staff   439 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test06.vtc
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/._test12.vtc
+-rw-r--r-- rvanhoudt/staff   905 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test12.vtc
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/._test13.vtc
+-rw-r--r-- rvanhoudt/staff  1788 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test13.vtc
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/._test07.vtc
+-rw-r--r-- rvanhoudt/staff  1406 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test07.vtc
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/._test11.vtc
+-rw-r--r-- rvanhoudt/staff   725 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test11.vtc
++ rm -rf vmod-dynamic-0.3
++ /bin/tar -xvvf -
++ /usr/bin/gzip -dc /builddir/build/SOURCES/vmod-dynamic-0.3.tar.gz
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd vmod-dynamic-0.3
++ /bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
++ umask 022
++ cd /builddir/build/BUILD
++ cd vmod-dynamic-0.3
++ LANG=C
++ export LANG
++ unset DISPLAY
++ ls
++ pwd
++ whereis autoconf
++ whereis autoconf268
++ '[' -f /usr/bin/autoconf268 ']'
++ rm -rf /usr/bin/autoconf
++ ln -s /usr/bin/autoconf268 /usr/bin/autoconf
++ rm -rf /usr/bin/autom4te
++ ln -s /usr/bin/autom4te268 /usr/bin/autom4te
++ autoconf --version
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/._test05.vtc
+-rw-r--r-- rvanhoudt/staff  1540 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test05.vtc
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/._test04.vtc
+-rw-r--r-- rvanhoudt/staff  1150 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test04.vtc
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/._test10.vtc
+-rw-r--r-- rvanhoudt/staff   618 2017-11-24 17:09 vmod-dynamic-0.3/src/tests/test10.vtc
+-rwxr-xr-x rvanhoudt/staff   156 2018-09-03 21:11 vmod-dynamic-0.3/pkg/._debian
+drwxr-xr-x rvanhoudt/staff     0 2018-09-03 21:11 vmod-dynamic-0.3/pkg/debian/
+-rwxr-xr-x rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/pkg/._rpm
+drwxr-xr-x rvanhoudt/staff     0 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/._varnishcache_varnish5.repo
+-rw-r--r-- rvanhoudt/staff   596 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/varnishcache_varnish5.repo
+-rwxr-xr-x rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/._pkg
+-rwxr-xr-x rvanhoudt/staff  1840 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/pkg
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/._vmod-dynamic.spec
+-rw-r--r-- rvanhoudt/staff  1718 2017-11-24 17:09 vmod-dynamic-0.3/pkg/rpm/vmod-dynamic.spec
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/._compat
+-rw-r--r-- rvanhoudt/staff     2 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/compat
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/._changelog
+-rw-r--r-- rvanhoudt/staff   149 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/changelog
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/._docs
+-rw-r--r-- rvanhoudt/staff    19 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/docs
+-rwxr-xr-x rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/._rules
+-rwxr-xr-x rvanhoudt/staff   218 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/rules
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/._copyright
+-rw-r--r-- rvanhoudt/staff  1350 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/copyright
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/._dirs
+-rw-r--r-- rvanhoudt/staff    30 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/dirs
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/._control
+-rw-r--r-- rvanhoudt/staff   484 2017-11-24 17:09 vmod-dynamic-0.3/pkg/debian/control
+-rw-r--r-- rvanhoudt/staff   156 2017-11-24 17:09 vmod-dynamic-0.3/m4/._ax_pkg_check_var.m4
+-rw-r--r-- rvanhoudt/staff   632 2017-11-24 17:09 vmod-dynamic-0.3/m4/ax_pkg_check_var.m4
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.xPcdL8
+COPYING
+LICENSE
+Makefile.am
+README.rst
+autogen.sh
+configure.ac
+m4
+pkg
+src
+/builddir/build/BUILD/vmod-dynamic-0.3
+autoconf: /usr/bin/autoconf /usr/share/autoconf /usr/share/man/man1/autoconf.1.gz
+autoconf268: /usr/bin/autoconf268 /usr/share/autoconf268 /usr/share/man/man1/autoconf268.1.gz
+autoconf (GNU Autoconf) 2.68
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+/Autoconf: GNU GPL version 3 or later
+<http://gnu.org/licenses/gpl.html>, <http://gnu.org/licenses/exceptions.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Written by David J. MacKenzie and Akim Demaille.
++ bash autogen.sh
++ aclocal -I m4 -I /usr/share/aclocal
+configure.ac:14: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2662: _AC_LINK_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2679: AC_LINK_IFELSE is expanded from...
+/usr/share/aclocal/libtool.m4:1022: _LT_SYS_MODULE_PATH_AIX is expanded from...
+/usr/share/aclocal/libtool.m4:4161: _LT_LINKER_SHLIBS is expanded from...
+/usr/share/aclocal/libtool.m4:5236: _LT_LANG_C_CONFIG is expanded from...
+/usr/share/aclocal/libtool.m4:138: _LT_SETUP is expanded from...
+/usr/share/aclocal/libtool.m4:67: LT_INIT is expanded from...
+configure.ac:14: the top level
+configure.ac:14: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2662: _AC_LINK_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2679: AC_LINK_IFELSE is expanded from...
+/usr/share/aclocal/libtool.m4:4161: _LT_LINKER_SHLIBS is expanded from...
+/usr/share/aclocal/libtool.m4:5236: _LT_LANG_C_CONFIG is expanded from...
+/usr/share/aclocal/libtool.m4:138: _LT_SETUP is expanded from...
+/usr/share/aclocal/libtool.m4:67: LT_INIT is expanded from...
+configure.ac:14: the top level
++ libtoolize --copy --force
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, `build-aux'.
+libtoolize: copying file `build-aux/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIR, `m4'.
+libtoolize: copying file `m4/libtool.m4'
+libtoolize: copying file `m4/ltoptions.m4'
+libtoolize: copying file `m4/ltsugar.m4'
+libtoolize: copying file `m4/ltversion.m4'
+libtoolize: copying file `m4/lt~obsolete.m4'
++ autoheader
+configure.ac:14: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2662: _AC_LINK_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2679: AC_LINK_IFELSE is expanded from...
+aclocal.m4:2216: _LT_SYS_MODULE_PATH_AIX is expanded from...
+aclocal.m4:5355: _LT_LINKER_SHLIBS is expanded from...
+aclocal.m4:6430: _LT_LANG_C_CONFIG is expanded from...
+aclocal.m4:1338: _LT_SETUP is expanded from...
+aclocal.m4:1267: LT_INIT is expanded from...
+configure.ac:14: the top level
+configure.ac:14: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2662: _AC_LINK_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2679: AC_LINK_IFELSE is expanded from...
+aclocal.m4:5355: _LT_LINKER_SHLIBS is expanded from...
+aclocal.m4:6430: _LT_LANG_C_CONFIG is expanded from...
+aclocal.m4:1338: _LT_SETUP is expanded from...
+aclocal.m4:1267: LT_INIT is expanded from...
+configure.ac:14: the top level
++ automake --add-missing --copy --foreign
+configure.ac:14: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2662: _AC_LINK_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2679: AC_LINK_IFELSE is expanded from...
+aclocal.m4:2216: _LT_SYS_MODULE_PATH_AIX is expanded from...
+aclocal.m4:5355: _LT_LINKER_SHLIBS is expanded from...
+aclocal.m4:6430: _LT_LANG_C_CONFIG is expanded from...
+aclocal.m4:1338: _LT_SETUP is expanded from...
+aclocal.m4:1267: LT_INIT is expanded from...
+configure.ac:14: the top level
+configure.ac:14: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2662: _AC_LINK_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2679: AC_LINK_IFELSE is expanded from...
+aclocal.m4:5355: _LT_LINKER_SHLIBS is expanded from...
+aclocal.m4:6430: _LT_LANG_C_CONFIG is expanded from...
+aclocal.m4:1338: _LT_SETUP is expanded from...
+aclocal.m4:1267: LT_INIT is expanded from...
+configure.ac:14: the top level
+configure.ac:14: installing `build-aux/config.guess'
+configure.ac:14: installing `build-aux/config.sub'
+configure.ac:9: installing `build-aux/install-sh'
+configure.ac:9: installing `build-aux/missing'
+src/Makefile.am: installing `build-aux/depcomp'
++ autoconf
+configure.ac:14: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2662: _AC_LINK_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2679: AC_LINK_IFELSE is expanded from...
+aclocal.m4:2216: _LT_SYS_MODULE_PATH_AIX is expanded from...
+aclocal.m4:5355: _LT_LINKER_SHLIBS is expanded from...
+aclocal.m4:6430: _LT_LANG_C_CONFIG is expanded from...
+aclocal.m4:1338: _LT_SETUP is expanded from...
+aclocal.m4:1267: LT_INIT is expanded from...
+configure.ac:14: the top level
+configure.ac:14: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2662: _AC_LINK_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2679: AC_LINK_IFELSE is expanded from...
+aclocal.m4:5355: _LT_LINKER_SHLIBS is expanded from...
+aclocal.m4:6430: _LT_LANG_C_CONFIG is expanded from...
+aclocal.m4:1338: _LT_SETUP is expanded from...
+aclocal.m4:1267: LT_INIT is expanded from...
+configure.ac:14: the top level
++ CFLAGS='-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic'
++ export CFLAGS
++ CXXFLAGS='-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic'
++ export CXXFLAGS
++ FFLAGS='-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -I/usr/lib64/gfortran/modules'
++ export FFLAGS
++ ./configure --build=x86_64-redhat-linux-gnu --host=x86_64-redhat-linux-gnu --target=x86_64-redhat-linux-gnu --program-prefix= --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --sbindir=/usr/sbin --sysconfdir=/etc --datadir=/usr/share --includedir=/usr/include --libdir=/usr/lib64 --libexecdir=/usr/libexec --localstatedir=/var --sharedstatedir=/var/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-rst2man=true
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking build system type... x86_64-redhat-linux-gnu
+checking host system type... x86_64-redhat-linux-gnu
+checking for style of include used by make... GNU
+checking for x86_64-redhat-linux-gnu-gcc... no
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking dependency style of gcc... gcc3
+checking for a sed that does not truncate output... /bin/sed
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for fgrep... /bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking whether the shell understands some XSI constructs... yes
+checking whether the shell understands "+="... yes
+checking for /usr/bin/ld option to reload object files... -r
+checking for x86_64-redhat-linux-gnu-objdump... no
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for x86_64-redhat-linux-gnu-ar... no
+checking for ar... ar
+checking for x86_64-redhat-linux-gnu-strip... no
+checking for strip... strip
+checking for x86_64-redhat-linux-gnu-ranlib... no
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking how to run the C preprocessor... gcc -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... no
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking for shl_load... no
+checking for shl_load in -ldld... no
+checking for dlopen... no
+checking for dlopen in -ldl... yes
+checking whether a program can dlopen itself... yes
+checking whether a statically linked program can dlopen itself... yes
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... no
+checking for x86_64-redhat-linux-gnu-pkg-config... no
+checking for pkg-config... /usr/bin/pkg-config
+checking pkg-config is at least version 0.21... yes
+checking for VARNISHAPI... yes
+checking for explicit_bzero... no
+checking for Varnish... 5.2.1
+checking vsha256.h usability... yes
+checking vsha256.h presence... yes
+checking for vsha256.h... yes
+checking cache/cache.h usability... yes
+checking cache/cache.h presence... yes
+checking for cache/cache.h... yes
+checking for gcc option to accept ISO C99... -std=gnu99
+checking for a Python interpreter with version >= 2.7... none
+configure: error: Python >= 2.7 is required.
+RPM build errors:
+error: Bad exit status from /var/tmp/rpm-tmp.xPcdL8 (%build)
+    Bad exit status from /var/tmp/rpm-tmp.xPcdL8 (%build)
+Child return code was: 1
+EXCEPTION: [Error()]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/mockbuild/trace_decorator.py", line 88, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python2.7/site-packages/mockbuild/util.py", line 547, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f7b19365150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-6-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f4c086aa150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el6.src.rpm
+Child return code was: 0

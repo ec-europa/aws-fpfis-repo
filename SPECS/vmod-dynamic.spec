@@ -11,13 +11,19 @@ Summary:        DNS director for Varnish Cache
 URL:            https://github.com/nigoroll/libvmod-dynamic
 License:        BSD
 
-#Source:         %{name}-%{version}.tar.gz
-Source:         https://github.com/nigoroll/libvmod-dynamic/archive/v%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
+#Source:         https://github.com/nigoroll/libvmod-dynamic/archive/v%{version}.tar.gz
 
 BuildRequires:  varnish-devel >= 5.2
 BuildRequires:  pkgconfig
 BuildRequires:  make
 BuildRequires:  gcc
+BuildRequires:  automake
+BuildRequires:  autoconf
+BuildRequires:  autoconf268
+BuildRequires:  libtool
+BuildRequires:  centos-release-SCL
+BuildRequires:  python >= 2.7
 BuildRequires:  python-docutils >= 0.6
 
 # varnish from varnish5 at packagecloud
@@ -31,10 +37,22 @@ create backends.
 
 
 %prep
-%setup -qn libvmod-dynamic-v%{version}
+%setup %{name}-%{version}
 
 
 %build
+ls
+pwd
+whereis autoconf
+whereis autoconf268
+if [ -f "/usr/bin/autoconf268" ]; then
+   rm -rf /usr/bin/autoconf
+   ln -s /usr/bin/autoconf268 /usr/bin/autoconf
+   rm -rf /usr/bin/autom4te
+   ln -s /usr/bin/autom4te268 /usr/bin/autom4te
+fi
+autoconf --version
+bash autogen.sh
 %configure --with-rst2man=true
 make %{?_smp_mflags}
 

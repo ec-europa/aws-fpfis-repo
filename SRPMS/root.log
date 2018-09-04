@@ -583,25 +583,16 @@ DEBUG util.py:417:   zlib                  x86_64 1.2.3-29.el6                  
 DEBUG util.py:417:  Transaction Summary
 DEBUG util.py:417:  ================================================================================
 DEBUG util.py:417:  Install  25 Packages (+128 Dependent packages)
-DEBUG util.py:417:  Total download size: 123 M
+DEBUG util.py:417:  Total size: 123 M
 DEBUG util.py:417:  Installed size: 393 M
 DEBUG util.py:417:  Downloading packages:
-DEBUG util.py:417:  Public key for audit-libs-2.4.5-6.el6.x86_64.rpm is not installed
-DEBUG util.py:417:  warning: /var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/base/packages/audit-libs-2.4.5-6.el6.x86_64.rpm: Header V3 RSA/SHA1 Signature, key ID c105b9de: NOKEY
-DEBUG util.py:417:  warning: /var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/epel/packages/epel-rpm-macros-6-21.noarch.rpm: Header V3 RSA/SHA256 Signature, key ID 0608b895: NOKEY
-DEBUG util.py:417:  Public key for epel-rpm-macros-6-21.noarch.rpm is not installed
-DEBUG util.py:417:  ftp://ftp.free.fr/mirrors/ftp.centos.org/6.10/os/x86_64/Packages/gcc-4.4.7-23.el6.x86_64.rpm: [Errno 14] FTP Error 421 - transfer closed with 7173580 bytes remaining to read
-DEBUG util.py:417:  Trying other mirror.
-DEBUG util.py:417:  Public key for kernel-headers-2.6.32-754.3.5.el6.x86_64.rpm is not installed
-DEBUG util.py:417:  http://centos.cu.be/6.10/os/x86_64/Packages/tzdata-2018e-3.el6.noarch.rpm: [Errno 12] Timeout on http://centos.cu.be/6.10/os/x86_64/Packages/tzdata-2018e-3.el6.noarch.rpm: (28, 'Operation too slow. Less than 1000 bytes/sec transferred the last 30 seconds')
-DEBUG util.py:417:  Trying other mirror.
-DEBUG util.py:417:  --------------------------------------------------------------------------------
-DEBUG util.py:417:  Total                                              447 kB/s | 123 MB  04:40     
+DEBUG util.py:417:  warning: /var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/epel/packages/python2-rpm-macros-3-13.el6.noarch.rpm: Header V3 RSA/SHA256 Signature, key ID 0608b895: NOKEY
 DEBUG util.py:417:  Retrieving key from file:///etc/pki/mock/RPM-GPG-KEY-EPEL-6
 DEBUG util.py:417:  Importing GPG key 0x0608B895:
 DEBUG util.py:417:   Userid     : "EPEL (6) <epel@fedoraproject.org>"
 DEBUG util.py:417:   Fingerprint: 8c3b e96a f230 9184 da5c 0dae 3b49 df2a 0608 b895
 DEBUG util.py:417:   From       : /etc/pki/mock/RPM-GPG-KEY-EPEL-6
+DEBUG util.py:417:  warning: /var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/base/packages/tar-1.23-15.el6_8.x86_64.rpm: Header V3 RSA/SHA1 Signature, key ID c105b9de: NOKEY
 DEBUG util.py:417:  Retrieving key from file:///etc/pki/mock/RPM-GPG-KEY-CentOS-6
 DEBUG util.py:417:  Importing GPG key 0xC105B9DE:
 DEBUG util.py:417:   Userid     : "CentOS-6 Key (CentOS 6 Official Signing Key) <centos-6-key@centos.org>"
@@ -1078,11 +1069,9 @@ DEBUG util.py:542:  Child return code was: 0
 DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/os-release
 DEBUG util.py:563:  child environment: None
 DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
-DEBUG util.py:417:  userdel: user 'mockbuild' does not exist
 DEBUG util.py:542:  Child return code was: 6
 DEBUG util.py:563:  child environment: None
 DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
-DEBUG util.py:417:  groupdel: group 'mockbuild' does not exist
 DEBUG util.py:542:  Child return code was: 6
 DEBUG util.py:563:  child environment: None
 DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
@@ -1290,5 +1279,1443 @@ DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/moc
 DEBUG util.py:542:  Child return code was: 0
 DEBUG util.py:563:  child environment: None
 DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:417:  ERROR: not a btrfs filesystem: /var/lib/mock
+DEBUG util.py:417:  ERROR: can't access '/var/lib/mock'
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.93-linuxkit-aufs
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 1262
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  Repository 'varnishcache_varnish52-source': Error parsing config: Error parsing "baseurl = 'https://packagecloud.io/varnishcache/varnish52/el/6 /SRPMS'": URL must be http, ftp, file or https not ""
+DEBUG util.py:417:  base                                                                                                                                   | 3.7 kB  00:00:00     
+DEBUG util.py:417:  epel                                                                                                                                   | 3.2 kB  00:00:00     
+DEBUG util.py:417:  fpfis-aws-repo                                                                                                                         | 3.0 kB  00:00:00     
+DEBUG util.py:417:  fpfis-repo                                                                                                                             | 3.0 kB  00:00:00     
+DEBUG util.py:417:  updates                                                                                                                                | 3.4 kB  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                |  836 B  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                | 1.0 kB  00:00:01 !!! 
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+DEBUG util.py:563:  child environment: None
+DEBUG backend.py:340:  Copying package to result dir
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:417:  ERROR: not a btrfs filesystem: /var/lib/mock
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.93-linuxkit-aufs
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 1567
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  groupdel: group 'mockbuild' does not exist
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  Repository 'varnishcache_varnish52-source': Error parsing config: Error parsing "baseurl = 'https://packagecloud.io/varnishcache/varnish52/el/6 /SRPMS'": URL must be http, ftp, file or https not ""
+DEBUG util.py:417:  base                                                                                                                                   | 3.7 kB  00:00:00     
+DEBUG util.py:417:  epel                                                                                                                                   | 3.2 kB  00:00:00     
+DEBUG util.py:417:  fpfis-aws-repo                                                                                                                         | 3.0 kB  00:00:00     
+DEBUG util.py:417:  fpfis-repo                                                                                                                             | 3.0 kB  00:00:00     
+DEBUG util.py:417:  updates                                                                                                                                | 3.4 kB  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                |  836 B  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                | 1.0 kB  00:00:03 !!! 
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+DEBUG util.py:563:  child environment: None
+DEBUG backend.py:340:  Copying package to result dir
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.93-linuxkit-aufs
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 1980
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  Repository 'varnishcache_varnish52-source': Error parsing config: Error parsing "baseurl = 'https://packagecloud.io/varnishcache/varnish52/el/6 /SRPMS'": URL must be http, ftp, file or https not ""
+DEBUG util.py:417:  base                                                                                                                                   | 3.7 kB  00:00:00     
+DEBUG util.py:417:  epel                                                                                                                                   | 3.2 kB  00:00:00     
+DEBUG util.py:417:  fpfis-aws-repo                                                                                                                         | 3.0 kB  00:00:00     
+DEBUG util.py:417:  fpfis-repo                                                                                                                             | 3.0 kB  00:00:00     
+DEBUG util.py:417:  updates                                                                                                                                | 3.4 kB  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                |  836 B  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                | 1.0 kB  00:00:01 !!! 
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+DEBUG util.py:563:  child environment: None
+DEBUG backend.py:340:  Copying package to result dir
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.93-linuxkit-aufs
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 2349
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  Repository 'varnishcache_varnish52-source': Error parsing config: Error parsing "baseurl = 'https://packagecloud.io/varnishcache/varnish52/el/6 /SRPMS'": URL must be http, ftp, file or https not ""
+DEBUG util.py:417:  base                                                                                                                                   | 3.7 kB  00:00:00     
+DEBUG util.py:417:  epel                                                                                                                                   | 3.2 kB  00:00:00     
+DEBUG util.py:417:  fpfis-aws-repo                                                                                                                         | 3.0 kB  00:00:00     
+DEBUG util.py:417:  fpfis-repo                                                                                                                             | 3.0 kB  00:00:00     
+DEBUG util.py:417:  updates                                                                                                                                | 3.4 kB  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                |  836 B  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                | 1.0 kB  00:00:01 !!! 
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+DEBUG util.py:563:  child environment: None
+DEBUG backend.py:340:  Copying package to result dir
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.93-linuxkit-aufs
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 2846
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  groupdel: group 'mockbuild' does not exist
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  Repository 'varnishcache_varnish52-source': Error parsing config: Error parsing "baseurl = 'https://packagecloud.io/varnishcache/varnish52/el/6 /SRPMS'": URL must be http, ftp, file or https not ""
+DEBUG util.py:417:  base                                                                                                                                   | 3.7 kB  00:00:00     
+DEBUG util.py:417:  epel                                                                                                                                   | 3.2 kB  00:00:00     
+DEBUG util.py:417:  fpfis-aws-repo                                                                                                                         | 3.0 kB  00:00:00     
+DEBUG util.py:417:  fpfis-repo                                                                                                                             | 3.0 kB  00:00:00     
+DEBUG util.py:417:  updates                                                                                                                                | 3.4 kB  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                |  836 B  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                | 1.0 kB  00:00:01 !!! 
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+DEBUG util.py:563:  child environment: None
+DEBUG backend.py:340:  Copying package to result dir
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.93-linuxkit-aufs
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 3154
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  groupdel: group 'mockbuild' does not exist
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  Repository 'varnishcache_varnish52-source': Error parsing config: Error parsing "baseurl = 'https://packagecloud.io/varnishcache/varnish52/el/6 /SRPMS'": URL must be http, ftp, file or https not ""
+DEBUG util.py:417:  base                                                                                                                                   | 3.7 kB  00:00:00     
+DEBUG util.py:417:  epel                                                                                                                                   | 3.2 kB  00:00:00     
+DEBUG util.py:417:  fpfis-aws-repo                                                                                                                         | 3.0 kB  00:00:00     
+DEBUG util.py:417:  fpfis-repo                                                                                                                             | 3.0 kB  00:00:00     
+DEBUG util.py:417:  updates                                                                                                                                | 3.4 kB  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                |  836 B  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                | 1.0 kB  00:00:01 !!! 
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+DEBUG util.py:563:  child environment: None
+DEBUG backend.py:340:  Copying package to result dir
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.93-linuxkit-aufs
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 3383
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  groupdel: group 'mockbuild' does not exist
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  Repository 'varnishcache_varnish52-source': Error parsing config: Error parsing "baseurl = 'https://packagecloud.io/varnishcache/varnish52/el/6 /SRPMS'": URL must be http, ftp, file or https not ""
+DEBUG util.py:417:  base                                                                                                                                   | 3.7 kB  00:00:00     
+DEBUG util.py:417:  epel                                                                                                                                   | 3.2 kB  00:00:00     
+DEBUG util.py:417:  fpfis-aws-repo                                                                                                                         | 3.0 kB  00:00:00     
+DEBUG util.py:417:  fpfis-repo                                                                                                                             | 3.0 kB  00:00:00     
+DEBUG util.py:417:  updates                                                                                                                                | 3.4 kB  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                |  836 B  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                | 1.0 kB  00:00:01 !!! 
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+DEBUG util.py:563:  child environment: None
+DEBUG backend.py:340:  Copying package to result dir
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.93-linuxkit-aufs
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 3720
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  groupdel: group 'mockbuild' does not exist
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  Repository 'varnishcache_varnish52-source': Error parsing config: Error parsing "baseurl = 'https://packagecloud.io/varnishcache/varnish52/el/6 /SRPMS'": URL must be http, ftp, file or https not ""
+DEBUG util.py:417:  base                                                                                                                                   | 3.7 kB  00:00:00     
+DEBUG util.py:417:  epel                                                                                                                                   | 3.2 kB  00:00:00     
+DEBUG util.py:417:  fpfis-aws-repo                                                                                                                         | 3.0 kB  00:00:00     
+DEBUG util.py:417:  fpfis-repo                                                                                                                             | 3.0 kB  00:00:00     
+DEBUG util.py:417:  updates                                                                                                                                | 3.4 kB  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                |  836 B  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                | 1.0 kB  00:00:01 !!! 
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+DEBUG util.py:563:  child environment: None
+DEBUG backend.py:340:  Copying package to result dir
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.93-linuxkit-aufs
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 4005
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  Repository 'varnishcache_varnish52-source': Error parsing config: Error parsing "baseurl = 'https://packagecloud.io/varnishcache/varnish52/el/6 /SRPMS'": URL must be http, ftp, file or https not ""
+DEBUG util.py:417:  base                                                                                                                                   | 3.7 kB  00:00:00     
+DEBUG util.py:417:  epel                                                                                                                                   | 3.2 kB  00:00:00     
+DEBUG util.py:417:  fpfis-aws-repo                                                                                                                         | 3.0 kB  00:00:00     
+DEBUG util.py:417:  fpfis-repo                                                                                                                             | 3.0 kB  00:00:00     
+DEBUG util.py:417:  updates                                                                                                                                | 3.4 kB  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                |  836 B  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                | 1.0 kB  00:00:01 !!! 
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+DEBUG util.py:563:  child environment: None
+DEBUG backend.py:340:  Copying package to result dir
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.93-linuxkit-aufs
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 4282
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  Repository 'varnishcache_varnish52-source': Error parsing config: Error parsing "baseurl = 'https://packagecloud.io/varnishcache/varnish52/el/6 /SRPMS'": URL must be http, ftp, file or https not ""
+DEBUG util.py:417:  base                                                                                                                                   | 3.7 kB  00:00:00     
+DEBUG util.py:417:  epel                                                                                                                                   | 3.2 kB  00:00:00     
+DEBUG util.py:417:  fpfis-aws-repo                                                                                                                         | 3.0 kB  00:00:00     
+DEBUG util.py:417:  fpfis-repo                                                                                                                             | 3.0 kB  00:00:00     
+DEBUG util.py:417:  updates                                                                                                                                | 3.4 kB  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                |  836 B  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                | 1.0 kB  00:00:01 !!! 
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+DEBUG util.py:563:  child environment: None
+DEBUG backend.py:340:  Copying package to result dir
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:417:  ERROR: not a btrfs filesystem: /var/lib/mock
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.93-linuxkit-aufs
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 4627
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  groupdel: group 'mockbuild' does not exist
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  Repository 'varnishcache_varnish52-source': Error parsing config: Error parsing "baseurl = 'https://packagecloud.io/varnishcache/varnish52/el/6 /SRPMS'": URL must be http, ftp, file or https not ""
+DEBUG util.py:417:  base                                                                                                                                   | 3.7 kB  00:00:00     
+DEBUG util.py:417:  epel                                                                                                                                   | 3.2 kB  00:00:00     
+DEBUG util.py:417:  fpfis-aws-repo                                                                                                                         | 3.0 kB  00:00:00     
+DEBUG util.py:417:  fpfis-repo                                                                                                                             | 3.0 kB  00:00:00     
+DEBUG util.py:417:  updates                                                                                                                                | 3.4 kB  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                |  836 B  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                | 1.0 kB  00:00:01 !!! 
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+DEBUG util.py:563:  child environment: None
+DEBUG backend.py:340:  Copying package to result dir
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.93-linuxkit-aufs
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 4919
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  Repository 'varnishcache_varnish52-source': Error parsing config: Error parsing "baseurl = 'https://packagecloud.io/varnishcache/varnish52/el/6 /SRPMS'": URL must be http, ftp, file or https not ""
+DEBUG util.py:417:  base                                                                                                                                   | 3.7 kB  00:00:00     
+DEBUG util.py:417:  epel                                                                                                                                   | 3.2 kB  00:00:00     
+DEBUG util.py:417:  fpfis-aws-repo                                                                                                                         | 3.0 kB  00:00:00     
+DEBUG util.py:417:  fpfis-repo                                                                                                                             | 3.0 kB  00:00:00     
+DEBUG util.py:417:  updates                                                                                                                                | 3.4 kB  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                |  836 B  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                | 1.0 kB  00:00:01 !!! 
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+DEBUG util.py:563:  child environment: None
+DEBUG backend.py:340:  Copying package to result dir
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.93-linuxkit-aufs
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 5940
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  Repository 'varnishcache_varnish52-source': Error parsing config: Error parsing "baseurl = 'https://packagecloud.io/varnishcache/varnish52/el/6 /SRPMS'": URL must be http, ftp, file or https not ""
+DEBUG util.py:417:  base                                                                                                                                   | 3.7 kB  00:00:00     
+DEBUG util.py:417:  epel                                                                                                                                   | 3.2 kB  00:00:00     
+DEBUG util.py:417:  fpfis-aws-repo                                                                                                                         | 3.0 kB  00:00:00     
+DEBUG util.py:417:  fpfis-repo                                                                                                                             | 3.0 kB  00:00:00     
+DEBUG util.py:417:  updates                                                                                                                                | 3.4 kB  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                |  836 B  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                | 1.0 kB  00:00:01 !!! 
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+DEBUG util.py:563:  child environment: None
+DEBUG backend.py:340:  Copying package to result dir
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:417:  ERROR: not a btrfs filesystem: /var/lib/mock
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.93-linuxkit-aufs
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 7824
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  groupdel: group 'mockbuild' does not exist
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  Repository 'varnishcache_varnish52-source': Error parsing config: Error parsing "baseurl = 'https://packagecloud.io/varnishcache/varnish52/el/6 /SRPMS'": URL must be http, ftp, file or https not ""
+DEBUG util.py:417:  base                                                                                                                                   | 3.7 kB  00:00:00     
+DEBUG util.py:417:  epel                                                                                                                                   | 3.2 kB  00:00:00     
+DEBUG util.py:417:  fpfis-aws-repo                                                                                                                         | 3.0 kB  00:00:00     
+DEBUG util.py:417:  fpfis-repo                                                                                                                             | 3.0 kB  00:00:00     
+DEBUG util.py:417:  updates                                                                                                                                | 3.4 kB  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                |  836 B  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                | 1.0 kB  00:00:01 !!! 
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+DEBUG util.py:563:  child environment: None
+DEBUG backend.py:340:  Copying package to result dir
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 1
+DEBUG util.py:1179:  Please ignore the error above above about btrfs.
+INFO buildroot.py:309:  Mock Version: 1.2.17
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/pts
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/dev/shm
+DEBUG buildroot.py:447:  kernel version == 4.9.93-linuxkit-aufs
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/fstab
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/yum.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/etc/dnf.conf
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/var/log/yum.log
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/fpfis-6-x86_64/yum_cache/', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG buildroot.py:138:  rootdir = /var/lib/mock/fpfis-6-x86_64/root
+DEBUG buildroot.py:139:  resultdir = /mock/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/pki/mock
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/etc/yum/pluginconf.d
+DEBUG package_manager.py:199:  configure yum
+DEBUG package_manager.py:205:  configure yum priorities
+DEBUG package_manager.py:207:  configure yum rhnplugin
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  userdel: user mockbuild is currently used by process 8091
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 6
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/groupadd', '-g', '135', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/sbin/useradd', '-o', '-m', '-u', '0', '-g', '135', '-d', '/builddir', '-n', 'mockbuild'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/RPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SPECS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SRPMS
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/SOURCES
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILD
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/BUILDROOT
+DEBUG util.py:97:  ensuring that dir exists: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG util.py:100:  creating dir: /var/lib/mock/fpfis-6-x86_64/root/builddir/build/originals
+DEBUG package_manager.py:96:  ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update']
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/usr/bin/yum', '--installroot', '/var/lib/mock/fpfis-6-x86_64/root/', '-y', '--releasever', '6', 'update'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'LC_MESSAGES': 'C', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+DEBUG util.py:417:  Repository 'varnishcache_varnish52-source': Error parsing config: Error parsing "baseurl = 'https://packagecloud.io/varnishcache/varnish52/el/6 /SRPMS'": URL must be http, ftp, file or https not ""
+DEBUG util.py:417:  base                                                                                                                                   | 3.7 kB  00:00:00     
+DEBUG util.py:417:  epel                                                                                                                                   | 3.2 kB  00:00:00     
+DEBUG util.py:417:  fpfis-aws-repo                                                                                                                         | 3.0 kB  00:00:00     
+DEBUG util.py:417:  fpfis-repo                                                                                                                             | 3.0 kB  00:00:00     
+DEBUG util.py:417:  updates                                                                                                                                | 3.4 kB  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                |  836 B  00:00:00     
+DEBUG util.py:417:  varnishcache_varnish52/x86_64/signature                                                                                                | 1.0 kB  00:00:01 !!! 
+DEBUG util.py:417:  No packages marked for update
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:110:  touching file: /var/lib/mock/fpfis-6-x86_64/root/.initialized
+DEBUG util.py:563:  child environment: None
+DEBUG backend.py:340:  Copying package to result dir
+DEBUG util.py:176:  kill orphans
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/fpfis-6-x86_64/root/var/cache/yum/'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/pts'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/dev/shm'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/sys'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/fpfis-6-x86_64/root/proc'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:542:  Child return code was: 0
+DEBUG util.py:563:  child environment: None
+DEBUG util.py:495:  Executing command: ['btrfs', 'subv', 'list', '/var/lib/mock'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOSTNAME': 'mock', 'HOME': '/builddir', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin'} and shell False
+DEBUG util.py:417:  ERROR: not a btrfs filesystem: /var/lib/mock
 DEBUG util.py:542:  Child return code was: 1
 DEBUG util.py:1179:  Please ignore the error above above about btrfs.
