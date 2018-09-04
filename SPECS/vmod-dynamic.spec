@@ -20,9 +20,9 @@ BuildRequires:  make
 BuildRequires:  gcc
 BuildRequires:  automake
 BuildRequires:  autoconf
-BuildRequires:  autoconf268
+#BuildRequires:  autoconf268
 BuildRequires:  libtool
-BuildRequires:  centos-release-SCL
+#BuildRequires:  centos-release-SCL
 BuildRequires:  python >= 2.7
 BuildRequires:  python-docutils >= 0.6
 
