@@ -1,5 +1,75 @@
 Mock Version: 1.2.17
-ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-7-x86_64/root'shell=FalseprintOutput=Falseenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7fde43e1e150>uid=0)
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-7-x86_64/root'shell=FalseprintOutput=Falseenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7fd8bac18150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el7.src.rpm
+Child return code was: 0
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-7-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f9392efc150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el7.src.rpm
+Child return code was: 0
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-7-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f6068117150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el7.src.rpm
+Child return code was: 0
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-7-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f5981f9c150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el7.src.rpm
+Child return code was: 0
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-7-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f8b8fe67150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el7.src.rpm
+Child return code was: 0
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-7-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7fd74d27f150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el7.src.rpm
+Child return code was: 0
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-7-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7feb167ef150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el7.src.rpm
+Child return code was: 0
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-7-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f573983f150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el7.src.rpm
+Child return code was: 0
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-7-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f1cc4e62150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el7.src.rpm
+Child return code was: 0
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-7-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f4413293150>uid=0)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/vmod-dynamic-0.3-1.el7.src.rpm
+Child return code was: 0
+Mock Version: 1.2.17
+ENTER ['do'](['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'], chrootPath='/var/lib/mock/fpfis-7-x86_64/root'shell=FalseprintOutput=Trueenv={'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'}gid=135user='mockbuild'timeout=0logger=<mockbuild.trace_decorator.getLog object at 0x7f0ba9dd9150>uid=0)
 Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/vmod-dynamic.spec'] with env {'LANG': 'en_US.UTF-8', 'TERM': 'vt100', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': 'printf "\x1b]0;<mock-chroot>\x07<mock-chroot>"', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': '/builddir', 'HOSTNAME': 'mock'} and shell False
 Building target platforms: x86_64
 Building for target x86_64

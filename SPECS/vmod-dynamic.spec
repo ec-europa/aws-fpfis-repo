@@ -20,9 +20,8 @@ BuildRequires:  make
 BuildRequires:  gcc
 BuildRequires:  automake
 BuildRequires:  autoconf
-#BuildRequires:  autoconf268
 BuildRequires:  libtool
-#BuildRequires:  centos-release-SCL
+BuildRequires:  rst2pdf
 BuildRequires:  python >= 2.7
 BuildRequires:  python-docutils >= 0.6
 
@@ -41,21 +40,10 @@ create backends.
 
 
 %build
-ls
-pwd
-whereis autoconf
-whereis autoconf268
-if [ -f "/usr/bin/autoconf268" ]; then
-   rm -rf /usr/bin/autoconf
-   ln -s /usr/bin/autoconf268 /usr/bin/autoconf
-   rm -rf /usr/bin/autom4te
-   ln -s /usr/bin/autom4te268 /usr/bin/autom4te
-fi
 autoconf --version
 bash autogen.sh
 %configure --with-rst2man=true
 make %{?_smp_mflags}
-
 
 %install
 %make_install
@@ -64,13 +52,14 @@ rm %{buildroot}%{vmoddir}/libvmod_%{vmod}.la
 # Only use the version-specific docdir created by %doc below
 rm -rf %{buildroot}%{_docdir}
 
-%check
-make %{?_smp_mflags} check
+#%check
+#make %{?_smp_mflags} check
+#cat /builddir/build/BUILD/vmod-dynamic-0.3/src/test-suite.log
 
 
 %files
 %{vmoddir}/libvmod_%{vmod}.so
-%{_mandir}/man?/*
+#%{_mandir}/man?/*
 %doc README.rst COPYING LICENSE
 
 
