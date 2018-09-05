@@ -6,11 +6,11 @@ License: BSD
 Group: System Environment/Daemons
 Source0: vmod-drupal7-0.1.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-Requires: varnish >= 4.0.2
+Requires: varnish >= 5.2
 BuildRequires: make, autoconf, automake, libtool
 BuildRequires: python-docutils
-BuildRequires: varnish >= 4.0.2
-BuildRequires: varnish-libs-devel >= 4.0.2
+BuildRequires: varnish >= 5.2
+BuildRequires: varnish-libs-devel >= 5.2
 
 %description
 Drupal 7 VMOD provides Drupal-related functions within Varnish.
