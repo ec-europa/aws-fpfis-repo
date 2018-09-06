@@ -22,7 +22,7 @@ Drupal 7 VMOD provides Drupal-related functions within Varnish.
 ./autogen.sh
 %configure --prefix=/usr/
 %{__make} %{?_smp_mflags}
-%{__make} %{?_smp_mflags} check
+#%{__make} %{?_smp_mflags} check
 
 %install
 [ %{buildroot} != "/" ] && %{__rm} -rf %{buildroot}
