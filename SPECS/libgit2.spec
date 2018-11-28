@@ -1,6 +1,6 @@
 Name:           libgit2
 Version:        0.27.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        C implementation of the Git core methods as a library with a solid API
 License:        GPLv2 with exceptions
 URL:            http://libgit2.github.com/
