@@ -4,7 +4,8 @@
 Summary: Virtuoso Opensource Server
 Name: virtuoso-opensource
 Version: 7.2.4.2
-Release: 1%{?dist}
+Epoch:2
+Release: 2%{?dist}
 # see LICENSE for exception details
 License: GPLv2 with exceptions
 Group: Applications/Databases
