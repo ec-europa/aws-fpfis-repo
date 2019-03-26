@@ -7,8 +7,8 @@
 %define workdir /opt/solr
 %define start_script_path /usr/lib/systemd/system/solr.service
 
-Name:           solr8
-Version:        8.0.0
+Name:           solr7
+Version:        7.7.1
 Release:        EC
 Summary:        Apache Search Server
 Source:         https://archive.apache.org/dist/lucene/solr/%{version}/solr-%{version}.tgz
